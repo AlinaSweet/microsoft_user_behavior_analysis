@@ -71,7 +71,7 @@ bash scripts/run_project.sh check --data '/完整路径/user_behavior.csv'
 USER_BEHAVIOR_CSV='/完整路径/user_behavior.csv' bash scripts/run_project.sh check
 ```
 
-读取前检查表头；ID 和原始行为值使用 Arrow 字符串，保留可能存在的前导零。本阶段不进行清洗或业务转换。
+读取前检查表头；ID 和原始行为值使用 Arrow 字符串，保留可能存在的前导零。当前环境检查和样本测量不进行清洗或业务转换。
 
 ## 资源配置怎样生效
 
@@ -122,3 +122,8 @@ Git 提交和推送会调用同一入口；GitHub 每次推送 main/dev/feature 
 测试使用临时合成数据，覆盖路径优先级、前导零、错误表头、配置校验、内存规划、清单指纹、文件同步政策和真实 worker 启动。它们不会改写原始 CSV 或历史实测报告。
 
 工程搭建的验收内容和实测边界见 [第一阶段第1项完成记录](docs/stage1_completion.md)。
+
+
+## 第一阶段第 2 项：文献与技术方案
+
+已整理五篇经典论文笔记、数字平台案例、Spark/Dask 与模型对比、26 个候选特征和 10 项后续实验。阅读入口为 [文献调研目录](docs/research/README.md)，交付核对见 [第 2 项完成报告](outputs/reports/stage1_step2_research.md)。本步为调研与设计，尚未进行全量清洗或模型训练。
