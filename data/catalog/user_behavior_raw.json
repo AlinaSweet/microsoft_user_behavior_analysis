@@ -1,0 +1,12 @@
+{
+  "name": "user_behavior_raw",
+  "kind": "raw",
+  "project_path": "data/raw/user_behavior.csv",
+  "size_bytes": 492264642,
+  "sha256": "64c1436d3f984f813c12c730950d61cdc1892e8dbbb54e102911b182c2690072",
+  "created_at_utc": "2026-10-14T19:18:30.236716+00:00",
+  "reproduction_or_origin": "User-provided CSV; supply the same content via --data or USER_BEHAVIOR_CSV",
+  "share_location": null,
+  "distribution_status": "local_only",
+  "data_file_in_git": false
+}

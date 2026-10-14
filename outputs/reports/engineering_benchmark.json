@@ -1,0 +1,95 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-14T19:18:30.237513+00:00",
+  "scope": "First CSV partition per trial; bounded returned sample. Not a full-file benchmark.",
+  "sample_rows": 100000,
+  "repeats": 2,
+  "resource_plan": {
+    "n_workers": 2,
+    "threads_per_worker": 1,
+    "memory_limit_bytes": 1073741824,
+    "available_memory_bytes": 3157868544,
+    "total_worker_budget_bytes": 2147483648,
+    "available_memory_fraction": 0.7,
+    "local_directory": "/Users/alina/Desktop/实习/Github/.cache/dask"
+  },
+  "configured_block_size": "32MiB",
+  "config_sha256": "46ecbe097c9d01e85deb40ea5c21cabd45c170f94f0aa69a0b2a4d28062cba7d",
+  "source_sha256": "64c1436d3f984f813c12c730950d61cdc1892e8dbbb54e102911b182c2690072",
+  "packages": {
+    "pandas": "3.0.6",
+    "numpy": "2.5.4",
+    "dask": "2026.8.0",
+    "distributed": "2026.8.0",
+    "pyarrow": "26.0.0",
+    "psutil": "7.2.2",
+    "PyYAML": "6.0.3"
+  },
+  "worker_restart_count": 0,
+  "monitoring": "Worker RSS sampled approximately every 0.1 seconds; brief peaks may be missed.",
+  "cluster_and_trials_seconds": 10.0182,
+  "summary": [
+    {
+      "block_size": "32MiB",
+      "median_wall_seconds": 1.3445,
+      "max_observed_worker_rss_bytes": 565002240,
+      "max_worker_peak_fraction": 0.5262
+    },
+    {
+      "block_size": "64MiB",
+      "median_wall_seconds": 2.4024,
+      "max_observed_worker_rss_bytes": 554156032,
+      "max_worker_peak_fraction": 0.5161
+    }
+  ],
+  "trials": [
+    {
+      "block_size": "32MiB",
+      "repeat": 1,
+      "returned_sample_rows": 100000,
+      "csv_partition_count": 14,
+      "wall_seconds": 1.6224,
+      "sample_memory_bytes": 7518448,
+      "observed_worker_peak_rss_bytes": 342687744,
+      "observed_driver_peak_rss_bytes": 148865024,
+      "worker_peak_fraction": 0.3192,
+      "status": "passed"
+    },
+    {
+      "block_size": "64MiB",
+      "repeat": 1,
+      "returned_sample_rows": 100000,
+      "csv_partition_count": 7,
+      "wall_seconds": 2.8417,
+      "sample_memory_bytes": 7518448,
+      "observed_worker_peak_rss_bytes": 504528896,
+      "observed_driver_peak_rss_bytes": 160989184,
+      "worker_peak_fraction": 0.4699,
+      "status": "passed"
+    },
+    {
+      "block_size": "64MiB",
+      "repeat": 2,
+      "returned_sample_rows": 100000,
+      "csv_partition_count": 7,
+      "wall_seconds": 1.9631,
+      "sample_memory_bytes": 7518448,
+      "observed_worker_peak_rss_bytes": 554156032,
+      "observed_driver_peak_rss_bytes": 163856384,
+      "worker_peak_fraction": 0.5161,
+      "status": "passed"
+    },
+    {
+      "block_size": "32MiB",
+      "repeat": 2,
+      "returned_sample_rows": 100000,
+      "csv_partition_count": 14,
+      "wall_seconds": 1.0666,
+      "sample_memory_bytes": 7518448,
+      "observed_worker_peak_rss_bytes": 565002240,
+      "observed_driver_peak_rss_bytes": 169607168,
+      "worker_peak_fraction": 0.5262,
+      "status": "passed"
+    }
+  ]
+}

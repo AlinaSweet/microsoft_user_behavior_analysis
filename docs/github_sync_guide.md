@@ -44,7 +44,7 @@ Fetch 是检查远程更新，Pull 是下载更新，Commit 是保存本地版�
 代码、README、配置、依赖清单、文档和受 Git 跟踪的报告会上传。
 原始 CSV、本机虚拟环境、大型中间数据及被 .gitignore 排除的结果文件保存在本地。
 当前 data/raw/user_behavior.csv 是指向本机原始 CSV 的符号链接，该链接没有进入版本记录。
-需要交付被忽略的数据产物时，应单独确定共享路径或大文件管理方式，并记录获取方法。
+小型 CSV 汇总现在可以提交；大型数据的清单登记和共享规则见 [数据管理说明](data_management.md)。新增文件暂存后、提交和推送前，可运行 bash scripts/run_project.sh check-git 检查大小和目录规则。
 
 ## 官方说明
 

@@ -1,5 +1,6 @@
-# Python environments and caches
-.venv/
+# Environments, caches and local configuration
+.venv*/
+.cache/
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -7,20 +8,16 @@ __pycache__/
 .ruff_cache/
 .ipynb_checkpoints/
 .dask/
-
-# Local configuration and OS noise
 .env
 .DS_Store
 
-# Source and generated large data must stay out of ordinary Git history
+# Large data stay local; metadata and small summaries have separate tracked dirs
 data/raw/*
 !data/raw/.gitkeep
 data/interim/*
 !data/interim/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
-
-# Generated bulky artifacts; keep small reports and figures trackable
 outputs/**/*.parquet
-outputs/**/*.csv
 outputs/**/*.feather
+# CSV summaries under data/summaries and outputs/reports can now be committed.

@@ -1,5 +1,7 @@
-# Core data stack; requirements.txt records the resolved, pinned environment.
+# Direct dependencies; requirements.txt locks the complete resolved environment.
 numpy>=2,<3
 pandas>=2.2,<4
 dask[dataframe,distributed]>=2025.1
 pyarrow>=16
+psutil>=5.8
+PyYAML>=6
