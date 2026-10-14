@@ -6,5 +6,11 @@ distributed:
       pause: 0.80
       terminate: 0.95
 
-# Keep worker count and memory_limit machine-dependent. Set them when creating
-# a LocalCluster after checking available RAM; avoid reserving all system memory.
+# Conservative local starting point for this 469 MiB CSV and the current machine
+# (16 GiB total RAM, about 3 GiB available at setup time). Recheck available RAM
+# before a full run and adjust if other applications are using more memory.
+local_cluster:
+  n_workers: 2
+  threads_per_worker: 1
+  memory_limit: 1GiB
+  csv_blocksize: 64MiB

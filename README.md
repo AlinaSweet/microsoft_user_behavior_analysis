@@ -43,5 +43,5 @@ python -m pip install -r requirements.txt
 
 - 先用小样本确认字段类型、缺失值和处理逻辑，再处理全量数据。
 - CSV 全量约 469 MiB，读取时优先使用分块或 Dask；不要默认一次性将所有列读成 Python 字符串对象。
-- 根据实际可用内存设定分区和并行度。Dask 本地 worker 内存阈值见 `configs/dask.yaml`，必要时按机器资源调整。
+- Dask 本地调度起始配置为 2 个 worker、每个 1 个线程和 1 GiB 内存上限，CSV 分块为 64 MiB；该起点按本机 16 GiB 总内存、配置时约 3 GiB 可用内存制定。每次全量运行前先检查可用内存，再按机器状态调整 `configs/dask.yaml`。
 - 中间数据优先写成 Parquet，并记录处理参数、输入文件标识和行数等元数据。
