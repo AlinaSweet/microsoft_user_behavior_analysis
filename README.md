@@ -48,4 +48,6 @@ python -m pip install -r requirements.txt
 
 ## GitHub Desktop 同步
 
+远程仓库：[microsoft-store-user-behavior-analysis](https://github.com/AlinaSweet/microsoft-store-user-behavior-analysis)（私有）。
+
 首次上传和日常同步步骤见 [GitHub Desktop 操作说明](docs/github_sync_guide.md)。

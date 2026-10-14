@@ -1,6 +1,7 @@
 # GitHub Desktop 上传与日常同步说明
 
 本地项目目录：`/Users/alina/Desktop/实习/Github`。
+远程仓库：[打开 GitHub 项目](https://github.com/AlinaSweet/microsoft-store-user-behavior-analysis)。
 远程仓库名：`microsoft-store-user-behavior-analysis`，首次发布使用私有可见性。
 
 ## 首次上传的操作
