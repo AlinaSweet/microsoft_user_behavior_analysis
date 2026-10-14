@@ -31,6 +31,8 @@ if [[ ! -x "$env_name/bin/python" ]]; then "$python_candidate" -m venv "$env_nam
 "$env_name/bin/python" -c 'import sys; sys.exit(0 if sys.version_info[:2] == (3, 12) else "现有虚拟环境需要 Python 3.12")'
 export PIP_CACHE_DIR="$project_root/.cache/pip"
 export PYTHONNOUSERSITE=1
-"$env_name/bin/python" -m pip install -r requirements.txt
+"$env_name/bin/python" -m pip install -r requirements-dev.txt
 "$env_name/bin/python" -m pip check
 echo "环境已准备好：$project_root/$env_name"
+
+git config core.hooksPath .githooks

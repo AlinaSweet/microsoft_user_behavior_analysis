@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-14T20:00:12.508614+00:00",
+  "source_project_path": "data/raw/user_behavior.csv",
+  "source_size_bytes": 492264642,
+  "expected_sha256": "64c1436d3f984f813c12c730950d61cdc1892e8dbbb54e102911b182c2690072",
+  "verified_sha256": "64c1436d3f984f813c12c730950d61cdc1892e8dbbb54e102911b182c2690072",
+  "content_unchanged": true,
+  "columns": [
+    "time",
+    "user_id",
+    "item_id",
+    "item_category",
+    "behavior_type"
+  ],
+  "column_naming": "snake_case",
+  "raw_data_action": "Read-only verification; no value, row, or byte rewrite.",
+  "sample_rows_read": 1000,
+  "environment_report": "outputs/reports/coding_standard_validation/environment_check.json",
+  "data_transformations": []
+}

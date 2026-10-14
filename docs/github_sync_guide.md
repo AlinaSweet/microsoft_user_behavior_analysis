@@ -51,3 +51,14 @@ Fetch 是检查远程更新，Pull 是下载更新，Commit 是保存本地版�
 - [添加本地仓库](https://docs.github.com/en/desktop/adding-and-cloning-repositories/adding-a-repository-from-your-local-computer-to-github-desktop)
 - [发布已有项目](https://docs.github.com/en/desktop/adding-and-cloning-repositories/adding-an-existing-project-to-github-using-github-desktop?platform=mac)
 - [提交和推送改动](https://docs.github.com/en/desktop/making-changes-in-a-branch/committing-and-reviewing-changes-to-your-project-in-github-desktop)
+
+
+## 编码规范生效后的日常同步
+
+1. 从 dev 建立 feature/任务名，修改文件后运行 `bash scripts/check_quality.sh --format`。
+2. 在 GitHub Desktop 查看 Changes；写 `feat:`、`fix:`、`refactor:` 或 `docs:` 开头的提交说明，然后 Commit。
+3. 点击 Push origin；首次新分支显示 Publish branch。项目 hooks 会先执行检查；失败时根据 .cache/quality/ 日志修复。
+4. 在 GitHub 的 Actions 查看 Quality 通过，再评审改动并合入 dev；里程碑确认后更新 main。
+5. 合入后在 GitHub Desktop 切换 dev/main 并 Fetch/Pull，开始下一次任务前再次 Fetch。
+
+检查规则和本地 hooks 可以被人为绕过，所以不能代替服务端分支保护。目前未配置服务端保护，不应把未通过检查的代码合入主干。检查通过记录只对相同代码、配置和工具版本有效。

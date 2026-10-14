@@ -1,0 +1,1 @@
+"""Provide independent project checks."""

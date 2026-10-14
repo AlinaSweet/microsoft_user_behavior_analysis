@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-14T20:00:38.806324+00:00",
+  "fingerprint": "78403873e61d116d5ec9c6394a7bb1d534f7662a6d93b47d966c4ed04b820028",
+  "python_file_count": 31,
+  "checks": {
+    "isort": 0,
+    "black": 0,
+    "flake8": 0,
+    "mypy": 0,
+    "pylint": 0,
+    "tests": 0
+  },
+  "tools": {
+    "black": "26.10.1",
+    "isort": "9.0.2",
+    "flake8": "7.4.1",
+    "mypy": "2.4.0",
+    "pylint": "4.1.3"
+  },
+  "document_specific_issues": [],
+  "git_files": {
+    "tracked_file_count": 72,
+    "small_file_limit_bytes": 10485760,
+    "issues": []
+  },
+  "tests_run": 32,
+  "test_status": "passed",
+  "pylint_score": "10.00/10",
+  "standard_document": "docs/standards/coding_standard.pdf",
+  "adoption_and_review": "docs/coding_standard_adoption.md",
+  "data_validation": "outputs/reports/coding_standard_data_validation.json",
+  "ci_workflow": ".github/workflows/quality.yml",
+  "scope": "Local final-source checks; remote CI status is recorded by GitHub Actions."
+}

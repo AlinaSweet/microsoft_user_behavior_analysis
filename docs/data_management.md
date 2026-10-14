@@ -44,3 +44,12 @@ bash scripts/run_project.sh check-git
 ```
 
 命令检查当前 Git 跟踪（含已暂存）的文件，拒绝超过 10 MiB 的文件、原始/大型数据目录的内容，以及本机符号链接。新增文件先暂存再执行该命令，检查通过后提交和 Push。
+
+
+## 编码规范与数据的关系
+
+CSV 的五个现有字段已经采用 snake_case：time、user_id、item_id、item_category、behavior_type。编码规范规定的是程序与工程管理，没有定义去重、缺失值填充、时间转换或行为编码映射，因此本次保持原始值和文件字节不变。
+
+后续新增代码、内部字段、清单键和数据产物名称统一用 snake_case；读取时继续把 ID 和原始行为值作为 Arrow 字符串保存。若分析阶段需要清洗，必须说明业务规则，把结果写到 data/interim 或 data/processed，并登记来源、生成参数和 SHA-256。不要把原始文件覆盖成清洗结果。
+
+原始数据的内容校验、列名和本次读取证据见 outputs/reports/coding_standard_data_validation.json。Git 只同步清单和小型报告。

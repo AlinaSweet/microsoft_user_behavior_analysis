@@ -7,8 +7,17 @@
 ```text
 configs/                    运行配置
 scripts/                    环境安装和统一运行入口
-src/user_behavior_analysis/ 可复用 Python 代码
-tests/                      路径、资源规划和数据产物管理检查
+src/user_behavior_analysis/ 主包
+  api/                      命令入口与错误反馈
+  service/                  资源规划、环境检查与样本测量
+  dao/                      CSV 读取、清单登记与报告保存
+  models/                   配置、报告与登记请求的数据结构
+  common/                   异常、常量、路径校验和规范检查
+  config.py                 YAML 加载与配置合法性校验
+tests/unit/                 独立逻辑场景测试
+tests/integration/          真实 Dask 进程与命令流程测试
+.githooks/                  提交和推送前检查
+.github/workflows/          GitHub 自动检查
 data/raw/                   本机原始数据
 data/interim/               大型中间表
 data/processed/             标准化数据
@@ -38,7 +47,7 @@ bash scripts/setup_environment.sh
 PYTHON_BIN='/完整路径/python3.12' bash scripts/setup_environment.sh
 ```
 
-脚本创建或使用项目 .venv，按 requirements.txt 安装全部锁定版本，并运行 pip check。requirements.in 记录直接依赖范围；.python-version 记录本次使用的 3.12.14，文件自身不会安装 Python。
+脚本创建或使用项目 .venv，按 requirements-dev.txt 安装锁定的运行依赖和五种代码检查工具，运行 pip check，并启用 Git 提交/推送检查。requirements.txt 保留纯运行依赖锁；requirements.in、requirements-dev.in 记录直接依赖范围；.python-version 记录本次使用的 3.12.14，文件自身不会安装 Python。
 
 ## 运行环境和资源检查
 
@@ -91,12 +100,25 @@ bash scripts/run_project.sh check-git
 
 首次发布和日常 Commit、Push 步骤见 [同步操作说明](docs/github_sync_guide.md)。
 
-## 工程逻辑检查
+## 编码规范和每次改动后的检查
+
+执行 [编码规范原文](docs/standards/coding_standard.pdf)，落地规则见 [AGENTS.md](AGENTS.md) 和 [整改说明](docs/coding_standard_adoption.md)。
 
 ```bash
-PYTHONPATH=src .venv/bin/python -m unittest discover -s tests -v
+# 自动整理格式，并执行所有检查
+bash scripts/check_quality.sh --format
+
+# 只检查；代码和工具版本未变且上次成功时复用结果
+bash scripts/check_quality.sh
+
+# 强制重新执行全部检查
+bash scripts/check_quality.sh --force
 ```
 
-检查数据路径优先级、ID 前导零、错误表头、低内存资源规划、校验清单以及大型文件跟踪限制。
+检查包括 PDF 专项规则、isort、Black、flake8、mypy、pylint、单元/集成测试和 Git 文件政策。详细日志在 .cache/quality/，可交付记录在 outputs/reports/coding_standard_compliance.json。
+
+Git 提交和推送会调用同一入口；GitHub 每次推送 main/dev/feature 分支或提交 Pull Request 时也会检查。合入前先检查改动，再确认 Quality 通过。当前通过项目约定和本地 hooks 执行，未配置 GitHub 服务端分支保护。
+
+测试使用临时合成数据，覆盖路径优先级、前导零、错误表头、配置校验、内存规划、清单指纹、文件同步政策和真实 worker 启动。它们不会改写原始 CSV 或历史实测报告。
 
 工程搭建的验收内容和实测边界见 [第一阶段第1项完成记录](docs/stage1_completion.md)。

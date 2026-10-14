@@ -1,0 +1,47 @@
+[project]
+name = "microsoft-store-user-behavior-analysis"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_first_party = ["user_behavior_analysis"]
+skip_gitignore = true
+force_single_line = true
+
+[tool.mypy]
+python_version = "3.12"
+mypy_path = "src"
+files = ["src", "tests", "scripts"]
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+cache_dir = ".cache/mypy"
+
+[tool.pylint.main]
+py-version = "3.12"
+source-roots = ["src"]
+persistent = false
+
+[tool.pylint.format]
+max-line-length = 88
+
+[tool.pylint.design]
+max-args = 5
+max-positional-arguments = 5
+max-locals = 25
+max-attributes = 15
+
+[tool.pylint.messages_control]
+disable = ["too-few-public-methods", "duplicate-code"]
+
+[tool.pylint.reports]
+fail-under = 10.0
