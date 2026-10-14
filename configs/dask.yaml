@@ -1,0 +1,10 @@
+distributed:
+  worker:
+    memory:
+      target: 0.60
+      spill: 0.70
+      pause: 0.80
+      terminate: 0.95
+
+# Keep worker count and memory_limit machine-dependent. Set them when creating
+# a LocalCluster after checking available RAM; avoid reserving all system memory.
