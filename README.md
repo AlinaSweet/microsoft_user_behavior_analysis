@@ -45,3 +45,7 @@ python -m pip install -r requirements.txt
 - CSV 全量约 469 MiB，读取时优先使用分块或 Dask；不要默认一次性将所有列读成 Python 字符串对象。
 - Dask 本地调度起始配置为 2 个 worker、每个 1 个线程和 1 GiB 内存上限，CSV 分块为 64 MiB；该起点按本机 16 GiB 总内存、配置时约 3 GiB 可用内存制定。每次全量运行前先检查可用内存，再按机器状态调整 `configs/dask.yaml`。
 - 中间数据优先写成 Parquet，并记录处理参数、输入文件标识和行数等元数据。
+
+## GitHub Desktop 同步
+
+首次上传和日常同步步骤见 [GitHub Desktop 操作说明](docs/github_sync_guide.md)。
