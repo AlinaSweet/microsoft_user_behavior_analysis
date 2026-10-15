@@ -126,8 +126,27 @@ Git 提交和推送会调用同一入口；GitHub 每次推送 main/dev/feature 
 
 ## 第一阶段第 2 项：文献与技术方案
 
-已整理五篇经典论文笔记、数字平台案例、Spark/Dask 与模型对比、26 个候选特征和 10 项后续实验。阅读入口为 [文献调研目录](docs/research/README.md)，交付核对见 [第 2 项完成报告](outputs/reports/stage1_step2_research.md)。本步为调研与设计，尚未进行全量清洗或模型训练。
+已整理五篇经典论文笔记、数字平台案例、Spark/Dask 与模型对比、26 个候选特征和 10 项后续实验。阅读入口为 [文献调研目录](docs/research/README.md)，交付核对见 [第 2 项完成报告](outputs/reports/stage1_step2_research.md)。本项为调研与设计；后续清洗和预处理结果在下方单独记录，模型训练尚未执行。
 
 ## 全阶段执行与复核
 
 完整的 17 个任务点及验收顺序见 [任务台账](docs/project_roadmap.md)。第一阶段第三项已经完成全量清洗与独立复核，详见 [清洗报告](outputs/reports/stage1_step3/README.md)；复现规则见 [清洗说明](docs/cleaning_rules.md)。
+
+## 第一阶段第 4 项：压缩事件和基础中间表
+
+完成 6,213,379 条事件的类型压缩与用户日、商品日、小时聚合，独立重算全部分组指标均一致。事件 Parquet 由 161.61 MiB 缩至 77.20 MiB。详见 [预处理报告](outputs/reports/stage1_step4/README.md)、[处理规则](docs/preprocessing_rules.md) 和 [数据清单](data/catalog/base_v1.json)。
+
+复现处理：
+
+```bash
+bash scripts/run_project.sh preprocess
+```
+
+对第一阶段进行新的完整复核（每次使用不同目录，保留历史）：
+
+```bash
+PYTHONPATH=src .venv/bin/python scripts/audit_stage1.py \
+  --output-dir outputs/reports/stage1_audit_YYYYMMDD_NN
+```
+
+该入口重新运行全部质量门禁、真实 worker 环境检查，以及完整清洗、聚合、文件指纹和前序研究复核。GitHub 分支同步与云端 CI 另行验收。

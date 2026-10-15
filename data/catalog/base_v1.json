@@ -1,0 +1,416 @@
+{
+  "name": "base_v1",
+  "kind": "processed",
+  "dataset_path": "data/processed/base_v1/events",
+  "format": "parquet",
+  "row_count": 6213379,
+  "part_count": 32,
+  "source_catalog": "data/catalog/clean_v1.json",
+  "source_catalog_sha256": "6ecac7105b7458025ebc9e4e0cffdbcef4c645a295f21d3467d75e50bee50114",
+  "canonical_value_sha256": "e612feaf1cfd7314867b3bec456cba8f44701d15abe4b8bf7d89b6ab0d32f60f",
+  "business_key": [
+    "user_id",
+    "item_id",
+    "behavior_type",
+    "event_time"
+  ],
+  "schema": {
+    "event_id": "uint32",
+    "user_id": "string",
+    "item_id": "string",
+    "category_id": "dictionary<values=string, indices=int16, ordered=0>",
+    "behavior_type": "uint8",
+    "event_time": "timestamp[ms]"
+  },
+  "policy_version": "preprocessing_v1",
+  "preprocessing_code_commit": "274e0e31e65d17096f03878eaee4fc7dffab77ef",
+  "audit_code_commit": "07dcd4b24764a02dccfdfffeeaf870e4ff69d2f5",
+  "quality_report": "outputs/reports/stage1_step4/preprocessing.json",
+  "audit_report": "outputs/reports/stage1_step4/audit.json",
+  "source_declaration": "data/catalog/data_provenance.json",
+  "distribution_status": "local_only",
+  "parts": [
+    {
+      "path": "data/processed/base_v1/events/part_00000.parquet",
+      "size_bytes": 2448971,
+      "sha256": "cd6e7964886bea54e69b3cefac76b43ecb2f192bd2bc14120f761d0ec8175db2"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00001.parquet",
+      "size_bytes": 2460280,
+      "sha256": "f6dfbf195dc80390b07a9f5bd83d488adc1504aa37ddf816e5f9b710ad219e1e"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00002.parquet",
+      "size_bytes": 2457887,
+      "sha256": "4bda5132c08e0b3acd7e27586e60ba1dbd3d294bb8d595d7c173b94b91ddcf21"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00003.parquet",
+      "size_bytes": 2463011,
+      "sha256": "ceeb2040e69f858e46487c42d2fb4a55525f7f273abf9aee9dfd59342023d394"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00004.parquet",
+      "size_bytes": 2461087,
+      "sha256": "c7ddfcec689dd09b176d6f6ee3702bf2b408b3e8e35f6c331df1089550587413"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00005.parquet",
+      "size_bytes": 2474946,
+      "sha256": "e67e352a68803e146f397be7ea4e84d4dfa8b044a2ab710cd83794e27dac9ee2"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00006.parquet",
+      "size_bytes": 2540997,
+      "sha256": "006054f2f0238f96dfb2a384710603d1e89f281d06f2931c4ba9193ab70186d2"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00007.parquet",
+      "size_bytes": 2527677,
+      "sha256": "9722115ad9eb40676856d23a3f5c164bb5f53b3bbc612fdd02eef0c2b5a46594"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00008.parquet",
+      "size_bytes": 2529908,
+      "sha256": "7acb045fbeea48bbbea8f50beeff683605fa47698dc929ddc9df441ceeb25e71"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00009.parquet",
+      "size_bytes": 2526442,
+      "sha256": "bdd3b23e7ccce40b5287b6bdbb098d2a7261a588217e8e6a635f84d70d714587"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00010.parquet",
+      "size_bytes": 2548400,
+      "sha256": "f96d451ae01128de7f91184da9b52b46c92ac8296ea0eb6e4c829d43fc1003ba"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00011.parquet",
+      "size_bytes": 2595301,
+      "sha256": "5b06b93262c30884721345b231b465a7042bce68de1f19681e5e5616d19a0c64"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00012.parquet",
+      "size_bytes": 2589228,
+      "sha256": "804dc35f87cdc5e1088c6825e1c32d7b416b99bc9e89cbc2c93ec3ab965dc44d"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00013.parquet",
+      "size_bytes": 2582566,
+      "sha256": "00774cf78ac415008414fd37e2e93d7168fb7177ca00f1a2551422ad2871d563"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00014.parquet",
+      "size_bytes": 2591096,
+      "sha256": "deeff534035a637d56c625c1c9985127afe2be9697293ec570f501b928a7489e"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00015.parquet",
+      "size_bytes": 2627425,
+      "sha256": "565608b1f0b6e915df143d33aaa0a27c1bcea647f1aeb14b8284a4f2ca0e1d74"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00016.parquet",
+      "size_bytes": 2634635,
+      "sha256": "7cab3156c285ebdcccb66a3a499ba1c1ee9d6815a7c8420c83b03b0fded77083"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00017.parquet",
+      "size_bytes": 2622706,
+      "sha256": "caa8ac069762909562b46d5535539b4e1d61a79bbc786359b9557677e8ac47ec"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00018.parquet",
+      "size_bytes": 2650696,
+      "sha256": "e22873ff0ae279758dcdfbd4bfe9efe7b7d3e226e3eab33e260b6ec22d7f4fe0"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00019.parquet",
+      "size_bytes": 2658878,
+      "sha256": "e88b93aecd4403766880c09a2ef6906a3c7e29597b87ef4450c2d4c948a947bb"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00020.parquet",
+      "size_bytes": 2657459,
+      "sha256": "c8829f34ccfd261f835aaeb629632b88a7165ba40fcf9722c482280a387efdcc"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00021.parquet",
+      "size_bytes": 2677268,
+      "sha256": "1ebc30987a3799a2e083d445f3f19c77caf3fbdee0c91badf3d1e39accfbf7c9"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00022.parquet",
+      "size_bytes": 2685837,
+      "sha256": "a1458ca1d49d7d64a82733d43eefd7339c9ac3739d56489d278bac06d3857aec"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00023.parquet",
+      "size_bytes": 2680103,
+      "sha256": "f8c30771bb1ebe9e508e6bb464c4e52a3a16fe045762cde57acacb64b482a5f0"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00024.parquet",
+      "size_bytes": 2697236,
+      "sha256": "33efdc3cd401d4cceec0a936c3b801d63ba743b3656e24e184ce9c97670178a2"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00025.parquet",
+      "size_bytes": 2701430,
+      "sha256": "ba35f168e1df6c7f25b4018453e92b1e88f2f021725a1d38cfeb60a8af975221"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00026.parquet",
+      "size_bytes": 2715424,
+      "sha256": "e922536e0314ff7959652d25f434db9a7f9cd2e07250c36f14be476fba66123f"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00027.parquet",
+      "size_bytes": 2715389,
+      "sha256": "bd5e150fa2b00b9cafef2b1c0f27127d752d9de9a0d5b571eab4fb7b92c4b472"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00028.parquet",
+      "size_bytes": 2732915,
+      "sha256": "436aae4db7505b3e27416b80a8f32d18d80904739f844747fefa7e88514afe22"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00029.parquet",
+      "size_bytes": 2741947,
+      "sha256": "7fddacc43eea54a29a1cb81afafb2d5a71dc8e8ee894c6f32cc285b5f6082232"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00030.parquet",
+      "size_bytes": 2755410,
+      "sha256": "39608bca979702f119ad701ace632bf3ec3a14dca668daa7b0d92ee39ba91d5d"
+    },
+    {
+      "path": "data/processed/base_v1/events/part_00031.parquet",
+      "size_bytes": 195918,
+      "sha256": "bd6fe4aef7874f9d7839bd7a2bd8ad8c63cefcb87463f801ccc8aca132186cd3"
+    }
+  ],
+  "aggregates": [
+    {
+      "name": "user_daily_stats",
+      "keys": [
+        "user_id",
+        "event_date"
+      ],
+      "rows": 202324,
+      "event_count": 6213379,
+      "behavior_counts": {
+        "1": 5535879,
+        "2": 239472,
+        "3": 331350,
+        "4": 106678
+      },
+      "columns": [
+        "user_id",
+        "event_date",
+        "event_count",
+        "pv_count",
+        "fav_count",
+        "cart_count",
+        "buy_count",
+        "unique_items",
+        "first_event_time",
+        "last_event_time"
+      ],
+      "parts": [
+        {
+          "path": "data/processed/base_v1/aggregates/user_daily_stats/part_00000.parquet",
+          "size_bytes": 1918065,
+          "sha256": "e9d3b1160ae112383c9faac9b761fa9c1a6f0cc69569a5232c20d50781c0edcc"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/user_daily_stats/part_00001.parquet",
+          "size_bytes": 28437,
+          "sha256": "11459eb5e8d59a85af7d3e09d0b9668d16e37c7f1ce1c92fce34c4a8e44ad55f"
+        }
+      ]
+    },
+    {
+      "name": "item_daily_stats",
+      "keys": [
+        "item_id",
+        "event_date"
+      ],
+      "rows": 4683584,
+      "event_count": 6213379,
+      "behavior_counts": {
+        "1": 5535879,
+        "2": 239472,
+        "3": 331350,
+        "4": 106678
+      },
+      "columns": [
+        "item_id",
+        "event_date",
+        "event_count",
+        "pv_count",
+        "fav_count",
+        "cart_count",
+        "buy_count",
+        "unique_users",
+        "first_event_time",
+        "last_event_time"
+      ],
+      "parts": [
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00000.parquet",
+          "size_bytes": 1715898,
+          "sha256": "7f44d1967faf9c80d70cdd5ff5a72469e9dd488062b63815a7533c6a278a81a0"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00001.parquet",
+          "size_bytes": 1716215,
+          "sha256": "e2d3d300ed19067635987812f6a6c89f941aa00a7b4f3832d3c9628410f82338"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00002.parquet",
+          "size_bytes": 1714766,
+          "sha256": "d209c085b508de9128c83e9df4939f85f80e8529dfca4ea7c5cdd0d036f527bf"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00003.parquet",
+          "size_bytes": 1718117,
+          "sha256": "0045e851a4acd606121c90a24f509ee65df107b8a7660af1b62932cce82b1eed"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00004.parquet",
+          "size_bytes": 1716064,
+          "sha256": "2236823c5bd24495fcf8c4ff56ccc834673b116b642d463468ce4eb6e00b516a"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00005.parquet",
+          "size_bytes": 1716126,
+          "sha256": "846d4a3a92085784ee1730ec3f552d0ba7dcacdd0b5afccca38244f776a34d69"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00006.parquet",
+          "size_bytes": 1717239,
+          "sha256": "e8cd592573d708c5109401f9147025588deec1069a3a7cde05176e802c75be88"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00007.parquet",
+          "size_bytes": 1715359,
+          "sha256": "9135e4af2fb0e51b1b4fdbae1b7ef8e64a297f9d97a6ceb94abb67cfdc95948e"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00008.parquet",
+          "size_bytes": 1717613,
+          "sha256": "bdce0f090e1f8498a7f17bcb3f1611fdbda00ab2bcd8bd7fe1cc566808304d66"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00009.parquet",
+          "size_bytes": 1716157,
+          "sha256": "522554d18f2fb98dc9aa7ea612de6f855e4f4c46cb715802cbb088548c74aba2"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00010.parquet",
+          "size_bytes": 1718020,
+          "sha256": "873ee10ab231717a5f91a87f9330c6d6fe9284f9ea06992a7334e920a43e5582"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00011.parquet",
+          "size_bytes": 1714783,
+          "sha256": "6b16d5c430debbc459dea315a42962e5fb974155d4f69e2f2d15126545010df3"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00012.parquet",
+          "size_bytes": 1718100,
+          "sha256": "11017def8c99ae55f13b7aa949d6ba3d0a3c366e705eab2a6a32dfdf642f65ec"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00013.parquet",
+          "size_bytes": 1714557,
+          "sha256": "c475b79da5f3c52c4109855f11b4a6911b043fc31966d68bbe1956b62eca9684"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00014.parquet",
+          "size_bytes": 1720396,
+          "sha256": "d6a0eb7306641ffa9a036e53a14fdb727fcc15fcedfe01b8c6a2dc4db15d8f98"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00015.parquet",
+          "size_bytes": 1712886,
+          "sha256": "604b04a09eacccf90c883a18bcd6dfecad72856f734befe67ae3f41d0a5479c6"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00016.parquet",
+          "size_bytes": 1715682,
+          "sha256": "20e35300d6f34492cc6a9ec852fc71842a668e33b4bce84e1dacbbf98cc9ba7a"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00017.parquet",
+          "size_bytes": 1716552,
+          "sha256": "b4d8d2b380ab7b5470347dfa67853271d08fab9a446d3a8e5b3c9e6a0b3af43c"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00018.parquet",
+          "size_bytes": 1718868,
+          "sha256": "388d7a52e0ead669a0fc87cea9d562a27dfb59a99a9f94659146d2f266538be8"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00019.parquet",
+          "size_bytes": 1711859,
+          "sha256": "eae73b99bc514303164c2dd774f8948328472948c94e262ee2a64687cee24eac"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00020.parquet",
+          "size_bytes": 1707896,
+          "sha256": "db79a6e5fa48c36e333665bdda6deb1d2fb6754c7f8be71b6fd7ec4ca27aaeee"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00021.parquet",
+          "size_bytes": 1709675,
+          "sha256": "119669e9351d6bf1d1b258d8af686437159742eb1a084cb0404ff9f1bc8c0784"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00022.parquet",
+          "size_bytes": 1707844,
+          "sha256": "78c839d866507f9df4fbaf154a4bfff1e1c842ceb0e5c7eede17930f31ec1bea"
+        },
+        {
+          "path": "data/processed/base_v1/aggregates/item_daily_stats/part_00023.parquet",
+          "size_bytes": 717375,
+          "sha256": "e9e0c9b02c427ce706163fd39982a260ad4914e16831bd1eab14beb1ce360fd6"
+        }
+      ]
+    },
+    {
+      "name": "time_hourly_stats",
+      "keys": [
+        "event_time"
+      ],
+      "rows": 744,
+      "event_count": 6213379,
+      "behavior_counts": {
+        "1": 5535879,
+        "2": 239472,
+        "3": 331350,
+        "4": 106678
+      },
+      "columns": [
+        "event_time",
+        "event_count",
+        "pv_count",
+        "fav_count",
+        "cart_count",
+        "buy_count",
+        "unique_users",
+        "unique_items"
+      ],
+      "parts": [
+        {
+          "path": "data/processed/base_v1/aggregates/time_hourly_stats/part_00000.parquet",
+          "size_bytes": 15515,
+          "sha256": "492db042cb0a443201d7bea2cd4ce7d216756d85cfdb7986848da01c72d16e68"
+        }
+      ]
+    }
+  ],
+  "creation_recipe": "bash scripts/run_project.sh preprocess"
+}
