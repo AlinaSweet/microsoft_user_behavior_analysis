@@ -168,5 +168,7 @@
     "configs/dask.yaml"
   ],
   "business_results": "No training, full-data profiling, or performance reproduction was performed in this literature step.",
-  "delivery_review_date": "2026-10-15"
+  "delivery_review_date": "2026-10-15",
+  "audit_date": "2026-10-15",
+  "audit_scope": "Five fixed-version primary PDFs reopened; key numeric tables and five official documentation sources rechecked; local paper fingerprints and document links verified."
 }
