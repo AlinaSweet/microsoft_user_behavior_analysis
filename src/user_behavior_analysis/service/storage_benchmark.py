@@ -4,9 +4,9 @@ import time
 from pathlib import Path
 
 import psutil
-import pyarrow as pa  # type: ignore[import-untyped]  # Arrow lacks typing metadata.
-import pyarrow.csv as arrow_csv  # type: ignore[import-untyped]
-import pyarrow.parquet as pq  # type: ignore[import-untyped]
+import pyarrow as pa  # type: ignore[import-untyped]  # No Arrow stubs.
+import pyarrow.csv as arrow_csv  # type: ignore[import-untyped]  # No Arrow stubs.
+import pyarrow.parquet as pq  # type: ignore[import-untyped]  # No Arrow stubs.
 
 from user_behavior_analysis.dao.dataset_repository import EVENT_COLUMNS
 from user_behavior_analysis.models.preprocessing_models import ReadTrial

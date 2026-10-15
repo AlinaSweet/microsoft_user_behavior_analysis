@@ -13,6 +13,8 @@ import pandas as pd
 from user_behavior_analysis.api.cli import main
 from user_behavior_analysis.common.constants import PROJECT_ROOT
 from user_behavior_analysis.common.utils import sha256_file
+from user_behavior_analysis.config import load_config
+from user_behavior_analysis.service.aggregate_audit import audit_aggregate_values
 
 
 class PreprocessingPipelineTests(unittest.TestCase):
@@ -100,8 +102,17 @@ class PreprocessingPipelineTests(unittest.TestCase):
             users = pd.read_parquet(output / "aggregates/user_daily_stats")
             items = pd.read_parquet(output / "aggregates/item_daily_stats")
             times = pd.read_parquet(output / "aggregates/time_hourly_stats")
+            configuration = load_config()
+            configuration["local_cluster"]["n_workers"] = 1
+            configuration["local_cluster"]["memory_limit"] = "512MiB"
+            aggregate_audits = audit_aggregate_values(
+                configuration, output / "events", output / "aggregates"
+            )
             # Assert
             self.assertEqual(status, 0)
+            self.assertTrue(
+                all(item["status"] == "passed" for item in aggregate_audits)
+            )
             self.assertTrue(report["values_match"])
             self.assertEqual(
                 dict(zip(users["user_id"], users["event_count"])),

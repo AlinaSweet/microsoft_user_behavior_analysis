@@ -1,7 +1,7 @@
 """Compress storage types while preserving canonical event values."""
 
 import pandas as pd
-import pyarrow as pa  # type: ignore[import-untyped]  # Arrow lacks typing metadata.
+import pyarrow as pa  # type: ignore[import-untyped]  # No Arrow stubs.
 
 from user_behavior_analysis.dao.dataset_repository import EVENT_COLUMNS
 from user_behavior_analysis.dao.dataset_repository import read_event_batches
@@ -68,6 +68,8 @@ def encode_events(frame: pd.DataFrame, plan: EncodingPlan) -> pa.Table:
         raise ValueError("Encoding cannot change invalid behavior values")
     category = pa.array(frame["category_id"], type=pa.string())
     if plan.categories is not None:
+        if not frame["category_id"].isin(plan.categories).all():
+            raise ValueError("A category is absent from the verified encoding plan")
         categorical = pd.Categorical(frame["category_id"], categories=plan.categories)
         if (categorical.codes < 0).any():
             raise ValueError("A category is absent from the verified encoding plan")

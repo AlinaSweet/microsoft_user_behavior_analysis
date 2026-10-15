@@ -6,8 +6,8 @@ from collections.abc import Iterator
 from pathlib import Path
 
 import pandas as pd
-import pyarrow as pa  # type: ignore[import-untyped]  # Arrow lacks typing metadata.
-import pyarrow.parquet as pq  # type: ignore[import-untyped]
+import pyarrow as pa  # type: ignore[import-untyped]  # No Arrow stubs.
+import pyarrow.parquet as pq  # type: ignore[import-untyped]  # No Arrow stubs.
 
 from user_behavior_analysis.common.utils import input_file_path
 from user_behavior_analysis.common.utils import project_output_path

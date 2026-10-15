@@ -11,7 +11,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 import psutil
-import pyarrow.parquet as pq  # type: ignore[import-untyped]
+import pyarrow.parquet as pq  # type: ignore[import-untyped]  # No Arrow stubs.
 
 from user_behavior_analysis.common.constants import PROJECT_ROOT
 from user_behavior_analysis.common.event_values import canonical_event_bytes

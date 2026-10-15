@@ -14,3 +14,6 @@
 - main/dev 合入前，必须完成代码评审并让 Quality CI 通过；失败时修正后再合入。Conventional Commits 每次聚焦一个改动。
 - 数据字段与生成文件用小写下划线命名。外部真实包名、worker 地址等事实映射键保留原值，避免改变其含义。
 - 历史测量报告保留原始结果；新验证记录单独登记。大文件留在规定的数据目录并写清单，小型报告可同步到 GitHub。
+
+- 长期任务范围与验收按 docs/project_roadmap.md：完成每个小任务后复核前序成果；第二阶段起复核上一完整阶段。不得把设计或缺失证据登记为实现完成。
+- 数据使用声明、微软中国地区与金额缺失的代理分群，按 docs/business_conventions.md 和 data/catalog/data_provenance.json；模型拟合仍须遵守预测截点和训练期边界。
