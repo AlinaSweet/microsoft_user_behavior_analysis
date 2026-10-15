@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-15T19:17:56.499836+00:00",
+  "code_commit": "f5bf6a4cbcfc79ef16036039940d0f4f85ce7749",
+  "checks": {
+    "all_locked_versions_match": true,
+    "all_policy_values_match_historical_runs": true,
+    "quality_cache_mutation_probes": true,
+    "documentation_local_links": true,
+    "local_hooks_active": true,
+    "conventional_commit_messages": true,
+    "second_stage_current_artifacts_removed": true,
+    "first_stage_datasets_retained": true,
+    "coding_standard_original_copy_unchanged": true
+  },
+  "locked_environment": {
+    "requirements.txt": {
+      "package_count": 23,
+      "mismatches": []
+    },
+    "requirements-dev.txt": {
+      "package_count": 44,
+      "mismatches": []
+    }
+  },
+  "policy_fingerprints": {
+    "configs/cleaning.json": {
+      "actual_sha256": "b34136e133e6bfeaf741090f3c4e16190d37f104913a57d20edb6df67305c176",
+      "recorded_sha256": "b34136e133e6bfeaf741090f3c4e16190d37f104913a57d20edb6df67305c176",
+      "matches": true
+    },
+    "configs/preprocessing.json": {
+      "actual_sha256": "4673a6c27ebc5305a1cefe68b08a17af4364ba444519ff8ecd51fef7731a852f",
+      "recorded_sha256": "4673a6c27ebc5305a1cefe68b08a17af4364ba444519ff8ecd51fef7731a852f",
+      "matches": true
+    }
+  },
+  "cache_probe_scope": "Mutate isolated copies under project .cache/tests; production configuration unchanged.",
+  "cache_mutation_probes": {
+    "configs/dask.yaml": true,
+    "configs/cleaning.json": true,
+    "configs/preprocessing.json": true,
+    "requirements.in": true,
+    "requirements-dev.in": true,
+    "new_configuration_invalidates_cache": true,
+    "restore_returns_original_fingerprint": true
+  },
+  "broken_local_links": [],
+  "removed_current_artifacts": [
+    "data/processed/sqlite_v1",
+    "data/processed/sql_analysis_v1",
+    "data/catalog/behavior_store_v1.json",
+    "data/catalog/sql_analysis_v1.json",
+    "outputs/reports/stage2_step1",
+    "outputs/reports/stage2_step1_audit_20261015_01",
+    "sql",
+    "configs/features.json",
+    "src/user_behavior_analysis/service/database.py",
+    "src/user_behavior_analysis/dao/feature_repository.py"
+  ],
+  "retained_data_locations": [
+    "data/raw/user_behavior.csv",
+    "data/interim/clean_v1",
+    "data/processed/base_v1"
+  ],
+  "history_policy": "Normal revert; original Git history retained. Cloud synchronization verified separately."
+}

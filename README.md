@@ -2,6 +2,10 @@
 
 本仓库用于用户行为分析实习项目。原始 CSV 约 469 MiB、约 1,225 万行，实际列名为 time、user_id、item_id、item_category、behavior_type。
 
+## 当前交付状态
+
+第一阶段四项成果的最新复核入口为 [第一阶段验收复核](docs/stage1_review.md)。第二阶段的旧实现和结果已按用户要求撤销，当前任务状态以 [任务台账](docs/project_roadmap.md) 为准；历史报告保留其生成时的测量口径。
+
 ## 项目结构
 
 ```text
@@ -9,8 +13,8 @@ configs/                    运行配置
 scripts/                    环境安装和统一运行入口
 src/user_behavior_analysis/ 主包
   api/                      命令入口与错误反馈
-  service/                  资源规划、环境检查与样本测量
-  dao/                      CSV 读取、清单登记与报告保存
+  service/                  资源规划、清洗、预处理及独立质量审计
+  dao/                      CSV/Parquet、磁盘暂存、清单和报告访问
   models/                   配置、报告与登记请求的数据结构
   common/                   异常、常量、路径校验和规范检查
   config.py                 YAML 加载与配置合法性校验

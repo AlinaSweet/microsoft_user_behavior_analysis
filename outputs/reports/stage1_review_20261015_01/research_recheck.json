@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-15T19:19:14.109052+00:00",
+  "scope": "Five fixed local original PDFs; result tables and current project notes re-read. Historical paper metrics, not reproduced model performance. Dynamic official web documentation not re-fetched in this review.",
+  "content_review": [
+    "Wide & Deep acquisition-rate baseline and relative gain preserved.",
+    "DeepFM Criteo columns and absolute AUC differences correct.",
+    "DIN Amazon columns distinguished from MovieLens; its weighted metric scope retained.",
+    "DIEN public benchmark distinguished from DIN paper benchmark.",
+    "BST WDL baseline and response-time columns correctly identified.",
+    "Feature plan keeps hour-level tie limitations, missing exposure/money limits and prediction cutoffs.",
+    "Experiment plan includes grouped stratified contrast and time-purged evaluation; proposed experiments remain planned."
+  ],
+  "papers": [
+    {
+      "paper_id": "wide_deep_2016",
+      "version": "1606.07792v1",
+      "page_inspected": 4,
+      "sha256_matches": true,
+      "size_matches": true,
+      "page_count_matches": true,
+      "reported_values_present": true
+    },
+    {
+      "paper_id": "deepfm_2017",
+      "version": "1703.04247v1",
+      "page_inspected": 5,
+      "sha256_matches": true,
+      "size_matches": true,
+      "page_count_matches": true,
+      "reported_values_present": true
+    },
+    {
+      "paper_id": "din_2018",
+      "version": "1706.06978v4",
+      "page_inspected": 7,
+      "sha256_matches": true,
+      "size_matches": true,
+      "page_count_matches": true,
+      "reported_values_present": true
+    },
+    {
+      "paper_id": "dien_2019",
+      "version": "1809.03672v5",
+      "page_inspected": 6,
+      "sha256_matches": true,
+      "size_matches": true,
+      "page_count_matches": true,
+      "reported_values_present": true
+    },
+    {
+      "paper_id": "bst_2019",
+      "version": "1905.06874v1",
+      "page_inspected": 4,
+      "sha256_matches": true,
+      "size_matches": true,
+      "page_count_matches": true,
+      "reported_values_present": true
+    }
+  ]
+}
