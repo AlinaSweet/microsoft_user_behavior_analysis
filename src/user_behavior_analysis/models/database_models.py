@@ -4,6 +4,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import TypedDict
 
+from user_behavior_analysis.models.cleaning_models import FileEvidence
+
 SqlValue = str | int | float | bytes | None
 
 
@@ -70,7 +72,7 @@ class QueryEvidence(TypedDict):
     rows: int
     columns: list[str]
     elapsed_seconds: float
-    files: list[dict[str, str | int]]
+    files: list[FileEvidence]
 
 
 class DatabaseAnalysisReport(TypedDict):

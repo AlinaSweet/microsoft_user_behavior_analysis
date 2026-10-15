@@ -92,6 +92,17 @@ sql/indexes.sql 为用户时间、商品行为、行为时间、时间用户、�
 
 质量缓存已纳入全部 configs 的 JSON/YAML 与 SQL 文件，防止查询变化后复用旧的测试成功结果；云端仍强制重新运行。
 
+## 完整独立复核与前一阶段回归
+
+```bash
+PYTHONPATH=src .venv/bin/python scripts/audit_database.py \\
+  --output-dir outputs/reports/stage2_step1_audit_YYYYMMDD_NN
+```
+
+每次使用新的审计目录。原生 SQLite 游标通过独立 JOIN 恢复六列，用 Arrow 逐批比较每个值，不依赖导入流程的 Pandas 哈希。另将每个完整查询结果与原生 SQL 游标逐值比较，核对文件指纹、文件集合、列顺序、行数、额外记录和 NULL；业务含义由已知结果场景测试补充验证。
+
+审计包含“行为编码改成另一合法值、总行数不变、完整性与外键仍通过”的负向场景，要求逐值审计明确失败。完整审计随后调用 audit_stage1.py，重新验证上一完整阶段的质量、环境、研究、清洗及聚合，不只检查第二阶段新增文件。
+
 ## 参考接口文档
 
 - [SQLite 临时文件位置](https://www.sqlite.org/tempfiles.html)

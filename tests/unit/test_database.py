@@ -1,5 +1,6 @@
 """Verify normalized import safety and read-only query contracts."""
 
+import json
 import sqlite3
 import tempfile
 import unittest
@@ -10,10 +11,12 @@ from pathlib import Path
 import pandas as pd
 
 from user_behavior_analysis.common.constants import PROJECT_ROOT
+from user_behavior_analysis.common.utils import sha256_file
 from user_behavior_analysis.dao.database_repository import create_database
 from user_behavior_analysis.dao.database_repository import import_event_batch
 from user_behavior_analysis.dao.sqlite_client import SQLiteClient
 from user_behavior_analysis.dao.sqlite_client import query_path
+from user_behavior_analysis.service.database_audit import audit_database_values
 
 
 def _event() -> pd.DataFrame:
@@ -206,3 +209,44 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(
             names, {"event_id", "user_id", "item_id", "behavior_type", "event_time"}
         )
+
+    def test_native_audit_detects_changed_value_with_same_row_count(self) -> None:
+        """Detect a valid changed behavior while row counts stay unchanged."""
+        # Arrange
+        frame = pd.concat([_event()] * 2, ignore_index=True)
+        frame["event_id"] = [1, 2]
+        frame["user_id"] = ["001", "002"]
+        import_event_batch(self.connection, frame)
+        source = self.path.parent / "source"
+        source.mkdir()
+        part = source / "part_00000.parquet"
+        frame.to_parquet(part, index=False)
+        catalog = self.path.parent / "catalog.json"
+        catalog.write_text(
+            json.dumps(
+                {
+                    "dataset_path": str(source.relative_to(PROJECT_ROOT)),
+                    "row_count": 2,
+                    "parts": [
+                        {
+                            "path": str(part.relative_to(PROJECT_ROOT)),
+                            "size_bytes": part.stat().st_size,
+                            "sha256": sha256_file(part),
+                        }
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
+        with self.connection:
+            self.connection.execute(
+                "UPDATE behaviors SET behavior_type = ? WHERE event_id = ?", (3, 1)
+            )
+        # Act
+        result = audit_database_values(catalog, self.path, batch_rows=1)
+        # Assert
+        self.assertEqual(result["status"], "failed")
+        self.assertEqual(result["rows"], 2)
+        self.assertEqual(result["mismatched_rows"], 1)
+        self.assertTrue(result["checks"]["sqlite_integrity"])
+        self.assertTrue(result["checks"]["foreign_keys"])

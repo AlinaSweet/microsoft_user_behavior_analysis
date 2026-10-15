@@ -12,6 +12,8 @@ import pandas as pd
 from user_behavior_analysis.api.cli import main
 from user_behavior_analysis.common.constants import PROJECT_ROOT
 from user_behavior_analysis.common.utils import sha256_file
+from user_behavior_analysis.service.database_audit import audit_database_values
+from user_behavior_analysis.service.database_audit import audit_query_exports
 
 
 class DatabasePipelineTests(unittest.TestCase):
@@ -110,7 +112,11 @@ class DatabasePipelineTests(unittest.TestCase):
             funnel = pd.read_parquet(output / "strict_funnel").iloc[0]
             sequences = pd.read_parquet(output / "user_sequences")
             repeats = pd.read_parquet(output / "item_repurchase").set_index("item_id")
+            native_audit = audit_database_values(catalog, root / "events.sqlite", 2)
+            export_audits = audit_query_exports(root / "events.sqlite", analysis)
             # Assert
+            self.assertEqual(native_audit["status"], "passed")
+            self.assertTrue(all(item["status"] == "passed" for item in export_audits))
             self.assertEqual((build_status, analysis_status), (0, 0))
             self.assertEqual(build["loaded_rows"], 11)
             self.assertEqual(build["counts"]["users"], 4)

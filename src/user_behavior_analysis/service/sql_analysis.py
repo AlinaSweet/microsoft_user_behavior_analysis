@@ -20,6 +20,7 @@ from user_behavior_analysis.common.utils import write_json
 from user_behavior_analysis.dao.sqlite_client import QUERY_NAMES
 from user_behavior_analysis.dao.sqlite_client import SQLiteClient
 from user_behavior_analysis.dao.sqlite_client import query_path
+from user_behavior_analysis.models.cleaning_models import FileEvidence
 from user_behavior_analysis.models.database_models import DatabaseAnalysisReport
 from user_behavior_analysis.models.database_models import DatabaseAnalysisRequest
 from user_behavior_analysis.models.database_models import DatabaseReport
@@ -56,7 +57,7 @@ def _export_query(
 ) -> tuple[QueryEvidence, list[dict[str, object]]]:
     start = time.perf_counter()
     rows = 0
-    files: list[dict[str, str | int]] = []
+    files: list[FileEvidence] = []
     columns: list[str] = []
     preview: list[dict[str, object]] = []
     output = directory / name
