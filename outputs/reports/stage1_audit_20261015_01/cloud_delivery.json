@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "observed_at_utc": "2026-10-15T09:00:54.406369+00:00",
+  "delivered_commit": "565bce7e072d5e10dc212ee8d486e909a9c77c51",
+  "refs": {
+    "main": "565bce7e072d5e10dc212ee8d486e909a9c77c51",
+    "dev": "565bce7e072d5e10dc212ee8d486e909a9c77c51",
+    "origin/main": "565bce7e072d5e10dc212ee8d486e909a9c77c51",
+    "origin/dev": "565bce7e072d5e10dc212ee8d486e909a9c77c51",
+    "origin/feature/data-preprocessing": "565bce7e072d5e10dc212ee8d486e909a9c77c51"
+  },
+  "verification_method": "Authenticated GitHub Actions page and local origin refs after GitHub Desktop pushes",
+  "actions_page": "https://github.com/AlinaSweet/microsoft-store-user-behavior-analysis/actions",
+  "quality_runs": [
+    {
+      "number": 14,
+      "branch": "feature/data-preprocessing",
+      "commit": "565bce7e072d5e10dc212ee8d486e909a9c77c51",
+      "status": "completed successfully",
+      "duration": "1m 25s"
+    },
+    {
+      "number": 15,
+      "branch": "main",
+      "commit": "565bce7e072d5e10dc212ee8d486e909a9c77c51",
+      "status": "completed successfully",
+      "duration": "1m 22s"
+    },
+    {
+      "number": 16,
+      "branch": "dev",
+      "commit": "565bce7e072d5e10dc212ee8d486e909a9c77c51",
+      "status": "completed successfully",
+      "duration": "1m 8s"
+    }
+  ],
+  "screenshot_path": ".cache/research/stage1_final_ci.png",
+  "screenshot_sha256": "7457071641eabd7a929ab78edb12776918553c48f832eecdcefefea6f1c937a8"
+}

@@ -47,7 +47,13 @@ def _fingerprint(sources: list[Path]) -> str:
             ".github/workflows/quality.yml",
         )
     ]
-    for path in sources + configuration:
+    configuration.extend(
+        path
+        for directory in ("configs", "sql")
+        for path in (PROJECT_ROOT / directory).rglob("*")
+        if path.is_file() and path.suffix in {".json", ".yaml", ".yml", ".sql"}
+    )
+    for path in sources + sorted(set(configuration)):
         digest.update(str(path.relative_to(PROJECT_ROOT)).encode("utf-8"))
         digest.update(path.read_bytes())
     for tool in QUALITY_TOOLS:
