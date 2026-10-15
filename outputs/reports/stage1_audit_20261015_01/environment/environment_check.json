@@ -1,0 +1,66 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-15T08:38:51.560166+00:00",
+  "python": "3.12.14",
+  "packages": {
+    "pandas": "3.0.6",
+    "numpy": "2.5.4",
+    "dask": "2026.8.0",
+    "distributed": "2026.8.0",
+    "pyarrow": "26.0.0",
+    "psutil": "7.2.2",
+    "PyYAML": "6.0.3"
+  },
+  "sample_rows": 1000,
+  "columns": [
+    "time",
+    "user_id",
+    "item_id",
+    "item_category",
+    "behavior_type"
+  ],
+  "applied_csv_blocksize": "32MiB",
+  "csv_partition_count": 14,
+  "source_size_bytes": 492264642,
+  "source_is_local_symlink": true,
+  "resource_plan": {
+    "n_workers": 2,
+    "threads_per_worker": 1,
+    "memory_limit_bytes": 1073741824,
+    "available_memory_bytes": 4105879552,
+    "total_worker_budget_bytes": 2147483648,
+    "available_memory_fraction": 0.7,
+    "local_directory": "/Users/alina/Desktop/实习/Github/.cache/dask"
+  },
+  "actual_workers": {
+    "tcp://127.0.0.1:52103": {
+      "pid": 56271,
+      "rss_bytes": 65896448,
+      "memory_limit_bytes": 1073741824,
+      "threads": 1,
+      "thresholds": {
+        "target": 0.6,
+        "spill": 0.7,
+        "pause": 0.8,
+        "terminate": 0.95
+      }
+    },
+    "tcp://127.0.0.1:52106": {
+      "pid": 56272,
+      "rss_bytes": 65863680,
+      "memory_limit_bytes": 1073741824,
+      "threads": 1,
+      "thresholds": {
+        "target": 0.6,
+        "spill": 0.7,
+        "pause": 0.8,
+        "terminate": 0.95
+      }
+    }
+  },
+  "git_files": {
+    "tracked_file_count": 124,
+    "small_file_limit_bytes": 10485760,
+    "issues": []
+  }
+}
