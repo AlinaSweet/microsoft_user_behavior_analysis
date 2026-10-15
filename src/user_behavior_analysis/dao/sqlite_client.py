@@ -9,6 +9,9 @@ from typing import cast
 import pandas as pd
 
 from user_behavior_analysis.common.constants import PROJECT_ROOT
+from user_behavior_analysis.common.sqlite_runtime import (
+    configure_sqlite_temporary_storage,
+)
 from user_behavior_analysis.common.utils import input_file_path
 from user_behavior_analysis.common.utils import project_output_path
 from user_behavior_analysis.models.database_models import SqlValue
@@ -82,6 +85,7 @@ class SQLiteClient:
         if chunk_rows <= 0:
             raise ValueError("Query chunk_rows must be positive")
         uri = self.database.as_uri() + "?mode=ro"
+        configure_sqlite_temporary_storage()
         with closing(sqlite3.connect(uri, uri=True)) as connection:
             connection.execute("PRAGMA foreign_keys = ON")
             connection.execute("PRAGMA query_only = ON")

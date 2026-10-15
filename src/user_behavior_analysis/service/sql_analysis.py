@@ -1,6 +1,7 @@
 """Execute every registered SQL analysis and export complete bounded results."""
 
 import json
+import logging
 import subprocess
 import time
 from pathlib import Path
@@ -26,6 +27,8 @@ from user_behavior_analysis.models.database_models import QueryEvidence
 from user_behavior_analysis.models.database_models import SqlValue
 from user_behavior_analysis.service.sql_query_audit import analysis_checks
 from user_behavior_analysis.service.sql_query_audit import benchmark_indexes
+
+LOGGER = logging.getLogger(__name__)
 
 STRING_COLUMNS = {
     "user_id",
@@ -155,6 +158,7 @@ def analyze_database(request: DatabaseAnalysisRequest) -> DatabaseAnalysisReport
     exports: list[QueryEvidence] = []
     summaries: dict[str, list[dict[str, object]]] = {}
     for name in QUERY_NAMES:
+        LOGGER.info("Exporting complete SQL query: %s", name)
         evidence, preview = _export_query(
             name, client, parameters, directory, request.chunk_rows
         )

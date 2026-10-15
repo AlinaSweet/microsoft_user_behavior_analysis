@@ -32,6 +32,7 @@ canonical_events 视图恢复与 Parquet 相同的六列事件，按源 event_id
 
 ## 导入、完整性和资源
 
+- Unix/Mac 的 SQLite 临时排序和聚合文件通过进程内 SQLITE_TMPDIR 指向项目 .cache/sqlite，不使用已弃用的全局 PRAGMA；源文件和最终产物仍按各自目录管理。
 - 固定 100,000 行批次（可配置，最大 200,000），数据库缓存 64 MiB，临时分组可落盘。
 - 参数化 executemany 插入暂存表；每批事务内写入实体维表及行为表，拒绝跨批次重复和类目冲突。
 - 每个连接显式启用外键；NOT NULL、正整数、行为枚举、小时对齐、唯一键和外键均受约束。
@@ -93,6 +94,7 @@ sql/indexes.sql 为用户时间、商品行为、行为时间、时间用户、�
 
 ## 参考接口文档
 
+- [SQLite 临时文件位置](https://www.sqlite.org/tempfiles.html)
 - [SQLite 外键与每连接启用要求](https://www.sqlite.org/foreignkeys.html)
 - [SQLite 查询计划与索引](https://www.sqlite.org/queryplanner.html)
 - [SQLite 窗口函数](https://www.sqlite.org/windowfunctions.html)

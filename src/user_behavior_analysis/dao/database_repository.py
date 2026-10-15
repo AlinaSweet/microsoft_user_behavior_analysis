@@ -8,6 +8,9 @@ import pandas as pd
 from pandas.api.types import is_integer_dtype
 
 from user_behavior_analysis.common.constants import PROJECT_ROOT
+from user_behavior_analysis.common.sqlite_runtime import (
+    configure_sqlite_temporary_storage,
+)
 from user_behavior_analysis.common.utils import project_output_path
 from user_behavior_analysis.dao.dataset_repository import EVENT_COLUMNS
 
@@ -39,6 +42,7 @@ def create_database(path: Path) -> sqlite3.Connection:
     if output.exists():
         raise FileExistsError(f"Database destination already exists: {output}")
     output.parent.mkdir(parents=True, exist_ok=True)
+    configure_sqlite_temporary_storage()
     connection = sqlite3.connect(output)
     connection.execute("PRAGMA foreign_keys = ON")
     connection.execute("PRAGMA cache_size = -65536")

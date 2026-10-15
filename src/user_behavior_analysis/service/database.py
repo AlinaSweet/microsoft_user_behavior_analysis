@@ -1,6 +1,7 @@
 """Build and verify a complete third-normal-form database from registered events."""
 
 import hashlib
+import logging
 import sqlite3
 import subprocess
 import time
@@ -24,6 +25,8 @@ from user_behavior_analysis.dao.dataset_repository import read_event_batches
 from user_behavior_analysis.dao.sqlite_client import SQLiteClient
 from user_behavior_analysis.models.database_models import DatabaseReport
 from user_behavior_analysis.models.database_models import DatabaseRequest
+
+LOGGER = logging.getLogger(__name__)
 
 
 def build_database(request: DatabaseRequest) -> DatabaseReport:
@@ -72,7 +75,9 @@ def build_database(request: DatabaseRequest) -> DatabaseReport:
             source_digest.update(canonical_event_bytes(frame))
             loaded += len(frame)
             last_event_id = int(identifiers.iloc[-1])
+            LOGGER.info("SQLite imported %s / %s events", loaded, source.rows)
             peak = max(peak, psutil.Process().memory_info().rss)
+        LOGGER.info("Creating indexes and checking complete SQLite integrity")
         counts = finish_database(
             connection,
             {
