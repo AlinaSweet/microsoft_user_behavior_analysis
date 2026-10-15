@@ -1,0 +1,17 @@
+{
+  "source_path": "data/raw/user_behavior.csv",
+  "source_sha256": "64c1436d3f984f813c12c730950d61cdc1892e8dbbb54e102911b182c2690072",
+  "recorded_date": "2026-10-15",
+  "provider": "User-provided local CSV",
+  "user_declaration_original": "非加密、非隐私数据 可公开处理",
+  "local_processing_authorized": true,
+  "public_processing_authorized": true,
+  "privacy_classification_basis": "User declaration, not an independent re-identification audit",
+  "platform_attribution": "Microsoft China according to the user; original CSV provenance not independently verified",
+  "external_license_identifier": null,
+  "distribution_policy": "Raw and large generated data remain local; code, metadata and small reports sync to the existing project repository",
+  "user_declared_business_context": "微软中国",
+  "business_region": "Mainland China",
+  "analysis_timezone_assumption": "Asia/Shanghai",
+  "source_timezone_independently_verified": false
+}

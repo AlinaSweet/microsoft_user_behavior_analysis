@@ -14,6 +14,9 @@ import yaml
 from user_behavior_analysis.api.cli import main
 from user_behavior_analysis.common.constants import PROJECT_ROOT
 from user_behavior_analysis.config import load_config
+from user_behavior_analysis.service.anomaly_audit import audit_activity_anomalies
+from user_behavior_analysis.service.dataset_audit import DatasetAuditRequest
+from user_behavior_analysis.service.dataset_audit import audit_parquet
 
 
 class CleaningPipelineTests(unittest.TestCase):
@@ -74,6 +77,11 @@ class CleaningPipelineTests(unittest.TestCase):
             status = main(arguments)
         report = json.loads((reports / "quality.json").read_text())
         events = pd.read_parquet(self.root / "clean/events")
+        anomaly_audits = audit_activity_anomalies(
+            load_config(self.configuration),
+            self.root / "clean/events",
+            report["anomalies"],
+        )
         # Assert
         self.assertEqual(status, 0)
         self.assertEqual(
@@ -90,5 +98,23 @@ class CleaningPipelineTests(unittest.TestCase):
             },
         )
         self.assertTrue(report["output_integrity"]["values_match"])
+        self.assertTrue(all(item["status"] == "passed" for item in anomaly_audits))
         self.assertIn("001", events["user_id"].tolist())
         self.assertEqual(report["source_sha256_before"], report["source_sha256_after"])
+
+    def test_independent_dataset_audit_counts_duplicate_keys(self) -> None:
+        """Count complete duplicate keys using a separate shuffle implementation."""
+        # Arrange
+        dataset = self.root / "audit_input"
+        dataset.mkdir()
+        frame = pd.DataFrame({"user_id": ["001", "001"], "item_id": ["02", "02"]})
+        frame.to_parquet(dataset / "part_0.parquet", index=False)
+        config = load_config(self.configuration)
+        request = DatasetAuditRequest(
+            dataset, ("user_id", "item_id"), 2, 1, {"user_id": 1}
+        )
+        # Act
+        report = audit_parquet(config, request)
+        # Assert
+        self.assertEqual(report["status"], "passed")
+        self.assertEqual(report["duplicate_rows"], 1)

@@ -30,6 +30,7 @@ from user_behavior_analysis.dao.cleaning_repository import export_query
 from user_behavior_analysis.dao.cleaning_repository import ingest_partition
 from user_behavior_analysis.dao.cleaning_repository import open_cleaning_database
 from user_behavior_analysis.dao.cleaning_repository import row_accounting
+from user_behavior_analysis.dao.source_repository import source_declaration_status
 from user_behavior_analysis.models.cleaning_models import CleaningReport
 from user_behavior_analysis.models.cleaning_models import CleaningRequest
 from user_behavior_analysis.models.cleaning_models import FileEvidence
@@ -159,8 +160,11 @@ def _validate_partitions(
                     context.request.policy,
                 )
                 first_record += len(frame)
+                frame_future = client.scatter(frame, hash=False)
                 pending.append(
-                    client.submit(normalize_partition, frame, request, pure=False)
+                    client.submit(
+                        normalize_partition, frame_future, request, pure=False
+                    )
                 )
                 monitor.sample(client)
                 if len(pending) >= context.plan["n_workers"]:
@@ -246,9 +250,7 @@ def _finish(
         "resource_plan": context.plan,
         "memory": monitor.evidence(),
         "wall_seconds": round(time.perf_counter() - context.started, 4),
-        "provenance_status": (
-            "User supplied; independent source/license evidence pending"
-        ),
+        "provenance_status": source_declaration_status(context.source_hash),
     }
 
 

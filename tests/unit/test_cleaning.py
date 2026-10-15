@@ -1,9 +1,11 @@
 """Verify validation and global-key behavior with isolated source records."""
 
+import json
 import tempfile
 import unittest
 from contextlib import ExitStack
 from pathlib import Path
+from unittest.mock import patch
 
 import pandas as pd
 
@@ -14,7 +16,9 @@ from user_behavior_analysis.dao.cleaning_repository import export_query
 from user_behavior_analysis.dao.cleaning_repository import ingest_partition
 from user_behavior_analysis.dao.cleaning_repository import open_cleaning_database
 from user_behavior_analysis.dao.cleaning_repository import row_accounting
+from user_behavior_analysis.dao.source_repository import source_declaration_status
 from user_behavior_analysis.models.cleaning_models import PartitionRequest
+from user_behavior_analysis.service.anomaly_audit import summarize_activity_histogram
 from user_behavior_analysis.service.cleaning_integrity import verify_export
 from user_behavior_analysis.service.data_quality import detect_activity_anomalies
 from user_behavior_analysis.service.validation import SOURCE_COLUMNS
@@ -168,3 +172,69 @@ class CleaningTests(unittest.TestCase):
         self.assertEqual(metrics[0]["iqr_upper"], 1.0)
         self.assertEqual(metrics[0]["iqr_flagged_entities"], 1)
         self.assertEqual(remaining["clean_rows"], 105)
+
+    def test_histogram_quartile_uses_linear_interpolation(self) -> None:
+        """Interpolate the quartile between adjacent ordered count values."""
+        # Arrange
+        histogram = {1: 1, 3: 1}
+        # Act
+        summary = summarize_activity_histogram(histogram)
+        # Assert
+        self.assertEqual(summary["q1"], 1.5)
+        self.assertEqual(summary["q3"], 2.5)
+
+    def test_histogram_flags_a_long_activity_tail(self) -> None:
+        """Count IQR flags from frequencies without expanding entity rows."""
+        # Arrange
+        histogram = {1: 5, 100: 1}
+        # Act
+        summary = summarize_activity_histogram(histogram)
+        # Assert
+        self.assertEqual(summary["entities"], 6)
+        self.assertEqual(summary["iqr_flagged_entities"], 1)
+
+    def test_empty_histogram_is_rejected(self) -> None:
+        """Keep an absent distribution visible rather than inventing thresholds."""
+        # Arrange
+        histogram: dict[int, int] = {}
+        # Act / Assert
+        with self.assertRaises(ValueError):
+            summarize_activity_histogram(histogram)
+
+    def test_matching_source_declaration_is_recognized(self) -> None:
+        """Associate a use declaration with its exact input fingerprint."""
+        # Arrange
+        metadata = self.root / "data/catalog/data_provenance.json"
+        metadata.parent.mkdir(parents=True)
+        metadata.write_text(
+            json.dumps(
+                {"source_sha256": "a" * 64, "local_processing_authorized": True}
+            ),
+            encoding="utf-8",
+        )
+        # Act
+        with patch(
+            "user_behavior_analysis.dao.source_repository.PROJECT_ROOT", self.root
+        ):
+            status = source_declaration_status("a" * 64)
+        # Assert
+        self.assertIn("authorizes local processing", status)
+
+    def test_declaration_does_not_cover_a_different_fingerprint(self) -> None:
+        """Avoid attributing a recorded declaration to different input bytes."""
+        # Arrange
+        metadata = self.root / "data/catalog/data_provenance.json"
+        metadata.parent.mkdir(parents=True)
+        metadata.write_text(
+            json.dumps(
+                {"source_sha256": "a" * 64, "local_processing_authorized": True}
+            ),
+            encoding="utf-8",
+        )
+        # Act
+        with patch(
+            "user_behavior_analysis.dao.source_repository.PROJECT_ROOT", self.root
+        ):
+            status = source_declaration_status("b" * 64)
+        # Assert
+        self.assertEqual(status, "No matching source declaration recorded")
