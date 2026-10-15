@@ -1,6 +1,0 @@
-isort: passed
-black: passed
-flake8: passed
-mypy: passed
-pylint: passed
-tests: passed

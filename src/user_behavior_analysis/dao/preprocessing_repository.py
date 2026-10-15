@@ -8,9 +8,6 @@ from pathlib import Path
 import pandas as pd
 import pyarrow as pa  # type: ignore[import-untyped]  # No Arrow stubs.
 
-from user_behavior_analysis.common.sqlite_runtime import (
-    configure_sqlite_temporary_storage,
-)
 from user_behavior_analysis.common.utils import project_output_path
 from user_behavior_analysis.dao.dataset_repository import write_encoded_table
 from user_behavior_analysis.models.preprocessing_models import AggregateEvidence
@@ -100,7 +97,6 @@ def open_aggregate_database(path: Path) -> Iterator[sqlite3.Connection]:
     output.parent.mkdir(parents=True, exist_ok=True)
     if output.exists():
         raise FileExistsError(f"Aggregation database already exists: {output}")
-    configure_sqlite_temporary_storage()
     connection = sqlite3.connect(output)
     try:
         connection.execute("PRAGMA cache_size = -65536")

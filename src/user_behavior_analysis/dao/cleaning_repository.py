@@ -7,9 +7,6 @@ from pathlib import Path
 
 import pandas as pd
 
-from user_behavior_analysis.common.sqlite_runtime import (
-    configure_sqlite_temporary_storage,
-)
 from user_behavior_analysis.common.utils import project_output_path
 from user_behavior_analysis.models.cleaning_models import RowAccounting
 
@@ -67,7 +64,6 @@ def open_cleaning_database(path: Path) -> Iterator[sqlite3.Connection]:
     output.parent.mkdir(parents=True, exist_ok=True)
     if output.exists():
         raise FileExistsError(f"Cleaning database already exists: {output}")
-    configure_sqlite_temporary_storage()
     connection = sqlite3.connect(output)
     try:
         connection.execute("PRAGMA cache_size = -65536")

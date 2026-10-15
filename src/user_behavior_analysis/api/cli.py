@@ -21,10 +21,6 @@ from user_behavior_analysis.dao.report_repository import save_benchmark
 from user_behavior_analysis.dao.source_repository import resolve_source
 from user_behavior_analysis.models.cleaning_models import CleaningReport
 from user_behavior_analysis.models.cleaning_models import CleaningRequest
-from user_behavior_analysis.models.database_models import DatabaseAnalysisReport
-from user_behavior_analysis.models.database_models import DatabaseAnalysisRequest
-from user_behavior_analysis.models.database_models import DatabaseReport
-from user_behavior_analysis.models.database_models import DatabaseRequest
 from user_behavior_analysis.models.preprocessing_models import PreprocessingReport
 from user_behavior_analysis.models.preprocessing_models import PreprocessingRequest
 from user_behavior_analysis.models.report_models import ArtifactRequest
@@ -35,10 +31,8 @@ from user_behavior_analysis.models.report_models import RegistrationReport
 from user_behavior_analysis.models.report_models import VerificationReport
 from user_behavior_analysis.service.benchmark import benchmark_source
 from user_behavior_analysis.service.cleaning import run_cleaning
-from user_behavior_analysis.service.database import build_database
 from user_behavior_analysis.service.environment import check_environment
 from user_behavior_analysis.service.preprocessing import preprocess_dataset
-from user_behavior_analysis.service.sql_analysis import analyze_database
 
 CommandResult = (
     BenchmarkReport
@@ -48,8 +42,6 @@ CommandResult = (
     | VerificationReport
     | CleaningReport
     | PreprocessingReport
-    | DatabaseReport
-    | DatabaseAnalysisReport
 )
 LOGGER = logging.getLogger(__name__)
 
@@ -86,21 +78,6 @@ def _parser() -> argparse.ArgumentParser:
     command.add_argument("--policy", default="configs/preprocessing.json")
     command.add_argument("--output-dir", default="data/processed/base_v1")
     command.add_argument("--report-dir", default="outputs/reports/stage1_step4")
-    command = commands.add_parser("build-db")
-    command.add_argument("--catalog", default="data/catalog/base_v1.json")
-    command.add_argument(
-        "--database", default="data/processed/sqlite_v1/behavior_store.sqlite"
-    )
-    command.add_argument("--report-dir", default="outputs/reports/stage2_step1")
-    command.add_argument("--batch-rows", type=int, default=100000)
-    command = commands.add_parser("analyze-db")
-    command.add_argument(
-        "--database-report", default="outputs/reports/stage2_step1/database.json"
-    )
-    command.add_argument("--output-dir", default="data/processed/sql_analysis_v1")
-    command.add_argument("--report-dir", default="outputs/reports/stage2_step1")
-    command.add_argument("--window-days", type=int, default=7)
-    command.add_argument("--chunk-rows", type=int, default=50000)
     commands.add_parser("check-git")
     return parser
 
@@ -126,30 +103,7 @@ def _execute_artifact(arguments: argparse.Namespace) -> CommandResult:
     raise ValueError("Unsupported artifact command")
 
 
-def _execute_database(arguments: argparse.Namespace) -> CommandResult:
-    if arguments.command == "build-db":
-        return build_database(
-            DatabaseRequest(
-                Path(arguments.catalog),
-                Path(arguments.database),
-                Path(arguments.report_dir),
-                arguments.batch_rows,
-            )
-        )
-    return analyze_database(
-        DatabaseAnalysisRequest(
-            Path(arguments.database_report),
-            Path(arguments.output_dir),
-            Path(arguments.report_dir),
-            arguments.window_days,
-            arguments.chunk_rows,
-        )
-    )
-
-
 def _execute(arguments: argparse.Namespace) -> CommandResult:
-    if arguments.command in {"build-db", "analyze-db"}:
-        return _execute_database(arguments)
     if arguments.command in {"check-git", "register", "verify"}:
         return _execute_artifact(arguments)
     if arguments.command == "preprocess":
