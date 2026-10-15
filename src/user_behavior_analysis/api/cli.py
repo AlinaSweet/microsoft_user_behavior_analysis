@@ -4,18 +4,22 @@ import argparse
 import json
 import logging
 from collections.abc import Sequence
+from pathlib import Path
 from typing import cast
 
 from user_behavior_analysis.common.constants import PROJECT_ROOT
 from user_behavior_analysis.common.exceptions import ProjectError
 from user_behavior_analysis.common.utils import project_output_path
 from user_behavior_analysis.common.utils import write_json
+from user_behavior_analysis.config import load_cleaning_policy
 from user_behavior_analysis.config import load_config
 from user_behavior_analysis.dao.artifact_repository import check_git_files
 from user_behavior_analysis.dao.artifact_repository import register_artifact
 from user_behavior_analysis.dao.artifact_repository import verify_artifact
 from user_behavior_analysis.dao.report_repository import save_benchmark
 from user_behavior_analysis.dao.source_repository import resolve_source
+from user_behavior_analysis.models.cleaning_models import CleaningReport
+from user_behavior_analysis.models.cleaning_models import CleaningRequest
 from user_behavior_analysis.models.report_models import ArtifactRequest
 from user_behavior_analysis.models.report_models import BenchmarkReport
 from user_behavior_analysis.models.report_models import EnvironmentReport
@@ -23,6 +27,7 @@ from user_behavior_analysis.models.report_models import GitFilesReport
 from user_behavior_analysis.models.report_models import RegistrationReport
 from user_behavior_analysis.models.report_models import VerificationReport
 from user_behavior_analysis.service.benchmark import benchmark_source
+from user_behavior_analysis.service.cleaning import run_cleaning
 from user_behavior_analysis.service.environment import check_environment
 
 CommandResult = (
@@ -31,6 +36,7 @@ CommandResult = (
     | GitFilesReport
     | RegistrationReport
     | VerificationReport
+    | CleaningReport
 )
 LOGGER = logging.getLogger(__name__)
 
@@ -57,6 +63,11 @@ def _parser() -> argparse.ArgumentParser:
     command = commands.add_parser("verify")
     command.add_argument("--manifest", required=True)
     command.add_argument("--path", required=True)
+    command = commands.add_parser("clean")
+    command.add_argument("--data", help="Explicit source CSV path")
+    command.add_argument("--policy", default="configs/cleaning.json")
+    command.add_argument("--output-dir", default="data/interim/clean_v1")
+    command.add_argument("--report-dir", default="outputs/reports/stage1_step3")
     commands.add_parser("check-git")
     return parser
 
@@ -82,6 +93,13 @@ def _execute(arguments: argparse.Namespace) -> CommandResult:
     config = load_config(cast(str | None, arguments.config))
     source = resolve_source(config, cast(str | None, arguments.data))
     output_dir = project_output_path(cast(str, arguments.output_dir))
+    if arguments.command == "clean":
+        cleaning_request = CleaningRequest(
+            Path(arguments.output_dir),
+            Path(arguments.report_dir),
+            load_cleaning_policy(arguments.policy),
+        )
+        return run_cleaning(config, source, cleaning_request)
     if arguments.command == "check":
         report = check_environment(config, source)
         write_json(output_dir / "environment_check.json", report)

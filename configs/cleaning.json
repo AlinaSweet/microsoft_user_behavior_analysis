@@ -1,0 +1,8 @@
+{
+  "chunk_rows": 200000,
+  "export_rows": 200000,
+  "minimum_event_time": null,
+  "maximum_event_time": "2026-10-16 00",
+  "allowed_behaviors": ["1", "2", "3", "4"],
+  "policy_version": "cleaning_v1"
+}

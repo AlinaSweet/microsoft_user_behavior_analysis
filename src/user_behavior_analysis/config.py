@@ -1,5 +1,7 @@
 """Load and validate YAML values before constructing typed project settings."""
 
+import json
+from datetime import datetime
 from pathlib import Path
 from typing import cast
 
@@ -10,6 +12,7 @@ from user_behavior_analysis.common.constants import PROJECT_ROOT
 from user_behavior_analysis.common.exceptions import ConfigurationError
 from user_behavior_analysis.common.utils import input_file_path
 from user_behavior_analysis.common.utils import project_output_path
+from user_behavior_analysis.models.cleaning_models import CleaningPolicy
 from user_behavior_analysis.models.config_models import BenchmarkSettings
 from user_behavior_analysis.models.config_models import ClusterSettings
 from user_behavior_analysis.models.config_models import MemoryThresholds
@@ -162,4 +165,44 @@ def load_config(path: Path | str | None = None) -> ProjectConfig:
         local_cluster=_cluster_settings(document.get("local_cluster")),
         data=_source_settings(document.get("data")),
         benchmark=_benchmark_settings(document.get("benchmark")),
+    )
+
+
+def load_cleaning_policy(path: Path | str) -> CleaningPolicy:
+    """Load explicit cleaning rules with bounded partition sizes.
+
+    Args:
+        path: Project-relative or absolute JSON policy file.
+
+    Returns:
+        Validated chunk, behavior, and source-time rules.
+
+    Raises:
+        ValueError: The JSON structure or declared cleaning policy is invalid.
+    """
+    document = _mapping(
+        json.loads(input_file_path(path).read_text(encoding="utf-8")), "cleaning"
+    )
+    chunk_rows = _integer(document.get("chunk_rows"), "chunk_rows")
+    export_rows = _integer(document.get("export_rows"), "export_rows")
+    if max(chunk_rows, export_rows) > 500000:
+        raise ValueError("Cleaning batches must not exceed 500000 records")
+    maximum = _text(document.get("maximum_event_time"), "maximum_event_time")
+    minimum = document.get("minimum_event_time")
+    datetime.strptime(maximum, "%Y-%m-%d %H")
+    if minimum is not None:
+        minimum = _text(minimum, "minimum_event_time")
+        datetime.strptime(minimum, "%Y-%m-%d %H")
+        if minimum >= maximum:
+            raise ValueError("Cleaning time boundaries must be increasing")
+    behaviors = _strings(document.get("allowed_behaviors"), "allowed_behaviors")
+    if set(behaviors) != {"1", "2", "3", "4"}:
+        raise ValueError("Behavior rules must match the four task-defined codes")
+    return CleaningPolicy(
+        chunk_rows,
+        export_rows,
+        minimum,
+        maximum,
+        tuple(behaviors),
+        _text(document.get("policy_version"), "policy_version"),
     )
