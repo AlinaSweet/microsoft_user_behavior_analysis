@@ -4,7 +4,7 @@
 
 ## 结论
 
-第一阶段四个任务点在用户提供的实际数据规模下完成，本次本地代码、内容和全量数据检查通过。可以作为下一阶段的输入基线。远程最终提交、分支同步和云端 CI 另见同目录 cloud_delivery.json；本地通过记录不替代云端验收。
+第一阶段四个任务点在用户提供的实际数据规模下完成，本次本地代码、内容和全量数据检查通过。可以作为下一阶段的输入基线。远程验收检查点、分支同步和云端 CI 另见同目录 cloud_delivery.json；本地通过记录不替代云端验收。
 
 | 第一阶段任务 | 结果 | 本次检查的实际证据 |
 |---|---|---|
@@ -63,3 +63,7 @@
 - [完整预处理与聚合审计](preprocessing_audit.json)、[完整清洗前序复核](predecessor_cleaning_audit.json)。
 - [真实环境报告](environment/environment_check.json)；quality.log、environment.log、preprocessing.log 保留子进程命令输出，命令与日志指纹见 audit.json。
 - [项目任务原文](../../../docs/requirements/project_brief.pdf)、[编码规范原文](../../../docs/standards/coding_standard.pdf)、[验收说明](../../../docs/stage1_review.md)。
+
+## 云端验收检查点
+
+2026-10-15 已核验提交 1a4e44b：feature/stage1-review、dev、main 均已同步，Quality #23/#24/#25 全部成功。cloud_delivery.json 保存这次实际观测；后续发布该凭证的提交仅含文档/元数据/截图，其最终 CI 以 GitHub Actions 实际运行记录为准。

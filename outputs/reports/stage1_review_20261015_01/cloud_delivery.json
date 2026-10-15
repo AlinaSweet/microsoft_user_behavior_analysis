@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-15T19:32:25.376981+00:00",
+  "repository": "https://github.com/AlinaSweet/microsoft-store-user-behavior-analysis",
+  "checked_commit": "1a4e44b71544e7815751ac94e8635626cffae53f",
+  "application_code_commit": "f5bf6a4cbcfc79ef16036039940d0f4f85ce7749",
+  "branches": {
+    "main": "1a4e44b71544e7815751ac94e8635626cffae53f",
+    "dev": "1a4e44b71544e7815751ac94e8635626cffae53f",
+    "feature/stage1-review": "1a4e44b71544e7815751ac94e8635626cffae53f",
+    "origin/main": "1a4e44b71544e7815751ac94e8635626cffae53f",
+    "origin/dev": "1a4e44b71544e7815751ac94e8635626cffae53f",
+    "origin/feature/stage1-review": "1a4e44b71544e7815751ac94e8635626cffae53f"
+  },
+  "quality_runs": [
+    {
+      "number": 23,
+      "branch": "feature/stage1-review",
+      "status": "success",
+      "duration": "1m 20s",
+      "url": "https://github.com/AlinaSweet/microsoft-store-user-behavior-analysis/actions/runs/38794049103"
+    },
+    {
+      "number": 24,
+      "branch": "dev",
+      "status": "success",
+      "duration": "1m 22s",
+      "url": "https://github.com/AlinaSweet/microsoft-store-user-behavior-analysis/actions/runs/38794354090"
+    },
+    {
+      "number": 25,
+      "branch": "main",
+      "status": "success",
+      "duration": "1m 9s",
+      "url": "https://github.com/AlinaSweet/microsoft-store-user-behavior-analysis/actions/runs/38794440604"
+    }
+  ],
+  "second_stage_feature_branches_deleted": [
+    "feature/sqlite-analysis",
+    "feature/feature-engineering"
+  ],
+  "evidence_image": "outputs/figures/stage1_review_ci_checkpoint.png",
+  "evidence_image_sha256": "eaa40787db3c259d40dd58e3fa8d9cf8ac4e03344d53c716dd31e947afecb1a8",
+  "receipt_scope": "Observed cloud and branch checkpoint for the checked_commit. A subsequent documentation-only commit publishes this receipt; no application code, processing rules or data change. Final receipt-commit CI is checked separately in the live GitHub Actions view."
+}
