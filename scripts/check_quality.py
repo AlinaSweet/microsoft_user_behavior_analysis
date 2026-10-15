@@ -37,8 +37,9 @@ def _fingerprint(sources: list[Path]) -> str:
             ".flake8",
             "requirements.txt",
             "requirements-dev.txt",
+            "requirements.in",
+            "requirements-dev.in",
             "AGENTS.md",
-            "configs/dask.yaml",
             "scripts/check_quality.sh",
             "scripts/run_project.sh",
             "scripts/setup_environment.sh",
@@ -47,6 +48,13 @@ def _fingerprint(sources: list[Path]) -> str:
             ".github/workflows/quality.yml",
         )
     ]
+    configuration.extend(
+        sorted(
+            path
+            for path in (PROJECT_ROOT / "configs").rglob("*")
+            if path.is_file() and path.suffix in {".json", ".yaml", ".yml"}
+        )
+    )
     for path in sources + configuration:
         digest.update(str(path.relative_to(PROJECT_ROOT)).encode("utf-8"))
         digest.update(path.read_bytes())
