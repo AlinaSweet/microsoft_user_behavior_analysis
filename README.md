@@ -127,3 +127,7 @@ Git 提交和推送会调用同一入口；GitHub 每次推送 main/dev/feature 
 ## 第一阶段第 2 项：文献与技术方案
 
 已整理五篇经典论文笔记、数字平台案例、Spark/Dask 与模型对比、26 个候选特征和 10 项后续实验。阅读入口为 [文献调研目录](docs/research/README.md)，交付核对见 [第 2 项完成报告](outputs/reports/stage1_step2_research.md)。本步为调研与设计，尚未进行全量清洗或模型训练。
+
+## 全阶段执行与复核
+
+完整的 17 个任务点及验收顺序见 [任务台账](docs/project_roadmap.md)。第一阶段第三项已经完成全量清洗与独立复核，详见 [清洗报告](outputs/reports/stage1_step3/README.md)；复现规则见 [清洗说明](docs/cleaning_rules.md)。

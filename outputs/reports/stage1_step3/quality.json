@@ -1,0 +1,1927 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-15T06:25:16.156902+00:00",
+  "policy_version": "cleaning_v1",
+  "policy_sha256": "b34136e133e6bfeaf741090f3c4e16190d37f104913a57d20edb6df67305c176",
+  "source_path": "/Users/alina/Desktop/实习/Github/data/raw/user_behavior.csv",
+  "source_size_bytes": 492264642,
+  "source_sha256_before": "64c1436d3f984f813c12c730950d61cdc1892e8dbbb54e102911b182c2690072",
+  "source_sha256_after": "64c1436d3f984f813c12c730950d61cdc1892e8dbbb54e102911b182c2690072",
+  "code_commit": "5821338b7335fe60791b6979548b04b4ffdbe9bb",
+  "output_dir": "data/interim/clean_v1",
+  "row_accounting": {
+    "input_rows": 12256906,
+    "invalid_rows": 0,
+    "valid_before_deduplication": 12256906,
+    "duplicate_rows_removed": 6043527,
+    "conflicting_rows_quarantined": 0,
+    "conflicting_keys": 0,
+    "clean_rows": 6213379,
+    "reconciled": true
+  },
+  "profile": {
+    "rows": 6213379,
+    "users": 10000,
+    "items": 2876947,
+    "categories": 8916,
+    "minimum_event_time": "2025-11-18 00:00:00",
+    "maximum_event_time": "2025-12-18 23:00:00",
+    "behavior_counts": {
+      "1": 5535879,
+      "2": 239472,
+      "3": 331350,
+      "4": 106678
+    },
+    "daily_counts": {
+      "2025-11-18": 186278,
+      "2025-11-19": 181713,
+      "2025-11-20": 178849,
+      "2025-11-21": 168903,
+      "2025-11-22": 183014,
+      "2025-11-23": 194205,
+      "2025-11-24": 191139,
+      "2025-11-25": 186803,
+      "2025-11-26": 183017,
+      "2025-11-27": 188747,
+      "2025-11-28": 172392,
+      "2025-11-29": 185940,
+      "2025-11-30": 204398,
+      "2025-12-01": 200520,
+      "2025-12-02": 206313,
+      "2025-12-03": 209477,
+      "2025-12-04": 203829,
+      "2025-12-05": 183633,
+      "2025-12-06": 198378,
+      "2025-12-07": 202206,
+      "2025-12-08": 197172,
+      "2025-12-09": 202261,
+      "2025-12-10": 215171,
+      "2025-12-11": 247364,
+      "2025-12-12": 346464,
+      "2025-12-13": 205983,
+      "2025-12-14": 204056,
+      "2025-12-15": 201242,
+      "2025-12-16": 199749,
+      "2025-12-17": 193980,
+      "2025-12-18": 190183
+    },
+    "items_with_multiple_categories": 0,
+    "duplicate_keys_remaining": 0,
+    "null_required_values": 0
+  },
+  "output_integrity": {
+    "expected_rows": 6213379,
+    "exported_rows": 6213379,
+    "expected_value_sha256": "e612feaf1cfd7314867b3bec456cba8f44701d15abe4b8bf7d89b6ab0d32f60f",
+    "exported_value_sha256": "e612feaf1cfd7314867b3bec456cba8f44701d15abe4b8bf7d89b6ab0d32f60f",
+    "values_match": true,
+    "algorithm": "Pandas 64-bit canonical row hashes then ordered SHA-256"
+  },
+  "anomalies": [
+    {
+      "entity": "user",
+      "entities": 10000,
+      "q1": 158.0,
+      "q3": 783.0,
+      "iqr_lower": -779.5,
+      "iqr_upper": 1720.5,
+      "mean": 621.3379,
+      "population_std": 788.459460799089,
+      "sigma_lower": -1744.0404823972672,
+      "sigma_upper": 2986.716282397267,
+      "iqr_flagged_entities": 729,
+      "sigma_flagged_entities": 186,
+      "action": "Retain raw event counts; flag for review and provide a separate IQR-capped diagnostic value. No automatic bot label or deletion.",
+      "output_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/activity_anomalies/user"
+    },
+    {
+      "entity": "item",
+      "entities": 2876947,
+      "q1": 1.0,
+      "q3": 2.0,
+      "iqr_lower": -0.5,
+      "iqr_upper": 3.5,
+      "mean": 2.1597127093408393,
+      "population_std": 4.286801099495969,
+      "sigma_lower": -10.700690589147069,
+      "sigma_upper": 15.020116007828747,
+      "iqr_flagged_entities": 331797,
+      "sigma_flagged_entities": 32641,
+      "action": "Retain raw event counts; flag for review and provide a separate IQR-capped diagnostic value. No automatic bot label or deletion.",
+      "output_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/activity_anomalies/item"
+    }
+  ],
+  "partitions": [
+    {
+      "partition_id": 0,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00000.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 1,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00001.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 2,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00002.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 3,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00003.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 4,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00004.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 5,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00005.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 6,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00006.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 7,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00007.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 8,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00008.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 9,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00009.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 10,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00010.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 11,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00011.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 12,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00012.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 13,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00013.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 14,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00014.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 15,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00015.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 16,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00016.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 17,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00017.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 18,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00018.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 19,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00019.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 20,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00020.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 21,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00021.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 22,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00022.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 23,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00023.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 24,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00024.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 25,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00025.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 26,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00026.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 27,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00027.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 28,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00028.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 29,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00029.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 30,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00030.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 31,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00031.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 32,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00032.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 33,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00033.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 34,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00034.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 35,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00035.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 36,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00036.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 37,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00037.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 38,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00038.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 39,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00039.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 40,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00040.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 41,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00041.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 42,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00042.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 43,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00043.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 44,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00044.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 45,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00045.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 46,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00046.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 47,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00047.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 48,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00048.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 49,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00049.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 50,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00050.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 51,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00051.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 52,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00052.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 53,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00053.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 54,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00054.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 55,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00055.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 56,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00056.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 57,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00057.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 58,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00058.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 59,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00059.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 60,
+      "input_rows": 200000,
+      "valid_rows": 200000,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00060.parquet",
+      "rejected_path": null
+    },
+    {
+      "partition_id": 61,
+      "input_rows": 56906,
+      "valid_rows": 56906,
+      "invalid_rows": 0,
+      "violation_counts": {
+        "missing_time": 0,
+        "missing_user_id": 0,
+        "missing_item_id": 0,
+        "missing_item_category": 0,
+        "missing_behavior_type": 0,
+        "invalid_user_id": 0,
+        "invalid_item_id": 0,
+        "invalid_item_category": 0,
+        "invalid_time": 0,
+        "time_outside_policy": 0,
+        "invalid_behavior_type": 0
+      },
+      "valid_path": "/Users/alina/Desktop/实习/Github/data/interim/clean_v1/validated/part_00061.parquet",
+      "rejected_path": null
+    }
+  ],
+  "files": [
+    {
+      "path": "data/interim/clean_v1/activity_anomalies/item/part_00000.parquet",
+      "size_bytes": 2717329,
+      "sha256": "1d5e614278c720912128e1dc1789eb710b06dec5f9b7fb17c981684e8c048683"
+    },
+    {
+      "path": "data/interim/clean_v1/activity_anomalies/item/part_00001.parquet",
+      "size_bytes": 1852031,
+      "sha256": "74fb5812bad7512101b8d81895ff79d566dabd75b71779db50d17ee5618caed9"
+    },
+    {
+      "path": "data/interim/clean_v1/activity_anomalies/user/part_00000.parquet",
+      "size_bytes": 19376,
+      "sha256": "762ee6c23047fe29161617e5944b577ff9ce78bf362da9f9f893c292ad747f27"
+    },
+    {
+      "path": "data/interim/clean_v1/conflicting_keys/part_00000.parquet",
+      "size_bytes": 3701,
+      "sha256": "f9517e4e9420f3cb3747260221a704c6f736f265b2ab37ccc442e6d03ed1a5d5"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00000.parquet",
+      "size_bytes": 5380681,
+      "sha256": "9ad0a3ac0d88cd1a7bb05d3920a6b96847b9d1588947ade472b0b5a09ecdb8f0"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00001.parquet",
+      "size_bytes": 5374819,
+      "sha256": "f83c32d8cd5b706bd904f962b113aefc6e1567392e7cb107de04cfc94a5c9516"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00002.parquet",
+      "size_bytes": 5377850,
+      "sha256": "8137c0c5f18058852b1826ccc1d35fc8fda56229c60ba85497622168c2551a20"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00003.parquet",
+      "size_bytes": 5373706,
+      "sha256": "92b276620db70f7acbabe16e9f4624bbd36351f2c5405f70109c801c770ce3ad"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00004.parquet",
+      "size_bytes": 5376993,
+      "sha256": "2daf4c84d1ba5c5740c8a052f1ef825912a003351948da244d0cbaef0badc5ac"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00005.parquet",
+      "size_bytes": 5373190,
+      "sha256": "88c031bf46bd4424cb1a70744b6c810357e14e6da994a0b84588d22713bb7d3e"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00006.parquet",
+      "size_bytes": 5408161,
+      "sha256": "4bf6ce9ec790a5ec0adb8ef7a49befab8243bc06c85506e440591c6907a73196"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00007.parquet",
+      "size_bytes": 5399881,
+      "sha256": "4ff5248a658a2b90fcee13595893b6afb9771018e8d11ff13dc64ca15289b07f"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00008.parquet",
+      "size_bytes": 5400786,
+      "sha256": "b0258d7026a06fa1bba27ee8b9744ced6357bc4965993868f17a869a7f5968c4"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00009.parquet",
+      "size_bytes": 5407823,
+      "sha256": "7e4ac87be9358c15b4aa35a57b832aafdb679ffeba1f642b045fee79ac71dfd7"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00010.parquet",
+      "size_bytes": 5408567,
+      "sha256": "552555a2d52d18fc21592424af77d6a6dbbbc4fdecf4d72e72d4d0806f069105"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00011.parquet",
+      "size_bytes": 5438703,
+      "sha256": "a3ea527b2889cd49619a53faa3d4d13058bdbb6353a8bf955c4b897fb16a4ede"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00012.parquet",
+      "size_bytes": 5426008,
+      "sha256": "6bbcaa0b943fcd05b2d183355d2e091b07be9fff41ae70764fd005aa59a1d688"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00013.parquet",
+      "size_bytes": 5430943,
+      "sha256": "5be008801e339364bcbe781eb8064e48852e64c3e6b3c8c0b04f679c6161246f"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00014.parquet",
+      "size_bytes": 5428991,
+      "sha256": "5c001411f6772b4ae450e1ebca763659a23f62524996434718c1b774fa8ae7c6"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00015.parquet",
+      "size_bytes": 5454790,
+      "sha256": "50b860e36f523a76a489fdebfcbcb054891e2002d4393dd4620c704e35755b89"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00016.parquet",
+      "size_bytes": 5458321,
+      "sha256": "154e6c08ad09f7c3d4c289cb02cb9f284374738046ac6d2f6364bcb7b92b127a"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00017.parquet",
+      "size_bytes": 5459812,
+      "sha256": "ebda02284c6a22e1dcb09b4b01da658b0913171dd2f4a2d99f1064d7855698dd"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00018.parquet",
+      "size_bytes": 5463404,
+      "sha256": "ac32dc434e6e3946dcbe68d4496d886eaef5398de6ff50c9a14fdfdcfbd3772f"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00019.parquet",
+      "size_bytes": 5476122,
+      "sha256": "8bd23e26eccd61ba01b61332ad3b94c2283bd8f9593443a4bc765b7f7aa29184"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00020.parquet",
+      "size_bytes": 5481260,
+      "sha256": "9b4623bc0e365a2c26cd99f79cd9a37df07a80bf1b5da753ab00d87ecbc5c410"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00021.parquet",
+      "size_bytes": 5478626,
+      "sha256": "c058ea1d3b70e434ac292a4dcb410d2c2ed4fc8b97d5a5c75d1846c532694f5a"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00022.parquet",
+      "size_bytes": 5500184,
+      "sha256": "deeb076787243065f1c9681f4fcc96ca89602aba435ca6e8488b9cd563b40aa5"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00023.parquet",
+      "size_bytes": 5495878,
+      "sha256": "45b4cfabd165c49d50d1e48ee5a3c5eb25dc602bcd7ea89ee3b29a2252663f87"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00024.parquet",
+      "size_bytes": 5517188,
+      "sha256": "9c3e9d2a94ba9b5193c1b875507972ce2a3d6fa4c8e19390311a2f5dc629fd88"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00025.parquet",
+      "size_bytes": 5517068,
+      "sha256": "d7bb0092bea3c55dd54e03cedeaeebc8ffcbe3579cd9bdf3a5b6caf2174fc2a7"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00026.parquet",
+      "size_bytes": 5517885,
+      "sha256": "f69c7248e6f2cc29a26a8c597511f58c2496dbc6dfeafbb7442de4adc9559cc3"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00027.parquet",
+      "size_bytes": 5537557,
+      "sha256": "65d64a602abd8e9af3ae5cc65d7dc011c34101e8871453b951903b36336256d2"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00028.parquet",
+      "size_bytes": 5546657,
+      "sha256": "ce959ff191f59de845af28c879d5e0e32820a08ab87395bd3d6ff4f96589289c"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00029.parquet",
+      "size_bytes": 5559881,
+      "sha256": "81c69f46a757b919f2e79a4ab9cf8891711d1c5e1c34e3da8388c994879c95d4"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00030.parquet",
+      "size_bytes": 5588498,
+      "sha256": "6e72fe2acdc158b1d8edc7fde60e66cb5ad3d7693c3b34cf8b8c61e0538484d3"
+    },
+    {
+      "path": "data/interim/clean_v1/events/part_00031.parquet",
+      "size_bytes": 402567,
+      "sha256": "b0e3b93757415061cfdee9f2e32d90fc5c06ca2d494bdfb83861446bde9a932f"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00000.parquet",
+      "size_bytes": 5291615,
+      "sha256": "81cd2aa17483e094083c08dfab08c1a856a055f57637b15acb6055656c8feba3"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00001.parquet",
+      "size_bytes": 5284343,
+      "sha256": "1403914494d70f87b96776fa52a3eb3b38c6d82bc70760a73d145e66599bc8df"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00002.parquet",
+      "size_bytes": 5300524,
+      "sha256": "e78b2123216c9a7c4e3751f3c1db361bb186b46fb59fe799390eb66212966f4d"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00003.parquet",
+      "size_bytes": 5277246,
+      "sha256": "d969a15fbf86a49caaa6c309f6b9ff888d189a55ac60ffa2b3588efc473b36bf"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00004.parquet",
+      "size_bytes": 5283197,
+      "sha256": "749ec00aa0d8c8489e7d122f6150c52e623d302bcbd4287d1602d02af0ccdd9c"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00005.parquet",
+      "size_bytes": 5291299,
+      "sha256": "f4439bd2dfa35d5e0c8b9969038f85083f9916ca72a776128f49747fb7a9bcdc"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00006.parquet",
+      "size_bytes": 5297003,
+      "sha256": "4e89201c35d82758a8fe9fb4968515e3384f20c82869152f7bba155a4256b451"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00007.parquet",
+      "size_bytes": 5280914,
+      "sha256": "d204f8d3c216f2f39802ad549a689d4c105283a9a5f5499c50a59ca696c934fc"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00008.parquet",
+      "size_bytes": 5290375,
+      "sha256": "55b2048c8322dac8ecab26ab150ff97e63d9fb8c9780fd0e77d909a2bd5af48c"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00009.parquet",
+      "size_bytes": 5275905,
+      "sha256": "ea11ab3f05305cdef69b05e5bfe842ed459e796fc24bddd3125e17d9372db189"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00010.parquet",
+      "size_bytes": 5284835,
+      "sha256": "950f718fe1ffd03188fea790df30c870a837148641d47bdb0cef7716d3a803c0"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00011.parquet",
+      "size_bytes": 5281397,
+      "sha256": "16bdc94087bb2a539808932d394aed044da4949302c076a1c914291e88fbec6d"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00012.parquet",
+      "size_bytes": 5284775,
+      "sha256": "afe4b92e8bb4fb511a3f77057c8b6e190f7d1dc16425fd089a85f77e9e73ec2e"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00013.parquet",
+      "size_bytes": 5289783,
+      "sha256": "c55db10af0050e1fe2c3bfa1dee523a65710dea81f2c9a1e22ff62016e3c47e7"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00014.parquet",
+      "size_bytes": 5284507,
+      "sha256": "888e5752765dd689150d0a231e7e372ac9486068d4ff1c6fd3546550ff0a42fb"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00015.parquet",
+      "size_bytes": 5288756,
+      "sha256": "b4f22c5746f6deea839f4643409546e5aff37ddcf2f083ce9fe173331ea30204"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00016.parquet",
+      "size_bytes": 5281210,
+      "sha256": "4908621933423c2bd38f500626e31f09fc06ea70918e01977fb7a2467136ed82"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00017.parquet",
+      "size_bytes": 5285044,
+      "sha256": "be65bfd224085e8304cb29e72492c1f33726607bb9689989ccd5e805ec8fd7a1"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00018.parquet",
+      "size_bytes": 5268010,
+      "sha256": "ca0f0980123c9dc6d7376be2f425fecc004844f1774667f3e34356b1083583c9"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00019.parquet",
+      "size_bytes": 5276217,
+      "sha256": "63db115e1330ceed2885413a853f348c8e430919a8efeb4a9da48d3320d68410"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00020.parquet",
+      "size_bytes": 5298356,
+      "sha256": "9da16b8b2624078fae9a2e074f918ac732ec3f217ab147e4ea8b05a6d4e65ee0"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00021.parquet",
+      "size_bytes": 5290382,
+      "sha256": "245af6ba09ca144f5ce617d619ea79fd102f001e86d62fa20b345e4e267edefc"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00022.parquet",
+      "size_bytes": 5287399,
+      "sha256": "e9133f6dcce4a1b59538039fd03bf7fd76cc70fe8335608d101f441124186271"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00023.parquet",
+      "size_bytes": 5290631,
+      "sha256": "a2fa7adee5369cc7400dceafdb22e62ebfc710115d39e4a2dba7071d30741917"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00024.parquet",
+      "size_bytes": 5276723,
+      "sha256": "0d0630ad07c78b8e0059d745186d22a58c42e22a3d2ece0e5c2cb38eb373cc71"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00025.parquet",
+      "size_bytes": 5288568,
+      "sha256": "c16ca43d054913764b53a8c276e95b35ffc9b78ad04251cc9d466cb8928a25ea"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00026.parquet",
+      "size_bytes": 5294229,
+      "sha256": "9641a5f021c57ab46ad93553f0de4044b99371adcf88736c69f5f50241a9dc40"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00027.parquet",
+      "size_bytes": 5284891,
+      "sha256": "a16ed260f7526261802cdfbf098938c5cb6fddc73806880506e5d5ed28779ac9"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00028.parquet",
+      "size_bytes": 5288513,
+      "sha256": "38972f19fed05ce8024f1d0cf9597a4052610038171bb1d20422592db4dc3b39"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00029.parquet",
+      "size_bytes": 5286516,
+      "sha256": "b0d71753ddbbcc3b9f2f6ca054e6ba4f17904da456fdf5bce860c15532bc5f2d"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00030.parquet",
+      "size_bytes": 5280488,
+      "sha256": "9b3065b189bfc0e078bae99c9bce579c8d68ab9580f7f0ff644fabcfa047ae6a"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00031.parquet",
+      "size_bytes": 5289564,
+      "sha256": "d1a89b84951daff540f160807a762cf1ee3336154b6c04359a268106fb6374c5"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00032.parquet",
+      "size_bytes": 5286096,
+      "sha256": "e60bbd01aa43652e56dc7ed86ec7df9eb2adeacbb987877d5ce83c40016dd9b8"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00033.parquet",
+      "size_bytes": 5275570,
+      "sha256": "cc1d66de9fbb384f1010a41f3843843d8e44d91190837ed08f59f9de58983f39"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00034.parquet",
+      "size_bytes": 5286634,
+      "sha256": "ab976dc6ee2de6da9884605020c1ef36ad564b15086ae797c2a3bc251fa30c83"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00035.parquet",
+      "size_bytes": 5286572,
+      "sha256": "4ac8eb6cc66e88cdd4f28414a5ca380d74e5d794df6035f896cf083906fb10c2"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00036.parquet",
+      "size_bytes": 5282674,
+      "sha256": "db09ff48de0dd4033c7a62d06f32cbfff5d743bbdd52848aa90f49b9e974f177"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00037.parquet",
+      "size_bytes": 5299511,
+      "sha256": "90f95404bd88b29fbc60be888bfebeab921b9c23920c73eae3d439dee36e44a8"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00038.parquet",
+      "size_bytes": 5291962,
+      "sha256": "af50ea03bb290a24625217112535ded12cbbe726e73318c19940662b6165e69c"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00039.parquet",
+      "size_bytes": 5286036,
+      "sha256": "ccbea2f1af9661ad0a5a8d5b355e1225e2871e2c0ae3a26e8eb874311e7c1ef8"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00040.parquet",
+      "size_bytes": 5286196,
+      "sha256": "a424f4d963fe755eaad0d3c4db5654fb1d365b4d62cbc78e0a4f5c7dfefee95c"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00041.parquet",
+      "size_bytes": 5274508,
+      "sha256": "a5480fabb2100f3b51ff73f9fb424163ca3d0881bf3bb9fe7a19c94f1d1f704c"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00042.parquet",
+      "size_bytes": 5272904,
+      "sha256": "7f058350d7d7f9f642c830951682b0624ebfb87028f3006892b851134811e37d"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00043.parquet",
+      "size_bytes": 5290291,
+      "sha256": "2a618d64841b302898c685c37c92f54b1eea9d91d3355fd349af7a02959ed899"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00044.parquet",
+      "size_bytes": 5289199,
+      "sha256": "dcfe1218f42655c105a28a38f13689e841447dd8290c2db073dc179418638234"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00045.parquet",
+      "size_bytes": 5287974,
+      "sha256": "69a7a5df2312fbc7d5da9af2c9b8a204f6dd942b915a0b548cfe82f3453a6b11"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00046.parquet",
+      "size_bytes": 5280314,
+      "sha256": "e559512fad75962ec93c99446e9d663d6be3a041bd0d7d429a8d1530ad1d098c"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00047.parquet",
+      "size_bytes": 5287914,
+      "sha256": "5c0e0feccce10e1f23927e9f45723af91a67fb19e19d4572e52f18f52dae4c80"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00048.parquet",
+      "size_bytes": 5286481,
+      "sha256": "9a5e1a4d822a23bcf51571b14c8108c84d61f08d82984f32b9df43d208fb02dd"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00049.parquet",
+      "size_bytes": 5282746,
+      "sha256": "36167ddfb543a9695788e4a8a219680353ea320301c7666523d0b3537739bea2"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00050.parquet",
+      "size_bytes": 5276574,
+      "sha256": "ef3ac11fc512be06e9be5644aa6c7283f5a453c91afd408d7af3ac4158755891"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00051.parquet",
+      "size_bytes": 5285215,
+      "sha256": "dee965b9bc5f885a3e92dd8c6939db571574076eae66ce66ab9911f9ff24c5ea"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00052.parquet",
+      "size_bytes": 5295614,
+      "sha256": "44caf362c98df737d0ad150a6dfb6e2076507c899d6b610548a44d70792f61f9"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00053.parquet",
+      "size_bytes": 5291532,
+      "sha256": "8d90e3f14c4db14a5f375fbc01299ebf48d24287052ac0a34d3318ae44bbb05b"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00054.parquet",
+      "size_bytes": 5286224,
+      "sha256": "6acef5751a9911d2afbcb42d4f64526f8d0a06794917349f966a6f5edccfb0bb"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00055.parquet",
+      "size_bytes": 5283246,
+      "sha256": "abee88d35fc6463fc98bb87c46ab18fb0b9b76016a3fa016db1679778471a288"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00056.parquet",
+      "size_bytes": 5283681,
+      "sha256": "50141acda307b9805e61c2665e5d9f4db2986a7f6692ab49dacd26a0f392d10a"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00057.parquet",
+      "size_bytes": 5284851,
+      "sha256": "428cd3d8f12ee165774c40c145252a65ef2fdd15b046d9848e59e73626eece1d"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00058.parquet",
+      "size_bytes": 5281910,
+      "sha256": "940e757f51b2feced5c4995d7a0bd394c4e8ccfee61903efa7d91ddd65468a5b"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00059.parquet",
+      "size_bytes": 5289396,
+      "sha256": "91c08a8689e4a12836aae92b115050246a0e07bf2761344cc1420a8c259839fa"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00060.parquet",
+      "size_bytes": 5279909,
+      "sha256": "fb95b879d22a35ed95d88e0e97e774d774b431baf92bd53f631d6d598d87d2c4"
+    },
+    {
+      "path": "data/interim/clean_v1/validated/part_00061.parquet",
+      "size_bytes": 1539393,
+      "sha256": "eb24d7187edac35522bedf8be12dd4af7a6d9a46ace60f574103f6f0d87896ba"
+    }
+  ],
+  "resource_plan": {
+    "n_workers": 2,
+    "threads_per_worker": 1,
+    "memory_limit_bytes": 1073741824,
+    "available_memory_bytes": 3475521536,
+    "total_worker_budget_bytes": 2147483648,
+    "available_memory_fraction": 0.7,
+    "local_directory": "/Users/alina/Desktop/实习/Github/.cache/dask"
+  },
+  "memory": {
+    "driver_peak_rss_bytes": 357416960,
+    "worker_peak_rss_bytes": 258670592,
+    "worker_restart_count": 0,
+    "sampling": "Sampled at chunk/stage boundaries and every 0.25 seconds while waiting for workers; brief peaks can be missed."
+  },
+  "wall_seconds": 569.3295,
+  "provenance_status": "User supplied; independent source/license evidence pending"
+}
