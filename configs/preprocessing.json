@@ -1,0 +1,8 @@
+{
+  "batch_rows": 200000,
+  "row_group_rows": 131072,
+  "compression_level": 3,
+  "dictionary_category_limit": 100000,
+  "benchmark_repeats": 2,
+  "policy_version": "preprocessing_v1"
+}

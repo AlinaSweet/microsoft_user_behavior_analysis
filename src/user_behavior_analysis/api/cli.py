@@ -13,6 +13,7 @@ from user_behavior_analysis.common.utils import project_output_path
 from user_behavior_analysis.common.utils import write_json
 from user_behavior_analysis.config import load_cleaning_policy
 from user_behavior_analysis.config import load_config
+from user_behavior_analysis.config import load_preprocessing_policy
 from user_behavior_analysis.dao.artifact_repository import check_git_files
 from user_behavior_analysis.dao.artifact_repository import register_artifact
 from user_behavior_analysis.dao.artifact_repository import verify_artifact
@@ -20,6 +21,8 @@ from user_behavior_analysis.dao.report_repository import save_benchmark
 from user_behavior_analysis.dao.source_repository import resolve_source
 from user_behavior_analysis.models.cleaning_models import CleaningReport
 from user_behavior_analysis.models.cleaning_models import CleaningRequest
+from user_behavior_analysis.models.preprocessing_models import PreprocessingReport
+from user_behavior_analysis.models.preprocessing_models import PreprocessingRequest
 from user_behavior_analysis.models.report_models import ArtifactRequest
 from user_behavior_analysis.models.report_models import BenchmarkReport
 from user_behavior_analysis.models.report_models import EnvironmentReport
@@ -29,6 +32,7 @@ from user_behavior_analysis.models.report_models import VerificationReport
 from user_behavior_analysis.service.benchmark import benchmark_source
 from user_behavior_analysis.service.cleaning import run_cleaning
 from user_behavior_analysis.service.environment import check_environment
+from user_behavior_analysis.service.preprocessing import preprocess_dataset
 
 CommandResult = (
     BenchmarkReport
@@ -37,6 +41,7 @@ CommandResult = (
     | RegistrationReport
     | VerificationReport
     | CleaningReport
+    | PreprocessingReport
 )
 LOGGER = logging.getLogger(__name__)
 
@@ -68,11 +73,16 @@ def _parser() -> argparse.ArgumentParser:
     command.add_argument("--policy", default="configs/cleaning.json")
     command.add_argument("--output-dir", default="data/interim/clean_v1")
     command.add_argument("--report-dir", default="outputs/reports/stage1_step3")
+    command = commands.add_parser("preprocess")
+    command.add_argument("--catalog", default="data/catalog/clean_v1.json")
+    command.add_argument("--policy", default="configs/preprocessing.json")
+    command.add_argument("--output-dir", default="data/processed/base_v1")
+    command.add_argument("--report-dir", default="outputs/reports/stage1_step4")
     commands.add_parser("check-git")
     return parser
 
 
-def _execute(arguments: argparse.Namespace) -> CommandResult:
+def _execute_artifact(arguments: argparse.Namespace) -> CommandResult:
     if arguments.command == "check-git":
         git_report = check_git_files()
         if git_report["issues"]:
@@ -90,6 +100,20 @@ def _execute(arguments: argparse.Namespace) -> CommandResult:
         return {"manifest": str(output.relative_to(PROJECT_ROOT)), "artifact": artifact}
     if arguments.command == "verify":
         return verify_artifact(arguments.manifest, arguments.path)
+    raise ValueError("Unsupported artifact command")
+
+
+def _execute(arguments: argparse.Namespace) -> CommandResult:
+    if arguments.command in {"check-git", "register", "verify"}:
+        return _execute_artifact(arguments)
+    if arguments.command == "preprocess":
+        preprocessing_request = PreprocessingRequest(
+            Path(arguments.catalog),
+            Path(arguments.output_dir),
+            Path(arguments.report_dir),
+            load_preprocessing_policy(arguments.policy),
+        )
+        return preprocess_dataset(preprocessing_request)
     config = load_config(cast(str | None, arguments.config))
     source = resolve_source(config, cast(str | None, arguments.data))
     output_dir = project_output_path(cast(str, arguments.output_dir))

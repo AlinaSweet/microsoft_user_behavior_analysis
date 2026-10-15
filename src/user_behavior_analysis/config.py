@@ -18,6 +18,7 @@ from user_behavior_analysis.models.config_models import ClusterSettings
 from user_behavior_analysis.models.config_models import MemoryThresholds
 from user_behavior_analysis.models.config_models import ProjectConfig
 from user_behavior_analysis.models.config_models import SourceSettings
+from user_behavior_analysis.models.preprocessing_models import PreprocessingPolicy
 
 
 def _mapping(value: object, field: str) -> dict[str, object]:
@@ -204,5 +205,47 @@ def load_cleaning_policy(path: Path | str) -> CleaningPolicy:
         minimum,
         maximum,
         tuple(behaviors),
+        _text(document.get("policy_version"), "policy_version"),
+    )
+
+
+def load_preprocessing_policy(path: Path | str) -> PreprocessingPolicy:
+    """Load bounded encoding and comparison settings from JSON.
+
+    Args:
+        path: Existing preprocessing policy file.
+
+    Returns:
+        Validated storage, batching, and read-comparison settings.
+
+    Raises:
+        ValueError: Any setting violates the declared resource boundaries.
+    """
+    document = _mapping(
+        json.loads(input_file_path(path).read_text(encoding="utf-8")),
+        "preprocessing",
+    )
+    values = {
+        name: _integer(document.get(name), name)
+        for name in (
+            "batch_rows",
+            "row_group_rows",
+            "compression_level",
+            "dictionary_category_limit",
+            "benchmark_repeats",
+        )
+    }
+    if max(values["batch_rows"], values["row_group_rows"]) > 500000:
+        raise ValueError("Preprocessing batches must not exceed 500000 records")
+    if values["compression_level"] > 9 or values["benchmark_repeats"] > 5:
+        raise ValueError("Compression or repeat settings exceed project bounds")
+    if values["dictionary_category_limit"] > 100000:
+        raise ValueError("Category dictionary collection is bounded at 100000")
+    return PreprocessingPolicy(
+        values["batch_rows"],
+        values["row_group_rows"],
+        values["compression_level"],
+        values["dictionary_category_limit"],
+        values["benchmark_repeats"],
         _text(document.get("policy_version"), "policy_version"),
     )

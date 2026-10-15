@@ -6,19 +6,9 @@ from pathlib import Path
 
 import pandas as pd
 
+from user_behavior_analysis.common.event_values import canonical_event_bytes
 from user_behavior_analysis.dao.cleaning_repository import CLEAN_EVENTS
 from user_behavior_analysis.models.cleaning_models import ExportIntegrity
-
-
-def _frame_bytes(frame: pd.DataFrame) -> bytes:
-    canonical = frame.copy()
-    canonical["event_time"] = pd.to_datetime(canonical["event_time"]).dt.strftime(
-        "%Y-%m-%d %H:%M:%S"
-    )
-    values = pd.util.hash_pandas_object(
-        canonical.astype("string[pyarrow]"), index=False, categorize=False
-    ).to_numpy(dtype="uint64")
-    return values.tobytes()
 
 
 def verify_export(
@@ -47,11 +37,11 @@ def verify_export(
     columns = [entry[0] for entry in cursor.description]
     while rows := cursor.fetchmany(batch_rows):
         frame = pd.DataFrame.from_records(rows, columns=columns)
-        expected.update(_frame_bytes(frame))
+        expected.update(canonical_event_bytes(frame))
         expected_rows += len(frame)
     for path in paths:
         frame = pd.read_parquet(path)
-        exported.update(_frame_bytes(frame))
+        exported.update(canonical_event_bytes(frame))
         exported_rows += len(frame)
     expected_digest = expected.hexdigest()
     exported_digest = exported.hexdigest()
