@@ -1,0 +1,190 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-15T13:35:19.128624+00:00",
+  "auditor_code_commit": "610155581be2458a2be1c2481aa7948a5118adc2",
+  "build_report_sha256": "8dc37cf20ab41cf6a1a235353cd1418ab256c7e109383f9652bb528f825c9434",
+  "analysis_report_sha256": "933d6822a4e39e0e3153b321137257638fcc77cfdbedaabcd47f09f96c687b73",
+  "checks": {
+    "database_report_passed": true,
+    "analysis_report_passed": true,
+    "registered_source_catalog_unchanged": true,
+    "database_fingerprint_and_path": true,
+    "every_native_source_value": true,
+    "all_eleven_queries": true,
+    "all_exported_query_values": true,
+    "all_query_sources_unchanged": true,
+    "previous_complete_stage": true
+  },
+  "native_source_values": {
+    "name": "canonical_source_to_database",
+    "status": "passed",
+    "rows": 6213379,
+    "mismatched_rows": 0,
+    "checks": {
+      "source_row_count": true,
+      "every_source_value": true,
+      "no_extra_database_rows": true,
+      "sqlite_integrity": true,
+      "foreign_keys": true
+    }
+  },
+  "query_exports": [
+    {
+      "name": "overview",
+      "status": "passed",
+      "rows": 1,
+      "mismatched_rows": 0,
+      "checks": {
+        "file_fingerprints": true,
+        "complete_inventory": true,
+        "schema": true,
+        "row_count": true,
+        "every_exported_value": true,
+        "no_extra_query_rows": true
+      }
+    },
+    {
+      "name": "behavior_distribution",
+      "status": "passed",
+      "rows": 4,
+      "mismatched_rows": 0,
+      "checks": {
+        "file_fingerprints": true,
+        "complete_inventory": true,
+        "schema": true,
+        "row_count": true,
+        "every_exported_value": true,
+        "no_extra_query_rows": true
+      }
+    },
+    {
+      "name": "daily_active",
+      "status": "passed",
+      "rows": 31,
+      "mismatched_rows": 0,
+      "checks": {
+        "file_fingerprints": true,
+        "complete_inventory": true,
+        "schema": true,
+        "row_count": true,
+        "every_exported_value": true,
+        "no_extra_query_rows": true
+      }
+    },
+    {
+      "name": "weekly_active",
+      "status": "passed",
+      "rows": 5,
+      "mismatched_rows": 0,
+      "checks": {
+        "file_fingerprints": true,
+        "complete_inventory": true,
+        "schema": true,
+        "row_count": true,
+        "every_exported_value": true,
+        "no_extra_query_rows": true
+      }
+    },
+    {
+      "name": "popular_items",
+      "status": "passed",
+      "rows": 50,
+      "mismatched_rows": 0,
+      "checks": {
+        "file_fingerprints": true,
+        "complete_inventory": true,
+        "schema": true,
+        "row_count": true,
+        "every_exported_value": true,
+        "no_extra_query_rows": true
+      }
+    },
+    {
+      "name": "popular_categories",
+      "status": "passed",
+      "rows": 50,
+      "mismatched_rows": 0,
+      "checks": {
+        "file_fingerprints": true,
+        "complete_inventory": true,
+        "schema": true,
+        "row_count": true,
+        "every_exported_value": true,
+        "no_extra_query_rows": true
+      }
+    },
+    {
+      "name": "user_sequences",
+      "status": "passed",
+      "rows": 6213379,
+      "mismatched_rows": 0,
+      "checks": {
+        "file_fingerprints": true,
+        "complete_inventory": true,
+        "schema": true,
+        "row_count": true,
+        "every_exported_value": true,
+        "no_extra_query_rows": true
+      }
+    },
+    {
+      "name": "funnel_reach",
+      "status": "passed",
+      "rows": 4,
+      "mismatched_rows": 0,
+      "checks": {
+        "file_fingerprints": true,
+        "complete_inventory": true,
+        "schema": true,
+        "row_count": true,
+        "every_exported_value": true,
+        "no_extra_query_rows": true
+      }
+    },
+    {
+      "name": "strict_funnel",
+      "status": "passed",
+      "rows": 1,
+      "mismatched_rows": 0,
+      "checks": {
+        "file_fingerprints": true,
+        "complete_inventory": true,
+        "schema": true,
+        "row_count": true,
+        "every_exported_value": true,
+        "no_extra_query_rows": true
+      }
+    },
+    {
+      "name": "user_proxy_segments",
+      "status": "passed",
+      "rows": 10000,
+      "mismatched_rows": 0,
+      "checks": {
+        "file_fingerprints": true,
+        "complete_inventory": true,
+        "schema": true,
+        "row_count": true,
+        "every_exported_value": true,
+        "no_extra_query_rows": true
+      }
+    },
+    {
+      "name": "item_repurchase",
+      "status": "passed",
+      "rows": 92753,
+      "mismatched_rows": 0,
+      "checks": {
+        "file_fingerprints": true,
+        "complete_inventory": true,
+        "schema": true,
+        "row_count": true,
+        "every_exported_value": true,
+        "no_extra_query_rows": true
+      }
+    }
+  ],
+  "previous_stage_audit": "outputs/reports/stage2_step1_audit_20261015_01/previous_stage1/audit.json",
+  "previous_stage_exit_code": 0,
+  "previous_stage_log_sha256": "35b96491062f39ce07c7c078a3389520a40b387114112d5b59ca927c42293c53"
+}

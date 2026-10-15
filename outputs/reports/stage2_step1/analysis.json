@@ -1,0 +1,2090 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-15T11:40:30.615047+00:00",
+  "code_commit": "d36150ccb99ac6207409c0ddfa4667cf6cb15f90",
+  "database_path": "data/processed/sqlite_v1/behavior_store.sqlite",
+  "database_sha256": "afb3d12ef197d360c092dbf44df856b65c192e63ffe26c15805b60c9699628ab",
+  "start_time": "2025-11-18 00:00:00",
+  "end_time_exclusive": "2025-12-19 00:00:00",
+  "window_days": 7,
+  "query_sha256": {
+    "overview": "3515eb829ed89280882d509e02467bef8d4f6ed23a54b1e639186df2b3d1f828",
+    "behavior_distribution": "75e3107b473f5189fed8fecb49b4442ec852267e5cf206d9cd4b5f55ddcf5079",
+    "daily_active": "2d4796852c2a8d1dd52887d174b39c8a8954616ed3fd6113af4bb9b4bd4d4174",
+    "weekly_active": "939792ed0f061ac73be00364ad2e46c8454af979347efd94b7ad5242c961f46a",
+    "popular_items": "fb31ac7b926b4232b21b31d05128efdcdc3aa578aca77f213f63b4c5779aa4a8",
+    "popular_categories": "ef8a740d822049f3a536ac4e17d32857cf342e26dbf85646394c18d6e921c2a2",
+    "user_sequences": "95cf8ebfb3733ab9d074b84fa938b49ee73022244a36dc9eec4795c8cab13766",
+    "funnel_reach": "7660e290cf9b70c3db4cceed2547fe7795fc01a689fd7fa10c0d70f0f1ebeef1",
+    "strict_funnel": "c4950c8b88859e16584850a90b3381eb8282054075015e244ea99bc9ff09f601",
+    "user_proxy_segments": "b3fa6d7fc41b65ae55bff3e2ef094a956951e96d73c84c080a25c89dee397607",
+    "item_repurchase": "ab93933b28f3ebc6668cc525f7c2c6e92e99ffa83101034d56bfc688d814d2e1"
+  },
+  "queries": [
+    {
+      "name": "overview",
+      "rows": 1,
+      "columns": [
+        "events",
+        "users",
+        "items",
+        "categories",
+        "first_event_time",
+        "last_event_time"
+      ],
+      "elapsed_seconds": 130.9074,
+      "files": [
+        {
+          "path": "data/processed/sql_analysis_v1/overview/part_00000.parquet",
+          "size_bytes": 4224,
+          "sha256": "424b7d3666c85a96707c218dbdf2e48e12b11759ffe7bdc4481c71618ab68c43"
+        }
+      ]
+    },
+    {
+      "name": "behavior_distribution",
+      "rows": 4,
+      "columns": [
+        "behavior_type",
+        "events",
+        "event_share",
+        "users"
+      ],
+      "elapsed_seconds": 2.8757,
+      "files": [
+        {
+          "path": "data/processed/sql_analysis_v1/behavior_distribution/part_00000.parquet",
+          "size_bytes": 3079,
+          "sha256": "e1baca1b66be7674419e97d7478e0380e00598e5cb985a9a646d51d1dfd14a4b"
+        }
+      ]
+    },
+    {
+      "name": "daily_active",
+      "rows": 31,
+      "columns": [
+        "event_date",
+        "active_users",
+        "events",
+        "buy_records"
+      ],
+      "elapsed_seconds": 3.5058,
+      "files": [
+        {
+          "path": "data/processed/sql_analysis_v1/daily_active/part_00000.parquet",
+          "size_bytes": 3522,
+          "sha256": "451c816548f6b04b64bbd0a9d2b5746726f4bd769bc223f5658695ea5d0b16b0"
+        }
+      ]
+    },
+    {
+      "name": "weekly_active",
+      "rows": 5,
+      "columns": [
+        "week_start_monday",
+        "active_users",
+        "events",
+        "observed_days"
+      ],
+      "elapsed_seconds": 7.6901,
+      "files": [
+        {
+          "path": "data/processed/sql_analysis_v1/weekly_active/part_00000.parquet",
+          "size_bytes": 3155,
+          "sha256": "ebd72e911ecdc1739da7b37d8244e6a66364608fee263f699ea3142e4d2293c6"
+        }
+      ]
+    },
+    {
+      "name": "popular_items",
+      "rows": 50,
+      "columns": [
+        "item_id",
+        "category_id",
+        "events",
+        "users",
+        "buy_records"
+      ],
+      "elapsed_seconds": 78.643,
+      "files": [
+        {
+          "path": "data/processed/sql_analysis_v1/popular_items/part_00000.parquet",
+          "size_bytes": 4358,
+          "sha256": "cf8a2b648aec49e8414f2faf862eb94a6ba4ced97e86477a1005c462840a0861"
+        }
+      ]
+    },
+    {
+      "name": "popular_categories",
+      "rows": 50,
+      "columns": [
+        "category_id",
+        "events",
+        "users",
+        "items",
+        "buy_records"
+      ],
+      "elapsed_seconds": 84.6365,
+      "files": [
+        {
+          "path": "data/processed/sql_analysis_v1/popular_categories/part_00000.parquet",
+          "size_bytes": 4539,
+          "sha256": "5b4dba78900ca35fbb745c6a5e966c466f48617b7a65d803328dc922e9fffe27"
+        }
+      ]
+    },
+    {
+      "name": "user_sequences",
+      "rows": 6213379,
+      "columns": [
+        "event_id",
+        "user_id",
+        "item_id",
+        "behavior_type",
+        "event_time",
+        "technical_sequence_position",
+        "same_hour_events",
+        "next_behavior_type",
+        "next_event_time",
+        "next_gap_seconds"
+      ],
+      "elapsed_seconds": 87.0709,
+      "files": [
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00000.parquet",
+          "size_bytes": 609589,
+          "sha256": "b5320d737ebb59027bc526efe1d1498141a1ef73b8c4767c5d7662d6c706e4b8"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00001.parquet",
+          "size_bytes": 622422,
+          "sha256": "258b2d8fe7ddea9d95d7cf7282854517d9128726245d1becf0b38c96effe71b7"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00002.parquet",
+          "size_bytes": 600287,
+          "sha256": "ad7be54327bfd440716c5e08ab15910ff3b26f695759410860bead34264d9f21"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00003.parquet",
+          "size_bytes": 603133,
+          "sha256": "5341c5f2e4525fe1ec8b8e30a59aca2d8da3d74668bfb3530a500fc248f6cdcd"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00004.parquet",
+          "size_bytes": 608236,
+          "sha256": "a68a723c7c31956d5fc14b9f0d5b74909c7fe3097b16b5a0b96e4cb9a8b790e5"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00005.parquet",
+          "size_bytes": 601980,
+          "sha256": "882609baa265cd2c00f3b4c00e51a9c3b68213e234bdab87bd0d884ae7cf43c9"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00006.parquet",
+          "size_bytes": 616016,
+          "sha256": "c24dbe2eab069053b0239facac1df4dbb276fcd9bb81afbf5f06c20ea4510995"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00007.parquet",
+          "size_bytes": 602750,
+          "sha256": "33460d1602fd64c34b0d69fd8ceec9aa82d44ce52927fe8cd1429bd3d2bd0062"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00008.parquet",
+          "size_bytes": 626368,
+          "sha256": "5da727b8cbc43f7d1e6750b1610401b27d99f250bbc457fca2b59a7dfc32ed7b"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00009.parquet",
+          "size_bytes": 604988,
+          "sha256": "07cf50fe1f1405d870ec42e65df3fb5f2a59f75babdc2b06194e79bd69918025"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00010.parquet",
+          "size_bytes": 615035,
+          "sha256": "a2e34513e86c86d41f23a7b80ccfb609c591c62db80e1f75f85a16a2a88305aa"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00011.parquet",
+          "size_bytes": 606034,
+          "sha256": "7cae32bf83a05f4408c74af3c4736954c5edf61deb4baedb96b641bb675ac15f"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00012.parquet",
+          "size_bytes": 597855,
+          "sha256": "c9f13d9e4c94bebe65370d7bc9145e2e3a98a5596447aa629b3d543cb96fcabf"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00013.parquet",
+          "size_bytes": 604410,
+          "sha256": "be45119c26253aa0672e23d39c066ad613a0cc66fcb128ed27af42e16262441a"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00014.parquet",
+          "size_bytes": 619622,
+          "sha256": "17e4c4b709bc8bef67a9e30b226378482c8f17bcb9104ce91a1e578ec05f203c"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00015.parquet",
+          "size_bytes": 630608,
+          "sha256": "cb1a4fbcde3646ac718dfb043971a8c74ce09b113e9d856bc6de5fe970b7d05f"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00016.parquet",
+          "size_bytes": 607477,
+          "sha256": "f15b274ec1b0c44e7cbc53cfef8099edc8cfbec6858b69e830b1bae7fd665338"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00017.parquet",
+          "size_bytes": 626525,
+          "sha256": "1a242a5b26164d35b05a6af7e174ed1b59c072c1842f993b8821428ea35bed70"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00018.parquet",
+          "size_bytes": 600665,
+          "sha256": "4591772ee63a9c2953f1b8825a2bb22c558d575645a410daaff4e27c8d2d92f2"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00019.parquet",
+          "size_bytes": 605549,
+          "sha256": "850ebab1b102808fcd3ad877974c6ac008ca4c4c76106bd0a983d4a4ec9f9789"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00020.parquet",
+          "size_bytes": 598645,
+          "sha256": "7e989715cac16a64df9d8ea9283ecf8001a7c63029997372bed6b9f9979ff0f1"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00021.parquet",
+          "size_bytes": 606575,
+          "sha256": "6e85b93d67b5d7c9e32fb1017580aec08015bdb907be767e9ad0c63230e53391"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00022.parquet",
+          "size_bytes": 621934,
+          "sha256": "17cb18dc3bb9c2c8c940ec524e13ea2cfb77e11a991e1c70370da80b5e1669c0"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00023.parquet",
+          "size_bytes": 613867,
+          "sha256": "2cae1ff3603ae027e39b123ce047792b94fbf74203acc4bcaf7ac69f261d4227"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00024.parquet",
+          "size_bytes": 598049,
+          "sha256": "3d0a46ba15586aa976c3677384e3fcaffffb3028af846a01d50368010521700f"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00025.parquet",
+          "size_bytes": 598203,
+          "sha256": "d822e65c0e5271a17ebff7a1a9f6c3212e5d69c0714586b88cc7af3ab2ef160b"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00026.parquet",
+          "size_bytes": 596110,
+          "sha256": "1bc6b35e95df0356f09490962403dcb74508252d7294d9ae0744b877b295e2a5"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00027.parquet",
+          "size_bytes": 604060,
+          "sha256": "e6b11d9e5a5cc0b53aa7751b61431ef33328fc7a0b2904131e75bb4e25a1dd46"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00028.parquet",
+          "size_bytes": 595013,
+          "sha256": "9912797ef99afebf69b07099773164edacbf998e61f24c1488abb7373e9a3e5a"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00029.parquet",
+          "size_bytes": 606711,
+          "sha256": "fd13a9e3cbe89f3d7d0fe5ac2d684619756d9bdeed23d2fa1f221983c05c627a"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00030.parquet",
+          "size_bytes": 608958,
+          "sha256": "e898e777d5f3292c48410ca41750585cc53cce6c465be51898ea539c34b8035a"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00031.parquet",
+          "size_bytes": 630458,
+          "sha256": "4a83edaa6e10d503da50837bb6e51ddff6a90c201f7f5151b6fdbcdae6bcf302"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00032.parquet",
+          "size_bytes": 596864,
+          "sha256": "46ff8a060befeadd784e096d7bd02cb97ef9ca1a085374d5e6d8f328a449973e"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00033.parquet",
+          "size_bytes": 607683,
+          "sha256": "09a3ca54606a66e2816b72d5c0e9c014a90286bc293a2de1a775c860263a1a43"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00034.parquet",
+          "size_bytes": 611708,
+          "sha256": "0ae846d5fbeb54b5ad8622ad583f3b2a64e32f5b8e115cff602e17a9189d7838"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00035.parquet",
+          "size_bytes": 625799,
+          "sha256": "abe97065a414246f420127e701c3ec7c081b4eaebfa226f46dc64d6bf7a4a31f"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00036.parquet",
+          "size_bytes": 621735,
+          "sha256": "6135846803672ad66218e1e5e6502e1571f8453a5d42c9f14267dc58dacad54c"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00037.parquet",
+          "size_bytes": 600050,
+          "sha256": "b3ee865ef401775d3c212a868efa857cd5bf93bc01b0714563077ca2c8c88fd9"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00038.parquet",
+          "size_bytes": 618364,
+          "sha256": "082737f7e64e291eed4e1541718c99c1b98860930621b549703129073dab68df"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00039.parquet",
+          "size_bytes": 594246,
+          "sha256": "6bc6d1e1fbc17f52c76a10a49e8eafe0116e648d06d0bc34de81a3cc5bc757c7"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00040.parquet",
+          "size_bytes": 604336,
+          "sha256": "79bcbfdc758591660626bf36d578533f0cc3e0f9c6b4b703023b78d5be300640"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00041.parquet",
+          "size_bytes": 602902,
+          "sha256": "0c1444c387e80fabdd704a2295fad1e155377a91a3447323d9b08d7b91d5bdfa"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00042.parquet",
+          "size_bytes": 617584,
+          "sha256": "f6efb2cea8bc137e0c2768405f31377db97f0449df60ecf89605719d4b5a3d24"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00043.parquet",
+          "size_bytes": 628578,
+          "sha256": "cb1fc690cb6b5770f25abecb80c275869e48d9090778e660b94e2d53e8045705"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00044.parquet",
+          "size_bytes": 596013,
+          "sha256": "e702e7c6d3979edd0e223d8f18e236b45e1138c1484332825fca23ab7dd998b2"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00045.parquet",
+          "size_bytes": 601601,
+          "sha256": "6691986ec72493d757da51632b2083afccf826c4d34ed29c18e548da937ab456"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00046.parquet",
+          "size_bytes": 603460,
+          "sha256": "5fb598abe111402cb94c69ff05c4af095ac9531c055b4bc78c755609e8b29ddf"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00047.parquet",
+          "size_bytes": 623239,
+          "sha256": "8a18c2d705b544afacc3175ace3a1ffa52d863c19caaf31659536b4f4214fcd1"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00048.parquet",
+          "size_bytes": 623360,
+          "sha256": "04bc5fc3131af5cd03ff98edf785fc7cf94865dd61b9e10898ce1446c67b3e12"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00049.parquet",
+          "size_bytes": 596966,
+          "sha256": "cb40e09a48bcb2f0975c15c14d79853537757b5c54487b059d1a65c098156696"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00050.parquet",
+          "size_bytes": 624128,
+          "sha256": "b0a5262017f648854c634be44b14d4651a5df4dbbc760a78f7bb48a3bc78a7d1"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00051.parquet",
+          "size_bytes": 637941,
+          "sha256": "e7cac4a145f84540b418dc1a26357a6ea50d9ce7a17856e38b1bc1fa1a3c263b"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00052.parquet",
+          "size_bytes": 607784,
+          "sha256": "fd897247e2ff6a8e25151f2b59e93db922dd853ae681eb790bd408694c4e7af4"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00053.parquet",
+          "size_bytes": 603231,
+          "sha256": "6187d6d919697fa9333e9ee29086c6d0955ce030fe5054e4997f164429cbe76f"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00054.parquet",
+          "size_bytes": 600651,
+          "sha256": "fc71c951be1e886e8f17f565fbb35eee67017588fa421baae9d2084dcf97eda4"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00055.parquet",
+          "size_bytes": 603832,
+          "sha256": "32fe74b61fca2f6c4dee3d46f4c0e09f64af3201b0f3e88c08906e743d32e1f4"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00056.parquet",
+          "size_bytes": 619156,
+          "sha256": "3836957b914ce941f019ecd318d58478f86c28a0db73024feb83aaa8117b1792"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00057.parquet",
+          "size_bytes": 630512,
+          "sha256": "7bd7bd0ab3135a57f31f7ec85f64663ad0b48bb3cd0780632feaeb3c5956cef6"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00058.parquet",
+          "size_bytes": 604036,
+          "sha256": "aec4f5a1814af219f8dbcbd8837b4b00b7d45d6f979344dd17cf36eaa07be3c5"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00059.parquet",
+          "size_bytes": 631036,
+          "sha256": "dd20a441a32949392b9987b084c59239369c6b57c2b8f6d46d5ec1b1a67b0328"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00060.parquet",
+          "size_bytes": 620554,
+          "sha256": "3d52167bf2cb743e01cf74791456fd7125813da7c8ad1951ee9a064b8d32da26"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00061.parquet",
+          "size_bytes": 600783,
+          "sha256": "8a03dc1d25c8d724d23e4a541e1b8c796f250115564c4af84e02ec127fbda159"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00062.parquet",
+          "size_bytes": 635849,
+          "sha256": "11a9d9d8ca7404989ecf0ae91955564e4a27ae4042f717168c2993fcb86166fb"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00063.parquet",
+          "size_bytes": 624270,
+          "sha256": "72694c69628464f22f75c81779abf3b461364161ea86a9a65235c8ef028db0d0"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00064.parquet",
+          "size_bytes": 613411,
+          "sha256": "a16558b7089348bd9de7d026aa6a17ef78d34b2f5cb6b494d1d7c98499912af2"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00065.parquet",
+          "size_bytes": 628797,
+          "sha256": "9141721b9feb202278d7ec192272e50b84b6636b8eef6788ccb7a40fcfa11281"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00066.parquet",
+          "size_bytes": 601938,
+          "sha256": "3cdfd8727f448dcb102057efcf11c444935f179664fd1a4217d462f0bee8eafa"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00067.parquet",
+          "size_bytes": 604124,
+          "sha256": "78bd2b4e261faacd0d92987879ef04ed4a784e81cdda10e4a34791e8cfe806d6"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00068.parquet",
+          "size_bytes": 604798,
+          "sha256": "4e384adda430c7765287af03988201f585809f57dc648cdfb78e0a30dffc3fac"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00069.parquet",
+          "size_bytes": 593303,
+          "sha256": "c61a4077d3d8214c8623d8608a1a130ee0ac8946fe8da05d84fc23f1e6461cd4"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00070.parquet",
+          "size_bytes": 606567,
+          "sha256": "390b8ea039b7d0ea7187e6407261c39be3b0b374c01c04bdc6cf44eab75180c0"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00071.parquet",
+          "size_bytes": 630886,
+          "sha256": "7298aec6a559a756da365e436540679284d4e401c23967e0ca0cd7978a6c4d55"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00072.parquet",
+          "size_bytes": 608013,
+          "sha256": "34cdb430472c8793a52f3a2e7d7bbe8d8639937f4b861c584dc0bf3fa214e44c"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00073.parquet",
+          "size_bytes": 597918,
+          "sha256": "8020dd893b8c09d79bf7df1ebe0f8ec18d1244d236ca4bf20d3ba7ec62cb4bc2"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00074.parquet",
+          "size_bytes": 605761,
+          "sha256": "f660eaaa19af43f9a17bffbbce2b53a189708d72c2ac0cf6ad98333fdc6d6932"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00075.parquet",
+          "size_bytes": 605259,
+          "sha256": "e6787c0de16176b815c20671992987bdc904cb25b66c791fdb32b135663807e2"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00076.parquet",
+          "size_bytes": 632968,
+          "sha256": "ff0637ec3ec1cb05c3e44cfc25da2b99bb8dfddd7e2043af6d4abfd9bf38d6c8"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00077.parquet",
+          "size_bytes": 643097,
+          "sha256": "d62d3ad54115f2c552e9e34235e8d374e911035d8de9c1e65fd7f2242e165a4b"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00078.parquet",
+          "size_bytes": 626315,
+          "sha256": "58c0d8692041aaa302c1b95f30c725b2e03f5bc08a0e6364ccdb2014ff083f2e"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00079.parquet",
+          "size_bytes": 606691,
+          "sha256": "59e9ca213d153dbeb1fc82bf819588b2171220556eccaf63834eb3c0eb6c50a2"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00080.parquet",
+          "size_bytes": 604334,
+          "sha256": "465fa3fb66a11b08aa858498f3b18e3bc883447bdb5b11a419cdede5f833ab0e"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00081.parquet",
+          "size_bytes": 629158,
+          "sha256": "5593e611c778c0b8bff6b80f4c75a6a86f3f5ca35a120b7a22eaec848c14ae8f"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00082.parquet",
+          "size_bytes": 634880,
+          "sha256": "3e22356fed1305cf465ae45549c899b11fd85f88dabb1f0a3a62960aa3897bb5"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00083.parquet",
+          "size_bytes": 611405,
+          "sha256": "c910f87fd6af3e4ddfda467a30684ac1588f5b88076b7ae7dd23422e666be718"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00084.parquet",
+          "size_bytes": 624839,
+          "sha256": "33465a5f8346f77c35568b07b137bf8affb0547b7d0fb56b2be59600f3dcb4ba"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00085.parquet",
+          "size_bytes": 602798,
+          "sha256": "6da5a9fe4d41dd13152887183e9deb30f2c390665fc01fdb557c547cf9059285"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00086.parquet",
+          "size_bytes": 598073,
+          "sha256": "003e58cbae711ef4fa47af21f50cc38a22bc7e70b64d7e816e56f0a8619e062d"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00087.parquet",
+          "size_bytes": 606962,
+          "sha256": "68022919fe7afdf4794cb5a8b54330eb1464f3682c7041332099c361fda74b89"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00088.parquet",
+          "size_bytes": 592710,
+          "sha256": "21cddaa724a2d4a5b4e5860fb0dc415d1991782615ccf46e14b664fbec0b69d4"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00089.parquet",
+          "size_bytes": 600137,
+          "sha256": "c4a661df42c38d5418e5b5ae99d89314127c41beb7e6d54e92564df9bb534a83"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00090.parquet",
+          "size_bytes": 629031,
+          "sha256": "609cbe5fcc1fe5cfbf00ece8bdd9a5f9cf5e0d89d351c56c7df918146d08e5b7"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00091.parquet",
+          "size_bytes": 602696,
+          "sha256": "72e13acdce7fa07a52c50886fb0f8af48ec6569cc454a01b2c3bb8f53ae6d027"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00092.parquet",
+          "size_bytes": 605528,
+          "sha256": "51eafd36d01c26b8cac41602c88300829354e7b62636940103b76924c458c265"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00093.parquet",
+          "size_bytes": 601375,
+          "sha256": "044b85b262bbddb62f892fd93ba5d3c7ba946474b4439805ba80135fee15e384"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00094.parquet",
+          "size_bytes": 629375,
+          "sha256": "e537fcf1f00de1f097620799b99c32ef6dc95b9577f31cc1913788341399650a"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00095.parquet",
+          "size_bytes": 628758,
+          "sha256": "02198123acc516ddaea8d2ee6917efb55a2d22110b278d66427dcc40d48e2864"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00096.parquet",
+          "size_bytes": 616888,
+          "sha256": "834cb9a87e3259bb819f8899c0317e5d1398f470b23f75cc486f4d1306e38062"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00097.parquet",
+          "size_bytes": 659558,
+          "sha256": "2423f4393c77b397f0bdcc1ddcaff4f5354e471e3f8f78d8278e0d5df01d4984"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00098.parquet",
+          "size_bytes": 628952,
+          "sha256": "a1951dabc92374ef54cb44457a8ca2402280cf61432278560b23e9d0627336b1"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00099.parquet",
+          "size_bytes": 607699,
+          "sha256": "acdf209b242e46f909a943071287d1d0ed98a950720675390eca3b0ea0dfab22"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00100.parquet",
+          "size_bytes": 604880,
+          "sha256": "cb36f6891971f7edfea83ae73eec1e78dc25a1594a347480185ec68455e3c7d8"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00101.parquet",
+          "size_bytes": 614071,
+          "sha256": "708569b3a7d126ba54a88e3c1460b899f6039f5b8bc319a4ab566d712608ebac"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00102.parquet",
+          "size_bytes": 598928,
+          "sha256": "bb219fa69464f03d379a27f30c7c869227ce3813bb8ebae6d3aefc3ab558611f"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00103.parquet",
+          "size_bytes": 602368,
+          "sha256": "bd99602e65ea0d0a4565a9e0af03f544d4061584914585e61992e90d21bb139b"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00104.parquet",
+          "size_bytes": 622448,
+          "sha256": "736ba7d8ef88c130f252d60ecf6e7f458649eedc60b8d0e8c9c80f2749b8432a"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00105.parquet",
+          "size_bytes": 603463,
+          "sha256": "052d809617ec8f7b422a88c091954f58cab8a149cd625fd636332b18859ac531"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00106.parquet",
+          "size_bytes": 620064,
+          "sha256": "861d6212541770e463cc89ee78e3087d7e8988ef9ad406fd0909ca31eafff4e4"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00107.parquet",
+          "size_bytes": 635518,
+          "sha256": "6907949b347ab4509b9d132bf238a4d6aa87fa5a300d2ea081dbf70a8206eaf8"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00108.parquet",
+          "size_bytes": 624125,
+          "sha256": "9780196bf54dda89c8541988763cbaec0c2251cc7aa909707083721da0a3a9cc"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00109.parquet",
+          "size_bytes": 594468,
+          "sha256": "ab209cf6e8693fa4f26c08fb90c459eb7512d90941235a70b261158058bf42c7"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00110.parquet",
+          "size_bytes": 616896,
+          "sha256": "f4662ca3012b61f27b5a9f9283ca75832c2303bca332e07fc50910105ada30ea"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00111.parquet",
+          "size_bytes": 625392,
+          "sha256": "0c2858d2c3518f949ddce16fe12594b0fc19c7aead2a389c82851610beb529c1"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00112.parquet",
+          "size_bytes": 606592,
+          "sha256": "45c81600aa9ddbdc61ad15042a09f986dd80b290390907bdad2d6fc5485b7506"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00113.parquet",
+          "size_bytes": 593853,
+          "sha256": "43d98ecceb555c6ef58353dd5a05676d813f56468bdb78a7503533efaef8587c"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00114.parquet",
+          "size_bytes": 600544,
+          "sha256": "c4b4c032433b577254fb1c95d1838c01e2a6cbb989f4176cc7ae8a6ca9cb2fa3"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00115.parquet",
+          "size_bytes": 595872,
+          "sha256": "46ae089f87eaef45463beca436ada5d169e37599c2246db5b3b16841928ee8d0"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00116.parquet",
+          "size_bytes": 627268,
+          "sha256": "7539c254220430b5d5181e54ca7f5ba55426a483a8fbe9a8a206f6c4391a6b03"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00117.parquet",
+          "size_bytes": 597581,
+          "sha256": "d94f6c3ac16a66f953b04fca139068f0cb6881e9cc23ce4111116bcab7fb8069"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00118.parquet",
+          "size_bytes": 604818,
+          "sha256": "bb85d223196d8623dc2b14ad80d7fc5a3fb6397b1ba29147ab9aa7dc2a88867a"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00119.parquet",
+          "size_bytes": 595386,
+          "sha256": "bea840bbe5424fbd11a2f68d4077aa451b3caf0d45648f64649300db9ed00c7a"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00120.parquet",
+          "size_bytes": 597750,
+          "sha256": "444c4c7908870f8dc7db2112173fc587ade77853f74b9de5b4e1935a5023afb8"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00121.parquet",
+          "size_bytes": 613766,
+          "sha256": "563e9a4fb9443a0de8c3063f02e5e2a2ab74ffacd95fdd56e185c6cad7130999"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00122.parquet",
+          "size_bytes": 605412,
+          "sha256": "eb52173fc3515e0520430b8636c188bfe323e137e30c769522ef6f2aafc41ab4"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00123.parquet",
+          "size_bytes": 607575,
+          "sha256": "13bb9fcb5d2d56bc1471c7ef075a852c2a239a132fd200ffdc081011a01da42c"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/user_sequences/part_00124.parquet",
+          "size_bytes": 174525,
+          "sha256": "5b407fa78c30c0423943cbdf816fe617775ec1c673019f78bfbd6b8e825e1170"
+        }
+      ]
+    },
+    {
+      "name": "funnel_reach",
+      "rows": 4,
+      "columns": [
+        "behavior_type",
+        "observed_user_item_pairs",
+        "observed_users"
+      ],
+      "elapsed_seconds": 26.5784,
+      "files": [
+        {
+          "path": "data/processed/sql_analysis_v1/funnel_reach/part_00000.parquet",
+          "size_bytes": 2666,
+          "sha256": "d432990da1e7a7f600f39f4bfa1c6b0dd21d123df8cbb200ab3956e2f4441b9c"
+        }
+      ]
+    },
+    {
+      "name": "strict_funnel",
+      "rows": 1,
+      "columns": [
+        "observed_view_pairs",
+        "eligible_view_pairs",
+        "right_censored_pairs",
+        "cart_pairs",
+        "favorite_pairs",
+        "purchase_pairs"
+      ],
+      "elapsed_seconds": 118.4948,
+      "files": [
+        {
+          "path": "data/processed/sql_analysis_v1/strict_funnel/part_00000.parquet",
+          "size_bytes": 4494,
+          "sha256": "accfc20f72ddab27351b22d59d050d3a999617fc408fb0fd8a0d8542f3da13cd"
+        }
+      ]
+    },
+    {
+      "name": "user_proxy_segments",
+      "rows": 10000,
+      "columns": [
+        "user_id",
+        "events",
+        "last_active",
+        "last_buy",
+        "purchase_days",
+        "purchase_records",
+        "purchase_recency_days",
+        "inactive_days",
+        "segment"
+      ],
+      "elapsed_seconds": 12.717,
+      "files": [
+        {
+          "path": "data/processed/sql_analysis_v1/user_proxy_segments/part_00000.parquet",
+          "size_bytes": 134907,
+          "sha256": "c634aee119a9db2331abac4eb11883f5e99f114d56700060f482e9620a92f1ab"
+        }
+      ]
+    },
+    {
+      "name": "item_repurchase",
+      "rows": 92753,
+      "columns": [
+        "item_id",
+        "observed_buyers",
+        "eligible_buyers",
+        "repeat_buyers",
+        "repeat_user_rate_7d"
+      ],
+      "elapsed_seconds": 1.4979,
+      "files": [
+        {
+          "path": "data/processed/sql_analysis_v1/item_repurchase/part_00000.parquet",
+          "size_bytes": 335155,
+          "sha256": "c4461b73aca84b9fdd26560931f69ea6a249ac3b7805a33e08190b8338cf5c20"
+        },
+        {
+          "path": "data/processed/sql_analysis_v1/item_repurchase/part_00001.parquet",
+          "size_bytes": 286789,
+          "sha256": "13929d21274f5edd383eb7bcbdf230abffd3c434ebec037600c1819be17955f9"
+        }
+      ]
+    }
+  ],
+  "summaries": {
+    "overview": [
+      {
+        "events": 6213379,
+        "users": 10000,
+        "items": 2876947,
+        "categories": 8916,
+        "first_event_time": "2025-11-18 00:00:00",
+        "last_event_time": "2025-12-18 23:00:00"
+      }
+    ],
+    "behavior_distribution": [
+      {
+        "behavior_type": 1,
+        "events": 5535879,
+        "event_share": 0.8909611018,
+        "users": 10000
+      },
+      {
+        "behavior_type": 2,
+        "events": 239472,
+        "event_share": 0.0385413476,
+        "users": 6730
+      },
+      {
+        "behavior_type": 3,
+        "events": 331350,
+        "event_share": 0.0533284707,
+        "users": 8614
+      },
+      {
+        "behavior_type": 4,
+        "events": 106678,
+        "event_share": 0.0171690798,
+        "users": 8886
+      }
+    ],
+    "daily_active": [
+      {
+        "event_date": "2025-11-18",
+        "active_users": 6343,
+        "events": 186278,
+        "buy_records": 3324
+      },
+      {
+        "event_date": "2025-11-19",
+        "active_users": 6420,
+        "events": 181713,
+        "buy_records": 3208
+      },
+      {
+        "event_date": "2025-11-20",
+        "active_users": 6333,
+        "events": 178849,
+        "buy_records": 3052
+      },
+      {
+        "event_date": "2025-11-21",
+        "active_users": 6276,
+        "events": 168903,
+        "buy_records": 2656
+      },
+      {
+        "event_date": "2025-11-22",
+        "active_users": 6187,
+        "events": 183014,
+        "buy_records": 3116
+      },
+      {
+        "event_date": "2025-11-23",
+        "active_users": 6373,
+        "events": 194205,
+        "buy_records": 3014
+      },
+      {
+        "event_date": "2025-11-24",
+        "active_users": 6513,
+        "events": 191139,
+        "buy_records": 3054
+      },
+      {
+        "event_date": "2025-11-25",
+        "active_users": 6351,
+        "events": 186803,
+        "buy_records": 3086
+      },
+      {
+        "event_date": "2025-11-26",
+        "active_users": 6357,
+        "events": 183017,
+        "buy_records": 3127
+      },
+      {
+        "event_date": "2025-11-27",
+        "active_users": 6359,
+        "events": 188747,
+        "buy_records": 3255
+      },
+      {
+        "event_date": "2025-11-28",
+        "active_users": 6189,
+        "events": 172392,
+        "buy_records": 2876
+      },
+      {
+        "event_date": "2025-11-29",
+        "active_users": 6224,
+        "events": 185940,
+        "buy_records": 2859
+      },
+      {
+        "event_date": "2025-11-30",
+        "active_users": 6379,
+        "events": 204398,
+        "buy_records": 3259
+      },
+      {
+        "event_date": "2025-12-01",
+        "active_users": 6544,
+        "events": 200520,
+        "buy_records": 3427
+      },
+      {
+        "event_date": "2025-12-02",
+        "active_users": 6550,
+        "events": 206313,
+        "buy_records": 3252
+      },
+      {
+        "event_date": "2025-12-03",
+        "active_users": 6585,
+        "events": 209477,
+        "buy_records": 3441
+      },
+      {
+        "event_date": "2025-12-04",
+        "active_users": 6531,
+        "events": 203829,
+        "buy_records": 3287
+      },
+      {
+        "event_date": "2025-12-05",
+        "active_users": 6367,
+        "events": 183633,
+        "buy_records": 2883
+      },
+      {
+        "event_date": "2025-12-06",
+        "active_users": 6440,
+        "events": 198378,
+        "buy_records": 2906
+      },
+      {
+        "event_date": "2025-12-07",
+        "active_users": 6422,
+        "events": 202206,
+        "buy_records": 2881
+      }
+    ],
+    "weekly_active": [
+      {
+        "week_start_monday": "2025-11-17",
+        "active_users": 8964,
+        "events": 1092962,
+        "observed_days": 6
+      },
+      {
+        "week_start_monday": "2025-11-24",
+        "active_users": 9224,
+        "events": 1312436,
+        "observed_days": 7
+      },
+      {
+        "week_start_monday": "2025-12-01",
+        "active_users": 9354,
+        "events": 1404356,
+        "observed_days": 7
+      },
+      {
+        "week_start_monday": "2025-12-08",
+        "active_users": 9506,
+        "events": 1618471,
+        "observed_days": 7
+      },
+      {
+        "week_start_monday": "2025-12-15",
+        "active_users": 8947,
+        "events": 785154,
+        "observed_days": 4
+      }
+    ],
+    "popular_items": [
+      {
+        "item_id": "167074648",
+        "category_id": "8254",
+        "events": 206,
+        "users": 111,
+        "buy_records": 28
+      },
+      {
+        "item_id": "14087919",
+        "category_id": "5232",
+        "events": 375,
+        "users": 206,
+        "buy_records": 27
+      },
+      {
+        "item_id": "331710542",
+        "category_id": "8796",
+        "events": 76,
+        "users": 45,
+        "buy_records": 21
+      },
+      {
+        "item_id": "303205878",
+        "category_id": "13500",
+        "events": 299,
+        "users": 163,
+        "buy_records": 20
+      },
+      {
+        "item_id": "83098075",
+        "category_id": "6424",
+        "events": 273,
+        "users": 113,
+        "buy_records": 20
+      },
+      {
+        "item_id": "387911330",
+        "category_id": "6000",
+        "events": 519,
+        "users": 298,
+        "buy_records": 19
+      },
+      {
+        "item_id": "72183675",
+        "category_id": "1723",
+        "events": 161,
+        "users": 51,
+        "buy_records": 19
+      },
+      {
+        "item_id": "87546522",
+        "category_id": "3709",
+        "events": 165,
+        "users": 76,
+        "buy_records": 18
+      },
+      {
+        "item_id": "307792517",
+        "category_id": "8792",
+        "events": 216,
+        "users": 118,
+        "buy_records": 17
+      },
+      {
+        "item_id": "176556528",
+        "category_id": "7606",
+        "events": 105,
+        "users": 56,
+        "buy_records": 17
+      },
+      {
+        "item_id": "267331035",
+        "category_id": "4776",
+        "events": 63,
+        "users": 39,
+        "buy_records": 17
+      },
+      {
+        "item_id": "153804898",
+        "category_id": "7606",
+        "events": 138,
+        "users": 91,
+        "buy_records": 16
+      },
+      {
+        "item_id": "160115566",
+        "category_id": "8877",
+        "events": 133,
+        "users": 75,
+        "buy_records": 16
+      },
+      {
+        "item_id": "12744197",
+        "category_id": "7831",
+        "events": 50,
+        "users": 32,
+        "buy_records": 16
+      },
+      {
+        "item_id": "216776169",
+        "category_id": "1723",
+        "events": 134,
+        "users": 51,
+        "buy_records": 15
+      },
+      {
+        "item_id": "390181058",
+        "category_id": "8744",
+        "events": 102,
+        "users": 55,
+        "buy_records": 15
+      },
+      {
+        "item_id": "374214353",
+        "category_id": "11497",
+        "events": 177,
+        "users": 86,
+        "buy_records": 14
+      },
+      {
+        "item_id": "349051058",
+        "category_id": "12304",
+        "events": 135,
+        "users": 74,
+        "buy_records": 14
+      },
+      {
+        "item_id": "97655171",
+        "category_id": "6000",
+        "events": 589,
+        "users": 332,
+        "buy_records": 13
+      },
+      {
+        "item_id": "314903844",
+        "category_id": "12067",
+        "events": 262,
+        "users": 155,
+        "buy_records": 13
+      }
+    ],
+    "popular_categories": [
+      {
+        "category_id": "1863",
+        "events": 201110,
+        "users": 5997,
+        "items": 83354,
+        "buy_records": 1910
+      },
+      {
+        "category_id": "6344",
+        "events": 45671,
+        "users": 4157,
+        "items": 20401,
+        "buy_records": 1475
+      },
+      {
+        "category_id": "5232",
+        "events": 71772,
+        "users": 4972,
+        "items": 25900,
+        "buy_records": 1384
+      },
+      {
+        "category_id": "5399",
+        "events": 141726,
+        "users": 5312,
+        "items": 54559,
+        "buy_records": 1014
+      },
+      {
+        "category_id": "6513",
+        "events": 152148,
+        "users": 5288,
+        "items": 65045,
+        "buy_records": 1004
+      },
+      {
+        "category_id": "3424",
+        "events": 26400,
+        "users": 2478,
+        "items": 14365,
+        "buy_records": 930
+      },
+      {
+        "category_id": "5894",
+        "events": 169451,
+        "users": 5279,
+        "items": 83758,
+        "buy_records": 927
+      },
+      {
+        "category_id": "8877",
+        "events": 35267,
+        "users": 2309,
+        "items": 14425,
+        "buy_records": 913
+      },
+      {
+        "category_id": "13230",
+        "events": 177948,
+        "users": 5619,
+        "items": 74067,
+        "buy_records": 825
+      },
+      {
+        "category_id": "6977",
+        "events": 14115,
+        "users": 716,
+        "items": 7412,
+        "buy_records": 816
+      },
+      {
+        "category_id": "5027",
+        "events": 168103,
+        "users": 5499,
+        "items": 60323,
+        "buy_records": 815
+      },
+      {
+        "category_id": "10894",
+        "events": 71129,
+        "users": 4523,
+        "items": 33482,
+        "buy_records": 811
+      },
+      {
+        "category_id": "1838",
+        "events": 26565,
+        "users": 3165,
+        "items": 8851,
+        "buy_records": 775
+      },
+      {
+        "category_id": "9516",
+        "events": 44512,
+        "users": 2638,
+        "items": 21648,
+        "buy_records": 725
+      },
+      {
+        "category_id": "3064",
+        "events": 58085,
+        "users": 1991,
+        "items": 16562,
+        "buy_records": 724
+      },
+      {
+        "category_id": "7957",
+        "events": 25083,
+        "users": 1929,
+        "items": 13960,
+        "buy_records": 721
+      },
+      {
+        "category_id": "4370",
+        "events": 63009,
+        "users": 4518,
+        "items": 30437,
+        "buy_records": 717
+      },
+      {
+        "category_id": "11279",
+        "events": 94686,
+        "users": 4715,
+        "items": 47538,
+        "buy_records": 703
+      },
+      {
+        "category_id": "10392",
+        "events": 49751,
+        "users": 3832,
+        "items": 21316,
+        "buy_records": 686
+      },
+      {
+        "category_id": "3472",
+        "events": 26658,
+        "users": 3075,
+        "items": 12424,
+        "buy_records": 686
+      }
+    ],
+    "user_sequences": [
+      {
+        "event_id": 901632,
+        "user_id": "100001878",
+        "item_id": "62043367",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 07:00:00",
+        "technical_sequence_position": 1,
+        "same_hour_events": 11,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 07:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 1687837,
+        "user_id": "100001878",
+        "item_id": "147275703",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 07:00:00",
+        "technical_sequence_position": 2,
+        "same_hour_events": 11,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 07:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 1687877,
+        "user_id": "100001878",
+        "item_id": "180482329",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 07:00:00",
+        "technical_sequence_position": 3,
+        "same_hour_events": 11,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 07:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 1688245,
+        "user_id": "100001878",
+        "item_id": "399467781",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 07:00:00",
+        "technical_sequence_position": 4,
+        "same_hour_events": 11,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 07:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 1688485,
+        "user_id": "100001878",
+        "item_id": "403912915",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 07:00:00",
+        "technical_sequence_position": 5,
+        "same_hour_events": 11,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 07:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 1689069,
+        "user_id": "100001878",
+        "item_id": "84092928",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 07:00:00",
+        "technical_sequence_position": 6,
+        "same_hour_events": 11,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 07:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 3198982,
+        "user_id": "100001878",
+        "item_id": "184927790",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 07:00:00",
+        "technical_sequence_position": 7,
+        "same_hour_events": 11,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 07:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 3947577,
+        "user_id": "100001878",
+        "item_id": "62838622",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 07:00:00",
+        "technical_sequence_position": 8,
+        "same_hour_events": 11,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 07:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 6881151,
+        "user_id": "100001878",
+        "item_id": "27313096",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 07:00:00",
+        "technical_sequence_position": 9,
+        "same_hour_events": 11,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 07:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 9232765,
+        "user_id": "100001878",
+        "item_id": "381738719",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 07:00:00",
+        "technical_sequence_position": 10,
+        "same_hour_events": 11,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 07:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 9233981,
+        "user_id": "100001878",
+        "item_id": "81965318",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 07:00:00",
+        "technical_sequence_position": 11,
+        "same_hour_events": 11,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 11:00:00",
+        "next_gap_seconds": 14400.0
+      },
+      {
+        "event_id": 3947041,
+        "user_id": "100001878",
+        "item_id": "93786673",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 11:00:00",
+        "technical_sequence_position": 12,
+        "same_hour_events": 1,
+        "next_behavior_type": 3.0,
+        "next_event_time": "2025-11-18 14:00:00",
+        "next_gap_seconds": 10800.0
+      },
+      {
+        "event_id": 902696,
+        "user_id": "100001878",
+        "item_id": "374214353",
+        "behavior_type": 3,
+        "event_time": "2025-11-18 14:00:00",
+        "technical_sequence_position": 13,
+        "same_hour_events": 14,
+        "next_behavior_type": 3.0,
+        "next_event_time": "2025-11-18 14:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 1688581,
+        "user_id": "100001878",
+        "item_id": "144207739",
+        "behavior_type": 3,
+        "event_time": "2025-11-18 14:00:00",
+        "technical_sequence_position": 14,
+        "same_hour_events": 14,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 14:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 1688677,
+        "user_id": "100001878",
+        "item_id": "227275517",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 14:00:00",
+        "technical_sequence_position": 15,
+        "same_hour_events": 14,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 14:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 3197372,
+        "user_id": "100001878",
+        "item_id": "327592144",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 14:00:00",
+        "technical_sequence_position": 16,
+        "same_hour_events": 14,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 14:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 3197582,
+        "user_id": "100001878",
+        "item_id": "324354092",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 14:00:00",
+        "technical_sequence_position": 17,
+        "same_hour_events": 14,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 14:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 3198758,
+        "user_id": "100001878",
+        "item_id": "157176185",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 14:00:00",
+        "technical_sequence_position": 18,
+        "same_hour_events": 14,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 14:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 3198779,
+        "user_id": "100001878",
+        "item_id": "374214353",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 14:00:00",
+        "technical_sequence_position": 19,
+        "same_hour_events": 14,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 14:00:00",
+        "next_gap_seconds": 0.0
+      },
+      {
+        "event_id": 3948377,
+        "user_id": "100001878",
+        "item_id": "16456493",
+        "behavior_type": 1,
+        "event_time": "2025-11-18 14:00:00",
+        "technical_sequence_position": 20,
+        "same_hour_events": 14,
+        "next_behavior_type": 1.0,
+        "next_event_time": "2025-11-18 14:00:00",
+        "next_gap_seconds": 0.0
+      }
+    ],
+    "funnel_reach": [
+      {
+        "behavior_type": 1,
+        "observed_user_item_pairs": 4677501,
+        "observed_users": 10000
+      },
+      {
+        "behavior_type": 2,
+        "observed_user_item_pairs": 228240,
+        "observed_users": 6730
+      },
+      {
+        "behavior_type": 3,
+        "observed_user_item_pairs": 282429,
+        "observed_users": 8614
+      },
+      {
+        "behavior_type": 4,
+        "observed_user_item_pairs": 102996,
+        "observed_users": 8886
+      }
+    ],
+    "strict_funnel": [
+      {
+        "observed_view_pairs": 4677501,
+        "eligible_view_pairs": 3581365,
+        "right_censored_pairs": 1096136,
+        "cart_pairs": 74573,
+        "favorite_pairs": 768,
+        "purchase_pairs": 67
+      }
+    ],
+    "user_proxy_segments": [
+      {
+        "user_id": "100001878",
+        "events": 1406,
+        "last_active": "2025-12-18 23:00:00",
+        "last_buy": "2025-12-18 23:00:00",
+        "purchase_days": 15,
+        "purchase_records": 35,
+        "purchase_recency_days": 0.0,
+        "inactive_days": 0,
+        "segment": "high_value_proxy"
+      },
+      {
+        "user_id": "100011562",
+        "events": 234,
+        "last_active": "2025-12-18 18:00:00",
+        "last_buy": "2025-12-16 12:00:00",
+        "purchase_days": 3,
+        "purchase_records": 3,
+        "purchase_recency_days": 2.0,
+        "inactive_days": 0,
+        "segment": "potential_proxy"
+      },
+      {
+        "user_id": "100012968",
+        "events": 185,
+        "last_active": "2025-12-18 22:00:00",
+        "last_buy": "2025-12-18 11:00:00",
+        "purchase_days": 11,
+        "purchase_records": 13,
+        "purchase_recency_days": 0.0,
+        "inactive_days": 0,
+        "segment": "high_value_proxy"
+      },
+      {
+        "user_id": "100014060",
+        "events": 538,
+        "last_active": "2025-12-18 19:00:00",
+        "last_buy": "2025-12-18 15:00:00",
+        "purchase_days": 12,
+        "purchase_records": 20,
+        "purchase_recency_days": 0.0,
+        "inactive_days": 0,
+        "segment": "high_value_proxy"
+      },
+      {
+        "user_id": "100024529",
+        "events": 637,
+        "last_active": "2025-12-18 06:00:00",
+        "last_buy": "2025-12-16 14:00:00",
+        "purchase_days": 9,
+        "purchase_records": 25,
+        "purchase_recency_days": 2.0,
+        "inactive_days": 0,
+        "segment": "high_value_proxy"
+      },
+      {
+        "user_id": "100027681",
+        "events": 971,
+        "last_active": "2025-12-18 16:00:00",
+        "last_buy": "2025-12-14 10:00:00",
+        "purchase_days": 16,
+        "purchase_records": 42,
+        "purchase_recency_days": 4.0,
+        "inactive_days": 0,
+        "segment": "high_value_proxy"
+      },
+      {
+        "user_id": "100035725",
+        "events": 154,
+        "last_active": "2025-12-18 16:00:00",
+        "last_buy": "2025-12-18 15:00:00",
+        "purchase_days": 4,
+        "purchase_records": 4,
+        "purchase_recency_days": 0.0,
+        "inactive_days": 0,
+        "segment": "potential_proxy"
+      },
+      {
+        "user_id": "100039408",
+        "events": 11,
+        "last_active": "2025-12-07 15:00:00",
+        "last_buy": "2025-11-19 19:00:00",
+        "purchase_days": 1,
+        "purchase_records": 1,
+        "purchase_recency_days": 29.0,
+        "inactive_days": 11,
+        "segment": "churn_risk_proxy"
+      },
+      {
+        "user_id": "100042340",
+        "events": 528,
+        "last_active": "2025-12-18 14:00:00",
+        "last_buy": "2025-12-18 14:00:00",
+        "purchase_days": 1,
+        "purchase_records": 3,
+        "purchase_recency_days": 0.0,
+        "inactive_days": 0,
+        "segment": "potential_proxy"
+      },
+      {
+        "user_id": "10004287",
+        "events": 789,
+        "last_active": "2025-12-17 22:00:00",
+        "last_buy": "2025-11-30 14:00:00",
+        "purchase_days": 3,
+        "purchase_records": 13,
+        "purchase_recency_days": 18.0,
+        "inactive_days": 1,
+        "segment": "potential_proxy"
+      },
+      {
+        "user_id": "100067745",
+        "events": 464,
+        "last_active": "2025-12-17 21:00:00",
+        "last_buy": "2025-12-12 21:00:00",
+        "purchase_days": 9,
+        "purchase_records": 11,
+        "purchase_recency_days": 6.0,
+        "inactive_days": 1,
+        "segment": "high_value_proxy"
+      },
+      {
+        "user_id": "100078685",
+        "events": 681,
+        "last_active": "2025-12-18 22:00:00",
+        "last_buy": "2025-12-14 21:00:00",
+        "purchase_days": 6,
+        "purchase_records": 19,
+        "purchase_recency_days": 4.0,
+        "inactive_days": 0,
+        "segment": "high_value_proxy"
+      },
+      {
+        "user_id": "100086267",
+        "events": 1404,
+        "last_active": "2025-12-18 23:00:00",
+        "last_buy": "2025-12-17 19:00:00",
+        "purchase_days": 14,
+        "purchase_records": 39,
+        "purchase_recency_days": 1.0,
+        "inactive_days": 0,
+        "segment": "high_value_proxy"
+      },
+      {
+        "user_id": "100090063",
+        "events": 92,
+        "last_active": "2025-12-17 21:00:00",
+        "last_buy": "2025-12-12 18:00:00",
+        "purchase_days": 2,
+        "purchase_records": 4,
+        "purchase_recency_days": 6.0,
+        "inactive_days": 1,
+        "segment": "potential_proxy"
+      },
+      {
+        "user_id": "100097997",
+        "events": 434,
+        "last_active": "2025-12-18 14:00:00",
+        "last_buy": "2025-12-16 20:00:00",
+        "purchase_days": 4,
+        "purchase_records": 10,
+        "purchase_recency_days": 2.0,
+        "inactive_days": 0,
+        "segment": "high_value_proxy"
+      },
+      {
+        "user_id": "100109755",
+        "events": 614,
+        "last_active": "2025-12-18 21:00:00",
+        "last_buy": "2025-12-13 23:00:00",
+        "purchase_days": 5,
+        "purchase_records": 17,
+        "purchase_recency_days": 5.0,
+        "inactive_days": 0,
+        "segment": "high_value_proxy"
+      },
+      {
+        "user_id": "100111500",
+        "events": 67,
+        "last_active": "2025-12-18 22:00:00",
+        "last_buy": "2025-12-18 15:00:00",
+        "purchase_days": 2,
+        "purchase_records": 2,
+        "purchase_recency_days": 0.0,
+        "inactive_days": 0,
+        "segment": "potential_proxy"
+      },
+      {
+        "user_id": "100112744",
+        "events": 574,
+        "last_active": "2025-12-18 06:00:00",
+        "last_buy": "2025-12-12 17:00:00",
+        "purchase_days": 6,
+        "purchase_records": 6,
+        "purchase_recency_days": 6.0,
+        "inactive_days": 0,
+        "segment": "high_value_proxy"
+      },
+      {
+        "user_id": "100121842",
+        "events": 373,
+        "last_active": "2025-12-18 16:00:00",
+        "last_buy": "2025-12-12 11:00:00",
+        "purchase_days": 2,
+        "purchase_records": 10,
+        "purchase_recency_days": 6.0,
+        "inactive_days": 0,
+        "segment": "potential_proxy"
+      },
+      {
+        "user_id": "100127501",
+        "events": 3,
+        "last_active": "2025-11-30 20:00:00",
+        "last_buy": null,
+        "purchase_days": 0,
+        "purchase_records": 0,
+        "purchase_recency_days": null,
+        "inactive_days": 18,
+        "segment": "dormant_proxy"
+      }
+    ],
+    "item_repurchase": [
+      {
+        "item_id": "10000716",
+        "observed_buyers": 1,
+        "eligible_buyers": 1,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": 0.0
+      },
+      {
+        "item_id": "100008113",
+        "observed_buyers": 1,
+        "eligible_buyers": 0,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": null
+      },
+      {
+        "item_id": "100010454",
+        "observed_buyers": 1,
+        "eligible_buyers": 1,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": 0.0
+      },
+      {
+        "item_id": "100014544",
+        "observed_buyers": 1,
+        "eligible_buyers": 0,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": null
+      },
+      {
+        "item_id": "100020308",
+        "observed_buyers": 1,
+        "eligible_buyers": 1,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": 0.0
+      },
+      {
+        "item_id": "100022482",
+        "observed_buyers": 1,
+        "eligible_buyers": 0,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": null
+      },
+      {
+        "item_id": "100023133",
+        "observed_buyers": 1,
+        "eligible_buyers": 0,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": null
+      },
+      {
+        "item_id": "100027245",
+        "observed_buyers": 1,
+        "eligible_buyers": 1,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": 0.0
+      },
+      {
+        "item_id": "100028609",
+        "observed_buyers": 1,
+        "eligible_buyers": 1,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": 0.0
+      },
+      {
+        "item_id": "100031326",
+        "observed_buyers": 1,
+        "eligible_buyers": 1,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": 0.0
+      },
+      {
+        "item_id": "100034705",
+        "observed_buyers": 1,
+        "eligible_buyers": 1,
+        "repeat_buyers": 1,
+        "repeat_user_rate_7d": 1.0
+      },
+      {
+        "item_id": "100047144",
+        "observed_buyers": 1,
+        "eligible_buyers": 1,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": 0.0
+      },
+      {
+        "item_id": "100048266",
+        "observed_buyers": 2,
+        "eligible_buyers": 0,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": null
+      },
+      {
+        "item_id": "100057197",
+        "observed_buyers": 1,
+        "eligible_buyers": 1,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": 0.0
+      },
+      {
+        "item_id": "100058345",
+        "observed_buyers": 1,
+        "eligible_buyers": 0,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": null
+      },
+      {
+        "item_id": "100060363",
+        "observed_buyers": 2,
+        "eligible_buyers": 2,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": 0.0
+      },
+      {
+        "item_id": "100074099",
+        "observed_buyers": 1,
+        "eligible_buyers": 1,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": 0.0
+      },
+      {
+        "item_id": "10008237",
+        "observed_buyers": 1,
+        "eligible_buyers": 0,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": null
+      },
+      {
+        "item_id": "100085463",
+        "observed_buyers": 1,
+        "eligible_buyers": 1,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": 0.0
+      },
+      {
+        "item_id": "100086302",
+        "observed_buyers": 1,
+        "eligible_buyers": 1,
+        "repeat_buyers": 0,
+        "repeat_user_rate_7d": 0.0
+      }
+    ]
+  },
+  "query_plans": {
+    "user_time": [
+      "SEARCH behaviors USING COVERING INDEX idx_user_time (user_id=? AND event_time>?)"
+    ],
+    "item_behavior": [
+      "SEARCH behaviors USING COVERING INDEX idx_item_behavior_user (item_id=? AND behavior_type=?)"
+    ],
+    "time_range": [
+      "SEARCH behaviors USING COVERING INDEX idx_time_user (event_time>? AND event_time<?)"
+    ]
+  },
+  "index_trials": [
+    {
+      "lookup": "user_time",
+      "mode": "indexed",
+      "repeat": 1,
+      "rows_matched": 1406,
+      "seconds": 0.002292
+    },
+    {
+      "lookup": "user_time",
+      "mode": "scan",
+      "repeat": 1,
+      "rows_matched": 1406,
+      "seconds": 1.262651
+    },
+    {
+      "lookup": "user_time",
+      "mode": "scan",
+      "repeat": 2,
+      "rows_matched": 1406,
+      "seconds": 0.52378
+    },
+    {
+      "lookup": "user_time",
+      "mode": "indexed",
+      "repeat": 2,
+      "rows_matched": 1406,
+      "seconds": 0.001128
+    },
+    {
+      "lookup": "item_behavior",
+      "mode": "indexed",
+      "repeat": 1,
+      "rows_matched": 0,
+      "seconds": 0.000577
+    },
+    {
+      "lookup": "item_behavior",
+      "mode": "scan",
+      "repeat": 1,
+      "rows_matched": 0,
+      "seconds": 0.902721
+    },
+    {
+      "lookup": "item_behavior",
+      "mode": "scan",
+      "repeat": 2,
+      "rows_matched": 0,
+      "seconds": 0.728653
+    },
+    {
+      "lookup": "item_behavior",
+      "mode": "indexed",
+      "repeat": 2,
+      "rows_matched": 0,
+      "seconds": 0.001168
+    },
+    {
+      "lookup": "time_range",
+      "mode": "indexed",
+      "repeat": 1,
+      "rows_matched": 186278,
+      "seconds": 0.020343
+    },
+    {
+      "lookup": "time_range",
+      "mode": "scan",
+      "repeat": 1,
+      "rows_matched": 186278,
+      "seconds": 0.895756
+    },
+    {
+      "lookup": "time_range",
+      "mode": "scan",
+      "repeat": 2,
+      "rows_matched": 186278,
+      "seconds": 0.905847
+    },
+    {
+      "lookup": "time_range",
+      "mode": "indexed",
+      "repeat": 2,
+      "rows_matched": 186278,
+      "seconds": 0.013257
+    }
+  ],
+  "checks": {
+    "overview_rows": true,
+    "behavior_total": true,
+    "behavior_shares": true,
+    "daily_total": true,
+    "weekly_total": true,
+    "all_events_sequenced": true,
+    "all_users_segmented": true,
+    "funnel_conserves_cohort": true,
+    "strict_funnel_monotonic": true,
+    "repurchase_denominators": true,
+    "lookup_plans_use_search": true,
+    "database_unchanged": true
+  }
+}

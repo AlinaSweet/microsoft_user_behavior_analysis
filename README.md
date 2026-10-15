@@ -9,8 +9,8 @@ configs/                    运行配置
 scripts/                    环境安装和统一运行入口
 src/user_behavior_analysis/ 主包
   api/                      命令入口与错误反馈
-  service/                  资源规划、环境检查与样本测量
-  dao/                      CSV 读取、清单登记与报告保存
+  service/                  资源规划、清洗、预处理及数据库分析
+  dao/                      CSV/Parquet/SQLite 读写及清单登记
   models/                   配置、报告与登记请求的数据结构
   common/                   异常、常量、路径校验和规范检查
   config.py                 YAML 加载与配置合法性校验
@@ -115,7 +115,7 @@ bash scripts/check_quality.sh
 bash scripts/check_quality.sh --force
 ```
 
-检查包括 PDF 专项规则、isort、Black、flake8、mypy、pylint、单元/集成测试和 Git 文件政策。详细日志在 .cache/quality/，可交付记录在 outputs/reports/coding_standard_compliance.json。
+检查包括 PDF 专项规则、isort、Black、flake8、mypy、pylint、单元/集成测试和 Git 文件政策。详细日志在 .cache/quality/。outputs/reports/coding_standard_compliance.json 保留首次整改记录；后续每项的新检查记录保存在对应任务的审计目录，当前验收入口见任务台账。
 
 Git 提交和推送会调用同一入口；GitHub 每次推送 main/dev/feature 分支或提交 Pull Request 时也会检查。合入前先检查改动，再确认 Quality 通过。当前通过项目约定和本地 hooks 执行，未配置 GitHub 服务端分支保护。
 
@@ -150,3 +150,14 @@ PYTHONPATH=src .venv/bin/python scripts/audit_stage1.py \
 ```
 
 该入口重新运行全部质量门禁、真实 worker 环境检查，以及完整清洗、聚合、文件指纹和前序研究复核。GitHub 分支同步与云端 CI 另行验收。
+
+## 第二阶段第 1 项：SQLite 和完整 SQL 分析
+
+已对全部 6,213,379 条事件完成规范化数据库构建、11 类完整查询导出、逐值独立复核，并重新通过第一阶段整体验收。完整结果及边界见 [SQLite 分析报告](outputs/reports/stage2_step1/README.md)，运行方法与只读 Pandas 接口见 [数据库说明](docs/sqlite_analysis.md)。当前全部 74 项测试通过。
+
+```bash
+bash scripts/run_project.sh build-db
+bash scripts/run_project.sh analyze-db
+```
+
+原始数据、规范事件、数据库和查询结果通过内容清单追溯。后续特征和模型将单独遵守历史截点与训练期拟合边界。

@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-15T13:35:17.484074+00:00",
+  "code_commit": "610155581be2458a2be1c2481aa7948a5118adc2",
+  "scope": "Fresh quality and live workers; complete event/aggregate relations; raw/artifact hashes, anomaly thresholds and reviewed research.",
+  "cloud_ci_scope": "Verified separately in the delivery record.",
+  "checks": {
+    "all_processes_succeeded": true,
+    "quality_gate": true,
+    "live_environment": true,
+    "full_preprocessing_and_predecessors": true
+  },
+  "processes": [
+    {
+      "name": "quality",
+      "command": [
+        "bash",
+        "scripts/check_quality.sh",
+        "--force"
+      ],
+      "exit_code": 0,
+      "log_path": "outputs/reports/stage2_step1_audit_20261015_01/previous_stage1/quality.log",
+      "log_sha256": "f15547f2c08ae0b6670993a0f9a8d3e7c9a6a7649c7a20444c0b786e6a17048a"
+    },
+    {
+      "name": "environment",
+      "command": [
+        "/Users/alina/Desktop/实习/Github/.venv/bin/python",
+        "-m",
+        "user_behavior_analysis",
+        "check",
+        "--output-dir",
+        "/Users/alina/Desktop/实习/Github/outputs/reports/stage2_step1_audit_20261015_01/previous_stage1/environment"
+      ],
+      "exit_code": 0,
+      "log_path": "outputs/reports/stage2_step1_audit_20261015_01/previous_stage1/environment.log",
+      "log_sha256": "e7bf61ca99dd21ec5100eb7fe72cd11365bb516b57e06e696b7733e868fad559"
+    },
+    {
+      "name": "preprocessing",
+      "command": [
+        "/Users/alina/Desktop/实习/Github/.venv/bin/python",
+        "scripts/audit_preprocessing.py",
+        "--output",
+        "/Users/alina/Desktop/实习/Github/outputs/reports/stage2_step1_audit_20261015_01/previous_stage1/preprocessing_audit.json"
+      ],
+      "exit_code": 0,
+      "log_path": "outputs/reports/stage2_step1_audit_20261015_01/previous_stage1/preprocessing.log",
+      "log_sha256": "c1e65d67710ced4c94a585d77e3737f8330e3972e3b1bd77daeef4b740fc5f10"
+    }
+  ]
+}
