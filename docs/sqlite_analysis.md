@@ -32,7 +32,7 @@ canonical_events 视图恢复与 Parquet 相同的六列事件，按源 event_id
 
 ## 导入、完整性和资源
 
-- Unix/Mac 的 SQLite 临时排序和聚合文件通过进程内 SQLITE_TMPDIR 指向项目 .cache/sqlite，不使用已弃用的全局 PRAGMA；源文件和最终产物仍按各自目录管理。
+- 统一入口在 Python 启动前设置 SQLITE_TMPDIR，包初始化也在导入原生引擎前设置项目 .cache/sqlite。本机实测：连接前但引擎初始化后设置环境变量仍可能写入系统临时目录；启动前设置的对照探针已验证有效。没有采用已弃用的全局 PRAGMA。
 - 固定 100,000 行批次（可配置，最大 200,000），数据库缓存 64 MiB，临时分组可落盘。
 - 参数化 executemany 插入暂存表；每批事务内写入实体维表及行为表，拒绝跨批次重复和类目冲突。
 - 每个连接显式启用外键；NOT NULL、正整数、行为枚举、小时对齐、唯一键和外键均受约束。
@@ -81,6 +81,8 @@ for chunk in client.iter_frames(
 ):
     print(len(chunk))
 ```
+
+在新终端或 Notebook 内核启动前设置 SQLITE_TMPDIR 为项目 .cache/sqlite（该目录须存在）；已导入 Pandas/SQLite 的旧内核应重新启动。命令行统一入口会自动完成这一设置。
 
 接口使用 SQLite mode=ro 和 query_only；值通过 parameters 绑定，不拼接到 SQL。小 DataFrame 接口超过预算直接报错；大查询使用生成器。提前停止迭代时显式关闭生成器或用 contextlib.closing 管理。数据类型保留字符串 ID，SQL NULL 保留缺失值。
 

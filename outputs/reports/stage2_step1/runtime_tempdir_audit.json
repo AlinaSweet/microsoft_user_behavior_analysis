@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "observed_at_utc": "2026-10-15T13:16:42.576721+00:00",
+  "method": "Import project bootstrap before sqlite3; force a 10000 x 1024-byte temporary table; inspect native open file paths",
+  "expected_directory": "/Users/alina/Desktop/实习/Github/.cache/sqlite",
+  "sqlite_version": "3.53.1",
+  "temporary_open_files": [
+    "python3.1 71969 alina    3u   REG               1,18 13697024             4677739 /Users/alina/Desktop/实习/Github/.cache/sqlite/etilqs_349e98b318f474"
+  ],
+  "uses_deprecated_temp_directory_pragma": false,
+  "historical_issue": "Setting SQLITE_TMPDIR after native-engine initialization did not relocate the first production analysis scratch files; process-start and package bootstrap now set it earlier."
+}

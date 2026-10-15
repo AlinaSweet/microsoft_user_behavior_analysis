@@ -2,6 +2,8 @@
 set -euo pipefail
 project_root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$project_root"
+mkdir -p "$project_root/.cache/sqlite"
+export SQLITE_TMPDIR="$project_root/.cache/sqlite"
 export PYTHONPATH="$project_root/src${PYTHONPATH:+:$PYTHONPATH}"
 export BLACK_CACHE_DIR="$project_root/.cache/black"
 if [[ ! -x .venv/bin/python ]]; then
