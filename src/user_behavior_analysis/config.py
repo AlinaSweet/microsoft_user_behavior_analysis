@@ -22,24 +22,72 @@ from user_behavior_analysis.models.preprocessing_models import PreprocessingPoli
 
 
 def _mapping(value: object, field: str) -> dict[str, object]:
+    """Require a configuration object whose keys are all strings.
+
+    Args:
+        value: Unvalidated value loaded from YAML or JSON.
+        field: Field name included in validation errors.
+
+    Returns:
+        The original mapping with a narrowed dictionary type.
+
+    Raises:
+        ConfigurationError: The value is not a dictionary with string keys.
+    """
     if not isinstance(value, dict) or not all(isinstance(key, str) for key in value):
         raise ConfigurationError(f"{field} must be a mapping with string keys")
     return cast(dict[str, object], value)
 
 
 def _text(value: object, field: str) -> str:
+    """Require a nonempty configuration string without rewriting its value.
+
+    Args:
+        value: Unvalidated field value.
+        field: Field name included in validation errors.
+
+    Returns:
+        The original string, preserving its surrounding whitespace.
+
+    Raises:
+        ConfigurationError: The value is not a string or contains only whitespace.
+    """
     if not isinstance(value, str) or not value.strip():
         raise ConfigurationError(f"{field} must be a nonempty string")
     return value
 
 
 def _integer(value: object, field: str) -> int:
+    """Require a positive integer while excluding Boolean values.
+
+    Args:
+        value: Unvalidated numeric configuration value.
+        field: Field name included in validation errors.
+
+    Returns:
+        The original integer, which must be at least one.
+
+    Raises:
+        ConfigurationError: The value is Boolean, noninteger, zero, or negative.
+    """
     if not isinstance(value, int) or isinstance(value, bool) or value < 1:
         raise ConfigurationError(f"{field} must be a positive integer")
     return value
 
 
 def _fraction(value: object, field: str) -> float:
+    """Require a numeric fraction strictly between zero and one.
+
+    Args:
+        value: Unvalidated threshold or resource-budget fraction.
+        field: Field name included in validation errors.
+
+    Returns:
+        The validated value represented as a float.
+
+    Raises:
+        ConfigurationError: The value is Boolean, nonnumeric, or outside (0, 1).
+    """
     if (
         not isinstance(value, (int, float))
         or isinstance(value, bool)
@@ -50,6 +98,18 @@ def _fraction(value: object, field: str) -> float:
 
 
 def _byte_size(value: object, field: str) -> str:
+    """Validate a positive Dask-compatible byte-size expression.
+
+    Args:
+        value: Unvalidated size string, such as 64 MiB or 1 GiB.
+        field: Field name included in validation errors.
+
+    Returns:
+        The original size string after checking that it parses to positive bytes.
+
+    Raises:
+        ConfigurationError: The value is not text, cannot be parsed, or is nonpositive.
+    """
     text = _text(value, field)
     try:
         size = parse_bytes(text)
@@ -61,6 +121,18 @@ def _byte_size(value: object, field: str) -> str:
 
 
 def _strings(value: object, field: str) -> list[str]:
+    """Require a nonempty list of unique, nonblank strings.
+
+    Args:
+        value: Unvalidated list of column names, codes, or size expressions.
+        field: Field name included in validation errors.
+
+    Returns:
+        Validated strings in their original order and spelling.
+
+    Raises:
+        ConfigurationError: The list is empty, has invalid strings, or has duplicates.
+    """
     if not isinstance(value, list) or not value:
         raise ConfigurationError(f"{field} must be a nonempty list")
     values = [_text(item, field) for item in value]
@@ -70,6 +142,18 @@ def _strings(value: object, field: str) -> list[str]:
 
 
 def _memory_thresholds(document: dict[str, object]) -> MemoryThresholds:
+    """Read and validate the four Dask worker memory thresholds.
+
+    Args:
+        document: Configuration object containing distributed.worker.memory.
+
+    Returns:
+        Target, spill, pause, and terminate fractions in strictly increasing order.
+
+    Raises:
+        ConfigurationError: A nested mapping, fraction, or threshold ordering
+            is invalid.
+    """
     distributed = _mapping(document.get("distributed"), "distributed")
     worker = _mapping(distributed.get("worker"), "distributed.worker")
     memory = _mapping(worker.get("memory"), "distributed.worker.memory")
@@ -91,6 +175,20 @@ def _memory_thresholds(document: dict[str, object]) -> MemoryThresholds:
 
 
 def _cluster_settings(value: object) -> ClusterSettings:
+    """Validate local worker settings and confine their scratch directory.
+
+    Args:
+        value: Unvalidated local_cluster configuration object.
+
+    Returns:
+        Typed worker counts, byte-size settings, budget fraction, and a
+        project-relative scratch directory.
+
+    Raises:
+        ConfigurationError: A required value is invalid or the worker memory limit
+            is below the configured minimum.
+        ValueError: The scratch directory resolves outside the project root.
+    """
     local = _mapping(value, "local_cluster")
     directory = _text(local.get("local_directory"), "local_directory")
     project_output_path(directory)
@@ -115,6 +213,20 @@ def _cluster_settings(value: object) -> ClusterSettings:
 
 
 def _source_settings(value: object) -> SourceSettings:
+    """Validate the source path setting, text encoding, and column names.
+
+    Args:
+        value: Unvalidated data configuration object.
+
+    Returns:
+        Source settings with a recognized encoding and unique column names.
+
+    Raises:
+        ConfigurationError: A required source field or text encoding is invalid.
+
+    Notes:
+        File existence and the actual CSV header are checked when resolving data.
+    """
     source = _mapping(value, "data")
     encoding = _text(source.get("encoding"), "data.encoding")
     try:
@@ -129,6 +241,17 @@ def _source_settings(value: object) -> SourceSettings:
 
 
 def _benchmark_settings(value: object) -> BenchmarkSettings:
+    """Validate bounded sample sizes and configured CSV block expressions.
+
+    Args:
+        value: Unvalidated benchmark configuration object.
+
+    Returns:
+        Positive sample/repeat counts and validated block-size strings.
+
+    Raises:
+        ConfigurationError: Counts, block-size expressions, or list entries are invalid.
+    """
     benchmark = _mapping(value, "benchmark")
     blocks = _strings(benchmark.get("block_sizes"), "benchmark.block_sizes")
     return BenchmarkSettings(

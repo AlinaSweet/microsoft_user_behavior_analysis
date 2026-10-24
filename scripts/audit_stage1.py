@@ -27,6 +27,23 @@ class ProcessEvidence(TypedDict):
 
 
 def _run(name: str, command: list[str], output: Path) -> ProcessEvidence:
+    """Run one audit command and retain a fingerprinted process log.
+
+    Args:
+        name: Evidence label also used as the log file stem.
+        command: Executable and arguments to run from the project root.
+        output: Existing project-local directory receiving the log.
+
+    Returns:
+        The command, exit code, relative log path, and log SHA-256.
+
+    Raises:
+        OSError: The subprocess cannot start or its log cannot be written.
+        ValueError: The log path is outside the project root.
+
+    Notes:
+        Nonzero child exit codes remain evidence for the caller to evaluate.
+    """
     result = subprocess.run(
         command, cwd=PROJECT_ROOT, capture_output=True, text=True, check=False
     )
@@ -42,6 +59,18 @@ def _run(name: str, command: list[str], output: Path) -> ProcessEvidence:
 
 
 def _passed(path: Path) -> bool:
+    """Read whether an existing JSON audit reports a passed status.
+
+    Args:
+        path: Audit report expected to contain a JSON object.
+
+    Returns:
+        True only for status passed; False for a missing file or another status.
+
+    Raises:
+        OSError: An existing report cannot be read.
+        ValueError: The report is not valid JSON.
+    """
     if not path.is_file():
         return False
     document = cast(dict[str, object], json.loads(path.read_text(encoding="utf-8")))

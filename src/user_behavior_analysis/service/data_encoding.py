@@ -21,6 +21,9 @@ def choose_encoding_plan(
 
     Returns:
         Safe unsigned lineage width and an optional complete category dictionary.
+
+    Raises:
+        ValueError: An event ordinal is nonpositive or exceeds uint64 capacity.
     """
     categories: set[str] | None = set()
     maximum = 0

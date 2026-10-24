@@ -13,6 +13,12 @@ from user_behavior_analysis.models.preprocessing_models import ReadTrial
 
 
 def _csv_options() -> object:
+    """Declare Arrow CSV types matching the canonical event columns.
+
+    Returns:
+        ConvertOptions using unsigned event/behavior values, string identifiers,
+        and millisecond event timestamps.
+    """
     return arrow_csv.ConvertOptions(
         column_types={
             "event_id": pa.uint64(),
@@ -26,6 +32,24 @@ def _csv_options() -> object:
 
 
 def _read_layout(name: str, paths: list[Path], batch_rows: int) -> tuple[int, int]:
+    """Read one complete storage layout in bounded batches and count rows.
+
+    Args:
+        name: Layout label; clean_csv selects CSV, other labels select Parquet.
+        paths: Ordered files belonging to the selected layout.
+        batch_rows: Maximum Parquet batch size; CSV uses 16 MiB input blocks.
+
+    Returns:
+        The total decoded row count and sampled peak driver RSS in bytes.
+
+    Raises:
+        OSError: A layout file cannot be read.
+        pa.ArrowInvalid: Stored values or a file format cannot be decoded as declared.
+
+    Notes:
+        Reads all files and canonical event columns without retaining the full
+        dataset. Memory observations are samples rather than continuous peaks.
+    """
     rows = 0
     peak = psutil.Process().memory_info().rss
     for path in paths:

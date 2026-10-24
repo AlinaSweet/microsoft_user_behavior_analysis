@@ -44,6 +44,23 @@ class AggregateValueAudit(TypedDict):
 
 
 def _expected_table(frame: dd.DataFrame, name: str) -> dd.DataFrame:
+    """Build a lazy reference aggregate directly from the complete events.
+
+    Args:
+        frame: Dask event frame with grouping columns and behavior-count indicators.
+        name: Aggregate name registered in AUDIT_DEFINITIONS.
+
+    Returns:
+        A lazy relation with global counts, distinct-entity counts, and any
+        required first/last event times for each business key.
+
+    Raises:
+        KeyError: The aggregate name or a required input column is missing.
+
+    Notes:
+        Does not read the persisted aggregate being audited; computation is
+        deferred until the caller schedules the resulting Dask graph.
+    """
     keys, uniqueness, bounds = AUDIT_DEFINITIONS[name]
     expected = frame.groupby(keys)[COUNT_FIELDS].sum(split_out=16).reset_index()
     if bounds:
@@ -64,6 +81,22 @@ def _expected_table(frame: dd.DataFrame, name: str) -> dd.DataFrame:
 
 
 def _partition_mismatches(frame: pd.DataFrame, columns: list[str]) -> pd.Series:
+    """Count missing groups and unequal cells in one outer-joined partition.
+
+    Args:
+        frame: Joined expected/actual rows with _merge and suffixed value columns.
+        columns: Unsuffixed measure names to compare; *_time values are parsed.
+
+    Returns:
+        A one-element int64 Series named mismatches containing the bad-row count.
+
+    Raises:
+        KeyError: A join indicator or requested comparison column is absent.
+        ValueError: A timestamp used in comparison cannot be parsed.
+
+    Notes:
+        A row fails if either side is missing or any requested measure differs.
+    """
     valid = frame["_merge"].astype("string").eq("both")
     for column in columns:
         left = frame[column + "_expected"]

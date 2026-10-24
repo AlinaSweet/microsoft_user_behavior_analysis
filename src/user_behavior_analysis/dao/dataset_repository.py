@@ -25,6 +25,20 @@ EVENT_COLUMNS = [
 
 
 def _verified_part(entry: object, directory: Path) -> tuple[Path, int]:
+    """Verify one registered Parquet part before allowing it into a dataset.
+
+    Args:
+        entry: Catalog record declaring path, positive byte size, and SHA-256.
+        directory: Project-confined dataset directory containing the part.
+
+    Returns:
+        The verified absolute file path and its Parquet metadata row count.
+
+    Raises:
+        ValueError: The entry, path, checksum, byte size, or ordered schema differs.
+        FileNotFoundError: The registered part does not exist.
+        OSError: The part cannot be read.
+    """
     if not isinstance(entry, dict) or not isinstance(entry.get("path"), str):
         raise ValueError("Dataset part records require string paths")
     size = entry.get("size_bytes")

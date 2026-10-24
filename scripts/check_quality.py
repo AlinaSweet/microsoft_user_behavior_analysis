@@ -21,6 +21,11 @@ QUALITY_TOOLS = ("black", "isort", "flake8", "mypy", "pylint")
 
 
 def _sources() -> list[Path]:
+    """Collect the Python files covered by the project quality checks.
+
+    Returns:
+        Sorted source paths from src, tests, and scripts.
+    """
     return sorted(
         path
         for directory in SOURCE_DIRECTORIES
@@ -29,6 +34,22 @@ def _sources() -> list[Path]:
 
 
 def _fingerprint(sources: list[Path]) -> str:
+    """Hash source, policy, and tool versions for quality-cache reuse.
+
+    Args:
+        sources: Ordered Python source files included in the quality check.
+
+    Returns:
+        A SHA-256 digest covering file paths, contents, and checker versions.
+
+    Raises:
+        OSError: A source or required configuration file cannot be read.
+        metadata.PackageNotFoundError: A required quality tool is not installed.
+
+    Notes:
+        Includes every JSON/YAML configuration under configs so a policy change
+        invalidates the cached result even when Python files are unchanged.
+    """
     digest = hashlib.sha256()
     configuration = [
         PROJECT_ROOT / name
@@ -64,6 +85,22 @@ def _fingerprint(sources: list[Path]) -> str:
 
 
 def _run_tool(name: str, command: list[str], logs: Path) -> int:
+    """Execute a quality tool and save its complete output.
+
+    Args:
+        name: Tool label used for the log file and console status.
+        command: Executable and arguments of the tool.
+        logs: Existing directory receiving the tool log.
+
+    Returns:
+        The tool exit code; zero indicates success.
+
+    Raises:
+        OSError: The command cannot start or the log cannot be written.
+
+    Notes:
+        Prints the tool status and includes its output when the check fails.
+    """
     result = subprocess.run(
         command, cwd=PROJECT_ROOT, capture_output=True, text=True, check=False
     )

@@ -129,6 +129,20 @@ def stage_event_batch(connection: sqlite3.Connection, frame: pd.DataFrame) -> No
 
 
 def _aggregate_table(frame: pd.DataFrame, upper_bound: int) -> pa.Table:
+    """Convert an aggregate batch to compact, explicitly typed Arrow arrays.
+
+    Args:
+        frame: Aggregate rows containing identifiers, counts, dates, and times.
+        upper_bound: Maximum possible count, used to choose uint32 or uint64.
+
+    Returns:
+        An Arrow table preserving column order, with string identifiers,
+        date32 dates, millisecond timestamps, and bounded unsigned counts.
+
+    Raises:
+        pa.ArrowInvalid: A value cannot be safely represented by its chosen type.
+        ValueError: A date or timestamp cannot be parsed.
+    """
     arrays = []
     count_type = pa.uint32() if upper_bound <= 2**32 - 1 else pa.uint64()
     for column in frame.columns:
@@ -162,6 +176,11 @@ def export_aggregates(
 
     Returns:
         Key definitions, exact conservation counts, and persisted table paths.
+
+    Raises:
+        ValueError: The destination escapes the project, no aggregate rows are
+            exported, or an aggregate does not conserve the source event count.
+        OSError: An aggregate output cannot be written.
     """
     output = project_output_path(directory)
     results: list[AggregateEvidence] = []

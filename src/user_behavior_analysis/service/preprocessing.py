@@ -45,6 +45,27 @@ def _encode_and_stage(
     plan: EncodingPlan,
     connection: sqlite3.Connection,
 ) -> EncodedEvents:
+    """Encode every source batch and stage the same events for aggregation.
+
+    Args:
+        request: New output directory and bounded encoding/writing settings.
+        source: Verified source catalog and ordered Parquet part paths.
+        plan: Safe lineage width and optional complete category dictionary.
+        connection: Open SQLite connection receiving canonical event values.
+
+    Returns:
+        Encoded part paths, input row count and canonical-value digest, behavior
+        counts, sampled driver RSS, and the comparison CSV path.
+
+    Raises:
+        ValueError: An event cannot satisfy the canonical encoding contract.
+        OSError: A source part cannot be read or an output cannot be written.
+        sqlite3.DatabaseError: A canonical event batch cannot be staged.
+
+    Notes:
+        Writes compact event Parquet and benchmark_source.csv while retaining
+        original logical values; output-value verification occurs after export.
+    """
     input_digest = hashlib.sha256()
     paths: list[Path] = []
     rows = 0
@@ -83,6 +104,18 @@ def _encode_and_stage(
 
 
 def _file_evidence(directory: Path) -> list[FileEvidence]:
+    """Fingerprint every output Parquet part and the comparison CSV.
+
+    Args:
+        directory: Project-local preprocessing output directory.
+
+    Returns:
+        Deterministically ordered relative paths, byte sizes, and SHA-256 values.
+
+    Raises:
+        OSError: An expected output file is missing or cannot be read.
+        ValueError: A recorded file path is outside the project root.
+    """
     return [
         {
             "path": str(path.relative_to(PROJECT_ROOT)),
@@ -96,6 +129,26 @@ def _file_evidence(directory: Path) -> list[FileEvidence]:
 
 
 def _run(request: PreprocessingRequest, started: float) -> PreprocessingReport:
+    """Execute encoding, global aggregation, value checks, and layout reads.
+
+    Args:
+        request: Verified input catalog location, new outputs, and processing policy.
+        started: Run start from time.perf_counter, used for elapsed seconds.
+
+    Returns:
+        Complete preprocessing evidence including equal canonical-value hashes,
+        conserved counts, file fingerprints, schemas, and read measurements.
+
+    Raises:
+        ValueError: The catalog, event values, aggregate counts, or layout counts
+            fail validation, or the catalog changes during the run.
+        FileNotFoundError: A required catalog or registered input part is missing.
+        OSError: A source or designated output cannot be accessed.
+
+    Notes:
+        The caller prepares empty output directories. Temporary aggregation uses
+        project-local SQLite storage and the raw source CSV is not rewritten.
+    """
     source = load_dataset_catalog(request.source_catalog)
     plan = choose_encoding_plan(source, request.policy)
     policy = request.policy

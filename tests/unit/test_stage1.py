@@ -260,6 +260,22 @@ class GitPolicyTests(_ProjectFixture):
     """Verify one Git tracking rule in each isolated scenario."""
 
     def _tracked_fixture(self, name: str) -> str:
+        """Create a tracked example file in an isolated temporary Git repository.
+
+        Args:
+            name: Fixture path relative to this test's temporary repository root.
+
+        Returns:
+            Git ls-files output after staging the example and project ignore rules.
+
+        Raises:
+            subprocess.CalledProcessError: Git initialization, staging, or
+                listing fails.
+            OSError: Git cannot start or fixture files cannot be written.
+
+        Notes:
+            Operates on the test fixture directory, not the real project repository.
+        """
         subprocess.run(["git", "init", "-q", str(self.root)], check=True)
         (self.root / ".gitignore").write_text((ROOT / ".gitignore").read_text())
         path = self.root / name

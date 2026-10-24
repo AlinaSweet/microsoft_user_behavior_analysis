@@ -32,6 +32,20 @@ RESEARCH_FILES = [
 
 
 def _predecessor_checks(reference: str) -> dict[str, bool]:
+    """Compare research artifacts with their reviewed Git and paper baselines.
+
+    Args:
+        reference: Git commit or ref containing the reviewed research documents.
+
+    Returns:
+        Pass flags for five paper hashes, unchanged documents, 26 features,
+        and ten planned experiments.
+
+    Raises:
+        subprocess.CalledProcessError: A Git reference or stored file is unavailable.
+        OSError: A local reference document or cached paper cannot be read.
+        ValueError: The reference inventory cannot be decoded as JSON.
+    """
     reference = subprocess.check_output(
         ["git", "rev-parse", "--verify", "--end-of-options", reference + "^{commit}"],
         cwd=PROJECT_ROOT,

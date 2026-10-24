@@ -94,6 +94,24 @@ def profile_events(connection: sqlite3.Connection) -> DataProfile:
 def _quantile(
     connection: sqlite3.Connection, entity: str, count: int, probability: float
 ) -> float:
+    """Read an exact activity-count quantile from the SQLite relation.
+
+    Args:
+        connection: Cleaning database containing the activity_counts table.
+        entity: Entity kind whose counts are selected, normally user or item.
+        count: Number of activity rows for that entity kind.
+        probability: Quantile in [0, 1], supplied by the calling metric routine.
+
+    Returns:
+        The linearly interpolated quantile, or 0.0 when count is zero.
+
+    Raises:
+        sqlite3.DatabaseError: The activity-count query cannot be executed.
+
+    Notes:
+        Count must match the selected population. Reads only the ordered values
+        needed for interpolation rather than loading every entity count.
+    """
     if not count:
         return 0.0
     position = (count - 1) * probability
@@ -112,6 +130,27 @@ def _quantile(
 def _metric(
     connection: sqlite3.Connection, entity: str, directory: Path, batch_rows: int
 ) -> AnomalyMetric:
+    """Compute activity thresholds and export flagged entities for one kind.
+
+    Args:
+        connection: Database containing complete per-entity activity counts.
+        entity: User or item entity kind to summarize.
+        directory: Project-local root for per-kind diagnostic output.
+        batch_rows: Positive maximum number of diagnostic rows per export batch.
+
+    Returns:
+        Quartiles, IQR and population-three-sigma thresholds, flagged counts,
+        and the diagnostic output directory.
+
+    Raises:
+        ValueError: The export path escapes the project or batch size is invalid.
+        sqlite3.DatabaseError: The summary or flagged-row query fails.
+        OSError: Diagnostic files cannot be written.
+
+    Notes:
+        Exports an IQR-capped diagnostic count while retaining original event
+        counts; an activity flag does not establish that an entity is a bot.
+    """
     count, mean, mean_square = connection.execute(
         """
         SELECT COUNT(*), COALESCE(AVG(event_count), 0),

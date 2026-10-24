@@ -40,6 +40,18 @@ class AnomalyAudit(TypedDict):
 
 
 def _order_statistic(histogram: dict[int, int], rank: int) -> int:
+    """Find a zero-based ordered value without expanding a count histogram.
+
+    Args:
+        histogram: Activity counts mapped to positive entity frequencies.
+        rank: Nonnegative position in the sorted, conceptually expanded population.
+
+    Returns:
+        The event-count value occupying that position.
+
+    Raises:
+        ValueError: The histogram does not contain enough observations for the rank.
+    """
     accumulated = 0
     for value, frequency in sorted(histogram.items()):
         accumulated += frequency
@@ -49,6 +61,22 @@ def _order_statistic(histogram: dict[int, int], rank: int) -> int:
 
 
 def _quantile(histogram: dict[int, int], population: int, probability: float) -> float:
+    """Interpolate an exact quantile from an activity-count histogram.
+
+    Args:
+        histogram: Positive event counts mapped to positive entity frequencies.
+        population: Positive total frequency matching the histogram.
+        probability: Requested quantile in the inclusive range [0, 1].
+
+    Returns:
+        The linearly interpolated value at (population - 1) * probability.
+
+    Raises:
+        ValueError: A required ordered position is absent from the histogram.
+
+    Notes:
+        The caller is responsible for validating population and probability.
+    """
     position = (population - 1) * probability
     lower = math.floor(position)
     fraction = position - lower

@@ -7,6 +7,7 @@
 - 使用 snake_case 命名，类使用 PascalCase，常量使用大写下划线。unittest 的 setUp/tearDown 等框架回调名称是框架要求的例外。
 - 标准库、第三方库和本项目导入分组；每个 import 独占一行；只用绝对导入；禁止通配符和循环导入。
 - 公共模块、类、函数和方法必须有 Google 风格 docstring；所有公共函数参数与返回值必须有类型注解；复杂记录使用 TypedDict 或 dataclass。
+- 内部自定义辅助函数和方法同样使用 Google 风格 docstring：说明用途，逐项解释实际参数，按需写 Returns/Yields、Raises 和副作用或适用边界；无参数或无返回值时不添加空章节。
 - 函数不超过 5 个显式参数，模块不超过 500 行；内部实现使用单下划线前缀。禁止可变默认参数、裸 except、静默吞错和注释掉的代码。
 - 注释解释原因，TODO 必须写 TODO(责任人)。禁止硬编码密钥；路径必须校验；将来 SQL 必须使用参数化查询。
 - 使用 api/service/dao/models/common 分层，配置在 config.py；测试区分 unit/integration，采用 arrange-act-assert，每个用例只覆盖一个场景。

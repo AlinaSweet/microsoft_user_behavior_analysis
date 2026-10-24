@@ -21,6 +21,20 @@ from user_behavior_analysis.service.dataset_audit import audit_parquet
 
 
 def _predecessor_audit(output: Path) -> tuple[int, str]:
+    """Run the complete cleaning audit and capture its process output.
+
+    Args:
+        output: Destination passed to the cleaning auditor for its JSON report.
+
+    Returns:
+        The child exit code and combined standard output and standard error.
+
+    Raises:
+        OSError: The audit subprocess cannot be started.
+
+    Notes:
+        A failed child audit is returned as a nonzero code, not raised here.
+    """
     result = subprocess.run(
         [
             str(PROJECT_ROOT / ".venv/bin/python"),

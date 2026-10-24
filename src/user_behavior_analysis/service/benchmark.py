@@ -42,12 +42,42 @@ class _TrialRequest:
 
 
 def _worker_states(client: Client) -> dict[str, WorkerState]:
+    """Inspect each live Dask worker through its injected worker instance.
+
+    Args:
+        client: Connected client whose workers will execute inspect_worker.
+
+    Returns:
+        Worker addresses mapped to process IDs, RSS, threads, and memory settings.
+
+    Raises:
+        ResourceError: An inspected worker has no configured memory limit.
+    """
     return cast(dict[str, WorkerState], client.run(inspect_worker))
 
 
 def _measure_trial(
     client: Client, request: _TrialRequest, repeat: int
 ) -> BenchmarkTrial:
+    """Measure one bounded first-partition CSV read and sampled memory peaks.
+
+    Args:
+        client: Live Dask client used to schedule the sample read.
+        request: Source, configuration, resource plan, sample size, and block size.
+        repeat: Zero-based repetition index, reported externally as one-based.
+
+    Returns:
+        Sample row count, wall time, partition count, and observed memory peaks.
+
+    Raises:
+        TimeoutError: The configured timeout or final result wait is exceeded.
+        ValueError: The first CSV partition cannot supply the requested row count.
+        OSError: The source CSV cannot be read.
+
+    Notes:
+        Parses only the first CSV partition, then returns the requested sample;
+        sampled RSS can miss brief memory peaks.
+    """
     frame = dd.read_csv(
         str(request.source),
         blocksize=parse_bytes(request.block),
@@ -98,6 +128,18 @@ def _measure_trial(
 def _summarize(
     trials: list[BenchmarkTrial], blocks: list[str]
 ) -> list[BenchmarkSummary]:
+    """Summarize repeated measurements separately for each CSV block size.
+
+    Args:
+        trials: Completed trials, with at least one result per requested block.
+        blocks: Block-size labels in the desired summary order.
+
+    Returns:
+        Median wall time and maximum observed worker-memory measures per block.
+
+    Raises:
+        statistics.StatisticsError: A requested block has no completed trials.
+    """
     summaries: list[BenchmarkSummary] = []
     for block in blocks:
         group = [trial for trial in trials if trial["block_size"] == block]

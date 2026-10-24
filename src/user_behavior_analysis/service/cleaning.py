@@ -63,6 +63,12 @@ class _RunContext:
 
 class _MemoryMonitor:
     def __init__(self) -> None:
+        """Initialize per-run driver/worker memory and process-identity counters.
+
+        Notes:
+            Peak counters start at zero. Initial and observed worker PID sets are
+            populated by sample so later observations can identify worker restarts.
+        """
         self.driver_peak = 0
         self.worker_peak = 0
         self.initial_pids: set[int] = set()
@@ -103,6 +109,23 @@ class _MemoryMonitor:
 
 
 def _count_structural_records(source: Path, config: ProjectConfig) -> int:
+    """Scan the complete CSV for header, field-count, and quoting integrity.
+
+    Args:
+        source: Existing raw CSV, opened read-only.
+        config: Expected source encoding and ordered column names.
+
+    Returns:
+        The number of CSV data records, excluding the header.
+
+    Raises:
+        ValueError: The header, CSV syntax, or a record's field count is invalid.
+        OSError: The source cannot be read.
+
+    Notes:
+        Uses CSV records rather than physical lines and leaves business-value
+        validation to the partition normalizer.
+    """
     records = 0
     try:
         with source.open(encoding=config["data"]["encoding"], newline="") as handle:
@@ -123,6 +146,23 @@ def _count_structural_records(source: Path, config: ProjectConfig) -> int:
 def _wait_partition(
     pending: deque[Future], client: Client, monitor: _MemoryMonitor
 ) -> PartitionEvidence:
+    """Wait for the oldest pending validation while sampling process memory.
+
+    Args:
+        pending: Nonempty FIFO queue of submitted partition futures.
+        client: Live Dask client used to inspect worker memory.
+        monitor: Per-run memory collector updated while waiting and on completion.
+
+    Returns:
+        The completed partition's row counts and persisted output paths.
+
+    Raises:
+        IndexError: The pending queue is empty.
+
+    Notes:
+        Removes one future from the queue. Worker-task failures propagate from
+        future.result rather than being converted into successful evidence.
+    """
     future = pending.popleft()
     while not future.done():
         monitor.sample(client)
@@ -135,6 +175,24 @@ def _wait_partition(
 def _validate_partitions(
     context: _RunContext, monitor: _MemoryMonitor
 ) -> list[PartitionEvidence]:
+    """Validate every CSV chunk with bounded parallelism and source lineage.
+
+    Args:
+        context: Source, policy, destination, and effective worker resource plan.
+        monitor: Collector for driver/worker RSS and worker-process identities.
+
+    Returns:
+        Partition evidence in source order for all submitted chunks.
+
+    Raises:
+        RuntimeError: A worker restarts during the run.
+        ValueError: CSV parsing or partition validation fails.
+        OSError: Source records or partition output files cannot be accessed.
+
+    Notes:
+        Keeps at most one pending task per planned worker, assigns stable source
+        ordinals, and persists valid/rejected partitions through worker tasks.
+    """
     evidence: list[PartitionEvidence] = []
     first_record = 1
     with start_client(context.config, context.plan) as client:
@@ -180,6 +238,26 @@ def _validate_partitions(
 def _finish(
     context: _RunContext, parts: list[PartitionEvidence], monitor: _MemoryMonitor
 ) -> CleaningReport:
+    """Merge validated parts globally and produce complete cleaning evidence.
+
+    Args:
+        context: Run policy, source identity, output paths, and timing metadata.
+        parts: Completed partition evidence in source order.
+        monitor: Collector updated at merge, profile, and export boundaries.
+
+    Returns:
+        The cleaning report with row reconciliation, retained-event profile,
+        anomaly diagnostics, fingerprints, resource observations, and output files.
+
+    Raises:
+        ValueError: Row accounting, retained values, source identity, or key
+            integrity does not reconcile.
+        OSError: Input parts or designated output artifacts cannot be accessed.
+
+    Notes:
+        Uses a temporary SQLite relation for global deduplication and exports
+        clean events, conflicting keys, and separate activity diagnostics.
+    """
     output = context.request.output_dir
     batch_rows = context.request.policy.export_rows
     database = PROJECT_ROOT / ".cache/cleaning" / uuid.uuid4().hex / "dedup.sqlite"

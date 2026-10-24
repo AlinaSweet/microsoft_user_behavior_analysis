@@ -47,6 +47,11 @@ LOGGER = logging.getLogger(__name__)
 
 
 def _parser() -> argparse.ArgumentParser:
+    """Build the command-line interface and its supported subcommands.
+
+    Returns:
+        A parser containing shared configuration and command-specific options.
+    """
     parser = argparse.ArgumentParser(description="环境、资源与数据产物管理")
     parser.add_argument("--config", help="YAML configuration path")
     commands = parser.add_subparsers(dest="command", required=True)
@@ -83,6 +88,22 @@ def _parser() -> argparse.ArgumentParser:
 
 
 def _execute_artifact(arguments: argparse.Namespace) -> CommandResult:
+    """Dispatch Git-policy, artifact-registration, or verification commands.
+
+    Args:
+        arguments: Parsed artifact subcommand and its required options.
+
+    Returns:
+        A Git-policy report, new artifact manifest, or verification result.
+
+    Raises:
+        ValueError: The command, artifact, paths, or Git file policy is invalid.
+        FileNotFoundError: A required input artifact or manifest is missing.
+        OSError: An artifact cannot be read or its manifest cannot be written.
+
+    Notes:
+        Registration persists a catalog entry; verification leaves data unchanged.
+    """
     if arguments.command == "check-git":
         git_report = check_git_files()
         if git_report["issues"]:
@@ -104,6 +125,24 @@ def _execute_artifact(arguments: argparse.Namespace) -> CommandResult:
 
 
 def _execute(arguments: argparse.Namespace) -> CommandResult:
+    """Dispatch a parsed command and persist its designated reports.
+
+    Args:
+        arguments: Command namespace produced by the project parser.
+
+    Returns:
+        The selected environment, benchmark, cleaning, preprocessing, or artifact
+        command result.
+
+    Raises:
+        ValueError: Configuration, data contracts, or project paths are invalid.
+        OSError: A required input is unavailable or an output cannot be written.
+        RuntimeError: Worker startup, resource checks, or execution fails.
+
+    Notes:
+        Commands choose their own output and overwrite-protection rules; the
+        benchmark command also registers the unchanged source CSV.
+    """
     if arguments.command in {"check-git", "register", "verify"}:
         return _execute_artifact(arguments)
     if arguments.command == "preprocess":

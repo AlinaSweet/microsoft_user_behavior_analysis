@@ -42,6 +42,20 @@ class CleaningTests(unittest.TestCase):
     def _partition(
         self, rows: list[list[str]], partition_id: int = 0, first_record: int = 1
     ) -> Path:
+        """Normalize synthetic rows and return their valid-partition file.
+
+        Args:
+            rows: Source-order fixture values matching SOURCE_COLUMNS.
+            partition_id: Partition ordinal used to distinguish fixture files.
+            first_record: One-based source ordinal assigned to the first fixture row.
+
+        Returns:
+            The valid Parquet path produced under this test's temporary directory.
+
+        Raises:
+            ValueError: Fixture values cannot form the declared source frame.
+            OSError: Temporary partition files cannot be written.
+        """
         frame = pd.DataFrame(rows, columns=SOURCE_COLUMNS).astype("string[pyarrow]")
         request = PartitionRequest(self.root, partition_id, first_record, self.policy)
         evidence = normalize_partition(frame, request)

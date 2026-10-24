@@ -24,6 +24,23 @@ EVENT_COLUMNS = [
 def _violations(
     frame: pd.DataFrame, policy: CleaningPolicy
 ) -> tuple[dict[str, pd.Series], pd.Series]:
+    """Build row-level validation masks and parse the source hour values.
+
+    Args:
+        frame: Source frame with all five declared columns stored as strings.
+        policy: Allowed behavior codes and inclusive/exclusive time boundaries.
+
+    Returns:
+        Rule names mapped to Boolean violation masks, followed by parsed times
+        with invalid timestamps represented as NaT. Both retain the input index.
+
+    Raises:
+        KeyError: A required source column is absent.
+
+    Notes:
+        Masks can overlap. Checks do not rewrite identifiers or mutate the input;
+        the maximum time boundary is exclusive and the minimum is inclusive.
+    """
     missing = {
         f"missing_{column}": frame[column].isna()
         | frame[column].str.strip().eq("").fillna(True)
@@ -49,6 +66,19 @@ def _violations(
 
 
 def _write_frame(frame: pd.DataFrame, path: Path) -> None:
+    """Persist one validation-result frame as an uncompressed Parquet file.
+
+    Args:
+        frame: Valid or rejected rows to persist without the DataFrame index.
+        path: Destination already validated by the partition normalizer.
+
+    Raises:
+        OSError: The parent directory or designated file cannot be written.
+
+    Notes:
+        Creates parent directories. Output-path confinement is the caller's
+        responsibility; this helper writes the designated file directly.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
     frame.to_parquet(path, index=False, compression=None)
 

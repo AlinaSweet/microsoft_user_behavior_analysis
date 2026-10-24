@@ -23,6 +23,16 @@ class CodingIssue:
 
 
 def _definition_issues(node: ast.AST, path: Path) -> list[CodingIssue]:
+    """Check the documented public-definition rules for one AST node.
+
+    Args:
+        node: Parsed node that may represent a function, method, or class.
+        path: Source file used to locate any reported issue.
+
+    Returns:
+        Docstring, parameter-count, and typing issues for public definitions;
+        an empty list for private names, unrelated nodes, or compliant definitions.
+    """
     issues: list[CodingIssue] = []
     if not isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
         return issues
@@ -77,6 +87,16 @@ def _definition_issues(node: ast.AST, path: Path) -> list[CodingIssue]:
 
 
 def _node_issues(tree: ast.Module, path: Path) -> list[CodingIssue]:
+    """Inspect an AST for definition, import, and unsafe-syntax violations.
+
+    Args:
+        tree: Parsed Python module to inspect without executing it.
+        path: File path used for diagnostics and test-directory rules.
+
+    Returns:
+        Located violations, including forbidden imports, mutable defaults,
+        bare exception handlers, dynamic execution, and printing in tests.
+    """
     issues: list[CodingIssue] = []
     for node in ast.walk(tree):
         issues.extend(_definition_issues(node, path))
