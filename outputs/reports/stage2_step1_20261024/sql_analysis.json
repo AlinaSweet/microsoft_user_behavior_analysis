@@ -1,0 +1,1104 @@
+{
+  "status": "passed",
+  "database_path": "data/processed/analysis_raw_v1/behavior.sqlite",
+  "database_sha256": "606f557d0739a6a35ecf96f2db22b761067a1ab6eee7bf44735c8f8ce8beccb4",
+  "parameters": {
+    "start_time": "2025-11-18 00:00:00",
+    "end_time": "2025-12-19 00:00:00",
+    "window_days": 7,
+    "limit": 50
+  },
+  "queries": [
+    {
+      "name": "overview",
+      "rows": 1,
+      "path": "data/processed/analysis_raw_v1/sql_results/overview.csv",
+      "sha256": "edacc06c3cc0a57f4999b485d4c1a078c836f6c5be96e23ba2618556be74bf1a",
+      "query_sha256": "3515eb829ed89280882d509e02467bef8d4f6ed23a54b1e639186df2b3d1f828",
+      "seconds": 32.9833,
+      "preview_limit": 20,
+      "preview": [
+        {
+          "events": 12256906,
+          "users": 10000,
+          "items": 2876947,
+          "categories": 8916,
+          "first_event_time": "2025-11-18 00:00:00",
+          "last_event_time": "2025-12-18 23:00:00"
+        }
+      ]
+    },
+    {
+      "name": "behavior_distribution",
+      "rows": 4,
+      "path": "data/processed/analysis_raw_v1/sql_results/behavior_distribution.csv",
+      "sha256": "6f5e488c417749dc36ae3a072cc01ad20b75b6a98a06d05fc76e4afff0c05e0a",
+      "query_sha256": "75e3107b473f5189fed8fecb49b4442ec852267e5cf206d9cd4b5f55ddcf5079",
+      "seconds": 1.6554,
+      "preview_limit": 20,
+      "preview": [
+        {
+          "behavior_type": 1,
+          "events": 11550581,
+          "event_share": 0.9423733037,
+          "users": 10000
+        },
+        {
+          "behavior_type": 2,
+          "events": 242556,
+          "event_share": 0.0197893335,
+          "users": 6730
+        },
+        {
+          "behavior_type": 3,
+          "events": 343564,
+          "event_share": 0.0280302386,
+          "users": 8614
+        },
+        {
+          "behavior_type": 4,
+          "events": 120205,
+          "event_share": 0.0098071242,
+          "users": 8886
+        }
+      ]
+    },
+    {
+      "name": "daily_active",
+      "rows": 31,
+      "path": "data/processed/analysis_raw_v1/sql_results/daily_active.csv",
+      "sha256": "77ebec83eebad956a50db1b1321fc4abf3b4915bf13afbc94edcf93a6a3753a2",
+      "query_sha256": "2d4796852c2a8d1dd52887d174b39c8a8954616ed3fd6113af4bb9b4bd4d4174",
+      "seconds": 2.0185,
+      "preview_limit": 20,
+      "preview": [
+        {
+          "event_date": "2025-11-18",
+          "active_users": 6343,
+          "events": 366701,
+          "buy_records": 3730
+        },
+        {
+          "event_date": "2025-11-19",
+          "active_users": 6420,
+          "events": 358823,
+          "buy_records": 3686
+        },
+        {
+          "event_date": "2025-11-20",
+          "active_users": 6333,
+          "events": 353429,
+          "buy_records": 3462
+        },
+        {
+          "event_date": "2025-11-21",
+          "active_users": 6276,
+          "events": 333104,
+          "buy_records": 3021
+        },
+        {
+          "event_date": "2025-11-22",
+          "active_users": 6187,
+          "events": 361355,
+          "buy_records": 3570
+        },
+        {
+          "event_date": "2025-11-23",
+          "active_users": 6373,
+          "events": 382702,
+          "buy_records": 3347
+        },
+        {
+          "event_date": "2025-11-24",
+          "active_users": 6513,
+          "events": 378342,
+          "buy_records": 3426
+        },
+        {
+          "event_date": "2025-11-25",
+          "active_users": 6351,
+          "events": 370239,
+          "buy_records": 3464
+        },
+        {
+          "event_date": "2025-11-26",
+          "active_users": 6357,
+          "events": 360896,
+          "buy_records": 3573
+        },
+        {
+          "event_date": "2025-11-27",
+          "active_users": 6359,
+          "events": 371384,
+          "buy_records": 3670
+        },
+        {
+          "event_date": "2025-11-28",
+          "active_users": 6189,
+          "events": 340638,
+          "buy_records": 3218
+        },
+        {
+          "event_date": "2025-11-29",
+          "active_users": 6224,
+          "events": 364697,
+          "buy_records": 3211
+        },
+        {
+          "event_date": "2025-11-30",
+          "active_users": 6379,
+          "events": 401620,
+          "buy_records": 3616
+        },
+        {
+          "event_date": "2025-12-01",
+          "active_users": 6544,
+          "events": 394611,
+          "buy_records": 3909
+        },
+        {
+          "event_date": "2025-12-02",
+          "active_users": 6550,
+          "events": 405216,
+          "buy_records": 3621
+        },
+        {
+          "event_date": "2025-12-03",
+          "active_users": 6585,
+          "events": 411606,
+          "buy_records": 3885
+        },
+        {
+          "event_date": "2025-12-04",
+          "active_users": 6531,
+          "events": 399952,
+          "buy_records": 3691
+        },
+        {
+          "event_date": "2025-12-05",
+          "active_users": 6367,
+          "events": 361878,
+          "buy_records": 3319
+        },
+        {
+          "event_date": "2025-12-06",
+          "active_users": 6440,
+          "events": 389610,
+          "buy_records": 3272
+        },
+        {
+          "event_date": "2025-12-07",
+          "active_users": 6422,
+          "events": 399751,
+          "buy_records": 3256
+        }
+      ]
+    },
+    {
+      "name": "weekly_active",
+      "rows": 31,
+      "path": "data/processed/analysis_raw_v1/sql_results/weekly_active.csv",
+      "sha256": "7c3b399825a4e2adb62eb7a0195db0aae5821a70b4693280381d9e5724b15d36",
+      "query_sha256": "9d5296fe3d983269a4b4ed71d7c56465592ee2f26a3e914ecca69a8209952919",
+      "seconds": 0.6639,
+      "preview_limit": 20,
+      "preview": [
+        {
+          "event_date": "2025-11-18",
+          "full_window": 0,
+          "active_users_7d": 6343
+        },
+        {
+          "event_date": "2025-11-19",
+          "full_window": 0,
+          "active_users_7d": 7626
+        },
+        {
+          "event_date": "2025-11-20",
+          "full_window": 0,
+          "active_users_7d": 8176
+        },
+        {
+          "event_date": "2025-11-21",
+          "full_window": 0,
+          "active_users_7d": 8516
+        },
+        {
+          "event_date": "2025-11-22",
+          "full_window": 0,
+          "active_users_7d": 8766
+        },
+        {
+          "event_date": "2025-11-23",
+          "full_window": 0,
+          "active_users_7d": 8964
+        },
+        {
+          "event_date": "2025-11-24",
+          "full_window": 1,
+          "active_users_7d": 9115
+        },
+        {
+          "event_date": "2025-11-25",
+          "full_window": 1,
+          "active_users_7d": 9144
+        },
+        {
+          "event_date": "2025-11-26",
+          "full_window": 1,
+          "active_users_7d": 9160
+        },
+        {
+          "event_date": "2025-11-27",
+          "full_window": 1,
+          "active_users_7d": 9183
+        },
+        {
+          "event_date": "2025-11-28",
+          "full_window": 1,
+          "active_users_7d": 9201
+        },
+        {
+          "event_date": "2025-11-29",
+          "full_window": 1,
+          "active_users_7d": 9203
+        },
+        {
+          "event_date": "2025-11-30",
+          "full_window": 1,
+          "active_users_7d": 9224
+        },
+        {
+          "event_date": "2025-12-01",
+          "full_window": 1,
+          "active_users_7d": 9250
+        },
+        {
+          "event_date": "2025-12-02",
+          "full_window": 1,
+          "active_users_7d": 9271
+        },
+        {
+          "event_date": "2025-12-03",
+          "full_window": 1,
+          "active_users_7d": 9289
+        },
+        {
+          "event_date": "2025-12-04",
+          "full_window": 1,
+          "active_users_7d": 9307
+        },
+        {
+          "event_date": "2025-12-05",
+          "full_window": 1,
+          "active_users_7d": 9311
+        },
+        {
+          "event_date": "2025-12-06",
+          "full_window": 1,
+          "active_users_7d": 9349
+        },
+        {
+          "event_date": "2025-12-07",
+          "full_window": 1,
+          "active_users_7d": 9354
+        }
+      ]
+    },
+    {
+      "name": "popular_items",
+      "rows": 50,
+      "path": "data/processed/analysis_raw_v1/sql_results/popular_items.csv",
+      "sha256": "14e2f830669e247f0546ec39c23cdf46de8ee9404670aa6b38c54539181dea71",
+      "query_sha256": "fb31ac7b926b4232b21b31d05128efdcdc3aa578aca77f213f63b4c5779aa4a8",
+      "seconds": 27.4241,
+      "preview_limit": 20,
+      "preview": [
+        {
+          "item_id": "303205878",
+          "category_id": "13500",
+          "events": 641,
+          "users": 163,
+          "buy_records": 50
+        },
+        {
+          "item_id": "14087919",
+          "category_id": "5232",
+          "events": 823,
+          "users": 206,
+          "buy_records": 35
+        },
+        {
+          "item_id": "115124482",
+          "category_id": "5027",
+          "events": 51,
+          "users": 2,
+          "buy_records": 31
+        },
+        {
+          "item_id": "243091690",
+          "category_id": "7117",
+          "events": 88,
+          "users": 20,
+          "buy_records": 29
+        },
+        {
+          "item_id": "167074648",
+          "category_id": "8254",
+          "events": 480,
+          "users": 111,
+          "buy_records": 28
+        },
+        {
+          "item_id": "109259240",
+          "category_id": "6977",
+          "events": 157,
+          "users": 13,
+          "buy_records": 24
+        },
+        {
+          "item_id": "127914633",
+          "category_id": "10392",
+          "events": 57,
+          "users": 2,
+          "buy_records": 24
+        },
+        {
+          "item_id": "374214353",
+          "category_id": "11497",
+          "events": 377,
+          "users": 86,
+          "buy_records": 23
+        },
+        {
+          "item_id": "101795752",
+          "category_id": "110",
+          "events": 76,
+          "users": 6,
+          "buy_records": 23
+        },
+        {
+          "item_id": "176556528",
+          "category_id": "7606",
+          "events": 232,
+          "users": 56,
+          "buy_records": 22
+        },
+        {
+          "item_id": "383779671",
+          "category_id": "4276",
+          "events": 69,
+          "users": 4,
+          "buy_records": 22
+        },
+        {
+          "item_id": "330469986",
+          "category_id": "12189",
+          "events": 63,
+          "users": 2,
+          "buy_records": 22
+        },
+        {
+          "item_id": "17065447",
+          "category_id": "8877",
+          "events": 46,
+          "users": 2,
+          "buy_records": 22
+        },
+        {
+          "item_id": "400291504",
+          "category_id": "6977",
+          "events": 39,
+          "users": 1,
+          "buy_records": 22
+        },
+        {
+          "item_id": "390181058",
+          "category_id": "8744",
+          "events": 192,
+          "users": 55,
+          "buy_records": 21
+        },
+        {
+          "item_id": "331710542",
+          "category_id": "8796",
+          "events": 176,
+          "users": 45,
+          "buy_records": 21
+        },
+        {
+          "item_id": "188241513",
+          "category_id": "6977",
+          "events": 45,
+          "users": 1,
+          "buy_records": 21
+        },
+        {
+          "item_id": "83098075",
+          "category_id": "6424",
+          "events": 549,
+          "users": 113,
+          "buy_records": 20
+        },
+        {
+          "item_id": "72183675",
+          "category_id": "1723",
+          "events": 334,
+          "users": 51,
+          "buy_records": 20
+        },
+        {
+          "item_id": "387911330",
+          "category_id": "6000",
+          "events": 1102,
+          "users": 298,
+          "buy_records": 19
+        }
+      ]
+    },
+    {
+      "name": "popular_categories",
+      "rows": 50,
+      "path": "data/processed/analysis_raw_v1/sql_results/popular_categories.csv",
+      "sha256": "6de1d165d56cb7bddc18e91fe5f31998e247fbe31e626419bf181e242ed04954",
+      "query_sha256": "ef8a740d822049f3a536ac4e17d32857cf342e26dbf85646394c18d6e921c2a2",
+      "seconds": 27.3161,
+      "preview_limit": 20,
+      "preview": [
+        {
+          "category_id": "6344",
+          "events": 93059,
+          "users": 4157,
+          "items": 20401,
+          "buy_records": 2208
+        },
+        {
+          "category_id": "1863",
+          "events": 393247,
+          "users": 5997,
+          "items": 83354,
+          "buy_records": 2000
+        },
+        {
+          "category_id": "5232",
+          "events": 144200,
+          "users": 4972,
+          "items": 25900,
+          "buy_records": 1611
+        },
+        {
+          "category_id": "6977",
+          "events": 26410,
+          "users": 716,
+          "items": 7412,
+          "buy_records": 1324
+        },
+        {
+          "category_id": "8877",
+          "events": 67689,
+          "users": 2309,
+          "items": 14425,
+          "buy_records": 1072
+        },
+        {
+          "category_id": "6513",
+          "events": 295768,
+          "users": 5288,
+          "items": 65045,
+          "buy_records": 1059
+        },
+        {
+          "category_id": "5399",
+          "events": 281739,
+          "users": 5312,
+          "items": 54559,
+          "buy_records": 1054
+        },
+        {
+          "category_id": "3424",
+          "events": 54325,
+          "users": 2478,
+          "items": 14365,
+          "buy_records": 1053
+        },
+        {
+          "category_id": "3472",
+          "events": 55024,
+          "users": 3075,
+          "items": 12424,
+          "buy_records": 1038
+        },
+        {
+          "category_id": "7957",
+          "events": 47180,
+          "users": 1929,
+          "items": 13960,
+          "buy_records": 997
+        },
+        {
+          "category_id": "5894",
+          "events": 330207,
+          "users": 5279,
+          "items": 83758,
+          "buy_records": 958
+        },
+        {
+          "category_id": "1838",
+          "events": 55532,
+          "users": 3165,
+          "items": 8851,
+          "buy_records": 919
+        },
+        {
+          "category_id": "10392",
+          "events": 97029,
+          "users": 3832,
+          "items": 21316,
+          "buy_records": 866
+        },
+        {
+          "category_id": "10894",
+          "events": 138782,
+          "users": 4523,
+          "items": 33482,
+          "buy_records": 865
+        },
+        {
+          "category_id": "5027",
+          "events": 334280,
+          "users": 5499,
+          "items": 60323,
+          "buy_records": 858
+        },
+        {
+          "category_id": "13230",
+          "events": 356773,
+          "users": 5619,
+          "items": 74067,
+          "buy_records": 841
+        },
+        {
+          "category_id": "9516",
+          "events": 86683,
+          "users": 2638,
+          "items": 21648,
+          "buy_records": 828
+        },
+        {
+          "category_id": "3064",
+          "events": 112805,
+          "users": 1991,
+          "items": 16562,
+          "buy_records": 806
+        },
+        {
+          "category_id": "4370",
+          "events": 121728,
+          "users": 4518,
+          "items": 30437,
+          "buy_records": 775
+        },
+        {
+          "category_id": "11279",
+          "events": 187056,
+          "users": 4715,
+          "items": 47538,
+          "buy_records": 722
+        }
+      ]
+    },
+    {
+      "name": "user_sequences",
+      "rows": 682940,
+      "path": "data/processed/analysis_raw_v1/sql_results/user_sequences.csv",
+      "sha256": "f88169321dc628c65dc9168481a6a4ba48180303cdb2e7ae2f93922de020e9ca",
+      "query_sha256": "9190d8dd4d300bda100f769b7fea96d32c9da38eb6a8f339b3da3d9f5f4bbd8c",
+      "seconds": 2.2511,
+      "preview_limit": 20,
+      "preview": [
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-18 07:00:00",
+          "raw_record_count": 23,
+          "pv_count": 23,
+          "fav_count": 0,
+          "cart_count": 0,
+          "buy_count": 0,
+          "previous_observed_hour": null,
+          "gap_hours": null
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-18 11:00:00",
+          "raw_record_count": 2,
+          "pv_count": 2,
+          "fav_count": 0,
+          "cart_count": 0,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-18 07:00:00",
+          "gap_hours": 4.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-18 14:00:00",
+          "raw_record_count": 28,
+          "pv_count": 25,
+          "fav_count": 0,
+          "cart_count": 3,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-18 11:00:00",
+          "gap_hours": 3.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-18 15:00:00",
+          "raw_record_count": 43,
+          "pv_count": 39,
+          "fav_count": 0,
+          "cart_count": 4,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-18 14:00:00",
+          "gap_hours": 1.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-18 20:00:00",
+          "raw_record_count": 38,
+          "pv_count": 36,
+          "fav_count": 0,
+          "cart_count": 1,
+          "buy_count": 1,
+          "previous_observed_hour": "2025-11-18 15:00:00",
+          "gap_hours": 5.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-18 21:00:00",
+          "raw_record_count": 2,
+          "pv_count": 2,
+          "fav_count": 0,
+          "cart_count": 0,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-18 20:00:00",
+          "gap_hours": 1.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-19 07:00:00",
+          "raw_record_count": 57,
+          "pv_count": 56,
+          "fav_count": 0,
+          "cart_count": 1,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-18 21:00:00",
+          "gap_hours": 10.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-19 08:00:00",
+          "raw_record_count": 2,
+          "pv_count": 2,
+          "fav_count": 0,
+          "cart_count": 0,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-19 07:00:00",
+          "gap_hours": 1.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-19 17:00:00",
+          "raw_record_count": 4,
+          "pv_count": 4,
+          "fav_count": 0,
+          "cart_count": 0,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-19 08:00:00",
+          "gap_hours": 9.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-19 20:00:00",
+          "raw_record_count": 4,
+          "pv_count": 4,
+          "fav_count": 0,
+          "cart_count": 0,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-19 17:00:00",
+          "gap_hours": 3.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-20 07:00:00",
+          "raw_record_count": 17,
+          "pv_count": 16,
+          "fav_count": 0,
+          "cart_count": 1,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-19 20:00:00",
+          "gap_hours": 11.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-21 07:00:00",
+          "raw_record_count": 42,
+          "pv_count": 42,
+          "fav_count": 0,
+          "cart_count": 0,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-20 07:00:00",
+          "gap_hours": 24.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-21 20:00:00",
+          "raw_record_count": 9,
+          "pv_count": 9,
+          "fav_count": 0,
+          "cart_count": 0,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-21 07:00:00",
+          "gap_hours": 13.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-22 08:00:00",
+          "raw_record_count": 7,
+          "pv_count": 7,
+          "fav_count": 0,
+          "cart_count": 0,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-21 20:00:00",
+          "gap_hours": 12.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-22 10:00:00",
+          "raw_record_count": 18,
+          "pv_count": 18,
+          "fav_count": 0,
+          "cart_count": 0,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-22 08:00:00",
+          "gap_hours": 2.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-22 11:00:00",
+          "raw_record_count": 13,
+          "pv_count": 11,
+          "fav_count": 0,
+          "cart_count": 2,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-22 10:00:00",
+          "gap_hours": 1.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-22 15:00:00",
+          "raw_record_count": 11,
+          "pv_count": 10,
+          "fav_count": 0,
+          "cart_count": 1,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-22 11:00:00",
+          "gap_hours": 4.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-22 16:00:00",
+          "raw_record_count": 10,
+          "pv_count": 10,
+          "fav_count": 0,
+          "cart_count": 0,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-22 15:00:00",
+          "gap_hours": 1.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-22 20:00:00",
+          "raw_record_count": 5,
+          "pv_count": 5,
+          "fav_count": 0,
+          "cart_count": 0,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-22 16:00:00",
+          "gap_hours": 4.0
+        },
+        {
+          "user_id": "100001878",
+          "event_time": "2025-11-22 23:00:00",
+          "raw_record_count": 9,
+          "pv_count": 9,
+          "fav_count": 0,
+          "cart_count": 0,
+          "buy_count": 0,
+          "previous_observed_hour": "2025-11-22 20:00:00",
+          "gap_hours": 3.0
+        }
+      ]
+    },
+    {
+      "name": "funnel_reach",
+      "rows": 4,
+      "path": "data/processed/analysis_raw_v1/sql_results/funnel_reach.csv",
+      "sha256": "79c95b5861f5bebc4090307a2a0c6731175272d1511c3901e2a63c517b86de6d",
+      "query_sha256": "7660e290cf9b70c3db4cceed2547fe7795fc01a689fd7fa10c0d70f0f1ebeef1",
+      "seconds": 9.4092,
+      "preview_limit": 20,
+      "preview": [
+        {
+          "behavior_type": 1,
+          "observed_user_item_pairs": 4677501,
+          "observed_users": 10000
+        },
+        {
+          "behavior_type": 2,
+          "observed_user_item_pairs": 228240,
+          "observed_users": 6730
+        },
+        {
+          "behavior_type": 3,
+          "observed_user_item_pairs": 282429,
+          "observed_users": 8614
+        },
+        {
+          "behavior_type": 4,
+          "observed_user_item_pairs": 102996,
+          "observed_users": 8886
+        }
+      ]
+    },
+    {
+      "name": "strict_funnel",
+      "rows": 1,
+      "path": "data/processed/analysis_raw_v1/sql_results/strict_funnel.csv",
+      "sha256": "b38874a2cafc5482d56bb15a4284a68d142e5ea82259dce92b973a87da429f28",
+      "query_sha256": "c4950c8b88859e16584850a90b3381eb8282054075015e244ea99bc9ff09f601",
+      "seconds": 22.4036,
+      "preview_limit": 20,
+      "preview": [
+        {
+          "observed_view_pairs": 4677501,
+          "eligible_view_pairs": 3581365,
+          "right_censored_pairs": 1096136,
+          "cart_pairs": 74573,
+          "favorite_pairs": 768,
+          "purchase_pairs": 67
+        }
+      ]
+    },
+    {
+      "name": "user_proxy_segments",
+      "rows": 4,
+      "path": "data/processed/analysis_raw_v1/sql_results/user_proxy_segments.csv",
+      "sha256": "f0bb587d26ccfeaf6d48b023c70e4d6cc8fc336d8d3765caab1be38b8c88d4bc",
+      "query_sha256": "57272f958bf3f6da7617f0f96179b5175cff0d3e5f0f0aaaccf314896281ee02",
+      "seconds": 0.5913,
+      "preview_limit": 20,
+      "preview": [
+        {
+          "observed_purchase": 0,
+          "has_high_frequency_hour": 0,
+          "users": 921,
+          "raw_records": 227388
+        },
+        {
+          "observed_purchase": 0,
+          "has_high_frequency_hour": 1,
+          "users": 193,
+          "raw_records": 270488
+        },
+        {
+          "observed_purchase": 1,
+          "has_high_frequency_hour": 0,
+          "users": 5722,
+          "raw_records": 3857006
+        },
+        {
+          "observed_purchase": 1,
+          "has_high_frequency_hour": 1,
+          "users": 3164,
+          "raw_records": 7902024
+        }
+      ]
+    },
+    {
+      "name": "item_repurchase",
+      "rows": 92753,
+      "path": "data/processed/analysis_raw_v1/sql_results/item_repurchase.csv",
+      "sha256": "029151cbe11de5213d738cd1ca6faff7d2f47bfe37c2258c3b64247fbf8f721a",
+      "query_sha256": "ab93933b28f3ebc6668cc525f7c2c6e92e99ffa83101034d56bfc688d814d2e1",
+      "seconds": 0.7025,
+      "preview_limit": 20,
+      "preview": [
+        {
+          "item_id": "10000716",
+          "observed_buyers": 1,
+          "eligible_buyers": 1,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": 0.0
+        },
+        {
+          "item_id": "100008113",
+          "observed_buyers": 1,
+          "eligible_buyers": 0,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": null
+        },
+        {
+          "item_id": "100010454",
+          "observed_buyers": 1,
+          "eligible_buyers": 1,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": 0.0
+        },
+        {
+          "item_id": "100014544",
+          "observed_buyers": 1,
+          "eligible_buyers": 0,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": null
+        },
+        {
+          "item_id": "100020308",
+          "observed_buyers": 1,
+          "eligible_buyers": 1,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": 0.0
+        },
+        {
+          "item_id": "100022482",
+          "observed_buyers": 1,
+          "eligible_buyers": 0,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": null
+        },
+        {
+          "item_id": "100023133",
+          "observed_buyers": 1,
+          "eligible_buyers": 0,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": null
+        },
+        {
+          "item_id": "100027245",
+          "observed_buyers": 1,
+          "eligible_buyers": 1,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": 0.0
+        },
+        {
+          "item_id": "100028609",
+          "observed_buyers": 1,
+          "eligible_buyers": 1,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": 0.0
+        },
+        {
+          "item_id": "100031326",
+          "observed_buyers": 1,
+          "eligible_buyers": 1,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": 0.0
+        },
+        {
+          "item_id": "100034705",
+          "observed_buyers": 1,
+          "eligible_buyers": 1,
+          "repeat_buyers": 1,
+          "repeat_user_rate_7d": 1.0
+        },
+        {
+          "item_id": "100047144",
+          "observed_buyers": 1,
+          "eligible_buyers": 1,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": 0.0
+        },
+        {
+          "item_id": "100048266",
+          "observed_buyers": 2,
+          "eligible_buyers": 0,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": null
+        },
+        {
+          "item_id": "100057197",
+          "observed_buyers": 1,
+          "eligible_buyers": 1,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": 0.0
+        },
+        {
+          "item_id": "100058345",
+          "observed_buyers": 1,
+          "eligible_buyers": 0,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": null
+        },
+        {
+          "item_id": "100060363",
+          "observed_buyers": 2,
+          "eligible_buyers": 2,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": 0.0
+        },
+        {
+          "item_id": "100074099",
+          "observed_buyers": 1,
+          "eligible_buyers": 1,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": 0.0
+        },
+        {
+          "item_id": "10008237",
+          "observed_buyers": 1,
+          "eligible_buyers": 0,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": null
+        },
+        {
+          "item_id": "100085463",
+          "observed_buyers": 1,
+          "eligible_buyers": 1,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": 0.0
+        },
+        {
+          "item_id": "100086302",
+          "observed_buyers": 1,
+          "eligible_buyers": 1,
+          "repeat_buyers": 0,
+          "repeat_user_rate_7d": 0.0
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "raw_records": 12256906,
+    "business_keys": 6213379,
+    "user_hours": 682940
+  },
+  "high_frequency": {
+    "user_hours": 15428,
+    "records": 1956008,
+    "users": 3357
+  },
+  "query_plan": [
+    {
+      "id": 3,
+      "parent": 0,
+      "notused": 49,
+      "detail": "SEARCH behaviors USING COVERING INDEX idx_raw_comparison (user_id=? AND event_time>?)"
+    }
+  ],
+  "checks": {
+    "database_unchanged": true,
+    "raw_records_preserved": true,
+    "business_key_reference": true,
+    "high_frequency_hours": true,
+    "high_frequency_records": true
+  },
+  "scope": "Full exports; previews are capped at 20 rows. Proxy cohorts are descriptive purchase/high-frequency groups, not RFM. Sequences are observed-hour buckets with no fabricated within-hour order."
+}

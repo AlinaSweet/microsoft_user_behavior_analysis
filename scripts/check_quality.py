@@ -76,6 +76,7 @@ def _fingerprint(sources: list[Path]) -> str:
             if path.is_file() and path.suffix in {".json", ".yaml", ".yml"}
         )
     )
+    configuration.extend(sorted((PROJECT_ROOT / "sql").rglob("*.sql")))
     for path in sources + configuration:
         digest.update(str(path.relative_to(PROJECT_ROOT)).encode("utf-8"))
         digest.update(path.read_bytes())

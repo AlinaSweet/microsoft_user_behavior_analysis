@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "date": "2026-10-24",
+  "source_rows": 12256906,
+  "active_user_hours": 682940,
+  "checks": {
+    "every_user_hour_metric_matches": true,
+    "key_occurrence_distribution_matches": true,
+    "all_behavior_impact_counts_match": true,
+    "source_records_reconcile": true,
+    "category_conflicts_zero": true,
+    "high_frequency_hours": true,
+    "high_frequency_records": true,
+    "high_frequency_users": true,
+    "equal_90_hours": true
+  },
+  "method": "Independent raw CSV chunk aggregation into a new SQLite key relation; every supplied user-hour row and all 10 measures compared.",
+  "threshold": 90,
+  "threshold_condition": "raw_count > 90",
+  "threshold_cumulative_share": 0.9774094356751691,
+  "raw_records_preserved": true
+}

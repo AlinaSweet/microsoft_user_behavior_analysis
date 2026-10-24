@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checked_on": "2026-10-24",
+  "compared_user_hours": 682940,
+  "compared_measure_columns": 10,
+  "all_user_hour_cells_equal": true,
+  "reference": "Raw CSV independently reconstructed in duplicate_review_20261024/verification.json",
+  "high_frequency_hours": 15428,
+  "high_frequency_records": 1956008,
+  "high_frequency_users": 3357,
+  "notes": "Database canonical six-column full-value fingerprint separately verified in database.json."
+}

@@ -1,0 +1,27 @@
+{
+  "name": "analysis_raw_v1",
+  "kind": "processed",
+  "project_path": "data/processed/analysis_raw_v1/behavior.sqlite",
+  "format": "sqlite",
+  "row_count": 12256906,
+  "size_bytes": 4057018368,
+  "sha256": "606f557d0739a6a35ecf96f2db22b761067a1ab6eee7bf44735c8f8ce8beccb4",
+  "source_catalog": "data/catalog/validated_records_v1.json",
+  "source_catalog_sha256": "795ffbf9129270cf79634292408af4eaf6d2e432cbbd9cb8e760277603585bc1",
+  "policy": "preserve_raw_flag90_v1",
+  "high_frequency_action": "flag_only",
+  "distribution_status": "local_only",
+  "build_report": "outputs/reports/stage2_step1_20261024/database.json",
+  "value_audit": "outputs/reports/stage2_step1_20261024/database_audit.json",
+  "source_fingerprints": {
+    "src/user_behavior_analysis/service/database.py": "cbdcd94d8fea5f67eb33b9776ab5d691997769c2fbc1a5cb6e2ffde933f65baa",
+    "src/user_behavior_analysis/dao/database_repository.py": "8dcf046c774c6a1b6d991f7b5611ddea31d33d707422c2c22842e6160ab17131",
+    "src/user_behavior_analysis/dao/sqlite_client.py": "4372afa4f53ccc4376c9d24490451aab78c8a1261daeded1088958f21c43c8b4",
+    "src/user_behavior_analysis/models/database_models.py": "0ac720f92a21fc94c1482e248d1daa21b12e268e62a484deac8e2de328f3e0eb",
+    "sql/schema.sql": "b72d409cdbb881d4ec4e05229e0e16d59ba2669d0e9283d7df36b7c11b597444",
+    "sql/indexes.sql": "17c6119cb0b936a61797eb47ef2c0221030135be3b15f871e8a9259539ea9b7e",
+    "sql/diagnostics.sql": "452c7e07b773f29e4fa2bb144b11c390f57210830bbc3f7acdaad2859825a38f",
+    "configs/duplicate_policy.json": "065ffba6518f16a5f05599264396cb6821caeb0bad900e7998f584a4f66bb0bb"
+  },
+  "provenance_note": "Build code_commit records HEAD at launch; source_fingerprints identify the actual working-tree implementation used before its delivery commit."
+}

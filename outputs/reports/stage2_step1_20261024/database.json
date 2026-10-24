@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-24T15:40:34.480451+00:00",
+  "code_commit": "61f24d566c6ee91db35f697197dc50a375adfd31",
+  "source_catalog": "data/catalog/validated_records_v1.json",
+  "source_catalog_sha256": "795ffbf9129270cf79634292408af4eaf6d2e432cbbd9cb8e760277603585bc1",
+  "database_path": "data/processed/analysis_raw_v1/behavior.sqlite",
+  "database_sha256": "606f557d0739a6a35ecf96f2db22b761067a1ab6eee7bf44735c8f8ce8beccb4",
+  "database_size_bytes": 4057018368,
+  "source_rows": 12256906,
+  "loaded_rows": 12256906,
+  "source_value_sha256": "5e83a8b1420e0459992a008b0ae60b61bdfb293b0e0f30cdf62dfa2953e5b256",
+  "database_value_sha256": "5e83a8b1420e0459992a008b0ae60b61bdfb293b0e0f30cdf62dfa2953e5b256",
+  "counts": {
+    "behaviors": 12256906,
+    "users": 10000,
+    "items": 2876947,
+    "categories": 8916,
+    "event_times": 744,
+    "calendar_dates": 31,
+    "user_hour_stats": 682940
+  },
+  "checks": {
+    "complete_row_count": true,
+    "all_canonical_values": true,
+    "source_catalog_unchanged": true,
+    "sqlite_integrity": true,
+    "foreign_keys": true
+  },
+  "sqlite_version": "3.53.1",
+  "schema_sha256": "b72d409cdbb881d4ec4e05229e0e16d59ba2669d0e9283d7df36b7c11b597444",
+  "indexes_sha256": "17c6119cb0b936a61797eb47ef2c0221030135be3b15f871e8a9259539ea9b7e",
+  "diagnostics_sha256": "452c7e07b773f29e4fa2bb144b11c390f57210830bbc3f7acdaad2859825a38f",
+  "policy_sha256": "065ffba6518f16a5f05599264396cb6821caeb0bad900e7998f584a4f66bb0bb",
+  "batch_rows": 100000,
+  "elapsed_seconds": 230.3399,
+  "observed_driver_peak_rss_bytes": 347717632
+}

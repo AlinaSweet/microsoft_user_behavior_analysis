@@ -1,0 +1,17 @@
+{
+  "policy_version": "preserve_raw_flag90_v1",
+  "confirmed_on": "2026-10-24",
+  "input_catalog": "data/catalog/validated_records_v1.json",
+  "high_frequency_threshold": 90,
+  "high_frequency_operator": ">",
+  "action": "flag_only",
+  "fact_grain": "one_validated_source_record",
+  "comparison_key": [
+    "user_id",
+    "item_id",
+    "behavior_type",
+    "event_time"
+  ],
+  "source_time_precision": "hour",
+  "timezone_conversion": false
+}

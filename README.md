@@ -4,7 +4,7 @@
 
 ## 当前交付状态
 
-第一阶段四项成果的最新复核入口为 [第一阶段验收复核](docs/stage1_review.md)。当前任务状态以 [任务台账](docs/project_roadmap.md) 为准；历史报告保留其生成时的测量口径。
+2026-10-24第一阶段完整复核已通过，接入数据库后回归包含79项测试及全量数据校验。本周新增[重复值材料与核验](outputs/reports/duplicate_review_20261024/README.md)、[第二周周报](outputs/reports/weekly_report_20261019_20261023.pdf)及[当前保留原记录策略](docs/duplicate_policy.md)。第一阶段四项成果的最新复核入口为 [第一阶段验收复核](docs/stage1_review.md)。当前任务状态以 [任务台账](docs/project_roadmap.md) 为准；历史报告保留其生成时的测量口径。
 
 ## 项目结构
 
@@ -33,6 +33,13 @@ outputs/reports/            检查报告和小型结果
 outputs/figures/            图表
 .cache/                     本机运行缓存
 ```
+
+## 当前数据口径
+
+第二阶段采用全部12,256,906条有效原记录；每用户小时超过90条只标记待核查。
+data/catalog/validated_records_v1.json登记完整输入，四元组计数另保留对照。
+第一阶段clean_v1/base_v1的6,213,379条事件为历史归并口径，继续保留复核。
+最终针对错误采集的删除规则尚未确定，不以高频直接证明错误。
 
 ## 第一次准备环境
 
@@ -95,7 +102,7 @@ bash scripts/run_project.sh check-git
 
 ## Git 与 GitHub Desktop
 
-远程仓库：[microsoft-store-user-behavior-analysis](https://github.com/AlinaSweet/microsoft-store-user-behavior-analysis)（私有）。
+远程仓库：[microsoft_user_behavior_analysis](https://github.com/AlinaSweet/microsoft_user_behavior_analysis)（2026-10-24核对为公开）。
 
 - main：稳定版本与里程碑。
 - dev：集成和日常开发。
@@ -154,3 +161,7 @@ PYTHONPATH=src .venv/bin/python scripts/audit_stage1.py \
 ```
 
 该入口重新运行全部质量门禁、真实 worker 环境检查，以及完整清洗、聚合、文件指纹和前序研究复核。GitHub 分支同步与云端 CI 另行验收。
+
+## 第二阶段第1项：SQLite与SQL分析
+
+已按保留全部有效原记录的口径开始构建业务数据库。运行方式、表结构与查询口径见[数据库说明](docs/sqlite_analysis.md)，结果见[阶段报告](outputs/reports/stage2_step1_20261024/README.md)。大型SQLite与完整查询结果保留本地，通过data/catalog登记。
