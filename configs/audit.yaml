@@ -1,0 +1,25 @@
+# Full-relation audit profile; the same 70% available-RAM cap applies.
+# These values are explicitly loaded by the Python runtime.
+distributed:
+  worker:
+    memory:
+      target: 0.60
+      spill: 0.70
+      pause: 0.80
+      terminate: 0.95
+local_cluster:
+  n_workers: 2
+  threads_per_worker: 1
+  memory_limit: 1536MiB
+  csv_blocksize: 32MiB
+  available_memory_fraction: 0.70
+  minimum_worker_memory: 512MiB
+  local_directory: .cache/dask
+data:
+  default_path: data/raw/user_behavior.csv
+  encoding: utf-8-sig
+  columns: [time, user_id, item_id, item_category, behavior_type]
+benchmark:
+  sample_rows: 100000
+  block_sizes: [32MiB, 64MiB]
+  repeats: 2

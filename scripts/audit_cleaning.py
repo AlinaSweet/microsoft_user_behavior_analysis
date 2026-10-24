@@ -95,13 +95,14 @@ def main() -> int:
         Zero only when every declared audit gate passes.
     """
     parser = argparse.ArgumentParser()
+    parser.add_argument("--config", default="configs/audit.yaml")
     parser.add_argument("--report", default="outputs/reports/stage1_step3/quality.json")
     parser.add_argument("--output", default="outputs/reports/stage1_step3/audit.json")
     parser.add_argument("--previous-review-commit", default="ba7afad")
     arguments = parser.parse_args()
     report_path = input_file_path(arguments.report)
     report = cast(CleaningReport, json.loads(report_path.read_text(encoding="utf-8")))
-    config = load_config()
+    config = load_config(arguments.config)
     counts = report["row_accounting"]
     key = ("user_id", "item_id", "behavior_type", "event_time")
     directory = PROJECT_ROOT / report["output_dir"]
@@ -186,6 +187,7 @@ def main() -> int:
             ["git", "rev-parse", "HEAD"], cwd=PROJECT_ROOT, text=True
         ).strip(),
         "cleaning_code_commit": report["code_commit"],
+        "audit_resource_config": arguments.config,
         "cleaning_report_sha256": sha256_file(report_path),
         "scope": (
             "Full validated and cleaned data; all artifact hashes; "

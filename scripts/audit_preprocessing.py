@@ -20,10 +20,11 @@ from user_behavior_analysis.service.dataset_audit import DatasetAuditRequest
 from user_behavior_analysis.service.dataset_audit import audit_parquet
 
 
-def _predecessor_audit(output: Path) -> tuple[int, str]:
+def _predecessor_audit(output: Path, config_path: str) -> tuple[int, str]:
     """Run the complete cleaning audit and capture its process output.
 
     Args:
+        config_path: Audit resource profile passed to the predecessor.
         output: Destination passed to the cleaning auditor for its JSON report.
 
     Returns:
@@ -39,6 +40,8 @@ def _predecessor_audit(output: Path) -> tuple[int, str]:
         [
             str(PROJECT_ROOT / ".venv/bin/python"),
             str(PROJECT_ROOT / "scripts/audit_cleaning.py"),
+            "--config",
+            config_path,
             "--output",
             str(output),
         ],
@@ -57,6 +60,7 @@ def main() -> int:
         Zero only after every complete-data and predecessor gate passes.
     """
     parser = argparse.ArgumentParser()
+    parser.add_argument("--config", default="configs/audit.yaml")
     parser.add_argument(
         "--report", default="outputs/reports/stage1_step4/preprocessing.json"
     )
@@ -71,7 +75,7 @@ def main() -> int:
             encoding="utf-8"
         )
     )
-    configuration = load_config()
+    configuration = load_config(arguments.config)
     output = project_output_path(
         os.path.commonpath(
             [str(project_output_path(entry["path"])) for entry in report["files"]]
@@ -122,7 +126,9 @@ def main() -> int:
     predecessor_path = project_output_path(arguments.output).with_name(
         "predecessor_cleaning_audit.json"
     )
-    previous_status, previous_output = _predecessor_audit(predecessor_path)
+    previous_status, previous_output = _predecessor_audit(
+        predecessor_path, arguments.config
+    )
     checks = {
         "complete_event_relation": events["status"] == "passed",
         "complete_aggregate_keys": all(
@@ -146,6 +152,7 @@ def main() -> int:
         "code_commit": subprocess.check_output(
             ["git", "rev-parse", "HEAD"], cwd=PROJECT_ROOT, text=True
         ).strip(),
+        "audit_resource_config": arguments.config,
         "preprocessing_report_sha256": sha256_file(report_path),
         "checks": checks,
         "events": events,

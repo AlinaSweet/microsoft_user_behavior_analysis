@@ -6,6 +6,7 @@ from typing import cast
 
 import dask.dataframe as dd
 import pandas as pd
+from distributed import Client
 
 from user_behavior_analysis.common.utils import project_output_path
 from user_behavior_analysis.models.config_models import ProjectConfig
@@ -109,6 +110,63 @@ def _partition_mismatches(frame: pd.DataFrame, columns: list[str]) -> pd.Series:
     return pd.Series([int((~valid).sum())], name="mismatches", dtype="int64")
 
 
+def _compare_table(
+    client: Client, frame: dd.DataFrame, actual: dd.DataFrame, name: str
+) -> tuple[int, int]:
+    """Compare every group while bounding high-cardinality daily shuffles.
+
+    Args:
+        client: Running bounded Dask client.
+        frame: Complete canonical events with derived counting fields.
+        actual: Persisted aggregate under review.
+        name: Aggregate name in AUDIT_DEFINITIONS.
+
+    Returns:
+        Expected group count and mismatched group count, including extra dates.
+    """
+    keys = AUDIT_DEFINITIONS[name][0]
+    columns = [
+        column for column in _expected_table(frame, name).columns if column not in keys
+    ]
+    group_count = 0
+    mismatch_count = 0
+    slices = [None]
+    if name == "item_daily_stats":
+        dates = client.compute(frame["event_date"].drop_duplicates()).result().tolist()
+        actual_dates = (
+            client.compute(actual["event_date"].drop_duplicates()).result().tolist()
+        )
+        if set(actual_dates) != set(dates):
+            mismatch_count += int(
+                client.compute(
+                    actual[~actual["event_date"].isin(dates)].shape[0]
+                ).result()
+            )
+        slices = dates
+    for date in slices:
+        selected = frame if date is None else frame[frame["event_date"] == date]
+        expected = _expected_table(selected, name)
+        observed = actual if date is None else actual[actual["event_date"] == date]
+        joined = expected.merge(
+            observed,
+            on=keys,
+            how="outer",
+            indicator=True,
+            suffixes=("_expected", "_actual"),
+        )
+        mismatches = joined.map_partitions(
+            _partition_mismatches,
+            columns,
+            meta=pd.Series(dtype="int64", name="mismatches"),
+        ).sum()
+        groups, differences = client.gather(
+            client.compute([expected.shape[0], mismatches])
+        )
+        group_count += int(groups)
+        mismatch_count += int(differences)
+    return group_count, mismatch_count
+
+
 def audit_aggregate_values(
     config: ProjectConfig, event_directory: Path, aggregate_directory: Path
 ) -> list[AggregateValueAudit]:
@@ -123,6 +181,7 @@ def audit_aggregate_values(
         Whole-table comparisons using global groups and full outer joins.
 
     Notes:
+        Item/day comparisons run one source date at a time to bound shuffle memory.
         Expected relations are rebuilt from events. Aggregate totals are not
         used as substitutes for comparing every group and measure.
     """
@@ -164,21 +223,7 @@ def audit_aggregate_values(
                     }
                 )
                 continue
-            joined = expected.merge(
-                actual,
-                on=keys,
-                how="outer",
-                indicator=True,
-                suffixes=("_expected", "_actual"),
-            )
-            mismatches = joined.map_partitions(
-                _partition_mismatches,
-                columns,
-                meta=pd.Series(dtype="int64", name="mismatches"),
-            ).sum()
-            group_count, mismatch_count = client.gather(
-                client.compute([expected.shape[0], mismatches])
-            )
+            group_count, mismatch_count = _compare_table(client, frame, actual, name)
             results.append(
                 {
                     "name": name,

@@ -89,6 +89,7 @@ def main() -> int:
     """
     parser = argparse.ArgumentParser()
     parser.add_argument("--output-dir", required=True)
+    parser.add_argument("--config", default="configs/audit.yaml")
     arguments = parser.parse_args()
     output = project_output_path(arguments.output_dir)
     output.mkdir(parents=True, exist_ok=False)
@@ -108,6 +109,8 @@ def main() -> int:
                 sys.executable,
                 "-m",
                 "user_behavior_analysis",
+                "--config",
+                arguments.config,
                 "check",
                 "--output-dir",
                 str(output / "environment"),
@@ -121,6 +124,8 @@ def main() -> int:
             [
                 sys.executable,
                 "scripts/audit_preprocessing.py",
+                "--config",
+                arguments.config,
                 "--output",
                 str(output / "preprocessing_audit.json"),
             ],
