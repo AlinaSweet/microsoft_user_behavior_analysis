@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-25T00:55:54.318622+00:00",
+  "repository": "https://github.com/AlinaSweet/microsoft_user_behavior_analysis",
+  "checked_commit": "6ee9f66ce125efd718b092e111242a55ee7e8eba",
+  "remote_branches": {
+    "dev": "6ee9f66ce125efd718b092e111242a55ee7e8eba",
+    "feature/duplicate-review-stage2-sqlite": "6ee9f66ce125efd718b092e111242a55ee7e8eba",
+    "main": "6ee9f66ce125efd718b092e111242a55ee7e8eba"
+  },
+  "quality_runs": [
+    {
+      "id": 40148324314,
+      "head_sha": "6ee9f66ce125efd718b092e111242a55ee7e8eba",
+      "head_branch": "feature/duplicate-review-stage2-sqlite",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/AlinaSweet/microsoft_user_behavior_analysis/actions/runs/40148324314",
+      "created_at": "2026-10-25T00:51:30Z",
+      "updated_at": "2026-10-25T00:52:57Z"
+    },
+    {
+      "id": 40148479791,
+      "head_sha": "6ee9f66ce125efd718b092e111242a55ee7e8eba",
+      "head_branch": "dev",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/AlinaSweet/microsoft_user_behavior_analysis/actions/runs/40148479791",
+      "created_at": "2026-10-25T00:53:55Z",
+      "updated_at": "2026-10-25T00:55:09Z"
+    },
+    {
+      "id": 40148515030,
+      "head_sha": "6ee9f66ce125efd718b092e111242a55ee7e8eba",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/AlinaSweet/microsoft_user_behavior_analysis/actions/runs/40148515030",
+      "created_at": "2026-10-25T00:54:26Z",
+      "updated_at": "2026-10-25T00:55:40Z"
+    }
+  ],
+  "database_build_sources_match_checked_commit": {
+    "src/user_behavior_analysis/service/database.py": true,
+    "src/user_behavior_analysis/dao/database_repository.py": true,
+    "src/user_behavior_analysis/dao/sqlite_client.py": true,
+    "src/user_behavior_analysis/models/database_models.py": true,
+    "sql/schema.sql": true,
+    "sql/indexes.sql": true,
+    "sql/diagnostics.sql": true,
+    "configs/duplicate_policy.json": true
+  },
+  "local_validation": {
+    "first_stage_full_regression": "outputs/reports/stage1_review_20261024_04/audit.json",
+    "quality": "outputs/reports/stage2_step1_20261024/quality.json",
+    "passed_test_count": 79,
+    "raw_records_preserved": 12256906,
+    "database_build": "outputs/reports/stage2_step1_20261024/database.json",
+    "database_value_audit": "outputs/reports/stage2_step1_20261024/database_audit.json",
+    "sql_queries_executed": 11,
+    "sql_analysis": "outputs/reports/stage2_step1_20261024/sql_analysis.json"
+  },
+  "data_distribution": {
+    "github": "Code, configuration, small reports, supplied diagnostics and catalogs.",
+    "local_only": "Raw CSV, large Parquet, SQLite, complete large query outputs and detailed user-hour archive."
+  },
+  "receipt_scope": "Observed branch and cloud checkpoint for checked_commit. A subsequent documentation-only commit publishes this receipt and corrects navigation; its CI is verified separately on GitHub. Original reports, code, processing policies and data are unchanged."
+}
