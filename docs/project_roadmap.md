@@ -24,6 +24,8 @@
 
 ## 当前交付状态
 
+已完成事项与实际文件的对应关系见[任务与文件导航](completed_work.md)，含当前/历史数据版本和本地/GitHub存放说明。
+
 截至2026-10-25，第一阶段四项任务复核及数据库接入后回归通过（79项测试）。第二阶段第1项已完成全量运行，含全部有效原记录数据库、索引、接口和11项SQL；第2–4项待执行。第一阶段最新证据为 docs/stage1_review.md 及 outputs/reports/stage1_review_20261024_04。实现提交在 feature、dev、main 均已同步且CI通过，见[远程交付记录](../outputs/reports/stage2_step1_20261024/cloud_delivery.json)。
 
 ## 每完成一个小任务的验收顺序

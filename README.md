@@ -4,6 +4,8 @@
 
 ## 当前交付状态
 
+按任务查找说明、代码、数据和验收记录，请先看[已完成任务与文件导航](docs/completed_work.md)。
+
 2026-10-24第一阶段完整复核及数据库接入后回归已通过，包含79项测试及全量数据校验。本周新增[重复值材料与核验](outputs/reports/duplicate_review_20261024/README.md)、[第二周周报](outputs/reports/weekly_report_20261019_20261023.pdf)及[当前保留原记录策略](docs/duplicate_policy.md)。第一阶段四项成果的最新复核入口为 [第一阶段验收复核](docs/stage1_review.md)。当前任务状态以 [任务台账](docs/project_roadmap.md) 为准；历史报告保留其生成时的测量口径。
 
 2026-10-25，第二阶段第1项的全量数据库与11项SQL已完成，功能分支、dev和main的实现提交均通过远程Quality检查。详见[数据库与SQL报告](outputs/reports/stage2_step1_20261024/README.md)和[远程交付记录](outputs/reports/stage2_step1_20261024/cloud_delivery.json)。
