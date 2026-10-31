@@ -9,7 +9,7 @@
 | data/processed/ | 标准化 Parquet 等数据 | 文件本身忽略；登记生成命令和校验清单 |
 | data/catalog/ | 数据文件的 JSON 校验清单 | 提交到 GitHub |
 | data/summaries/ | 小型中间统计表、CSV | 每个文件不超过 10 MiB，提交到 GitHub |
-| outputs/reports/ | 报告、JSON、CSV 汇总 | 每个文件不超过 10 MiB，提交到 GitHub |
+| outputs/reports/ | 项目分析与验收报告、JSON、CSV 汇总 | 每个文件不超过 10 MiB，提交到 GitHub |
 | outputs/figures/ | 图表和截图 | 每个文件不超过 10 MiB，提交到 GitHub |
 | .cache/、.venv*/ | 运行缓存和虚拟环境 | 忽略，可重新生成 |
 
@@ -53,3 +53,9 @@ CSV 的五个现有字段已经采用 snake_case：time、user_id、item_id、it
 后续新增代码、内部字段、清单键和数据产物名称统一用 snake_case；读取时继续把 ID 和原始行为值作为 Arrow 字符串保存。若分析阶段需要清洗，必须说明业务规则，把结果写到 data/interim 或 data/processed，并登记来源、生成参数和 SHA-256。不要把原始文件覆盖成清洗结果。
 
 原始数据的内容校验、列名和本次读取证据见 outputs/reports/coding_standard_data_validation.json。Git 只同步清单和小型报告。
+
+## 个人材料与制作文件
+
+个人周报、教学页面、面向个人的解释文档和截图反馈回复保存在仓库外，不进入项目交付。
+Git忽略周报、教学目录、Office临时锁文件、R交互历史和文档制作预览。
+项目技术方案、数据口径、特征字典、统计表、正式图表及质量记录继续纳入版本管理。

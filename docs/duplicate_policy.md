@@ -33,5 +33,4 @@
 ## 复核入口
 
 [附件与独立核验](../outputs/reports/duplicate_review_20261024/README.md)；
-[本周周报](../outputs/reports/weekly_report_20261019_20261023.pdf)；
 [策略配置](../configs/duplicate_policy.json)。

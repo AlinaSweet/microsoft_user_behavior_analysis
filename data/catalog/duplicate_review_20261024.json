@@ -66,12 +66,6 @@
       "project_path": "data/interim/duplicate_review_20261024/user_hour_detail.csv.zip",
       "bytes": 5419925,
       "sha256": "be7b2e0c7f9762cc25501e39c4382a2444fa5d7369bef976c6e8fe3d1b9c148a"
-    },
-    {
-      "supplied_name": "Week2_report(2).pdf",
-      "project_path": "outputs/reports/weekly_report_20261019_20261023.pdf",
-      "bytes": 312475,
-      "sha256": "830bd7dfb878334f8c86ecdc0bf186e402398fb83ae64990e9a65d2867703d97"
     }
   ],
   "ignored_office_lock_file": true,
@@ -84,6 +78,15 @@
       "sha256": "b8ca0e1c5d4081aa9acb8b117d4c22957c80bea67d1ace436601c66665f753d3",
       "rows": 15428,
       "derivation": "Validated supplied user-hour detail; raw_record_count > 90; flag only."
+    }
+  ],
+  "excluded_personal_sources": [
+    {
+      "supplied_name": "Week2_report(2).pdf",
+      "bytes": 312475,
+      "sha256": "830bd7dfb878334f8c86ecdc0bf186e402398fb83ae64990e9a65d2867703d97",
+      "distribution_status": "personal_report_excluded",
+      "previous_project_path": "outputs/reports/weekly_report_20261019_20261023.pdf"
     }
   ]
 }

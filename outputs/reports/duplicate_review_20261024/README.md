@@ -27,9 +27,9 @@
 - user_hour_bins.csv / user_hour_exact.csv：原始分箱、逐次数分布。
 - key_occurrences.csv / behavior_dedup_impact.csv：原始四元组分布及行为影响。
 - 三张PNG：用户提供的图表。
-- high_frequency_user_hours.csv：由用户全量明细派生的15,428条待核查清单，补齐周报列明但附件缺失的单独清单。
+- high_frequency_user_hours.csv：由用户全量明细派生的15,428条待核查清单，补齐高频用户小时的单独清单。
 - verification.json：本次独立全量核验。
-- 90条参考线的计算与边界以周报和 docs/duplicate_policy.md 为准；原始分箱CSV没有拆分51–90与91–100，不改写原附件。
+- 90条参考线的计算与边界以核验结果和 docs/duplicate_policy.md 为准；原始分箱CSV没有拆分51–90与91–100，不改写原附件。
 
 ## 高频清单字段
 

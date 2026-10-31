@@ -21,3 +21,24 @@ data/processed/*
 outputs/**/*.parquet
 outputs/**/*.feather
 # CSV summaries under data/summaries and outputs/reports can now be committed.
+
+# Personal reports and learning explanations
+/outputs/learning/
+/outputs/reports/weekly_report_*
+/outputs/reports/weekly_summary_*
+/docs/completed_work.md
+/docs/stage1_stage2_step1_files.md
+/docs/feature_system_files.md
+/data/catalog/stage1_stage2_step1_files.json
+
+# Office locks and interactive session history
+**/~$*
+.Rhistory
+.RData
+.Rapp.history
+
+# Artifact authoring previews
+/outputs/reports/feature_system_*/feedback_resolution.md
+/outputs/reports/feature_system_*/*_preview.png
+/outputs/reports/feature_system_*/feature_dictionary.xlsx.inspect.ndjson
+/outputs/reports/eda_dashboard1_*/dashboard_preview.png
