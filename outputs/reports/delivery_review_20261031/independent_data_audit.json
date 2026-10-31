@@ -1,0 +1,72 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-31T01:03:06.537768+00:00",
+  "scope": "Fresh SQLite integrity and all user-hour measures; full candidate/user 7d counts and future labels",
+  "database": {
+    "quick_check": [
+      "ok"
+    ],
+    "foreign_key_violations": 0,
+    "user_hours": 682940,
+    "metrics": [
+      "raw_record_count",
+      "distinct_item_behavior_count",
+      "extra_same_key_records",
+      "max_key_occurrences",
+      "distinct_items",
+      "behavior_type_count",
+      "pv_count",
+      "fav_count",
+      "cart_count",
+      "buy_count"
+    ],
+    "different_rows": 0
+  },
+  "snapshots": [
+    {
+      "anchor": "2025-11-25",
+      "candidate_rows": 1030893,
+      "scalar_fields": 439,
+      "duplicate_candidates": 0,
+      "future_or_cutoff_violations": 0,
+      "pair_count_differences": 0,
+      "user_count_differences": 0,
+      "label_available": true,
+      "label_differences": 0
+    },
+    {
+      "anchor": "2025-12-02",
+      "candidate_rows": 1061515,
+      "scalar_fields": 439,
+      "duplicate_candidates": 0,
+      "future_or_cutoff_violations": 0,
+      "pair_count_differences": 0,
+      "user_count_differences": 0,
+      "label_available": true,
+      "label_differences": 0
+    },
+    {
+      "anchor": "2025-12-09",
+      "candidate_rows": 1117324,
+      "scalar_fields": 439,
+      "duplicate_candidates": 0,
+      "future_or_cutoff_violations": 0,
+      "pair_count_differences": 0,
+      "user_count_differences": 0,
+      "label_available": true,
+      "label_differences": 0
+    },
+    {
+      "anchor": "2025-12-19",
+      "candidate_rows": 1216917,
+      "scalar_fields": 439,
+      "duplicate_candidates": 0,
+      "future_or_cutoff_violations": 0,
+      "pair_count_differences": 0,
+      "user_count_differences": 0,
+      "label_available": false,
+      "label_differences": 0
+    }
+  ],
+  "unchanged_audited_sql_queries": 11
+}

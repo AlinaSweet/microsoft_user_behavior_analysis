@@ -1,0 +1,16 @@
+isort: passed
+black: passed
+isort: passed
+black: passed
+flake8: passed
+mypy: passed
+pylint: failed
+************* Module tests.integration.test_feature_boundaries
+tests/integration/test_feature_boundaries.py:225:21: E1101: Function 'array' has no 'copy' member (no-member)
+tests/integration/test_feature_boundaries.py:226:20: E1101: Function 'array' has no 'copy' member (no-member)
+
+-----------------------------------
+Your code has been rated at 9.98/10
+
+
+tests: passed

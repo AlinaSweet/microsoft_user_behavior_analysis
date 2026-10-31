@@ -1,0 +1,293 @@
+{
+  "source_database_sha256": "606f557d0739a6a35ecf96f2db22b761067a1ab6eee7bf44735c8f8ce8beccb4",
+  "png_figures": 26,
+  "svg_figures": 26,
+  "files": [
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/README.md",
+      "bytes": 4976,
+      "sha256": "5b92348a574658691ab465ef7c9e9b272a23a5b4c3724f244a85aa7b6949006d"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/analysis.json",
+      "bytes": 5918621,
+      "sha256": "d5cf4e4d204ecec4c76a65c5017cbf6662f2597d41de842bf48f3bb5f234f582"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/dashboard.html",
+      "bytes": 3803314,
+      "sha256": "157491d86b84c9765d9bcf73456e78426b336d450842b55375e3c7da6d786990"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/execution_record.json",
+      "bytes": 4044,
+      "sha256": "a246a3de2be772fca48856a685b0ee4e5a07e53262a7c317e8da5e5a7bdc0023"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/activity_category_preferences.png",
+      "bytes": 103351,
+      "sha256": "47f5aede9e681e9f8e88c743da479d9a16c6e80b61b18ef70ecf82d10d728b8f"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/activity_category_preferences.svg",
+      "bytes": 70251,
+      "sha256": "429a92d0e397bf5d9f5b7b468fbb6f1700dcdea11795f671e8bdde71095e424b"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/alternative_purchase_paths.png",
+      "bytes": 98379,
+      "sha256": "afa76dc83923bc9e082150c4d04fd773ac7f426467c4367a3d09278cbe900fea"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/alternative_purchase_paths.svg",
+      "bytes": 70139,
+      "sha256": "cbe0457ec4d8f64fca666b5de11f973743bd236c9f3d9f74e03bd09517494a64"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/category_long_tail.png",
+      "bytes": 97656,
+      "sha256": "d1732b7cfcd2c7687b32f409e147b742ed66977a3a07cab48ff9e8b47ba37544"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/category_long_tail.svg",
+      "bytes": 54205,
+      "sha256": "8e68a2844820b5b6c81b7c9a73c6f2b895fa812b6fe0f51608e6c3aea7d84be7"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/category_ranking_coverage.png",
+      "bytes": 109349,
+      "sha256": "84c33e8f926faee2204b45e88ddddc774580aca83e0a980a90a8150bbeeca9dc"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/category_ranking_coverage.svg",
+      "bytes": 75585,
+      "sha256": "c955621f72740487494d082abede1b040cc768876fd679ac6447d66235e15b12"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/category_ranking_volume.png",
+      "bytes": 185545,
+      "sha256": "6344dceadca61a1dc34700eeb85bc0ca1c89a9727f01f2341584a033c5336192"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/category_ranking_volume.svg",
+      "bytes": 90974,
+      "sha256": "0474a3033d7becd760799a87cfecf7e50934f9d158a6f891126abfc3c411f5c7"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/coverage_and_strict_funnel.png",
+      "bytes": 77484,
+      "sha256": "b7f9b47aa2b62bd0263e6493ab5efa114bbf29582457f1601beb5d6a7ad830be"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/coverage_and_strict_funnel.svg",
+      "bytes": 75340,
+      "sha256": "3599fb1a36922c9f40358cf9b07c8ef06bc610e13216b2caff2b2ab18fac297a"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/daily_trends.png",
+      "bytes": 134849,
+      "sha256": "fa848da09c56220e91a9f18bb3ab2794981ac6c60749e9784c175de4a6c2ae13"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/daily_trends.svg",
+      "bytes": 62767,
+      "sha256": "d5e8a6d87393a8de310ced97ada39fd7e43389782b858e3e369e613ef5130143"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/duplicate_sensitivity.png",
+      "bytes": 67094,
+      "sha256": "e4ab0bd86b1dfba3eec61233d515b5ae3b76ef3f30cefeadf8a2de25fe09f46c"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/duplicate_sensitivity.svg",
+      "bytes": 57556,
+      "sha256": "6605e2604c1def585eb455995d928b04c51712c2fe8d42b26cede10c44337243"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/forward_associations_20251125.png",
+      "bytes": 184445,
+      "sha256": "2039bbc2f34b97d1eaeb0e5cf204eeb36bb60b83b53f0d9767d686abb56761ee"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/forward_associations_20251125.svg",
+      "bytes": 102979,
+      "sha256": "0ea5c9171e9eb19c6833bfe0333ca9460b65d6685d59135e4c53b4f050d66b46"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/forward_associations_20251202.png",
+      "bytes": 190986,
+      "sha256": "c16006c4b726f4fd24832dfa2b94349ec23dfd4fd6960a26a96232f4b5320f24"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/forward_associations_20251202.svg",
+      "bytes": 103234,
+      "sha256": "4dc13728485df83df2a56faaa41bb36885e089368dca4bf204e275c06abe93c5"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/forward_associations_20251209.png",
+      "bytes": 182962,
+      "sha256": "fd6e47319c1900a8ccc5d92e39f3a69baa8bdcbe572f83bc891b88a0339c1466"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/forward_associations_20251209.svg",
+      "bytes": 100489,
+      "sha256": "49b09bfa98a505992194acb713fb9b523b164fef6055a394052e3147e7a6f1b1"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/forward_cohort_balance.png",
+      "bytes": 66695,
+      "sha256": "14b0b63aae6fe78a4762e1b42d2868f17ce637299333320a57d1233ab921df71"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/forward_cohort_balance.svg",
+      "bytes": 57239,
+      "sha256": "00b4cfb04240b92d11711a5425a878b1c9e0809e9a46c587c70ffc244ccb1caf"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/future_count_sensitivity.png",
+      "bytes": 90621,
+      "sha256": "8a63ad5909dec3c3348ce6a58a22358c7fb424afce8c2dd97197029c5a2ce46e"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/future_count_sensitivity.svg",
+      "bytes": 62158,
+      "sha256": "08998f519e8974f2d4018eb1853f775c63b5e73a1967b03f16c764dcdec53763"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/heatmap_buy.png",
+      "bytes": 59495,
+      "sha256": "e529d41f8dd7daf36035eb8253139331618b680860ece786619d82bd04f7cb30"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/heatmap_buy.svg",
+      "bytes": 59326,
+      "sha256": "63cc7f63139670ea7a59664e7a261b23e354feccb61b2b579ed3be8f4bc65d83"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/heatmap_cart.png",
+      "bytes": 59384,
+      "sha256": "ec5e1c7805f6262d6d3d13cb1f99a41aed1b9c5ad1ee30661e387111143fe8a7"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/heatmap_cart.svg",
+      "bytes": 59408,
+      "sha256": "e67edd03c9c26450c591b4e08e865bab5c8e6d8aeceb4dd862959e4ad7af8a92"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/heatmap_events.png",
+      "bytes": 63339,
+      "sha256": "92d15770d4f1e4a2fc9c10cac7bad3806e0145f20f48595b18db2c2375905944"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/heatmap_events.svg",
+      "bytes": 62610,
+      "sha256": "c8009f414c221cd8241c24b669acc9c7c21544352e5d856bcba50cd4f21303a4"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/heatmap_fav.png",
+      "bytes": 61529,
+      "sha256": "303cbc5d37d1781fd931acbd9e34c2d93f3c91eb6f69f85e57a037032a27f731"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/heatmap_fav.svg",
+      "bytes": 60994,
+      "sha256": "d21321c17bdabb2ddd3a90c63000bc833a4db33f6bae0ed790034281c4a737be"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/heatmap_purchase_share.png",
+      "bytes": 61286,
+      "sha256": "d5aced7bce9ea4275276d0f5de7210f3d81d5b687d6711abac63126d1dad7467"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/heatmap_purchase_share.svg",
+      "bytes": 54244,
+      "sha256": "1df9c1a68657e27eb2b44b0bfa63131a4ae0ddc26091333b186c983acb39d392"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/heatmap_pv.png",
+      "bytes": 62430,
+      "sha256": "b9211241ae49d2aa61c6d70f12b5b6bdf3d96abd87edc9ea477c0fa25dc99a79"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/heatmap_pv.svg",
+      "bytes": 61528,
+      "sha256": "335a361b684721ef7b37881c4e81f6643cd62d80b19e2a4306f255ee35509d72"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/hour_transitions.png",
+      "bytes": 91803,
+      "sha256": "222bb27e6c2c6d9f057677b19000129e7a39e6c882bb9317bb3853b9dea161c8"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/hour_transitions.svg",
+      "bytes": 60995,
+      "sha256": "a6ddc0710487a6e05586b925d3767c6a0d0d99a331e0b932a2b96e9e31d18fd6"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/item_quadrants.png",
+      "bytes": 150196,
+      "sha256": "fe1de7a0a24beb1e21d9154ad3244a3dc8609f5c18cc660ada1a8858373c2982"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/item_quadrants.svg",
+      "bytes": 142448,
+      "sha256": "017e391fa5b17cc9748d63f68633d8f3bc1f75350fbe7cc40777a6b50f4d49a6"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/item_ranking_coverage.png",
+      "bytes": 154206,
+      "sha256": "ba45fcc01ce96239ca970b649e56f8c18a50b80f6a0feee9767b8be913ee75f7"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/item_ranking_coverage.svg",
+      "bytes": 95255,
+      "sha256": "d1df8b3f28e10132bbe6a5a3d9138fca5a338a25c0930d403ac3fcf3c58370ca"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/item_ranking_volume.png",
+      "bytes": 220716,
+      "sha256": "b1b444f84a29cc308b0219067c1f98fbec39f45a58c8233e4e7cd6d673a11b5c"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/item_ranking_volume.svg",
+      "bytes": 108793,
+      "sha256": "20305425f9d53d6d6d36f1ea9f39dc6ea501f0d81f4a51c9aa563a0c5024c9c0"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/peak_day_sensitivity.png",
+      "bytes": 74472,
+      "sha256": "0625d30c35d049b31f5359d923a31f9863fb9f39d0ccea44dd9b5a57b52b1841"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/peak_day_sensitivity.svg",
+      "bytes": 68210,
+      "sha256": "4e7e5882639db9fae8b5d8683bd1f827f559547c722793ecb2d49c8d77eae3fa"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/purchase_distributions.png",
+      "bytes": 77151,
+      "sha256": "d48916d71ef3c64acc06371a64fb02f06508dc0954c5323cdd70a81f79980156"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/purchase_distributions.svg",
+      "bytes": 59554,
+      "sha256": "2f0ab8920ac73a1720c77613aafdfc433aad19512242a2abdb6cb67e0ef37cfb"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/user_activity.png",
+      "bytes": 113381,
+      "sha256": "12a5b30f894f506292c5d7d12814fa8be8f9dd029205bbf16e40166451d96321"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/figures/user_activity.svg",
+      "bytes": 83245,
+      "sha256": "f6907d473998d7d7d901d6bdd5e957cca8e6166be12f7efc1f0fb51f985a1f3a"
+    },
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/tables.md",
+      "bytes": 26156,
+      "sha256": "a424c749628fdf628c2c09ddd6f541709b7e37b3f0cf9b8fa3858e9be7bc992f"
+    }
+  ],
+  "distribution_updated_on": "2026-10-31"
+}

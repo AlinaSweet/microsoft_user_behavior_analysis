@@ -1,0 +1,93 @@
+{
+  "scalar_features": 439,
+  "sequence_fields": 6,
+  "dictionary_rows": 445,
+  "by_table": {
+    "user": 130,
+    "item": 90,
+    "category": 73,
+    "pair": 72,
+    "user_category": 69,
+    "sequence": 6,
+    "time": 5
+  },
+  "by_family": {
+    "基础统计": 264,
+    "生命周期": 15,
+    "行为强度与偏好": 25,
+    "生命周期与RF代理": 15,
+    "偏好": 6,
+    "商品生命周期与竞争": 5,
+    "类目覆盖": 2,
+    "严格小时漏斗": 35,
+    "小时序列": 22,
+    "序列输入": 6,
+    "SVD隐式特征": 40,
+    "共现与关联规则": 5,
+    "日历": 5
+  },
+  "svd_coordinate_columns": 32,
+  "svd_fit_anchor": "2025-11-25",
+  "snapshot_rows": [
+    {
+      "anchor": "2025-11-25",
+      "users": 9115,
+      "items": 782474,
+      "categories": 7128,
+      "candidate_pairs": 1030893,
+      "scalar_columns": 439,
+      "history_coverage_30d": 7,
+      "future_label_available": true,
+      "positives": 5269,
+      "negatives": 3846
+    },
+    {
+      "anchor": "2025-12-02",
+      "users": 9604,
+      "items": 1427137,
+      "categories": 7954,
+      "candidate_pairs": 1061515,
+      "scalar_columns": 439,
+      "history_coverage_30d": 14,
+      "future_label_available": true,
+      "positives": 5357,
+      "negatives": 4247
+    },
+    {
+      "anchor": "2025-12-09",
+      "users": 9828,
+      "items": 2026421,
+      "categories": 8452,
+      "candidate_pairs": 1117324,
+      "scalar_columns": 439,
+      "history_coverage_30d": 21,
+      "future_label_available": true,
+      "positives": 6381,
+      "negatives": 3447
+    },
+    {
+      "anchor": "2025-12-19",
+      "users": 10000,
+      "items": 2876947,
+      "categories": 8916,
+      "candidate_pairs": 1216917,
+      "scalar_columns": 439,
+      "history_coverage_30d": 30,
+      "future_label_available": false,
+      "positives": null,
+      "negatives": null
+    }
+  ],
+  "candidate_snapshot_rows": 4426649,
+  "candidate_scope": "user-item pairs observed during the preceding seven days",
+  "not_counted": [
+    "IDs",
+    "as_of_time",
+    "coverage management",
+    "targets",
+    "parts",
+    "repeat cutoffs"
+  ],
+  "future_labels_are_features": false,
+  "supervised_purchase_model_trained": false
+}

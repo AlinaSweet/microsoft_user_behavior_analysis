@@ -1,0 +1,59 @@
+{
+  "dataset": "eda_dashboard1_20261029",
+  "purpose": "Exploratory summaries; not a production feature dataset",
+  "source_database": "data/processed/analysis_raw_v1/behavior.sqlite",
+  "source_sha256": "606f557d0739a6a35ecf96f2db22b761067a1ab6eee7bf44735c8f8ce8beccb4",
+  "policy": "preserve_all_valid_raw_records_and_flag_user_hours_over_90",
+  "cache_metadata": {
+    "source_sha256": "606f557d0739a6a35ecf96f2db22b761067a1ab6eee7bf44735c8f8ce8beccb4",
+    "sql_sha256": "69193e4cbc8379746d2d5ffc00114f69bfcc97f7d3c8310d6a22261dea228285",
+    "database_path": "data/processed/analysis_raw_v1/behavior.sqlite",
+    "cache_path": "data/processed/eda_dashboard1_20261029/eda.sqlite",
+    "controls": {
+      "raw_records": 12256906,
+      "four_tuple_keys": 6213379
+    },
+    "build_seconds": 27.281
+  },
+  "files": [
+    {
+      "path": "data/processed/eda_dashboard1_20261029/cache_metadata.json",
+      "bytes": 420,
+      "sha256": "b93261df7eefbaa5d695adcac5307f222b8aa146d1760a9e482497e9d2212a5b",
+      "storage": "local_only"
+    },
+    {
+      "path": "data/processed/eda_dashboard1_20261029/eda.sqlite",
+      "bytes": 500969472,
+      "sha256": "4f25923b664ba7e3772ca8d55adc1618f497f5ce76addd0926241fb7b906c0ff",
+      "storage": "local_only"
+    },
+    {
+      "path": "data/processed/eda_dashboard1_20261029/item_quadrants.parquet",
+      "bytes": 201696,
+      "sha256": "79d7b304e4e3dbc810ffb4378e47d7d67af38046656acf90792396cefe692933",
+      "storage": "local_only"
+    },
+    {
+      "path": "data/processed/eda_dashboard1_20261029/latest_cohort.parquet",
+      "bytes": 188972,
+      "sha256": "46af5d30125c62c3d13b3b118d1513a152e30f79216d39670eda95ccfc78d444",
+      "storage": "local_only"
+    },
+    {
+      "path": "data/processed/eda_dashboard1_20261029/users.parquet",
+      "bytes": 319282,
+      "sha256": "9986c8d7fca35a6ad2cc00c280e83c2676a5d29a27f3a6250fb1ad80eba333b2",
+      "storage": "local_only"
+    }
+  ],
+  "local_row_counts": {
+    "users.parquet": 10000,
+    "latest_cohort.parquet": 9367,
+    "item_quadrants.parquet": 11268
+  },
+  "report_directory": "outputs/reports/eda_dashboard1_20261029",
+  "reference_pdf": "docs/requirements/dashboard_outline.pdf",
+  "reference_pdf_sha256": "366f57174b86bcbf3bfafde65c6dabfb89d458d1a037290216d0a3f5011ff018",
+  "configuration_sha256": "f9497ff8a0c8630bcf7f8ae9b80b012ccadda0de1bc5a8ca73404d566d007668"
+}

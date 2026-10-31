@@ -1,0 +1,131 @@
+{
+  "created_at_utc": "2026-10-29T13:53:15.825728+00:00",
+  "scope": "dashboard_one_eda_baseline",
+  "source_database_sha256_before": "606f557d0739a6a35ecf96f2db22b761067a1ab6eee7bf44735c8f8ce8beccb4",
+  "source_database_sha256_after": "606f557d0739a6a35ecf96f2db22b761067a1ab6eee7bf44735c8f8ce8beccb4",
+  "source_database_unchanged": true,
+  "count_controls": [
+    {
+      "metric": "active_hours",
+      "source_total": 682940,
+      "eda_total": 682940,
+      "matches": true
+    },
+    {
+      "metric": "events",
+      "source_total": 12256906,
+      "eda_total": 12256906,
+      "matches": true
+    },
+    {
+      "metric": "event_keys",
+      "source_total": 6213379,
+      "eda_total": 6213379,
+      "matches": true
+    },
+    {
+      "metric": "pv",
+      "source_total": 11550581,
+      "eda_total": 11550581,
+      "matches": true
+    },
+    {
+      "metric": "cart",
+      "source_total": 343564,
+      "eda_total": 343564,
+      "matches": true
+    },
+    {
+      "metric": "fav",
+      "source_total": 242556,
+      "eda_total": 242556,
+      "matches": true
+    },
+    {
+      "metric": "buy",
+      "source_total": 120205,
+      "eda_total": 120205,
+      "matches": true
+    }
+  ],
+  "static_checks": {
+    "project_coding_rules": "passed",
+    "black": "passed",
+    "isort": "passed",
+    "flake8": "passed",
+    "mypy": "passed: 9 source files",
+    "pylint": "passed: 10.00/10",
+    "pip_check": "passed"
+  },
+  "tests": "not_run_for_this_change",
+  "existing_stage1_acceptance": "outputs/reports/stage1_review_20261024_04",
+  "visual_review": {
+    "png_figures": 26,
+    "svg_figures": 26,
+    "all_figures_inspected": true,
+    "browser_preview": "http://127.0.0.1:8794/dashboard.html",
+    "behavior_selector": "purchase selected and image replaced",
+    "screenshot_path_at_review": "outputs/reports/eda_dashboard1_20261029/dashboard_preview.png",
+    "screenshot_in_project_distribution": false
+  },
+  "implemented_interaction": "local behavior/ranking/anchor chart switches",
+  "pending_interaction": "global arbitrary date/user segment/category linked filtering",
+  "formal_feature_table_generated": false,
+  "model_trained": false,
+  "duplicate_policy_changed": false,
+  "remote_sync": "not_performed_for_this_eda_change",
+  "runtime": {
+    "python": "3.12.14",
+    "pandas": "3.0.6",
+    "numpy": "2.5.4",
+    "pyarrow": "26.0.0",
+    "matplotlib": "3.11.2"
+  },
+  "source_files": [
+    {
+      "path": "src/user_behavior_analysis/dao/eda_repository.py",
+      "sha256": "7868a0a26a8936da1515fe5c47147a2e7634571ec89457c864bd5cd3c6e67436",
+      "lines": 170
+    },
+    {
+      "path": "src/user_behavior_analysis/models/eda_models.py",
+      "sha256": "9c76eb6328484b8a4d3669b7fb71f53f24be526c3102d5552749729f1f5ac02d",
+      "lines": 19
+    },
+    {
+      "path": "scripts/run_eda.py",
+      "sha256": "ebb1be7d471c5eac6cca927222c892e5e2c4bf95e5adde47d1ff4a5261072658",
+      "lines": 50
+    },
+    {
+      "path": "src/user_behavior_analysis/service/eda_analysis.py",
+      "sha256": "ffb5140136213f25edd13a3c6a22b0e4db30b31caab512a3448cf233f9eff550",
+      "lines": 368
+    },
+    {
+      "path": "src/user_behavior_analysis/service/eda_charts.py",
+      "sha256": "2d46f30289ce9cc075d24d75d38da6ea898c3eee319ea8175fcb1af3e171a5f8",
+      "lines": 360
+    },
+    {
+      "path": "src/user_behavior_analysis/service/eda_entities.py",
+      "sha256": "2af2a6b001478534904c552243e71d440b4766600325734c3ba95568dd374cfb",
+      "lines": 164
+    },
+    {
+      "path": "src/user_behavior_analysis/service/eda_entity_charts.py",
+      "sha256": "1544483ebb8e40230ed033745fc6f7216c2829b313bb8714b44c7ee9ce97e2bc",
+      "lines": 269
+    },
+    {
+      "path": "src/user_behavior_analysis/service/eda_reporting.py",
+      "sha256": "ddab618eea9d460731dce0b9c90b0c6d80a8e1ca26ff844a64b00ba7a407c0a8",
+      "lines": 425
+    },
+    {
+      "path": "src/user_behavior_analysis/service/eda_statistics.py",
+      "sha256": "f1b7ab0c9020f03adf97506c72b5167f5abacdf0b14323992c50ec759d89abbb",
+      "lines": 69
+    }
+  ]
+}

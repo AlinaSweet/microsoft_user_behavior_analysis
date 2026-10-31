@@ -1,0 +1,93 @@
+{
+  "checked_at": "2026-10-30T01:04:26.431942+00:00",
+  "sources": [
+    "scripts/audit_feature_delivery.py",
+    "scripts/run_eda.py",
+    "scripts/run_features.py",
+    "src/user_behavior_analysis/dao/eda_repository.py",
+    "src/user_behavior_analysis/dao/feature_repository.py",
+    "src/user_behavior_analysis/models/eda_models.py",
+    "src/user_behavior_analysis/models/feature_models.py",
+    "src/user_behavior_analysis/service/eda_analysis.py",
+    "src/user_behavior_analysis/service/eda_charts.py",
+    "src/user_behavior_analysis/service/eda_entities.py",
+    "src/user_behavior_analysis/service/eda_entity_charts.py",
+    "src/user_behavior_analysis/service/eda_reporting.py",
+    "src/user_behavior_analysis/service/eda_statistics.py",
+    "src/user_behavior_analysis/service/feature_assembly.py",
+    "src/user_behavior_analysis/service/feature_base.py",
+    "src/user_behavior_analysis/service/feature_business.py",
+    "src/user_behavior_analysis/service/feature_eda.py",
+    "src/user_behavior_analysis/service/feature_eda_evidence.py",
+    "src/user_behavior_analysis/service/feature_eda_reporting.py",
+    "src/user_behavior_analysis/service/feature_funnels.py",
+    "src/user_behavior_analysis/service/feature_latent_fit.py",
+    "src/user_behavior_analysis/service/feature_latent_transform.py",
+    "src/user_behavior_analysis/service/feature_pipeline.py",
+    "src/user_behavior_analysis/service/feature_quality.py",
+    "src/user_behavior_analysis/service/feature_registry.py",
+    "src/user_behavior_analysis/service/feature_reporting.py",
+    "src/user_behavior_analysis/service/feature_sequences.py",
+    "src/user_behavior_analysis/service/feature_snapshots.py"
+  ],
+  "checks": [
+    {
+      "name": "isort",
+      "exit_code": 0,
+      "seconds": 0.073
+    },
+    {
+      "name": "black",
+      "exit_code": 0,
+      "seconds": 0.099
+    },
+    {
+      "name": "flake8",
+      "exit_code": 0,
+      "seconds": 0.201
+    },
+    {
+      "name": "mypy",
+      "exit_code": 0,
+      "seconds": 2.065
+    },
+    {
+      "name": "pylint",
+      "exit_code": 0,
+      "seconds": 6.014
+    },
+    {
+      "name": "pip_check",
+      "exit_code": 0,
+      "seconds": 0.175
+    },
+    {
+      "name": "git_diff_check",
+      "exit_code": 0,
+      "seconds": 0.019
+    },
+    {
+      "name": "project_coding_audit",
+      "issues": [],
+      "exit_code": 0
+    },
+    {
+      "name": "all_custom_function_docstrings",
+      "issues": [],
+      "exit_code": 0
+    },
+    {
+      "name": "html_local_links_and_script_syntax",
+      "missing_links": [],
+      "syntax_errors": [],
+      "exit_code": 0,
+      "browser_interaction_verified": false,
+      "browser_limitation": "automated browser blocks file protocol"
+    }
+  ],
+  "all_static_checks_passed": true,
+  "unit_tests_run": false,
+  "integration_tests_run": false,
+  "remote_ci_run": false,
+  "historical_test_baseline": "79 on 2026-10-24, not verification of this change"
+}

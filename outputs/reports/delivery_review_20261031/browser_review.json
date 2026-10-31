@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "checked_on": "2026-10-31",
+  "method": "Actual IAB browser over loopback HTTP, plus screenshots",
+  "pages": [
+    {
+      "path": "outputs/reports/eda_dashboard1_20261029/dashboard.html",
+      "checks": [
+        "page and charts loaded",
+        "behavior selector changed to purchase"
+      ]
+    },
+    {
+      "path": "outputs/reports/eda_extension_20261029/dashboard.html",
+      "checks": [
+        "page loaded",
+        "SVD theme search reduced eight groups to one"
+      ]
+    },
+    {
+      "path": "outputs/reports/feature_system_20261029/feature_dictionary.html",
+      "checks": [
+        "445 entries present",
+        "exact field search reduced to one",
+        "calculation expanded",
+        "undefined fixed-window text repaired and rechecked"
+      ]
+    }
+  ],
+  "global_arbitrary_filters_implemented": false
+}

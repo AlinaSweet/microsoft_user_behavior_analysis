@@ -1,0 +1,1786 @@
+{
+  "rank_sensitivity": {
+    "users": 10000,
+    "raw_key_spearman": 0.9943274793608592,
+    "raw_hour_spearman": 0.9159781694985331,
+    "top_decile_overlap_users": 914,
+    "top_decile_overlap_share": 0.914,
+    "median_absolute_rank_change": 157.5
+  },
+  "conditional_associations": [
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 1195,
+      "positives": 379,
+      "rate": 0.3171548117,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 227,
+      "positives": 97,
+      "rate": 0.4273127753,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 267,
+      "positives": 134,
+      "rate": 0.5018726592,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 157,
+      "positives": 73,
+      "rate": 0.4649681529,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 512,
+      "positives": 201,
+      "rate": 0.392578125,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 414,
+      "positives": 186,
+      "rate": 0.4492753623,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 357,
+      "positives": 186,
+      "rate": 0.5210084034,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 538,
+      "positives": 318,
+      "rate": 0.5910780669,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 269,
+      "positives": 130,
+      "rate": 0.4832713755,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 378,
+      "positives": 191,
+      "rate": 0.5052910053,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 267,
+      "positives": 160,
+      "rate": 0.5992509363,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 889,
+      "positives": 596,
+      "rate": 0.670416198,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 172,
+      "positives": 72,
+      "rate": 0.4186046512,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 291,
+      "positives": 140,
+      "rate": 0.4810996564,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 206,
+      "positives": 148,
+      "rate": 0.7184466019,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 1153,
+      "positives": 869,
+      "rate": 0.7536860364,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 77,
+      "positives": 33,
+      "rate": 0.4285714286,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 197,
+      "positives": 111,
+      "rate": 0.5634517766,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 117,
+      "positives": 86,
+      "rate": 0.735042735,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 1432,
+      "positives": 1159,
+      "rate": 0.8093575419,
+      "feature": "cart",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 1269,
+      "positives": 424,
+      "rate": 0.3341213554,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 153,
+      "positives": 52,
+      "rate": 0.339869281,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 352,
+      "positives": 165,
+      "rate": 0.46875,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 72,
+      "positives": 42,
+      "rate": 0.5833333333,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 651,
+      "positives": 258,
+      "rate": 0.3963133641,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 275,
+      "positives": 129,
+      "rate": 0.4690909091,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 652,
+      "positives": 362,
+      "rate": 0.5552147239,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 243,
+      "positives": 142,
+      "rate": 0.5843621399,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 365,
+      "positives": 180,
+      "rate": 0.4931506849,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 282,
+      "positives": 141,
+      "rate": 0.5,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 639,
+      "positives": 408,
+      "rate": 0.6384976526,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 517,
+      "positives": 348,
+      "rate": 0.6731141199,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 212,
+      "positives": 101,
+      "rate": 0.4764150943,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 251,
+      "positives": 111,
+      "rate": 0.4422310757,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 590,
+      "positives": 444,
+      "rate": 0.7525423729,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 769,
+      "positives": 573,
+      "rate": 0.7451235371,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 63,
+      "positives": 24,
+      "rate": 0.380952381,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 211,
+      "positives": 120,
+      "rate": 0.5687203791,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 367,
+      "positives": 291,
+      "rate": 0.7929155313,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 1182,
+      "positives": 954,
+      "rate": 0.807106599,
+      "feature": "fav",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 1422,
+      "positives": 476,
+      "rate": 0.3347398031,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 424,
+      "positives": 207,
+      "rate": 0.4882075472,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 926,
+      "positives": 387,
+      "rate": 0.4179265659,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 895,
+      "positives": 504,
+      "rate": 0.5631284916,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 610,
+      "positives": 308,
+      "rate": 0.5049180328,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 37,
+      "positives": 13,
+      "rate": 0.3513513514,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 1134,
+      "positives": 741,
+      "rate": 0.6534391534,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 22,
+      "positives": 15,
+      "rate": 0.6818181818,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 381,
+      "positives": 181,
+      "rate": 0.4750656168,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 82,
+      "positives": 31,
+      "rate": 0.3780487805,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 1179,
+      "positives": 891,
+      "rate": 0.7557251908,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 180,
+      "positives": 126,
+      "rate": 0.7,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 82,
+      "positives": 44,
+      "rate": 0.5365853659,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 192,
+      "positives": 100,
+      "rate": 0.5208333333,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 685,
+      "positives": 558,
+      "rate": 0.8145985401,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 864,
+      "positives": 687,
+      "rate": 0.7951388889,
+      "feature": "flagged_hours",
+      "anchor": "2025-11-25"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 1200,
+      "positives": 359,
+      "rate": 0.2991666667,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 225,
+      "positives": 91,
+      "rate": 0.4044444444,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 309,
+      "positives": 148,
+      "rate": 0.4789644013,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 147,
+      "positives": 68,
+      "rate": 0.462585034,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 531,
+      "positives": 193,
+      "rate": 0.3634651601,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 406,
+      "positives": 181,
+      "rate": 0.4458128079,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 300,
+      "positives": 176,
+      "rate": 0.5866666667,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 598,
+      "positives": 365,
+      "rate": 0.610367893,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 299,
+      "positives": 119,
+      "rate": 0.397993311,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 357,
+      "positives": 177,
+      "rate": 0.4957983193,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 274,
+      "positives": 149,
+      "rate": 0.5437956204,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 905,
+      "positives": 591,
+      "rate": 0.653038674,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 169,
+      "positives": 57,
+      "rate": 0.3372781065,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 293,
+      "positives": 173,
+      "rate": 0.590443686,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 211,
+      "positives": 135,
+      "rate": 0.6398104265,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 1181,
+      "positives": 874,
+      "rate": 0.7400508044,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 87,
+      "positives": 36,
+      "rate": 0.4137931034,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 205,
+      "positives": 111,
+      "rate": 0.5414634146,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 123,
+      "positives": 90,
+      "rate": 0.7317073171,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 1430,
+      "positives": 1183,
+      "rate": 0.8272727273,
+      "feature": "cart",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 1265,
+      "positives": 407,
+      "rate": 0.3217391304,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 160,
+      "positives": 43,
+      "rate": 0.26875,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 378,
+      "positives": 177,
+      "rate": 0.4682539683,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 78,
+      "positives": 39,
+      "rate": 0.5,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 652,
+      "positives": 256,
+      "rate": 0.3926380368,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 285,
+      "positives": 118,
+      "rate": 0.4140350877,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 610,
+      "positives": 366,
+      "rate": 0.6,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 288,
+      "positives": 175,
+      "rate": 0.6076388889,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 397,
+      "positives": 180,
+      "rate": 0.4534005038,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 259,
+      "positives": 116,
+      "rate": 0.4478764479,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 637,
+      "positives": 385,
+      "rate": 0.6043956044,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 542,
+      "positives": 355,
+      "rate": 0.6549815498,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 196,
+      "positives": 104,
+      "rate": 0.5306122449,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 266,
+      "positives": 126,
+      "rate": 0.4736842105,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 603,
+      "positives": 436,
+      "rate": 0.7230514096,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 789,
+      "positives": 573,
+      "rate": 0.7262357414,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 86,
+      "positives": 44,
+      "rate": 0.511627907,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 206,
+      "positives": 103,
+      "rate": 0.5,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 370,
+      "positives": 289,
+      "rate": 0.7810810811,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 1183,
+      "positives": 984,
+      "rate": 0.831783601,
+      "feature": "fav",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 1425,
+      "positives": 450,
+      "rate": 0.3157894737,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 456,
+      "positives": 216,
+      "rate": 0.4736842105,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 937,
+      "positives": 374,
+      "rate": 0.3991462113,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 898,
+      "positives": 541,
+      "rate": 0.6024498886,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 624,
+      "positives": 288,
+      "rate": 0.4615384615,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 32,
+      "positives": 8,
+      "rate": 0.25,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 1150,
+      "positives": 722,
+      "rate": 0.627826087,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 29,
+      "positives": 18,
+      "rate": 0.6206896552,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 347,
+      "positives": 180,
+      "rate": 0.5187319885,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 115,
+      "positives": 50,
+      "rate": 0.4347826087,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 1228,
+      "positives": 896,
+      "rate": 0.7296416938,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 164,
+      "positives": 113,
+      "rate": 0.6890243902,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 103,
+      "positives": 53,
+      "rate": 0.5145631068,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 189,
+      "positives": 94,
+      "rate": 0.4973544974,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 656,
+      "positives": 535,
+      "rate": 0.8155487805,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 897,
+      "positives": 738,
+      "rate": 0.8227424749,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-02"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 1149,
+      "positives": 468,
+      "rate": 0.407310705,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 287,
+      "positives": 145,
+      "rate": 0.5052264808,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 278,
+      "positives": 153,
+      "rate": 0.5503597122,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 167,
+      "positives": 106,
+      "rate": 0.6347305389,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 558,
+      "positives": 276,
+      "rate": 0.4946236559,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 430,
+      "positives": 238,
+      "rate": 0.5534883721,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 305,
+      "positives": 203,
+      "rate": 0.6655737705,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 582,
+      "positives": 404,
+      "rate": 0.6941580756,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 311,
+      "positives": 156,
+      "rate": 0.501607717,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 414,
+      "positives": 250,
+      "rate": 0.6038647343,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 234,
+      "positives": 156,
+      "rate": 0.6666666667,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 912,
+      "positives": 683,
+      "rate": 0.7489035088,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 153,
+      "positives": 78,
+      "rate": 0.5098039216,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 321,
+      "positives": 215,
+      "rate": 0.6697819315,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 177,
+      "positives": 128,
+      "rate": 0.7231638418,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 1218,
+      "positives": 1005,
+      "rate": 0.8251231527,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 86,
+      "positives": 46,
+      "rate": 0.5348837209,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 201,
+      "positives": 145,
+      "rate": 0.7213930348,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 105,
+      "positives": 85,
+      "rate": 0.8095238095,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 1479,
+      "positives": 1309,
+      "rate": 0.8850574713,
+      "feature": "cart",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 1256,
+      "positives": 539,
+      "rate": 0.4291401274,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 180,
+      "positives": 74,
+      "rate": 0.4111111111,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 372,
+      "positives": 215,
+      "rate": 0.5779569892,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 73,
+      "positives": 44,
+      "rate": 0.602739726,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 674,
+      "positives": 338,
+      "rate": 0.5014836795,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 314,
+      "positives": 176,
+      "rate": 0.5605095541,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 607,
+      "positives": 410,
+      "rate": 0.6754530478,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 280,
+      "positives": 197,
+      "rate": 0.7035714286,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 363,
+      "positives": 191,
+      "rate": 0.5261707989,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 362,
+      "positives": 215,
+      "rate": 0.5939226519,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 630,
+      "positives": 453,
+      "rate": 0.719047619,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 516,
+      "positives": 386,
+      "rate": 0.7480620155,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 191,
+      "positives": 104,
+      "rate": 0.5445026178,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 283,
+      "positives": 189,
+      "rate": 0.667844523,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 582,
+      "positives": 474,
+      "rate": 0.8144329897,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 813,
+      "positives": 659,
+      "rate": 0.8105781058,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 61,
+      "positives": 46,
+      "rate": 0.7540983607,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 226,
+      "positives": 145,
+      "rate": 0.6415929204,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 351,
+      "positives": 305,
+      "rate": 0.8689458689,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 1233,
+      "positives": 1089,
+      "rate": 0.8832116788,
+      "feature": "fav",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 1436,
+      "positives": 613,
+      "rate": 0.4268802228,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 0,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 445,
+      "positives": 259,
+      "rate": 0.5820224719,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 988,
+      "positives": 514,
+      "rate": 0.520242915,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 1,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 887,
+      "positives": 607,
+      "rate": 0.6843291995,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 684,
+      "positives": 389,
+      "rate": 0.5687134503,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 41,
+      "positives": 17,
+      "rate": 0.4146341463,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 1113,
+      "positives": 819,
+      "rate": 0.7358490566,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 2,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 33,
+      "positives": 20,
+      "rate": 0.6060606061,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 357,
+      "positives": 230,
+      "rate": 0.6442577031,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 117,
+      "positives": 63,
+      "rate": 0.5384615385,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 1206,
+      "positives": 990,
+      "rate": 0.8208955224,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 3,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 189,
+      "positives": 143,
+      "rate": 0.7566137566,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": false,
+      "users": 76,
+      "positives": 57,
+      "rate": 0.75,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": false,
+      "exposed": true,
+      "users": 211,
+      "positives": 134,
+      "rate": 0.63507109,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": false,
+      "users": 676,
+      "positives": 590,
+      "rate": 0.8727810651,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    },
+    {
+      "activity_band": 4,
+      "past_purchase": true,
+      "exposed": true,
+      "users": 908,
+      "positives": 804,
+      "rate": 0.8854625551,
+      "feature": "flagged_hours",
+      "anchor": "2025-12-09"
+    }
+  ],
+  "standardized_associations": [
+    {
+      "anchor": "2025-11-25",
+      "feature": "cart",
+      "eligible_strata": 10,
+      "population_coverage": 1.0,
+      "unexposed_standardized_rate": 0.5403424389,
+      "exposed_standardized_rate": 0.6041516849,
+      "difference_percentage_points": 6.3809245995,
+      "method": "direct standardization; >=30 users per exposure arm/stratum"
+    },
+    {
+      "anchor": "2025-11-25",
+      "feature": "fav",
+      "eligible_strata": 10,
+      "population_coverage": 1.0,
+      "unexposed_standardized_rate": 0.5672888737,
+      "exposed_standardized_rate": 0.593861004,
+      "difference_percentage_points": 2.657213028,
+      "method": "direct standardization; >=30 users per exposure arm/stratum"
+    },
+    {
+      "anchor": "2025-11-25",
+      "feature": "flagged_hours",
+      "eligible_strata": 5,
+      "population_coverage": 0.4708721887,
+      "unexposed_standardized_rate": 0.6948987444,
+      "exposed_standardized_rate": 0.635610294,
+      "difference_percentage_points": -5.928845041,
+      "method": "direct standardization; >=30 users per exposure arm/stratum"
+    },
+    {
+      "anchor": "2025-12-02",
+      "feature": "cart",
+      "eligible_strata": 10,
+      "population_coverage": 1.0,
+      "unexposed_standardized_rate": 0.5100475768,
+      "exposed_standardized_rate": 0.6047657229,
+      "difference_percentage_points": 9.4718146089,
+      "method": "direct standardization; >=30 users per exposure arm/stratum"
+    },
+    {
+      "anchor": "2025-12-02",
+      "feature": "fav",
+      "eligible_strata": 10,
+      "population_coverage": 1.0,
+      "unexposed_standardized_rate": 0.5624607293,
+      "exposed_standardized_rate": 0.5706088363,
+      "difference_percentage_points": 0.8148107043,
+      "method": "direct standardization; >=30 users per exposure arm/stratum"
+    },
+    {
+      "anchor": "2025-12-02",
+      "feature": "flagged_hours",
+      "eligible_strata": 5,
+      "population_coverage": 0.4708108108,
+      "unexposed_standardized_rate": 0.6830962871,
+      "exposed_standardized_rate": 0.6307550157,
+      "difference_percentage_points": -5.2341271481,
+      "method": "direct standardization; >=30 users per exposure arm/stratum"
+    },
+    {
+      "anchor": "2025-12-09",
+      "feature": "cart",
+      "eligible_strata": 10,
+      "population_coverage": 1.0,
+      "unexposed_standardized_rate": 0.6109516287,
+      "exposed_standardized_rate": 0.6986297281,
+      "difference_percentage_points": 8.7678099445,
+      "method": "direct standardization; >=30 users per exposure arm/stratum"
+    },
+    {
+      "anchor": "2025-12-09",
+      "feature": "fav",
+      "eligible_strata": 10,
+      "population_coverage": 1.0,
+      "unexposed_standardized_rate": 0.6576914658,
+      "exposed_standardized_rate": 0.6784197984,
+      "difference_percentage_points": 2.072833262,
+      "method": "direct standardization; >=30 users per exposure arm/stratum"
+    },
+    {
+      "anchor": "2025-12-09",
+      "feature": "flagged_hours",
+      "eligible_strata": 6,
+      "population_coverage": 0.5990178285,
+      "unexposed_standardized_rate": 0.7670402571,
+      "exposed_standardized_rate": 0.6934058564,
+      "difference_percentage_points": -7.3634400642,
+      "method": "direct standardization; >=30 users per exposure arm/stratum"
+    }
+  ],
+  "causal_interpretation": false,
+  "source_scope": "all valid original records; no deletion"
+}

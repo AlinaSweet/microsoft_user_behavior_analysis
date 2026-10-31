@@ -1,0 +1,288 @@
+snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+test_clean_command_reconciles_cross_partition_records (integration.test_cleaning_pipeline.CleaningPipelineTests.test_clean_command_reconciles_cross_partition_records)
+Verify exact reconciliation and full output comparison end to end. ... ok
+test_independent_dataset_audit_counts_duplicate_keys (integration.test_cleaning_pipeline.CleaningPipelineTests.test_independent_dataset_audit_counts_duplicate_keys)
+Count complete duplicate keys using a separate shuffle implementation. ... ok
+test_all_entity_grains_conserve_counts (integration.test_feature_boundaries.FeatureBoundaryTests.test_all_entity_grains_conserve_counts)
+Reconcile raw multiplicity and distinct keys at all five grains. ... ok
+test_anchor_events_are_excluded_from_features (integration.test_feature_boundaries.FeatureBoundaryTests.test_anchor_events_are_excluded_from_features)
+Keep a purchase exactly at the cutoff outside historical inputs. ... ok
+test_censored_last_hour_is_not_a_transition (integration.test_feature_boundaries.FeatureBoundaryTests.test_censored_last_hour_is_not_a_transition)
+Count only observed neighboring hour pairs inside the gap limit. ... ok
+test_completed_cross_hour_funnel_is_counted (integration.test_feature_boundaries.FeatureBoundaryTests.test_completed_cross_hour_funnel_is_counted)
+Recognize the fixture's observed pv-cart-fav-buy path. ... ok
+test_future_label_upper_boundary_is_exclusive (integration.test_feature_boundaries.FeatureBoundaryTests.test_future_label_upper_boundary_is_exclusive)
+Exclude a purchase at t+7d and include purchases at t and t+7d-1h. ... ok
+test_hour_threshold_only_marks (integration.test_feature_boundaries.FeatureBoundaryTests.test_hour_threshold_only_marks)
+Flag 91 raw records while retaining their statistical count. ... ok
+test_input_path_escape_is_rejected (integration.test_feature_boundaries.FeatureBoundaryTests.test_input_path_escape_is_rejected)
+Reject a feature configuration path outside the project boundary. ... ok
+test_raw_multiplicity_is_preserved (integration.test_feature_boundaries.FeatureBoundaryTests.test_raw_multiplicity_is_preserved)
+Include the lower boundary and retain all same-key record weight. ... ok
+test_same_hour_is_not_a_confirmed_funnel_transition (integration.test_feature_boundaries.FeatureBoundaryTests.test_same_hour_is_not_a_confirmed_funnel_transition)
+Leave the ordered cart stage unconfirmed when its hour equals pv. ... ok
+test_tied_hour_truncation_is_explicit (integration.test_feature_boundaries.FeatureBoundaryTests.test_tied_hour_truncation_is_explicit)
+Mark a retained boundary that cuts two simultaneous item units. ... ok
+test_unavailable_future_labels_remain_null (integration.test_feature_boundaries.FeatureBoundaryTests.test_unavailable_future_labels_remain_null)
+Keep the latest unavailable future window different from negatives. ... ok
+test_unknown_and_padding_tokens_are_distinct (integration.test_feature_boundaries.FeatureBoundaryTests.test_unknown_and_padding_tokens_are_distinct)
+Encode observed new items as UNK and absent positions as PAD. ... ok
+test_zero_denominator_stays_missing (integration.test_feature_boundaries.FeatureBoundaryTests.test_zero_denominator_stays_missing)
+Distinguish an inactive user's undefined ratio from a measured zero. ... ok
+test_preprocess_command_conserves_all_three_dimensions (integration.test_preprocessing_pipeline.PreprocessingPipelineTests.test_preprocess_command_conserves_all_three_dimensions)
+Verify the public workflow with groups spanning multiple input files. ... ok
+test_benchmark_returns_bounded_trials (integration.test_workers.WorkerIntegrationTests.test_benchmark_returns_bounded_trials)
+Verify sample measurements without overwriting production reports. ... ok
+test_check_command_persists_isolated_report (integration.test_workers.WorkerIntegrationTests.test_check_command_persists_isolated_report)
+Verify the public command reads inputs and saves a scoped JSON report. ... ok
+test_worker_configuration_is_applied (integration.test_workers.WorkerIntegrationTests.test_worker_configuration_is_applied)
+Verify that a real worker receives the requested resource settings. ... ok
+test_balanced_corruption_is_detected (unit.test_aggregate_audit.AggregateComparisonTests.test_balanced_corruption_is_detected)
+Detect per-group errors even when a grand total is unchanged. ... ok
+test_daily_slicing_detects_an_extra_persisted_date (unit.test_aggregate_audit.AggregateComparisonTests.test_daily_slicing_detects_an_extra_persisted_date)
+Detect an extra day even when it has no source events. ... 2026-10-31 01:05:25,081 - distributed.shuffle._scheduler_plugin - WARNING - Shuffle b0a0ca8166ff44721cf9d295ad4ad09f initialized by task ('shuffle-transfer-b0a0ca8166ff44721cf9d295ad4ad09f', 0) executed on worker inproc://10.164.14.151/90142/4
+2026-10-31 01:05:25,093 - distributed.shuffle._scheduler_plugin - WARNING - Shuffle b0a0ca8166ff44721cf9d295ad4ad09f deactivated due to stimulus 'task-finished-1793408725.092119'
+2026-10-31 01:05:25,159 - distributed.shuffle._scheduler_plugin - WARNING - Shuffle d609b76c0f14d2d43d627b8239bfe8c4 initialized by task ('shuffle-transfer-d609b76c0f14d2d43d627b8239bfe8c4', 0) executed on worker inproc://10.164.14.151/90142/4
+2026-10-31 01:05:25,171 - distributed.shuffle._scheduler_plugin - WARNING - Shuffle d609b76c0f14d2d43d627b8239bfe8c4 deactivated due to stimulus 'task-finished-1793408725.17134'
+2026-10-31 01:05:25,384 - distributed.shuffle._scheduler_plugin - WARNING - Shuffle e013013a7a22684749c90cfeef66edaf initialized by task ('shuffle-transfer-e013013a7a22684749c90cfeef66edaf', 0) executed on worker inproc://10.164.14.151/90142/4
+2026-10-31 01:05:25,426 - distributed.shuffle._scheduler_plugin - WARNING - Shuffle 56fb284e0dd7ffdfc54e42c66b0a5156 initialized by task ('shuffle-transfer-56fb284e0dd7ffdfc54e42c66b0a5156', 0) executed on worker inproc://10.164.14.151/90142/4
+2026-10-31 01:05:25,456 - distributed.shuffle._scheduler_plugin - WARNING - Shuffle e013013a7a22684749c90cfeef66edaf deactivated due to stimulus 'task-finished-1793408725.455201'
+2026-10-31 01:05:25,465 - distributed.shuffle._scheduler_plugin - WARNING - Shuffle ad54187d4ae2cc5a99f45d899ac919b6 initialized by task ('shuffle-transfer-ad54187d4ae2cc5a99f45d899ac919b6', 9) executed on worker inproc://10.164.14.151/90142/4
+2026-10-31 01:05:25,490 - distributed.shuffle._scheduler_plugin - WARNING - Shuffle eefeed6e74b30d8b94f28e9c7ffbe8b7 initialized by task ('shuffle-transfer-eefeed6e74b30d8b94f28e9c7ffbe8b7', 0) executed on worker inproc://10.164.14.151/90142/4
+2026-10-31 01:05:25,693 - distributed.shuffle._scheduler_plugin - WARNING - Shuffle ad54187d4ae2cc5a99f45d899ac919b6 deactivated due to stimulus 'task-finished-1793408725.6915221'
+2026-10-31 01:05:25,697 - distributed.shuffle._scheduler_plugin - WARNING - Shuffle 56fb284e0dd7ffdfc54e42c66b0a5156 deactivated due to stimulus 'task-finished-1793408725.6955788'
+2026-10-31 01:05:25,698 - distributed.shuffle._scheduler_plugin - WARNING - Shuffle eefeed6e74b30d8b94f28e9c7ffbe8b7 deactivated due to stimulus 'task-finished-1793408725.697022'
+2026-10-31 01:05:25,710 - distributed.shuffle._scheduler_plugin - WARNING - Shuffle 7bf400430828961ae8c7a17e5a00a5e3 initialized by task ('shuffle-transfer-7bf400430828961ae8c7a17e5a00a5e3', 0) executed on worker inproc://10.164.14.151/90142/4
+2026-10-31 01:05:25,817 - distributed.shuffle._scheduler_plugin - WARNING - Shuffle 7bf400430828961ae8c7a17e5a00a5e3 deactivated due to stimulus 'task-finished-1793408725.8153212'
+ok
+test_conflicting_duplicate_key_is_quarantined_as_a_whole (unit.test_cleaning.CleaningTests.test_conflicting_duplicate_key_is_quarantined_as_a_whole)
+Avoid silently choosing a category for conflicting duplicate keys. ... ok
+test_declaration_does_not_cover_a_different_fingerprint (unit.test_cleaning.CleaningTests.test_declaration_does_not_cover_a_different_fingerprint)
+Avoid attributing a recorded declaration to different input bytes. ... ok
+test_duplicate_across_partitions_is_removed_globally (unit.test_cleaning.CleaningTests.test_duplicate_across_partitions_is_removed_globally)
+Deduplicate records that cannot meet in a single parsing chunk. ... ok
+test_empty_histogram_is_rejected (unit.test_cleaning.CleaningTests.test_empty_histogram_is_rejected)
+Keep an absent distribution visible rather than inventing thresholds. ... ok
+test_empty_identifier_is_rejected (unit.test_cleaning.CleaningTests.test_empty_identifier_is_rejected)
+Quarantine empty identifiers without inventing replacement users. ... ok
+test_export_verification_detects_changed_values (unit.test_cleaning.CleaningTests.test_export_verification_detects_changed_values)
+Detect altered output even when row counts stay the same. ... ok
+test_future_policy_boundary_is_exclusive (unit.test_cleaning.CleaningTests.test_future_policy_boundary_is_exclusive)
+Reject a timestamp equal to the explicit upper time boundary. ... ok
+test_histogram_flags_a_long_activity_tail (unit.test_cleaning.CleaningTests.test_histogram_flags_a_long_activity_tail)
+Count IQR flags from frequencies without expanding entity rows. ... ok
+test_histogram_quartile_uses_linear_interpolation (unit.test_cleaning.CleaningTests.test_histogram_quartile_uses_linear_interpolation)
+Interpolate the quartile between adjacent ordered count values. ... ok
+test_identifier_leading_zeros_survive (unit.test_cleaning.CleaningTests.test_identifier_leading_zeros_survive)
+Preserve identifier characters through normalization. ... ok
+test_impossible_calendar_date_is_rejected (unit.test_cleaning.CleaningTests.test_impossible_calendar_date_is_rejected)
+Reject a formatted timestamp that is not a real calendar date. ... ok
+test_iqr_flags_activity_without_deleting_events (unit.test_cleaning.CleaningTests.test_iqr_flags_activity_without_deleting_events)
+Flag a long activity tail while retaining the canonical events. ... ok
+test_literal_na_is_not_rewritten (unit.test_cleaning.CleaningTests.test_literal_na_is_not_rewritten)
+Treat a literal identifier NA as a string rather than a missing code. ... ok
+test_matching_source_declaration_is_recognized (unit.test_cleaning.CleaningTests.test_matching_source_declaration_is_recognized)
+Associate a use declaration with its exact input fingerprint. ... ok
+test_unknown_behavior_is_rejected (unit.test_cleaning.CleaningTests.test_unknown_behavior_is_rejected)
+Quarantine behavior codes outside the four task-defined values. ... ok
+test_git_command_returns_json (unit.test_cli.CommandTests.test_git_command_returns_json)
+Verify the Git policy command returns machine-readable success. ... ok
+test_missing_source_logs_actionable_error (unit.test_cli.CommandTests.test_missing_source_logs_actionable_error)
+Verify missing input returns an error status and records the cause. ... ok
+test_implicit_string_concatenation_is_rejected (unit.test_coding_rules.CodingRuleTests.test_implicit_string_concatenation_is_rejected)
+Verify that adjacent string tokens produce a finding. ... ok
+test_relative_import_is_rejected (unit.test_coding_rules.CodingRuleTests.test_relative_import_is_rejected)
+Verify that package-relative imports are forbidden. ... ok
+test_untyped_public_api_is_rejected (unit.test_coding_rules.CodingRuleTests.test_untyped_public_api_is_rejected)
+Verify that public API annotations are mandatory. ... ok
+test_behavior_table_avoids_transitive_attributes (unit.test_database.DatabaseTests.test_behavior_table_avoids_transitive_attributes)
+Keep item category and derived calendar fields out of the fact table. ... ok
+test_cross_batch_category_conflict_rolls_back (unit.test_database.DatabaseTests.test_cross_batch_category_conflict_rolls_back)
+Preserve the original item category after a conflicting batch. ... ok
+test_duplicate_source_id_is_rejected (unit.test_database.DatabaseTests.test_duplicate_source_id_is_rejected)
+Reject accidental re-import of the same source ordinal. ... ok
+test_foreign_keys_are_enabled (unit.test_database.DatabaseTests.test_foreign_keys_are_enabled)
+Reject an event with missing user, item and time parents. ... ok
+test_fractional_event_id_is_not_truncated (unit.test_database.DatabaseTests.test_fractional_event_id_is_not_truncated)
+Reject an unsafe integer conversion before insertion. ... ok
+test_funnel_excludes_exact_window_end (unit.test_database.DatabaseTests.test_funnel_excludes_exact_window_end)
+Keep a cart exactly seven days after its view outside the window. ... ok
+test_identifier_leading_zeros_survive (unit.test_database.DatabaseTests.test_identifier_leading_zeros_survive)
+Keep source string identifiers in normalized relations. ... ok
+test_input_column_order_does_not_change_meaning (unit.test_database.DatabaseTests.test_input_column_order_does_not_change_meaning)
+Project named fields before parameterized tuple insertion. ... ok
+test_ninety_one_records_are_flagged_and_retained (unit.test_database.DatabaseTests.test_ninety_one_records_are_flagged_and_retained)
+Mark the first over-threshold count without deleting its records. ... ok
+test_ninety_records_are_not_flagged (unit.test_database.DatabaseTests.test_ninety_records_are_not_flagged)
+Keep the confirmed reference boundary inside the retained range. ... ok
+test_query_parameter_is_literal (unit.test_database.DatabaseTests.test_query_parameter_is_literal)
+Treat SQL-looking parameter text as an identifier value. ... ok
+test_read_interface_rejects_mutation (unit.test_database.DatabaseTests.test_read_interface_rejects_mutation)
+Keep the database read-only even if a caller supplies write SQL. ... ok
+test_repeated_business_key_is_preserved (unit.test_database.DatabaseTests.test_repeated_business_key_is_preserved)
+Retain two source records sharing the same business key. ... ok
+test_small_frame_limit_requires_streaming (unit.test_database.DatabaseTests.test_small_frame_limit_requires_streaming)
+Reject results exceeding the declared DataFrame budget. ... ok
+test_timezone_is_not_silently_removed (unit.test_database.DatabaseTests.test_timezone_is_not_silently_removed)
+Reject aware times when the canonical source is naive. ... ok
+test_unregistered_query_path_is_rejected (unit.test_database.DatabaseTests.test_unregistered_query_path_is_rejected)
+Prevent path traversal through a query name. ... ok
+test_bin_lower_bound_is_included (unit.test_eda_statistics.EDAStatisticsTests.test_bin_lower_bound_is_included)
+Assign the threshold itself to the following left-closed bin. ... ok
+test_wilson_interval_matches_known_half_success_case (unit.test_eda_statistics.EDAStatisticsTests.test_wilson_interval_matches_known_half_success_case)
+Verify both endpoints against an independently calculated value. ... ok
+test_zero_support_is_unavailable (unit.test_eda_statistics.EDAStatisticsTests.test_zero_support_is_unavailable)
+Keep an unobserved cohort different from a zero purchase rate. ... ok
+test_association_formula_explains_its_denominator (unit.test_feature_contracts.FeatureContractTests.test_association_formula_explains_its_denominator)
+Resolve an intermediate alias to the actual rule confidence ratio. ... ok
+test_field_specific_window_is_not_shown_as_missing_days (unit.test_feature_contracts.FeatureContractTests.test_field_specific_window_is_not_shown_as_missing_days)
+Keep unspecified fixed lengths readable in the published dictionary. ... ok
+test_latent_formula_explains_frozen_projection (unit.test_feature_contracts.FeatureContractTests.test_latent_formula_explains_frozen_projection)
+Expose fitted components and normalization in coordinate definitions. ... ok
+test_registered_scalar_names_are_globally_unique (unit.test_feature_contracts.FeatureContractTests.test_registered_scalar_names_are_globally_unique)
+Keep entity prefixes distinct across all statistical windows. ... ok
+test_targets_are_absent_from_registry (unit.test_feature_contracts.FeatureContractTests.test_targets_are_absent_from_registry)
+Exclude future outcomes from historical feature definitions. ... ok
+test_unknown_items_are_excluded_from_frozen_matrix (unit.test_feature_contracts.FeatureContractTests.test_unknown_items_are_excluded_from_frozen_matrix)
+Keep unknown interactions in coverage denominators only. ... ok
+test_windows_cross_month_boundaries (unit.test_feature_contracts.FeatureContractTests.test_windows_cross_month_boundaries)
+Subtract calendar days from the exclusive cutoff exactly. ... ok
+test_escaping_symlink_is_rejected (unit.test_local_cache.LocalCacheTests.test_escaping_symlink_is_rejected)
+Propagate the output-path guard before changing environment state. ... ok
+test_external_environment_value_is_replaced (unit.test_local_cache.LocalCacheTests.test_external_environment_value_is_replaced)
+Prevent inherited environment values from redirecting scratch. ... ok
+test_sqlite_cache_is_inside_project (unit.test_local_cache.LocalCacheTests.test_sqlite_cache_is_inside_project)
+Create and select the fixed project cache directory. ... ok
+test_changed_registered_part_is_rejected (unit.test_preprocessing.PreprocessingTests.test_changed_registered_part_is_rejected)
+Compare contents with their registered fingerprint before processing. ... ok
+test_compact_encoding_preserves_canonical_values (unit.test_preprocessing.PreprocessingTests.test_compact_encoding_preserves_canonical_values)
+Preserve leading zeros and every event value through dtype changes. ... ok
+test_dictionary_collection_has_a_bounded_fallback (unit.test_preprocessing.PreprocessingTests.test_dictionary_collection_has_a_bounded_fallback)
+Use string storage when the configured category bound is exceeded. ... ok
+test_invalid_behavior_cannot_be_encoded (unit.test_preprocessing.PreprocessingTests.test_invalid_behavior_cannot_be_encoded)
+Reject invalid behavior values before unsigned conversion. ... ok
+test_timezone_is_not_silently_dropped (unit.test_preprocessing.PreprocessingTests.test_timezone_is_not_silently_dropped)
+Reject an unexpected timezone rather than altering time semantics. ... ok
+test_uint32_lineage_overflow_is_rejected (unit.test_preprocessing.PreprocessingTests.test_uint32_lineage_overflow_is_rejected)
+Reject truncation rather than wrapping a source record ordinal. ... ok
+test_unknown_dictionary_category_is_rejected (unit.test_preprocessing.PreprocessingTests.test_unknown_dictionary_category_is_rejected)
+Keep dictionary mismatches visible without manufacturing missing IDs. ... ok
+test_unregistered_part_is_rejected (unit.test_preprocessing.PreprocessingTests.test_unregistered_part_is_rejected)
+Prevent extra files from being silently included in a source dataset. ... ok
+test_manifest_name_cannot_escape_catalog (unit.test_stage1.ArtifactTests.test_manifest_name_cannot_escape_catalog)
+Verify manifest name cannot escape catalog. ... ok
+test_manifest_records_actual_git_tracking_status (unit.test_stage1.ArtifactTests.test_manifest_records_actual_git_tracking_status)
+Verify manifest records actual git tracking status. ... ok
+test_manifest_records_source_fingerprint (unit.test_stage1.ArtifactTests.test_manifest_records_source_fingerprint)
+Verify catalog metadata identifies unchanged input contents. ... ok
+test_verification_accepts_matching_contents (unit.test_stage1.ArtifactTests.test_verification_accepts_matching_contents)
+Verify unchanged input passes its catalog check. ... ok
+test_verification_rejects_changed_contents (unit.test_stage1.ArtifactTests.test_verification_rejects_changed_contents)
+Verify changed input fails its catalog check. ... ok
+test_git_policy_rejects_large_files (unit.test_stage1.GitPolicyTests.test_git_policy_rejects_large_files)
+Verify a tracked file above the size limit produces an issue. ... ok
+test_git_policy_rejects_raw_data (unit.test_stage1.GitPolicyTests.test_git_policy_rejects_raw_data)
+Verify a small raw-data file is still excluded from Git delivery. ... ok
+test_large_data_directory_is_ignored (unit.test_stage1.GitPolicyTests.test_large_data_directory_is_ignored)
+Verify intermediate data stays out of the staged file list. ... ok
+test_small_csv_is_trackable (unit.test_stage1.GitPolicyTests.test_small_csv_is_trackable)
+Verify a small report is included in the staged file list. ... ok
+test_virtual_environment_is_ignored (unit.test_stage1.GitPolicyTests.test_virtual_environment_is_ignored)
+Verify reproducibility environments stay out of Git. ... ok
+test_boolean_worker_count_is_rejected (unit.test_stage1.ResourceConfigurationTests.test_boolean_worker_count_is_rejected)
+Verify booleans cannot masquerade as integer worker counts. ... ok
+test_insufficient_memory_is_rejected (unit.test_stage1.ResourceConfigurationTests.test_insufficient_memory_is_rejected)
+Verify insufficient memory is rejected. ... ok
+test_invalid_yaml_preserves_exception_context (unit.test_stage1.ResourceConfigurationTests.test_invalid_yaml_preserves_exception_context)
+Verify invalid YAML raises a project error with its parser cause. ... ok
+test_malformed_configuration_structure_is_rejected (unit.test_stage1.ResourceConfigurationTests.test_malformed_configuration_structure_is_rejected)
+Verify a nested scalar produces an actionable configuration error. ... ok
+test_resource_plan_stays_within_available_budget (unit.test_stage1.ResourceConfigurationTests.test_resource_plan_stays_within_available_budget)
+Verify resource plan stays within available budget. ... ok
+test_unordered_thresholds_are_rejected (unit.test_stage1.ResourceConfigurationTests.test_unordered_thresholds_are_rejected)
+Verify unordered thresholds are rejected. ... ok
+test_bad_csv_header_is_rejected (unit.test_stage1.SourceTests.test_bad_csv_header_is_rejected)
+Verify bad csv header is rejected. ... ok
+test_environment_path_beats_default (unit.test_stage1.SourceTests.test_environment_path_beats_default)
+Verify environment path beats default. ... ok
+test_explicit_path_beats_environment (unit.test_stage1.SourceTests.test_explicit_path_beats_environment)
+Verify explicit path beats environment. ... ok
+test_id_leading_zeros_survive (unit.test_stage1.SourceTests.test_id_leading_zeros_survive)
+Verify id leading zeros survive. ... ok
+test_output_path_cannot_escape_project (unit.test_stage1.SourceTests.test_output_path_cannot_escape_project)
+Verify a parent traversal cannot designate an output file. ... ok
+test_output_symlink_cannot_escape_project (unit.test_stage1.SourceTests.test_output_symlink_cannot_escape_project)
+Verify a resolved external symlink cannot receive output. ... ok
+test_relative_source_path_cannot_escape_project (unit.test_stage1.SourceTests.test_relative_source_path_cannot_escape_project)
+Verify relative source path cannot escape project. ... ok
+test_source_symlink_can_point_to_user_input (unit.test_stage1.SourceTests.test_source_symlink_can_point_to_user_input)
+Verify an intentional input symlink remains usable. ... ok
+
+----------------------------------------------------------------------
+Ran 102 tests in 12.547s
+
+OK

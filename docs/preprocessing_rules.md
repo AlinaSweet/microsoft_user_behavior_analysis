@@ -1,5 +1,9 @@
 # 第一阶段第四项：类型压缩与基础中间表
 
+2026-10-30当前补充：完整保留记录的标准事件和7张键/聚合表已在base_raw_v2生成，
+正式特征位于features_raw_v2。统一入口见[current_datasets.json](../data/catalog/current_datasets.json)，
+方法见[全维度特征说明](feature_system.md)。本页下文保留历史版本的复现规则。
+
 ## 当前适用范围
 
 本页记录base_v1历史四元组归并口径。2026-10-24起第二阶段主表使用

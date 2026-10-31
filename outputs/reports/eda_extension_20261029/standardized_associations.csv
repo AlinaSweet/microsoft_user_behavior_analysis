@@ -1,0 +1,10 @@
+﻿anchor,feature,eligible_strata,population_coverage,unexposed_standardized_rate,exposed_standardized_rate,difference_percentage_points,method
+2025-11-25,cart,10,1.0,0.5403424389,0.6041516849,6.3809245995,direct standardization; >=30 users per exposure arm/stratum
+2025-11-25,fav,10,1.0,0.5672888737,0.593861004,2.657213028,direct standardization; >=30 users per exposure arm/stratum
+2025-11-25,flagged_hours,5,0.4708721887,0.6948987444,0.635610294,-5.928845041,direct standardization; >=30 users per exposure arm/stratum
+2025-12-02,cart,10,1.0,0.5100475768,0.6047657229,9.4718146089,direct standardization; >=30 users per exposure arm/stratum
+2025-12-02,fav,10,1.0,0.5624607293,0.5706088363,0.8148107043,direct standardization; >=30 users per exposure arm/stratum
+2025-12-02,flagged_hours,5,0.4708108108,0.6830962871,0.6307550157,-5.2341271481,direct standardization; >=30 users per exposure arm/stratum
+2025-12-09,cart,10,1.0,0.6109516287,0.6986297281,8.7678099445,direct standardization; >=30 users per exposure arm/stratum
+2025-12-09,fav,10,1.0,0.6576914658,0.6784197984,2.072833262,direct standardization; >=30 users per exposure arm/stratum
+2025-12-09,flagged_hours,6,0.5990178285,0.7670402571,0.6934058564,-7.3634400642,direct standardization; >=30 users per exposure arm/stratum

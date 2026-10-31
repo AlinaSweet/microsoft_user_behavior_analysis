@@ -1,0 +1,96 @@
+{
+  "completed_at_utc": "2026-10-30T01:05:51.256970+00:00",
+  "status": "local_data_delivery_complete",
+  "git_base_commit": "f6d044c1c3692747f794069896d07a2b20b4668c",
+  "source_at_delivery_sha256": {
+    "scripts/audit_feature_delivery.py": "1e9b4eb6e39a16de5b081b0cd88c6375b1168912f3dc654b611a856fd35eb83a",
+    "scripts/run_eda.py": "ebb1be7d471c5eac6cca927222c892e5e2c4bf95e5adde47d1ff4a5261072658",
+    "scripts/run_features.py": "c4878f0532abbded89a7fd042ad41edfc0c9dab597e1e8fa2334a4e817232197",
+    "src/user_behavior_analysis/dao/eda_repository.py": "7868a0a26a8936da1515fe5c47147a2e7634571ec89457c864bd5cd3c6e67436",
+    "src/user_behavior_analysis/dao/feature_repository.py": "fa50c91fa3842ad11565fac1f45ed50b6ae63603158c177cb0feaf9738148b76",
+    "src/user_behavior_analysis/models/eda_models.py": "9c76eb6328484b8a4d3669b7fb71f53f24be526c3102d5552749729f1f5ac02d",
+    "src/user_behavior_analysis/models/feature_models.py": "29e7577c47d8baeef54bc98eea296802b4187d7a6f9fa0a6a846136ba33cedce",
+    "src/user_behavior_analysis/service/eda_analysis.py": "ffb5140136213f25edd13a3c6a22b0e4db30b31caab512a3448cf233f9eff550",
+    "src/user_behavior_analysis/service/eda_charts.py": "2d46f30289ce9cc075d24d75d38da6ea898c3eee319ea8175fcb1af3e171a5f8",
+    "src/user_behavior_analysis/service/eda_entities.py": "2af2a6b001478534904c552243e71d440b4766600325734c3ba95568dd374cfb",
+    "src/user_behavior_analysis/service/eda_entity_charts.py": "1544483ebb8e40230ed033745fc6f7216c2829b313bb8714b44c7ee9ce97e2bc",
+    "src/user_behavior_analysis/service/eda_reporting.py": "ddab618eea9d460731dce0b9c90b0c6d80a8e1ca26ff844a64b00ba7a407c0a8",
+    "src/user_behavior_analysis/service/eda_statistics.py": "f1b7ab0c9020f03adf97506c72b5167f5abacdf0b14323992c50ec759d89abbb",
+    "src/user_behavior_analysis/service/feature_assembly.py": "56b8f8b103f4c65fb8a41554add5a463f3c5d12a90fa3236ccb42d910fab72d2",
+    "src/user_behavior_analysis/service/feature_base.py": "d0cb657ed434b8398c911a37b3aa2df525372d4862588656d8e091f537822ba8",
+    "src/user_behavior_analysis/service/feature_business.py": "9dd21c48ac57f66d6449e147c3d7f2d73c4c30511649fd48c58e148717435c4b",
+    "src/user_behavior_analysis/service/feature_eda.py": "5a85b23ea3d4f0fee55b960a37896bcd4ae329cee914d9ab433b61b2beab3924",
+    "src/user_behavior_analysis/service/feature_eda_evidence.py": "9b33ab485fb2b3f6cf3c89b16da5ae7872a5a316371b417a97a1cae9d24b9b13",
+    "src/user_behavior_analysis/service/feature_eda_reporting.py": "64aec17e51c75cec86e1e900bfd60702308931e8eddda6dd9c6fd3c9b58c9dfb",
+    "src/user_behavior_analysis/service/feature_funnels.py": "286e64ee8b505d1cb35d1b42b477a351d5e0b8ea454f2f2f04d08849d174a311",
+    "src/user_behavior_analysis/service/feature_latent_fit.py": "4d969a1f94ed05532c91d97f918a9343ec93c9ddd1b43a4e1eb9cc7068911643",
+    "src/user_behavior_analysis/service/feature_latent_transform.py": "5487d8a258eabc5ea262f71acbc5d8e112bbbcd9421dd63ca87c2138635d16ee",
+    "src/user_behavior_analysis/service/feature_pipeline.py": "0f42e9e747a4b724e75ae1a0a9d703903512dc4f3f2d380985dc24a35d359e5a",
+    "src/user_behavior_analysis/service/feature_quality.py": "3e2bad538dcb4c6559241953a184e24b5a623c8c21867dc85622def83ed99348",
+    "src/user_behavior_analysis/service/feature_registry.py": "2bbb245c20de924ddcc7f740ffd950b923dbb5f313ccb139ac903a98fa53448f",
+    "src/user_behavior_analysis/service/feature_reporting.py": "3dbefead36b743a6bd4298a7c6e2f900f509677d6be65ad495588caea4c8c0aa",
+    "src/user_behavior_analysis/service/feature_sequences.py": "eb1e2e8ce9443540231ca2dd709bd95054d9e20c58278bed130583bb1bef62c3",
+    "src/user_behavior_analysis/service/feature_snapshots.py": "8bbfce55b815b7dedd994f05f0f91864b65338b2e899118f15c09755c9920163",
+    "scripts/build_feature_workbook.mjs": "45c598f39bd62a50007a9164cf5b4d71d6c1398041c153eccc97744daaee59e9",
+    "configs/feature_system.json": "7f3d37088b511460f837a2b117a53aab10ea65f4cda32e267c4c8636ca49c0ef"
+  },
+  "dependencies": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "pyarrow": "26.0.0",
+    "duckdb": "1.5.6",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "joblib": "1.6.0",
+    "narwhals": "2.28.0",
+    "threadpoolctl": "3.7.0"
+  },
+  "resources": {
+    "machine_memory_gib": 16,
+    "duckdb_memory_mb": 768,
+    "duckdb_threads": 2,
+    "wide_export_threads": 1,
+    "wide_export_partitions": 16,
+    "export_row_group_rows": 8192
+  },
+  "svd_parameters": {
+    "components": 16,
+    "algorithm": "randomized",
+    "n_iter": 3,
+    "n_oversamples": 8,
+    "random_state": 42,
+    "fit_anchor": "2025-11-25"
+  },
+  "execution_notes": [
+    "EDA baseline and controlled associations preceded finalized base/schema design",
+    "Later coverage and correlation evidence inspects completed features",
+    "Initial memory limits were reached in large user-category aggregation, ordered sequence list aggregation and wide exports",
+    "These were resolved by complete user-hash partitions, one-thread exports and 8192-row groups; no data sampling or dropping",
+    "Snapshot resume preserves unpublished temporary exports in .cache/feature_system, and completed Parquet/NPZ hashes were audited",
+    "Source code hashes record the final delivery revision, not an assertion of a committed or independently reproduced implementation"
+  ],
+  "evidence": {
+    "data_audit": "delivery_audit.json",
+    "static_checks": "static_checks.json",
+    "summary": "summary.json"
+  },
+  "quality_gate": {
+    "data_audit_passed": true,
+    "static_checks_passed": true,
+    "unit_tests_run": false,
+    "integration_tests_run": false,
+    "new_remote_ci_passed": false,
+    "new_work_pushed": false
+  },
+  "ui_review": {
+    "plots_and_workbook_rendered": true,
+    "html_links_and_script_syntax_checked": true,
+    "browser_interaction_verified": false,
+    "limitation": "Automated browser blocks file://; no alternate browser path used"
+  },
+  "final_entrypoint_resume": "scripts/run_features.py --phase snapshots exited 0; four completed snapshots reused after configuration/file checks",
+  "data_audit_sha256": "81bec2a6d8fc44c9db704896e10c643163cbd64540c536463f27c19e4573edd8",
+  "workbook_sha256": "9ef70cb0c3d5c41d721ddec516e8cdb555d23a6848984db9072c74ae768ad925",
+  "document_links_checked": true
+}

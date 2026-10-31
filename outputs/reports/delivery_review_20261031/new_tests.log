@@ -1,0 +1,110 @@
+test_registered_scalar_names_are_globally_unique (tests.unit.test_feature_contracts.FeatureContractTests.test_registered_scalar_names_are_globally_unique)
+Keep entity prefixes distinct across all statistical windows. ... ok
+test_targets_are_absent_from_registry (tests.unit.test_feature_contracts.FeatureContractTests.test_targets_are_absent_from_registry)
+Exclude future outcomes from historical feature definitions. ... ok
+test_unknown_items_are_excluded_from_frozen_matrix (tests.unit.test_feature_contracts.FeatureContractTests.test_unknown_items_are_excluded_from_frozen_matrix)
+Keep unknown interactions in coverage denominators only. ... ok
+test_windows_cross_month_boundaries (tests.unit.test_feature_contracts.FeatureContractTests.test_windows_cross_month_boundaries)
+Subtract calendar days from the exclusive cutoff exactly. ... ok
+test_bin_lower_bound_is_included (tests.unit.test_eda_statistics.EDAStatisticsTests.test_bin_lower_bound_is_included)
+Assign the threshold itself to the following left-closed bin. ... ok
+test_wilson_interval_matches_known_half_success_case (tests.unit.test_eda_statistics.EDAStatisticsTests.test_wilson_interval_matches_known_half_success_case)
+Verify both endpoints against an independently calculated value. ... ok
+test_zero_support_is_unavailable (tests.unit.test_eda_statistics.EDAStatisticsTests.test_zero_support_is_unavailable)
+Keep an unobserved cohort different from a zero purchase rate. ... ok
+test_all_entity_grains_conserve_counts (tests.integration.test_feature_boundaries.FeatureBoundaryTests.test_all_entity_grains_conserve_counts)
+Reconcile raw multiplicity and distinct keys at all five grains. ... snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+ok
+test_anchor_events_are_excluded_from_features (tests.integration.test_feature_boundaries.FeatureBoundaryTests.test_anchor_events_are_excluded_from_features)
+Keep a purchase exactly at the cutoff outside historical inputs. ... snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+ok
+test_censored_last_hour_is_not_a_transition (tests.integration.test_feature_boundaries.FeatureBoundaryTests.test_censored_last_hour_is_not_a_transition)
+Count only observed neighboring hour pairs inside the gap limit. ... snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+ok
+test_completed_cross_hour_funnel_is_counted (tests.integration.test_feature_boundaries.FeatureBoundaryTests.test_completed_cross_hour_funnel_is_counted)
+Recognize the fixture's observed pv-cart-fav-buy path. ... snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+ok
+test_future_label_upper_boundary_is_exclusive (tests.integration.test_feature_boundaries.FeatureBoundaryTests.test_future_label_upper_boundary_is_exclusive)
+Exclude a purchase at t+7d and include purchases at t and t+7d-1h. ... snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+ok
+test_hour_threshold_only_marks (tests.integration.test_feature_boundaries.FeatureBoundaryTests.test_hour_threshold_only_marks)
+Flag 91 raw records while retaining their statistical count. ... snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+ok
+test_input_path_escape_is_rejected (tests.integration.test_feature_boundaries.FeatureBoundaryTests.test_input_path_escape_is_rejected)
+Reject a feature configuration path outside the project boundary. ... snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+ok
+test_raw_multiplicity_is_preserved (tests.integration.test_feature_boundaries.FeatureBoundaryTests.test_raw_multiplicity_is_preserved)
+Include the lower boundary and retain all same-key record weight. ... snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+ok
+test_same_hour_is_not_a_confirmed_funnel_transition (tests.integration.test_feature_boundaries.FeatureBoundaryTests.test_same_hour_is_not_a_confirmed_funnel_transition)
+Leave the ordered cart stage unconfirmed when its hour equals pv. ... snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+ok
+test_tied_hour_truncation_is_explicit (tests.integration.test_feature_boundaries.FeatureBoundaryTests.test_tied_hour_truncation_is_explicit)
+Mark a retained boundary that cuts two simultaneous item units. ... snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+ok
+test_unavailable_future_labels_remain_null (tests.integration.test_feature_boundaries.FeatureBoundaryTests.test_unavailable_future_labels_remain_null)
+Keep the latest unavailable future window different from negatives. ... snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+ok
+test_unknown_and_padding_tokens_are_distinct (tests.integration.test_feature_boundaries.FeatureBoundaryTests.test_unknown_and_padding_tokens_are_distinct)
+Encode observed new items as UNK and absent positions as PAD. ... snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+ok
+test_zero_denominator_stays_missing (tests.integration.test_feature_boundaries.FeatureBoundaryTests.test_zero_denominator_stays_missing)
+Distinguish an inactive user's undefined ratio from a measured zero. ... snapshot 2025-12-01 user 3
+snapshot 2025-12-01 item 5
+snapshot 2025-12-01 category 3
+snapshot 2025-12-01 pair 4
+snapshot 2025-12-01 user_category 4
+ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 2.213s
+
+OK

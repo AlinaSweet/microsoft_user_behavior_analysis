@@ -1,0 +1,28 @@
+isort
+
+
+black
+All done! ✨ 🍰 ✨
+28 files would be left unchanged.
+
+
+flake8
+
+
+mypy
+Success: no issues found in 28 source files
+
+
+pylint
+
+------------------------------------
+Your code has been rated at 10.00/10
+
+
+
+pip_check
+No broken requirements found.
+
+
+git_diff_check
+

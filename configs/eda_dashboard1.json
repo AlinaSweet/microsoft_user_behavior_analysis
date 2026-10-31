@@ -1,0 +1,16 @@
+{
+  "database": "data/processed/analysis_raw_v1/behavior.sqlite",
+  "cache_dir": "data/processed/eda_dashboard1_20261029",
+  "report_dir": "outputs/reports/eda_dashboard1_20261029",
+  "anchors": [
+    "2025-11-25",
+    "2025-12-02",
+    "2025-12-09"
+  ],
+  "history_days": 7,
+  "label_days": 7,
+  "transition_max_gap_hours": 24,
+  "min_item_view_pairs": 50,
+  "min_category_view_pairs": 200,
+  "quadrant_min_view_pairs": 20
+}

@@ -1,0 +1,62 @@
+{
+  "configuration": {
+    "fit_anchor": "2025-11-25",
+    "components": 16,
+    "weights": {
+      "pv": 1,
+      "fav": 2,
+      "cart": 3,
+      "buy": 4
+    },
+    "base_catalog_sha256": "5eac655c098321ed7a1f0b5a090b8f75a1915b909ae6fb10c33c376f02ad4d85"
+  },
+  "fit_history_start": "2025-11-18 00:00:00",
+  "fit_history_end_exclusive": "2025-11-25 00:00:00",
+  "users": 9115,
+  "items": 782474,
+  "interaction_pairs": 1030893,
+  "matrix_shape": [
+    9115,
+    782474
+  ],
+  "matrix_dtype": "float32",
+  "sparsity": 0.9998554603489384,
+  "components": 16,
+  "explained_variance_ratio": [
+    0.0002976716496050358,
+    0.0002980096614919603,
+    0.00017198765999637544,
+    0.00015601699124090374,
+    0.00014782830839976668,
+    0.00014572771033272147,
+    0.00014332536375150084,
+    0.00014100378029979765,
+    0.0001403360511176288,
+    0.00013747780758421868,
+    0.00013677022070623934,
+    0.0001357169821858406,
+    0.0001350194652331993,
+    0.00013469791156239808,
+    0.0001332312385784462,
+    0.00013215247599873692
+  ],
+  "explained_variance_sum": 0.002586973365396261,
+  "training_user_embedding_shape": [
+    9115,
+    16
+  ],
+  "normalization": "log1p weighted key strength; frozen item IDF; per-user L2",
+  "graph": {
+    "training_users": 9115,
+    "minimum_item_users": 20,
+    "eligible_items": 788,
+    "selected_items": 788,
+    "maximum_neighbors": 20,
+    "minimum_joint_users": 2,
+    "rules": 13806,
+    "semantics": "unordered training-window user baskets; no observed click order"
+  },
+  "padding_token": 0,
+  "unknown_token": 1,
+  "uses_future_labels": false
+}

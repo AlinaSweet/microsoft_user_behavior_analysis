@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-31T01:56:35.800474+00:00",
+  "code_commit": "f6d044c1c3692747f794069896d07a2b20b4668c",
+  "scope": "Fresh quality and live workers; complete event/aggregate relations; raw/artifact hashes, anomaly thresholds and reviewed research.",
+  "cloud_ci_scope": "Verified separately in the delivery record.",
+  "checks": {
+    "all_processes_succeeded": true,
+    "quality_gate": true,
+    "live_environment": true,
+    "full_preprocessing_and_predecessors": true
+  },
+  "processes": [
+    {
+      "name": "quality",
+      "command": [
+        "bash",
+        "scripts/check_quality.sh",
+        "--force"
+      ],
+      "exit_code": 0,
+      "log_path": "outputs/reports/stage1_review_20261031_02/quality.log",
+      "log_sha256": "f15547f2c08ae0b6670993a0f9a8d3e7c9a6a7649c7a20444c0b786e6a17048a"
+    },
+    {
+      "name": "environment",
+      "command": [
+        "/Users/alina/Desktop/实习/Github/.venv/bin/python",
+        "-m",
+        "user_behavior_analysis",
+        "--config",
+        "configs/audit.yaml",
+        "check",
+        "--output-dir",
+        "/Users/alina/Desktop/实习/Github/outputs/reports/stage1_review_20261031_02/environment"
+      ],
+      "exit_code": 0,
+      "log_path": "outputs/reports/stage1_review_20261031_02/environment.log",
+      "log_sha256": "e693a10f3cc73e8040af8dcd57550405e2764df854f933776abda5eaae420d47"
+    },
+    {
+      "name": "preprocessing",
+      "command": [
+        "/Users/alina/Desktop/实习/Github/.venv/bin/python",
+        "scripts/audit_preprocessing.py",
+        "--config",
+        "configs/audit.yaml",
+        "--output",
+        "/Users/alina/Desktop/实习/Github/outputs/reports/stage1_review_20261031_02/preprocessing_audit.json"
+      ],
+      "exit_code": 0,
+      "log_path": "outputs/reports/stage1_review_20261031_02/preprocessing.log",
+      "log_sha256": "c1e65d67710ced4c94a585d77e3737f8330e3972e3b1bd77daeef4b740fc5f10"
+    }
+  ]
+}

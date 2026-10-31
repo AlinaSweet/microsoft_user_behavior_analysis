@@ -1,0 +1,108 @@
+{
+  "status": "passed",
+  "audit_scope": "data artifacts, not a test suite",
+  "source_csv_sha256": "64c1436d3f984f813c12c730950d61cdc1892e8dbbb54e102911b182c2690072",
+  "source_database_sha256": "606f557d0739a6a35ecf96f2db22b761067a1ab6eee7bf44735c8f8ce8beccb4",
+  "base_file_records_verified": 253,
+  "base_rows": 12256906,
+  "base_values_match": true,
+  "user_hour_control": {
+    "compared_user_hours": 682940,
+    "statistics_per_key": 10,
+    "differences": 0
+  },
+  "snapshots": [
+    {
+      "anchor": "2025-11-25",
+      "verified_files": 25,
+      "model_input_rows": 1030893,
+      "quality": {
+        "fields": 439,
+        "proportion_fields_checked": 25,
+        "constant_fields": 9,
+        "all_missing_fields": 0,
+        "nonfinite_values": 0
+      },
+      "sequences": {
+        "users": 9115,
+        "length": 50,
+        "valid_positions": 347573,
+        "unknown_item_positions": 0
+      },
+      "label_available": true,
+      "label_is_input": false
+    },
+    {
+      "anchor": "2025-12-02",
+      "verified_files": 25,
+      "model_input_rows": 1061515,
+      "quality": {
+        "fields": 439,
+        "proportion_fields_checked": 25,
+        "constant_fields": 5,
+        "all_missing_fields": 0,
+        "nonfinite_values": 0
+      },
+      "sequences": {
+        "users": 9604,
+        "length": 50,
+        "valid_positions": 419787,
+        "unknown_item_positions": 231030
+      },
+      "label_available": true,
+      "label_is_input": false
+    },
+    {
+      "anchor": "2025-12-09",
+      "verified_files": 25,
+      "model_input_rows": 1117324,
+      "quality": {
+        "fields": 439,
+        "proportion_fields_checked": 25,
+        "constant_fields": 5,
+        "all_missing_fields": 0,
+        "nonfinite_values": 0
+      },
+      "sequences": {
+        "users": 9828,
+        "length": 50,
+        "valid_positions": 452825,
+        "unknown_item_positions": 290785
+      },
+      "label_available": true,
+      "label_is_input": false
+    },
+    {
+      "anchor": "2025-12-19",
+      "verified_files": 25,
+      "model_input_rows": 1216917,
+      "quality": {
+        "fields": 439,
+        "proportion_fields_checked": 25,
+        "constant_fields": 5,
+        "all_missing_fields": 0,
+        "nonfinite_values": 0
+      },
+      "sequences": {
+        "users": 10000,
+        "length": 50,
+        "valid_positions": 478193,
+        "unknown_item_positions": 341274
+      },
+      "label_available": false,
+      "label_is_input": false
+    }
+  ],
+  "latent_files_verified": 10,
+  "workbook": {
+    "cached_totals": {
+      "B4": 439.0,
+      "E4": 6.0,
+      "H4": 445.0
+    },
+    "formula_errors": 0,
+    "dictionary_rows": 445,
+    "quality_rows": 439
+  },
+  "unit_or_integration_tests_run": false
+}

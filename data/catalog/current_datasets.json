@@ -1,0 +1,13 @@
+{
+  "counting_policy": "preserve_all_valid_records_flag90",
+  "standard_events": "data/processed/base_raw_v2/events",
+  "base_catalog": "data/catalog/base_raw_v2.json",
+  "analysis_database": "data/processed/analysis_raw_v1/behavior.sqlite",
+  "feature_catalog": "data/catalog/features_raw_v2.json",
+  "feature_root": "data/processed/features_raw_v2",
+  "legacy_references": [
+    "data/interim/clean_v1/events",
+    "data/processed/base_v1"
+  ],
+  "validated_source": "data/interim/clean_v1/validated"
+}

@@ -4,11 +4,33 @@
 
 ## 当前交付状态
 
-按任务查找说明、代码、数据和验收记录，请先看[已完成任务与文件导航](docs/completed_work.md)。需要逐个文件对应目录、用途和同步状态时，打开[第一阶段与第二阶段第1项逐文件清单](docs/stage1_stage2_step1_files.md)。
+任务状态与验收顺序见[项目任务台账](docs/project_roadmap.md)，正式数据版本与产物路径见[当前数据入口](data/catalog/current_datasets.json)。
 
-2026-10-24第一阶段完整复核及数据库接入后回归已通过，包含79项测试及全量数据校验。本周新增[重复值材料与核验](outputs/reports/duplicate_review_20261024/README.md)、[第二周周报](outputs/reports/weekly_report_20261019_20261023.pdf)及[当前保留原记录策略](docs/duplicate_policy.md)。第一阶段四项成果的最新复核入口为 [第一阶段验收复核](docs/stage1_review.md)。当前任务状态以 [任务台账](docs/project_roadmap.md) 为准；历史报告保留其生成时的测量口径。
+2026-10-24第一阶段完整复核及数据库接入后回归已通过，包含79项测试及全量数据校验。重复值材料与独立核验见[分析记录](outputs/reports/duplicate_review_20261024/README.md)，当前处理规则见[保留原记录策略](docs/duplicate_policy.md)。第一阶段四项成果的最新复核入口为 [第一阶段验收复核](docs/stage1_review.md)。当前任务状态以 [任务台账](docs/project_roadmap.md) 为准；历史报告保留其生成时的测量口径。
 
 2026-10-25，第二阶段第1项的全量数据库与11项SQL已完成，功能分支、dev和main的实现提交均通过远程Quality检查。详见[数据库与SQL报告](outputs/reports/stage2_step1_20261024/README.md)和[远程交付记录](outputs/reports/stage2_step1_20261024/cloud_delivery.json)。
+
+## 2026-10-30新增：全维度特征与深入EDA
+
+完整记录基表、四个历史截点的439个标量特征及6类逻辑序列输入已生成，合计4,426,649行候选快照。
+先看[特征完成说明](docs/feature_system.md)、
+[Excel特征整理表](outputs/reports/feature_system_20261029/feature_dictionary.xlsx)、
+[可搜索字典](outputs/reports/feature_system_20261029/feature_dictionary.html)及
+[中间表结构与依赖](docs/intermediate_table_design.md)。
+看板一在26幅基线图基础上新增8幅深入分析，入口为
+[EDA补充页面](outputs/reports/eda_extension_20261029/dashboard.html)、
+[分析与探索方向](outputs/reports/eda_extension_20261029/README.md)。
+
+当前正式数据入口为[data/catalog/current_datasets.json](data/catalog/current_datasets.json)：
+base_raw_v2保留全部12,256,906条有效记录，features_raw_v2严格使用截点前历史。
+历史clean_v1/events和base_v1用于历史对照；当前特征不读取其归并事件。
+2026-10-31已完成102项测试、完整前序回归、独立全量计数/标签复核和浏览器核对。
+[本次验收与成果总结](outputs/reports/delivery_review_20261031/README.md)记录实际结果；远程Quality状态单独登记。
+正式特征筛选、标准化、编码和预测模型仍按后续任务开展。
+
+## 当前成果复核（2026-10-31）
+
+[成果总结](outputs/reports/delivery_review_20261031/completion_summary.md) · [验收证据](outputs/reports/delivery_review_20261031/README.md) · [按参考模板填写的特征表](outputs/reports/feature_system_20261029/feature_split.xlsx)
 
 ## 项目结构
 
@@ -169,3 +191,9 @@ PYTHONPATH=src .venv/bin/python scripts/audit_stage1.py \
 ## 第二阶段第1项：SQLite与SQL分析
 
 已按保留全部有效原记录的口径完成业务数据库，并执行11项SQL分析。运行方式、表结构与查询口径见[数据库说明](docs/sqlite_analysis.md)，结果见[阶段报告](outputs/reports/stage2_step1_20261024/README.md)。大型SQLite与完整查询结果保留本地，通过data/catalog登记。
+
+## 看板一 EDA（2026-10-29）
+
+[EDA方法与复现](docs/eda_dashboard1.md) · [分析报告与口径](outputs/reports/eda_dashboard1_20261029/README.md) · [统计表](outputs/reports/eda_dashboard1_20261029/tables.md) · [离线看板](outputs/reports/eda_dashboard1_20261029/dashboard.html)
+
+基于全部有效原记录完成四模块EDA基线，含26张图和未来窗口关联分析。补充8幅深入图及分层结果见[补充分析](outputs/reports/eda_extension_20261029/README.md)。正式特征已构建，特征有效性筛选与全局联动仍按台账推进。

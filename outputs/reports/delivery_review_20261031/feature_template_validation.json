@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "original_backup": "/Users/alina/Desktop/实习/个人资料归档_20261031/本次交付/特征拆分整理_填写前_20261031.xlsx",
+  "source_original_sha256": "39f4dc9c35cf47c35b58c3a3c68911662609b65f4116ed08c34b00a7cf43c3ca",
+  "user_output": "/Users/alina/Desktop/实习/特征拆分整理.xlsx",
+  "repository_output": "outputs/reports/feature_system_20261029/feature_split.xlsx",
+  "sha256": "63f5648ed582a12b56113ab25fabd074338bc6145411f7066003ff811bd96d20",
+  "dictionary_entries": 445,
+  "scalar": 439,
+  "sequence": 6,
+  "template_columns_preserved": [
+    "所在表",
+    "特征名",
+    "特征",
+    "计算方法",
+    "特征描述"
+  ],
+  "sheets": 1,
+  "formula_errors": 0
+}

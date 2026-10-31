@@ -1,5 +1,9 @@
 # 第一阶段第三项：清洗规则与复现
 
+2026-10-30当前补充：完整保留记录的标准事件和7张键/聚合表已在base_raw_v2生成，
+正式特征位于features_raw_v2。统一入口见[current_datasets.json](../data/catalog/current_datasets.json)，
+方法见[全维度特征说明](feature_system.md)。本页下文保留历史版本的复现规则。
+
 处理用户提供的完整 CSV，按真实规模验收。项目文档中的“亿级”是设计场景，不表示已在本机执行一亿行。
 
 ## 当前版本说明

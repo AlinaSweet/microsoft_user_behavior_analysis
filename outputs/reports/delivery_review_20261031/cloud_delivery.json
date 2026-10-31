@@ -1,0 +1,6 @@
+{
+  "status": "pending",
+  "scope": "Remote Quality must pass before dev/main integration",
+  "repository": "https://github.com/AlinaSweet/microsoft_user_behavior_analysis",
+  "branch": "feature/eda-features-delivery"
+}
