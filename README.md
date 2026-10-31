@@ -25,7 +25,7 @@
 base_raw_v2保留全部12,256,906条有效记录，features_raw_v2严格使用截点前历史。
 历史clean_v1/events和base_v1用于历史对照；当前特征不读取其归并事件。
 2026-10-31已完成102项测试、完整前序回归、独立全量计数/标签复核和浏览器核对。
-[本次验收与成果总结](outputs/reports/delivery_review_20261031/README.md)记录实际结果；远程Quality状态单独登记。
+[本次验收与成果总结](outputs/reports/delivery_review_20261031/README.md)记录实际结果；本次实现提交远程Quality已通过，检查点见[云端记录](outputs/reports/delivery_review_20261031/cloud_delivery.json)。
 正式特征筛选、标准化、编码和预测模型仍按后续任务开展。
 
 ## 当前成果复核（2026-10-31）
