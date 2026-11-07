@@ -2,6 +2,16 @@
 
 本仓库用于用户行为分析实习项目。原始 CSV 约 469 MiB、约 1,225 万行，实际列名为 time、user_id、item_id、item_category、behavior_type。
 
+## 2026-11-07 预拼接宽表验收与读取入口
+
+四截点既有宽表完成全量独立审计，共4,426,649行、439个标量加7个身份/覆盖字段。
+用户、商品、类目及交互表的键、LEFT JOIN匹配、全部源值、候选键集合和历史边界均通过。
+新增已验收目录与按列分批读取接口；复用原Parquet，原始日志及既有特征值保持不变。
+入口：[宽表方法与调用](docs/prejoined_features.md)、
+[数据目录](data/catalog/prejoined_wide_v1.json)、
+[本次验收](outputs/reports/prejoined_wide_20261107/README.md)。
+正式特征筛选、编码、标准化和消融预实验仍待开展。
+
 ## 当前交付状态
 
 任务状态与验收顺序见[项目任务台账](docs/project_roadmap.md)，正式数据版本与产物路径见[当前数据入口](data/catalog/current_datasets.json)。

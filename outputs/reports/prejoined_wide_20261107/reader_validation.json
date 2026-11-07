@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "columns": [
+    "as_of_time",
+    "user_id",
+    "item_id",
+    "user_buy_recency_hours",
+    "item_buy_count_7d",
+    "category_buy_count_7d"
+  ],
+  "snapshots": [
+    {
+      "anchor": "2025-11-25",
+      "rows": 1030893,
+      "batches": 136,
+      "max_batch_rows": 8192
+    },
+    {
+      "anchor": "2025-12-02",
+      "rows": 1061515,
+      "batches": 138,
+      "max_batch_rows": 8192
+    },
+    {
+      "anchor": "2025-12-09",
+      "rows": 1117324,
+      "batches": 144,
+      "max_batch_rows": 8192
+    },
+    {
+      "anchor": "2025-12-19",
+      "rows": 1216917,
+      "batches": 157,
+      "max_batch_rows": 8192
+    }
+  ],
+  "scope": "All candidate rows streamed; selected column order and batch bounds checked"
+}

@@ -42,3 +42,8 @@ outputs/**/*.feather
 /outputs/reports/feature_system_*/*_preview.png
 /outputs/reports/feature_system_*/feature_dictionary.xlsx.inspect.ndjson
 /outputs/reports/eda_dashboard1_*/dashboard_preview.png
+
+# Personal weekly reports must stay outside the repository root
+/Week*_report.*
+/weekly_report_*
+/weekly_summary_*

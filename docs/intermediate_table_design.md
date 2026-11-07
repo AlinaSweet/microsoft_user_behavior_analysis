@@ -81,3 +81,10 @@ flowchart TD
 每日全期表是预计算层；当前实现的正式快照从新key_hour先按时间筛选，再汇总为特征，
 因此不会因为已有全期日表而把未来合计连接到过去。
 features.duckdb是本地可重建计算缓存；以completion.json登记的Parquet/NPZ为交付数据。
+
+## 2026-11-07 预拼接层正式登记
+
+既有model_inputs已通过全量源值与连接审计，正式读取入口为
+[data/catalog/prejoined_wide_v1.json](../data/catalog/prejoined_wide_v1.json)。
+[调用方法与数据契约](prejoined_features.md)说明按列分批读取、键粒度、缺失语义和标签边界。
+此步骤复用既有数据，不增加特征数量，不等于完成正式筛选或预测训练。

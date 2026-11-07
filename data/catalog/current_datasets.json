@@ -9,5 +9,6 @@
     "data/interim/clean_v1/events",
     "data/processed/base_v1"
   ],
-  "validated_source": "data/interim/clean_v1/validated"
+  "validated_source": "data/interim/clean_v1/validated",
+  "prejoined_wide_catalog": "data/catalog/prejoined_wide_v1.json"
 }

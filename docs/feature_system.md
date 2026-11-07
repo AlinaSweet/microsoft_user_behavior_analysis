@@ -150,3 +150,10 @@ PYTHONPATH=src .venv/bin/python -B scripts/audit_feature_delivery.py
 也可分别运行eda、base、latent、snapshots、reports；reports扩展分析需要已完成的特征。
 已有完成文件校验指纹和配置后复用。更改业务规则时使用新版本目录，不覆盖历史产物。
 Excel使用scripts/build_feature_workbook.mjs及@oai/artifact-tool生成，需要该JS包的运行时；纯数据流水线不依赖Excel生成环境。
+
+## 2026-11-07 预拼接层正式登记
+
+既有model_inputs已通过全量源值与连接审计，正式读取入口为
+[data/catalog/prejoined_wide_v1.json](../data/catalog/prejoined_wide_v1.json)。
+[调用方法与数据契约](prejoined_features.md)说明按列分批读取、键粒度、缺失语义和标签边界。
+此步骤复用既有数据，不增加特征数量，不等于完成正式筛选或预测训练。

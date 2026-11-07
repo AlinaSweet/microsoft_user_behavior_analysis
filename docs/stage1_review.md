@@ -1,6 +1,12 @@
 # 第一阶段验收复核
 
-## 最新：2026-10-31新增EDA与特征后复核
+## 最新 2026-11-07预拼接宽表接入后复核
+
+119项测试、完整规范/类型工具、真实worker、全量清洗/聚合与研究资料再次通过。
+[本次完整证据](../outputs/reports/stage1_review_20261107_01/README.md)；
+新宽表审计另见[交付报告](../outputs/reports/prejoined_wide_20261107/README.md)。
+
+## 2026-10-31新增EDA与特征后复核
 
 完整102项测试、规范工具链、真实worker、全量清洗/聚合和研究资料复核通过。
 [最新完整证据](../outputs/reports/stage1_review_20261031_02/README.md)。

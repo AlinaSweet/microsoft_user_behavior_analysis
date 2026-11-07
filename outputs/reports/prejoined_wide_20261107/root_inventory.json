@@ -1,0 +1,139 @@
+{
+  "status": "passed",
+  "root": "/Users/alina/Desktop/实习/Github",
+  "entries": [
+    {
+      "name": ".cache",
+      "kind": "directory",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": ".editorconfig",
+      "kind": "file",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": ".flake8",
+      "kind": "file",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": ".git",
+      "kind": "directory",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": ".gitattributes",
+      "kind": "file",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": ".githooks",
+      "kind": "directory",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": ".github",
+      "kind": "directory",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": ".gitignore",
+      "kind": "file",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": ".python-version",
+      "kind": "file",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": ".venv",
+      "kind": "directory",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "AGENTS.md",
+      "kind": "file",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "README.md",
+      "kind": "file",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "configs",
+      "kind": "directory",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "data",
+      "kind": "directory",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "docs",
+      "kind": "directory",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "notebooks",
+      "kind": "directory",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "outputs",
+      "kind": "directory",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "pyproject.toml",
+      "kind": "file",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "requirements-dev.in",
+      "kind": "file",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "requirements-dev.txt",
+      "kind": "file",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "requirements.in",
+      "kind": "file",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "requirements.txt",
+      "kind": "file",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "scripts",
+      "kind": "directory",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "sql",
+      "kind": "directory",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "src",
+      "kind": "directory",
+      "action": "retain_project_or_git_resource"
+    },
+    {
+      "name": "tests",
+      "kind": "directory",
+      "action": "retain_project_or_git_resource"
+    }
+  ],
+  "unrelated_files_found": [],
+  "moved_files": [],
+  "note": "Root already contains only project/Git/configuration/runtime resources; personal weekly report created outside Git."
+}

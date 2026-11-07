@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-11-07T01:07:04.469131+00:00",
+  "fingerprint": "7a7e03fbf628a141b9096bc5d26359631fc9c69fd954fea10a51d329410b9514",
+  "python_file_count": 105,
+  "checks": {
+    "isort": 0,
+    "black": 0,
+    "flake8": 0,
+    "mypy": 0,
+    "pylint": 0,
+    "tests": 0
+  },
+  "tools": {
+    "black": "26.10.1",
+    "isort": "9.0.2",
+    "flake8": "7.4.1",
+    "mypy": "2.4.0",
+    "pylint": "4.1.3"
+  },
+  "document_specific_issues": [],
+  "git_files": {
+    "tracked_file_count": 439,
+    "small_file_limit_bytes": 10485760,
+    "issues": []
+  }
+}
