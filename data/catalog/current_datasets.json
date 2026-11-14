@@ -13,5 +13,9 @@
   "prejoined_wide_catalog": "data/catalog/prejoined_wide_v1.json",
   "feature_validation_catalog": "data/catalog/feature_validation_v1.json",
   "pair_targets_root": "data/processed/pair_targets_v1",
-  "model_samples_root": "data/processed/model_samples_v1"
+  "model_samples_root": "data/processed/model_samples_v1",
+  "stage2_complete_catalog": "data/catalog/stage2_complete_v1.json",
+  "prepared_matrix_root": "data/processed/stage2_complete_v1/matrices",
+  "current_report": "outputs/reports/stage2/README.md",
+  "current_feature_dictionary": "outputs/reports/stage2/feature_dictionary.json"
 }

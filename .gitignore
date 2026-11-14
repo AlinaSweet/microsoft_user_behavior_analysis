@@ -47,3 +47,6 @@ outputs/**/*.feather
 /Week*_report.*
 /weekly_report_*
 /weekly_summary_*
+
+# Current artifact-tool inspection sidecars are local QA, not deliverables
+/outputs/reports/stage2/*.inspect.ndjson

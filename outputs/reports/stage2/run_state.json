@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "date": "2026-11-14",
+  "stage2_parts": {
+    "s2_01": "passed",
+    "s2_02": "passed",
+    "s2_03": "passed",
+    "s2_04": "passed_with_documented_data_boundaries"
+  },
+  "unit_and_integration_tests": 157,
+  "stage1_regression": "outputs/reports/stage1/audit.json",
+  "matrix_rows": 4426649,
+  "matrix_columns": 259,
+  "matrix_replay_max_error": 0.0,
+  "saved_prediction_replay_max_error": 0.0,
+  "raw_record_policy": "preserve_all_valid_records_flag90",
+  "counting_source_rows": 12256906,
+  "scope_boundary": "Stage3 formal model search, imbalance comparisons, deep models and dashboard2 remain future work.",
+  "browser_validation": {
+    "default_and_combined_filters": "passed",
+    "pair_and_user_targets": "passed",
+    "download_click": "interrupted browser event; real HTTP CSV export is independently tested and passed"
+  },
+  "archive_files": 223,
+  "archive_bytes": 26829056,
+  "data_limitations": [
+    "No monetary/order/exposure/session/minute-second fields",
+    "No legal-holiday observations in source window",
+    "31-day historical backtest, not untouched future holdout"
+  ]
+}

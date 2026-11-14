@@ -1,0 +1,5 @@
+{
+  "model": "te_sequence",
+  "criterion": "validation AP",
+  "test_read_for_choice": false
+}

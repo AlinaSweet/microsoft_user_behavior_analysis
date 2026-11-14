@@ -52,8 +52,10 @@
     "latest_cohort.parquet": 9367,
     "item_quadrants.parquet": 11268
   },
-  "report_directory": "outputs/reports/eda_dashboard1_20261029",
+  "report_directory": "outputs/reports/stage2",
   "reference_pdf": "docs/requirements/dashboard_outline.pdf",
   "reference_pdf_sha256": "366f57174b86bcbf3bfafde65c6dabfb89d458d1a037290216d0a3f5011ff018",
-  "configuration_sha256": "f9497ff8a0c8630bcf7f8ae9b80b012ccadda0de1bc5a8ca73404d566d007668"
+  "configuration_sha256": "f9497ff8a0c8630bcf7f8ae9b80b012ccadda0de1bc5a8ca73404d566d007668",
+  "historical_report_commit": "774e4ade0364bc3a6e2d077881fe7cbfbf082acb",
+  "superseded_by": "data/catalog/stage2_complete_v1.json"
 }
