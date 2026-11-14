@@ -94,6 +94,7 @@ PYTHONPATH=src .venv/bin/python -u scripts/audit_wide_features.py \
 全量核验来源与宽表文件在运行前后指纹一致，不改写Parquet，也不修改历史特征值。
 本次证据见[验收报告](../outputs/reports/prejoined_wide_20261107/README.md)。
 
-标签继续独立保存。当前宽表是一行用户商品对，已有 `user_targets` 是用户级未来购买；
-两者不能直接当成同一个预测任务。12月19日未来标签不可用，不能填成0。
+标签继续独立保存。原有 `user_targets` 是用户级未来购买，不与对级任务混用。
+2026-11-14已新增三键对齐的用户商品对标签与成熟样本层，见[验证方法](feature_validation.md)。
+12月19日未来标签仍不可用，不能填成0。
 大型数据保持本地，Git同步目录、审计报告、代码和方法。

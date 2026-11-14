@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-11-14T20:13:35.685215+00:00",
+  "checks": {
+    "full_pair_label_independent_raw_recomputation": true,
+    "all_mature_keys_and_source_values": true,
+    "last_cutoff_targets_unknown": true,
+    "training_only_fit_and_frozen_validation_choice": true,
+    "complete_training_visits": true,
+    "all_model_probability_replay": true,
+    "quality_and_140_tests": true,
+    "stage1_full_regression": true,
+    "original_input_fingerprints_unchanged": true,
+    "plots_visually_checked": true
+  },
+  "sample_rows": 3209732,
+  "retained_scalars": 207,
+  "source_manifest": {
+    "path": "outputs/reports/feature_validation_20261114/source_manifest.json",
+    "bytes": 24048,
+    "sha256": "0ff9337dca2d36c0cd67429a5ed30f5803dd53f3c84aa3b7552201206a731261"
+  },
+  "stage1_audit": {
+    "path": "outputs/reports/stage1_review_20261114_01/audit.json",
+    "bytes": 1963,
+    "sha256": "d50baae0a006505c738590b9defa81b5db5166ea4775a6555779475df206cf64"
+  },
+  "validation_choice_mtime_ns": 1794685971736922398,
+  "test_score_mtime_ns": 1794685978879410844,
+  "cloud_scope": "Local acceptance only; remote CI separately verified."
+}

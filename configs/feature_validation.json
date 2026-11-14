@@ -1,0 +1,29 @@
+{
+  "wide_catalog": "data/catalog/prejoined_wide_v1.json",
+  "label_root": "data/processed/pair_targets_v1",
+  "sample_root": "data/processed/model_samples_v1",
+  "report_dir": "outputs/reports/feature_validation_20261114",
+  "catalog": "data/catalog/feature_validation_v1.json",
+  "splits": {"train": "2025-11-25", "validation": "2025-12-02", "test": "2025-12-09"},
+  "label_days": 7,
+  "seed": 20261114,
+  "batch_rows": 8192,
+  "selection_rows": 100000,
+  "cohort_rows": 15000,
+  "minimum_cohort_positives": 10,
+  "missing_limit": 0.95,
+  "correlation_limit": 0.98,
+  "maximum_features": {"basic": 80, "business": 64, "sequence": 22, "svd": 40, "cooccurrence": 5, "calendar": 0},
+  "epochs": 5,
+  "alpha": 0.0001,
+  "decision_threshold": 0.5,
+  "bootstrap_repeats": 100,
+  "experiments": {
+    "basic": ["basic"],
+    "business": ["basic", "business"],
+    "sequence": ["basic", "business", "sequence"],
+    "svd": ["basic", "business", "svd"],
+    "cooccurrence": ["basic", "business", "cooccurrence"],
+    "combined": ["basic", "business", "sequence", "svd", "cooccurrence"]
+  }
+}
