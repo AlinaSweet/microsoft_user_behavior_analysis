@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/AlinaSweet/microsoft_user_behavior_analysis",
+  "local_status": "passed",
+  "workflow_order": [
+    "feature/stage2-complete",
+    "dev",
+    "main"
+  ],
+  "remote_verification": "Check latest branch-head Quality results before accepting delivery.",
+  "actions_url": "https://github.com/AlinaSweet/microsoft_user_behavior_analysis/actions/workflows/quality.yml",
+  "checkpoint_scope": "Updated with observed immutable implementation checkpoints after remote verification; subsequent metadata commits have separate Actions checks."
+}

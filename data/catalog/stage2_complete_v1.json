@@ -1,0 +1,452 @@
+{
+  "dataset": "stage2_complete_v1",
+  "status": "passed",
+  "date": "2026-11-14",
+  "grain": [
+    "as_of_time",
+    "user_id",
+    "item_id"
+  ],
+  "counting_policy": "preserve_all_valid_records_flag90",
+  "source_definitions": 445,
+  "selected_source_scalars": 207,
+  "derived_representation_entries": 9,
+  "matrix_columns": 259,
+  "target_in_matrix": false,
+  "fit_anchor": "2025-11-25",
+  "target_encoder_inference_available_at": "2025-12-02",
+  "data_root": "data/processed/stage2_complete_v1",
+  "snapshots": [
+    {
+      "anchor": "2025-11-25",
+      "rows": 1030893,
+      "target_available": true,
+      "embedding_all_known_rows": 1030893
+    },
+    {
+      "anchor": "2025-12-02",
+      "rows": 1061515,
+      "target_available": true,
+      "embedding_all_known_rows": 1011019
+    },
+    {
+      "anchor": "2025-12-09",
+      "rows": 1117324,
+      "target_available": true,
+      "embedding_all_known_rows": 1067068
+    },
+    {
+      "anchor": "2025-12-19",
+      "rows": 1216917,
+      "target_available": false,
+      "embedding_all_known_rows": 1159916
+    }
+  ],
+  "matrix_and_key_manifest": {
+    "path": "outputs/reports/stage2/preprocessing.json",
+    "bytes": 102715,
+    "sha256": "851f068eaa35f7bf31753faa1fbe24b4ee553d85c2ec1b13a2cd98993890dbb3"
+  },
+  "additional_local_state": [
+    {
+      "path": "data/processed/stage2_complete_v1/target_encoding.json",
+      "bytes": 476988,
+      "sha256": "87c0691c61beaa56849b1d7d1958173b09c2a7ac21f91314314f1427c09c6d5b"
+    },
+    {
+      "path": "data/processed/stage2_complete_v1/matrix_columns.json",
+      "bytes": 8732,
+      "sha256": "f11714cdd6ef19cee2d4711a626856c6bdfd073de5343c97b90b216766649dc2"
+    },
+    {
+      "path": "data/processed/stage2_complete_v1/sparse_embedding.npz",
+      "bytes": 40881,
+      "sha256": "c02297f04a46aeea91957d91bad903f4b03679178f28e73fe823a4b727b3d635"
+    }
+  ],
+  "source_catalogs": [
+    {
+      "path": "data/catalog/base_raw_v2.json",
+      "bytes": 62188,
+      "sha256": "5eac655c098321ed7a1f0b5a090b8f75a1915b909ae6fb10c33c376f02ad4d85"
+    },
+    {
+      "path": "data/catalog/features_raw_v2.json",
+      "bytes": 34816,
+      "sha256": "1354ae40ee0cc857ac05fbc72959e673f4bc4f1f07a9651666938422f63fdd38"
+    },
+    {
+      "path": "data/catalog/prejoined_wide_v1.json",
+      "bytes": 678213,
+      "sha256": "38f91a543ec2a2c8068f0957fa2a4660d762e6a3e7dac9521244e2760339dbfe"
+    },
+    {
+      "path": "data/catalog/feature_validation_v1.json",
+      "bytes": 24226,
+      "sha256": "b2af2952ff2a729cc7a681b7d3c1a987d1ac74a3139004bef998f1e4a4dbe3d3"
+    }
+  ],
+  "report_artifacts": [
+    {
+      "path": "outputs/reports/stage2/README.md",
+      "bytes": 5705,
+      "sha256": "54e0e5ca6a8a9402c83e009f33041c02bb17d77b95260eaa74f831cc9cdf0dca"
+    },
+    {
+      "path": "outputs/reports/stage2/audit.json",
+      "bytes": 1090,
+      "sha256": "7a597472726136f9dd63f4f4cb067f4ea316b50586ae9b2ab74068f09a150cfd"
+    },
+    {
+      "path": "outputs/reports/stage2/code_review.md",
+      "bytes": 1855,
+      "sha256": "16facb9d8cd77d31e62005c37dc1ecbf54ebc4b71b18e7795d1d6962b17c86e2"
+    },
+    {
+      "path": "outputs/reports/stage2/dependency_audit.json",
+      "bytes": 316,
+      "sha256": "679b20d2a4cb43e1425954ccc94db489cbac4acbd946be79e6e7b6e7bdbd0deb"
+    },
+    {
+      "path": "outputs/reports/stage2/eda_audit.json",
+      "bytes": 1602,
+      "sha256": "a04d2fe17fee78d28057c05ad2e9aa40df6be0ed7716e23ca8695545fffd3915"
+    },
+    {
+      "path": "outputs/reports/stage2/eda_baseline.json",
+      "bytes": 2733742,
+      "sha256": "b211d000335c703614b81129a3549933c4c6b9c9bfe77fcf86c49acab4e7dd31"
+    },
+    {
+      "path": "outputs/reports/stage2/eda_mature_example.json",
+      "bytes": 2573505,
+      "sha256": "7b1c2061e7514329d03c9fd7d91ac29dab838cde44f72e0502c25bfe247e67cd"
+    },
+    {
+      "path": "outputs/reports/stage2/encoding_experiments.json",
+      "bytes": 109718,
+      "sha256": "f5681b839a71c1b30383c50d7c619cb10334f65240d75357ca9c6bae0a100ee2"
+    },
+    {
+      "path": "outputs/reports/stage2/encoding_metrics.csv",
+      "bytes": 33393,
+      "sha256": "c99cab44a443344a4c06ea544ef7fd65259df4dc757ee9641099c5aaf4f211c6"
+    },
+    {
+      "path": "outputs/reports/stage2/encoding_validation_choice.json",
+      "bytes": 94,
+      "sha256": "ad70e8457dc4924c8f08931e23f4ec985b74f0354c8554a53a8dd68cc7f4fe88"
+    },
+    {
+      "path": "outputs/reports/stage2/feature_dictionary.html",
+      "bytes": 131629,
+      "sha256": "887592c3f727f18e957bc11a4bf7f0aee81eb94c211db5e371f99ae29fd0f1c5"
+    },
+    {
+      "path": "outputs/reports/stage2/feature_dictionary.json",
+      "bytes": 827551,
+      "sha256": "e8bdc69f0681792b61e11d3c9a4079f1c631ebfd50118df4d423554b7662f52a"
+    },
+    {
+      "path": "outputs/reports/stage2/feature_dictionary.xlsx",
+      "bytes": 65055,
+      "sha256": "2f5f0a2d6a950abbc1af25e3b51d2fea072b1400898bb1b150adfca01572e00e"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_basic.csv",
+      "bytes": 132855,
+      "sha256": "745afb4e489e58cdd4d096d8349eb76e270c58d06ed7877570ed1f35d5ebbeb2"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_basic.png",
+      "bytes": 107849,
+      "sha256": "b8d64b3aea3f63ecf43d1f3d32c0d2781a51d08a91d2e016b6ce63b87b3a2e9c"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_basic.svg",
+      "bytes": 88640,
+      "sha256": "403596a02e45a36276cf1b4d29a1f727c07ee54d643817d92271643ef3282df0"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_business.csv",
+      "bytes": 73325,
+      "sha256": "ceb822812f4ed48a4c0727301f4b7754d99d8137056f440828776ffba4d15a8c"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_business.png",
+      "bytes": 121439,
+      "sha256": "b2fa4b794985bf690ba14d4c3de98e430535851c4859ad601aa35c739b1f50bc"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_business.svg",
+      "bytes": 102903,
+      "sha256": "7f9f60d53d1e717c635fc71c2d654fbafe30921925b61d3114c1b066ab937b01"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_cooccurrence.csv",
+      "bytes": 445,
+      "sha256": "d3f2980023d816572fe773a5ec5e3b2447a0c2f209dc52ae1e245b828e5e6da0"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_cooccurrence.png",
+      "bytes": 69286,
+      "sha256": "4f38fd47a3ae07b4a42d7e30a789eb3cc99c10f3ae61e06299bf40373a480a72"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_cooccurrence.svg",
+      "bytes": 57968,
+      "sha256": "729e93cf0eb6b135735471181b8fe3ff003e58a94b167c8362417b88febb283d"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_sequence.csv",
+      "bytes": 10735,
+      "sha256": "b470b27716055a895a93e1cb0bddb24c1b2315ae1d084f78fea9f5395ca561e9"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_sequence.png",
+      "bytes": 116744,
+      "sha256": "e985b9423852a900f51cd0496c1ce87a512f9317cb5c41803118eab9f5e5d65a"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_sequence.svg",
+      "bytes": 101872,
+      "sha256": "6fcf21f0cd8dcec750af7d366c646f9b4d8152ee751837750d5bfe7bc3b9fac1"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_svd.csv",
+      "bytes": 27723,
+      "sha256": "1a610bd0739493594512c89ed5cf9452682e3521ba22566b002d9978e269c2f7"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_svd.png",
+      "bytes": 84251,
+      "sha256": "0c381fdd1020b7ce3287dfce4aa3ee4450add559a4ede976a174fd5a466edf49"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/correlation_svd.svg",
+      "bytes": 68892,
+      "sha256": "fc88aa8b1aa08281a1b5671f7ab7e90fe4564a721b5b868dc7b073a3cb452ec2"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_activity.png",
+      "bytes": 72034,
+      "sha256": "44720850366da9487d1f978e0950aadc5362ed265567e14389b5b7c190f1e3d6"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_activity.svg",
+      "bytes": 503584,
+      "sha256": "af7d959375a21238d418eecc1b1dadd7fd1ac4d5f9d8158f04d40f0c0669c0af"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_behavior.png",
+      "bytes": 33960,
+      "sha256": "79051da258e8944e4b7a2617a9ff7aad66d08867689f0ab37e48c6d6ea3af2f8"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_behavior.svg",
+      "bytes": 32278,
+      "sha256": "183579b1fdd2936bd163422a6c0ac53b5c1912144721240356b2f8a221ee15ff"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_categories.png",
+      "bytes": 60833,
+      "sha256": "892b6dec8a090e80e02e40dede98a4bb055d39d5865b8d93f32e8c82a6cdb25d"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_categories.svg",
+      "bytes": 39480,
+      "sha256": "1041dcbee612b002a22b22cc10aef7c923ec2ad1831427bca7bef4bc10214403"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_category_tail.png",
+      "bytes": 54476,
+      "sha256": "e409e77cffa67e967fbfee29d7856a32fb9146a3143b7ca8d9ad129f3736ec32"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_category_tail.svg",
+      "bytes": 40738,
+      "sha256": "4c097a819b201a2821ff4fedbe3d54236ed51526f72f9e4fc051a10ee473f427"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_daily.png",
+      "bytes": 80699,
+      "sha256": "f8b0a289f01ac2032547c2d04a477585f84cef9275b8ec1586ef06f6fa3aead3"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_daily.svg",
+      "bytes": 43017,
+      "sha256": "cea806c43d23e58b9aea221969517d6b7b497e6e37e261f1522ab0dedb972443"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_hour_heatmap.png",
+      "bytes": 41693,
+      "sha256": "f6f1348442176a41952856ccfe5f42634f354b8e81609d99b51941c4370f2b35"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_hour_heatmap.svg",
+      "bytes": 36577,
+      "sha256": "c404a6fbfdb4f10208654de552bc0ef4aaf15e08248158090ab8ac1959566674"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_hour_transitions.png",
+      "bytes": 69549,
+      "sha256": "ee7419460a1a35caee5920ab56c96e27a58272b36bf949be96573ea2bd6cbf18"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_hour_transitions.svg",
+      "bytes": 47643,
+      "sha256": "38b64cb84fe2eb54c92f5efde099a9806e69a8b9a05897b5c6b5c9ed69d35257"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_item_quadrants.png",
+      "bytes": 119046,
+      "sha256": "46d3389186f06e1c40d3a7815f01c866a103470e78bad2ca9be6abbddc6df81f"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_item_quadrants.svg",
+      "bytes": 258416,
+      "sha256": "42debde1fcf1d7197ade1459e9d6301265ad62805d8374d95620ad07228bc24e"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_mature_funnel.png",
+      "bytes": 41200,
+      "sha256": "fa0f4f2cc311e57b0ee2f6012e1f7dca8f694176ded75b6ae69e2e83a4c7393f"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_mature_funnel.svg",
+      "bytes": 42018,
+      "sha256": "1d224839dcac0d519b84c758d7271a1b6c1a251d1905d27a048bad918e918227"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_purchase_distribution.png",
+      "bytes": 33426,
+      "sha256": "34680f84edd2c27a6fc699277ef4b44f845020c996e37f11ea1c601d99eb8e98"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/eda_purchase_distribution.svg",
+      "bytes": 25740,
+      "sha256": "57a2d5949d928dc9f817e228c2045996f429b6d74277b9dbf22d6dfe7a5cf1a9"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/mi_basic.png",
+      "bytes": 80055,
+      "sha256": "8a1e0a06ffbec09ac6c8b9839ddd6e500b6d197c467269724dd1a076b2d89060"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/mi_basic.svg",
+      "bytes": 71397,
+      "sha256": "aa102637bd09294bdfaf9d6393bef301fc94e7f482ced2daf650bf8412788f92"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/mi_business.png",
+      "bytes": 82264,
+      "sha256": "5bc8b531dfd9d617b75fcfa65c2eaeff2f454cdf763dff4291eb4b3fa6830856"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/mi_business.svg",
+      "bytes": 78102,
+      "sha256": "94440793790f95ad722e8117b0fe8f7f9263347b1c27d2cfb4411138b7c62974"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/mi_cooccurrence.png",
+      "bytes": 48795,
+      "sha256": "bbb1caccfd4661d33f5bfcb68fc19222d67a60b7694fc05a475a64ea12c8cb56"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/mi_cooccurrence.svg",
+      "bytes": 52214,
+      "sha256": "832f5e62bf685776180858ca88077d8e2f198ef0b76feb3b8294d1d0335c6f8d"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/mi_sequence.png",
+      "bytes": 82904,
+      "sha256": "125fbeb91a4da7825e1bd0199b1fa1f2da271f00e51e50e478d7497fd9f574bf"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/mi_sequence.svg",
+      "bytes": 79183,
+      "sha256": "ee2a27ab109855700fd77d0d50cf1851e81c11ab81e45ab45c38c35facb01a4a"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/mi_svd.png",
+      "bytes": 65866,
+      "sha256": "510fcc44ca1e5787da81422c1cc0aa84044501c6f07e2294e28dd0904c69cc4b"
+    },
+    {
+      "path": "outputs/reports/stage2/figures/mi_svd.svg",
+      "bytes": 57460,
+      "sha256": "6c470c0f68a594f1b1a8b0c59ab6b85959daec0ca0f5f698db7d969a0a0fae4a"
+    },
+    {
+      "path": "outputs/reports/stage2/importance_rank.csv",
+      "bytes": 444726,
+      "sha256": "1ee9fcf24a3077c04840a6c4e1f680c6c45c65ab974e0c751c6208ff154746ae"
+    },
+    {
+      "path": "outputs/reports/stage2/independent_data_audit.json",
+      "bytes": 1903,
+      "sha256": "2f4ad8ad52972ffa63bc404866fa47be1d5d8c66fb3973e6c7903cfb0ac97136"
+    },
+    {
+      "path": "outputs/reports/stage2/preprocessing.json",
+      "bytes": 102715,
+      "sha256": "851f068eaa35f7bf31753faa1fbe24b4ee553d85c2ec1b13a2cd98993890dbb3"
+    },
+    {
+      "path": "outputs/reports/stage2/quality.json",
+      "bytes": 583,
+      "sha256": "c6027bb7d10d9555d262c466f3c823991293062abc423b251cb82c46f7481411"
+    },
+    {
+      "path": "outputs/reports/stage2/requirements_matrix.md",
+      "bytes": 5214,
+      "sha256": "fc196efab8dcb60ac241e144b2d2c0f910a2702584f47ade226d4ad6b342c814"
+    },
+    {
+      "path": "outputs/reports/stage2/run_state.json",
+      "bytes": 1125,
+      "sha256": "b06acd0369e2e3486d20d56ea41f9b0ee9606a45977ee712d9ac862840978818"
+    },
+    {
+      "path": "outputs/reports/stage2/selected_correlations.csv",
+      "bytes": 856539,
+      "sha256": "8b1da6bb8e11fba79c462a97a78eb4335dde9d9129cbf8e95fd65f8cf0a3ac53"
+    },
+    {
+      "path": "outputs/reports/stage2/source_manifest.json",
+      "bytes": 32790,
+      "sha256": "75c186eb8f8bf4d39161210553fd97c66fc5d124f48530e2c58d03a8a14589ff"
+    },
+    {
+      "path": "outputs/reports/stage2/supplementary_eda.json",
+      "bytes": 2419080,
+      "sha256": "7ada37f7c7887977b3f42be50e5b8f19f892e3c68d713ac4bf5f9448ca90c9b9"
+    },
+    {
+      "path": "outputs/reports/stage2/tables/category_purchase_cycles.csv",
+      "bytes": 194097,
+      "sha256": "85dc183aa00236b4b590f9fc58dd896ec52665516e3e5e1af19d334757c55099"
+    },
+    {
+      "path": "outputs/reports/stage2/tables/category_repeat_proxies.csv",
+      "bytes": 61388,
+      "sha256": "bbb34176d3f6fef7826da64ca2bb5ff0b6f3500642311863c4b444f23bd8e9c1"
+    },
+    {
+      "path": "outputs/reports/stage2/tables/latent_coverage.csv",
+      "bytes": 196,
+      "sha256": "53ea02a7bfe9354db5ff92b5bde71eeb2bef8385581144f095c597c305ba57bc"
+    },
+    {
+      "path": "outputs/reports/stage2/tables/rf_proxy_segments.csv",
+      "bytes": 1164,
+      "sha256": "beaf99ac652c066e51493a68b9f9e7849348cf298997d67b170b0c27084c8d0f"
+    },
+    {
+      "path": "outputs/reports/stage2/tables/standardized_associations.csv",
+      "bytes": 1288,
+      "sha256": "95b4298a052e6f5a022d2d3cad51c937c703bb5b86cc308a4697738197d8264b"
+    }
+  ],
+  "remote_metadata_policy": "cloud_delivery.json is mutable verification metadata, deliberately outside frozen numerical artifact hashes."
+}

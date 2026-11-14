@@ -1,0 +1,70 @@
+{
+  "status": "passed",
+  "independent_source": "unaggregated base_raw_v2/events",
+  "cases": [
+    {
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-18",
+        "cohort": "all",
+        "category": "",
+        "item": ""
+      },
+      "expected_raw_records": 12256906,
+      "observed_records": 12256906,
+      "differences": 0
+    },
+    {
+      "filters": {
+        "start": "2025-11-25",
+        "end": "2025-12-08",
+        "cohort": "high_activity",
+        "category": "1863",
+        "item": ""
+      },
+      "expected_raw_records": 173668,
+      "observed_records": 173668,
+      "differences": 0
+    },
+    {
+      "filters": {
+        "start": "2025-12-18",
+        "end": "2025-12-18",
+        "cohort": "all",
+        "category": "",
+        "item": ""
+      },
+      "expected_raw_records": 375597,
+      "observed_records": 375597,
+      "differences": 0
+    },
+    {
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-08",
+        "cohort": "all",
+        "category": "",
+        "item": ""
+      },
+      "expected_raw_records": 7893221,
+      "observed_records": 7893221,
+      "differences": 0
+    },
+    {
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-08",
+        "cohort": "all",
+        "category": "no_such_category",
+        "item": ""
+      },
+      "expected_raw_records": 0,
+      "observed_records": 0,
+      "differences": 0
+    }
+  ],
+  "pair_label_anchor": "2025-12-09",
+  "pair_label_differences": 0,
+  "user_label_differences": 0,
+  "all_global_filters_apply_to_all_core_modules": true
+}

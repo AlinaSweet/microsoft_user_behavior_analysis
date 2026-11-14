@@ -1,0 +1,21 @@
+{
+  "validation_config": "configs/feature_validation.json",
+  "data_root": "data/processed/stage2_complete_v1",
+  "report_dir": "outputs/reports/stage2",
+  "catalog": "data/catalog/stage2_complete_v1.json",
+  "target_column": "user_preferred_category_7d",
+  "target_folds": 5,
+  "target_smoothing": 50.0,
+  "embedding_dimensions": 8,
+  "seed": 20261114,
+  "epochs": 5,
+  "batch_rows": 8192,
+  "experiments": {
+    "te_business": ["basic", "business"],
+    "te_sequence": ["basic", "business", "sequence"],
+    "te_svd": ["basic", "business", "svd"],
+    "te_cooccurrence": ["basic", "business", "cooccurrence"],
+    "te_combined": ["basic", "business", "sequence", "svd", "cooccurrence"],
+    "te_preembedding": ["basic", "business", "embedding"]
+  }
+}

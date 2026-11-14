@@ -43,7 +43,7 @@
 
 方法见[预拼接宽表](../../../docs/prejoined_features.md)，
 读取目录见[prejoined_wide_v1.json](../../../data/catalog/prejoined_wide_v1.json)，
-前序完整复核见[本次第一阶段报告](../stage1_review_20261107_01/README.md)。
+前序完整复核见[本次第一阶段报告](https://github.com/AlinaSweet/microsoft_user_behavior_analysis/blob/774e4ade0364bc3a6e2d077881fe7cbfbf082acb/outputs/reports/stage1_review_20261107_01/README.md)。
 
 本次只完成预拼接层整合与验收。正式相关性/互信息/方差筛选、编码标准化、
 消融预实验及预测模型尚未执行；现有用户级标签不能当作用户商品对购买标签。

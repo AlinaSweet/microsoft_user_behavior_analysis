@@ -1,0 +1,16 @@
+{
+  "active_fingerprint_records_verified": 513,
+  "workbook": {
+    "source_entries": 445,
+    "representations": 9,
+    "matrix_columns": 259,
+    "formula_errors": 0,
+    "all_names_match": true
+  },
+  "archive": {
+    "verified_files": 223,
+    "bytes": 26829056,
+    "differences": 0
+  },
+  "status": "passed"
+}

@@ -1,0 +1,36 @@
+{
+  "purpose": "Accepted full-data supplementary EDA evidence; not model inputs",
+  "source_commit": "774e4ade0364bc3a6e2d077881fe7cbfbf082acb",
+  "files": [
+    {
+      "path": "data/summaries/eda_support_v1/category_purchase_cycles.csv",
+      "bytes": 194097,
+      "sha256": "85dc183aa00236b4b590f9fc58dd896ec52665516e3e5e1af19d334757c55099"
+    },
+    {
+      "path": "data/summaries/eda_support_v1/category_repeat_proxies.csv",
+      "bytes": 61388,
+      "sha256": "bbb34176d3f6fef7826da64ca2bb5ff0b6f3500642311863c4b444f23bd8e9c1"
+    },
+    {
+      "path": "data/summaries/eda_support_v1/feature_evidence.json",
+      "bytes": 2419080,
+      "sha256": "7ada37f7c7887977b3f42be50e5b8f19f892e3c68d713ac4bf5f9448ca90c9b9"
+    },
+    {
+      "path": "data/summaries/eda_support_v1/latent_coverage.csv",
+      "bytes": 196,
+      "sha256": "53ea02a7bfe9354db5ff92b5bde71eeb2bef8385581144f095c597c305ba57bc"
+    },
+    {
+      "path": "data/summaries/eda_support_v1/rf_proxy_segments.csv",
+      "bytes": 1164,
+      "sha256": "beaf99ac652c066e51493a68b9f9e7849348cf298997d67b170b0c27084c8d0f"
+    },
+    {
+      "path": "data/summaries/eda_support_v1/standardized_associations.csv",
+      "bytes": 1288,
+      "sha256": "95b4298a052e6f5a022d2d3cad51c937c703bb5b86cc308a4697738197d8264b"
+    }
+  ]
+}

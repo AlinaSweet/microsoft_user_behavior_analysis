@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>微软商城用户行为分析 · 看板一</title><link rel="stylesheet" href="/dashboard.css"></head>
+<body><header><p class="eyebrow">微软商城用户行为分析 / 第二阶段</p><h1>用户行为与特征探索</h1>
+<p>从数据全貌、用户时序、商品类目到转化路径。全部有效原记录保留，高频小时只标记。</p></header>
+<form id="controls"><label>开始日期<input id="start" type="date" required></label><label>结束日期<input id="end" type="date" required></label>
+<label>用户分层<select id="cohort"><option value="all">全部用户</option><option value="low_activity">低活跃</option><option value="high_activity">高活跃</option><option value="new_observed">新近观测</option><option value="high_value_proxy">高价值代理</option><option value="potential_proxy">潜力代理</option><option value="at_risk_proxy">近期风险代理</option><option value="dormant_proxy">沉睡代理</option></select></label>
+<label>商品类目<input id="category" list="categories" placeholder="全部类目"><datalist id="categories"></datalist></label>
+<button type="submit">应用筛选</button><button id="reset" type="button" class="secondary">重置</button>
+<input id="item" type="hidden"></form><main><p id="status" role="status">正在读取数据范围…</p>
+<p id="scope" class="note"></p><p id="drill" hidden></p><section><h2>01 数据概览</h2><div id="cards" class="cards"></div>
+<div class="grid"><article><h3>行为记录构成</h3><div id="behavior"></div></article><article><h3>活跃度与同期购买用户占比</h3><div id="activity"></div></article></div>
+<p class="definition">“次数”指日志记录数。四元组是用户、商品、行为、小时的不同组合。同小时多条记录均保留。购买用户比例、购买记录比例和未来候选正例比例各有分母。</p></section>
+<section><h2>02 用户时序与分布</h2><div class="grid"><article><h3>每日四行为记录趋势</h3><div id="daily"></div></article><article><h3>每日购买用户占比</h3><div id="dailyRate"></div></article></div>
+<label>热力图行为<select id="heatBehavior"><option value="all">全部</option><option value="1">浏览</option><option value="3">加购</option><option value="2">收藏</option><option value="4">购买</option></select></label>
+<div class="grid"><article><h3>星期 × 小时日均记录数</h3><div id="heat"></div></article><article><h3>星期 × 小时购买用户覆盖</h3><div id="hourRate"></div></article></div>
+<div class="grid"><article><h3>用户活跃记录长尾（横轴对数）</h3><div id="activityLog"></div></article><article><h3>购买记录数分布</h3><div id="purchases"></div></article></div><div class="grid"><article><h3>活跃度 × 类目偏好 Top5</h3><div id="preferences"></div></article></div>
+<p class="definition">小时桶有记录不代表在线时长。时段购买覆盖不保证先浏览后购买。当前数据期没有法定节假日，支持普通工作日与周末比较。</p></section>
+<section><h2>03 商品、类目与长尾</h2><label>排名方式<select id="rankMetric"><option value="records">交互记录量</option><option value="purchase_coverage">浏览组合购买覆盖</option></select></label>
+<div class="grid"><article><h3>热门类目 Top20（点击下钻）</h3><div id="categoryRank"></div></article><article><h3>热门商品 Top20（点击下钻）</h3><div id="itemRank"></div></article></div>
+<div class="grid"><article><h3>按浏览量排序的类目累计贡献</h3><div id="tail"></div></article><article><h3>浏览量与购买覆盖四象限</h3><div id="quadrants"></div></article></div>
+<p class="definition">没有曝光字段，四象限横轴使用浏览记录量。覆盖=同窗既浏览又购买组合数／浏览组合数，不等于顺序转化率。覆盖排序要求商品至少50个、类目至少200个浏览组合；散点展示至少20个浏览组合、浏览量最高的至多1500个商品。</p></section>
+<section><h2>04 转化路径与特征关联</h2><div class="grid"><article><h3>完整7天随访的跨小时严格漏斗</h3><div id="funnel"></div></article><article><h3>下一个观测活跃小时的行为转移</h3><div id="transitions"></div></article></div>
+<p id="pathNote" class="definition"></p><h3>历史行为深度与未来7天购买</h3><label>关联目标<select id="forwardTarget"><option value="pair">用户商品对：同一商品购买</option><option value="user">用户：任意商品购买</option></select></label><p id="forwardNote"></p><div id="forward" class="grid"></div>
+<p class="definition">未来标签按截点、用户、商品三个键对齐。只对最近7天交互候选观察未来7天，不能把用户购买其他商品当成当前商品购买。所有关联均为观察结果。</p></section>
+<section><h2>统计表与探索建议</h2><label>导出当前筛选统计<select id="exportTable"><option value="daily">每日行为</option><option value="categories">全部类目</option><option value="items_volume">热门商品</option><option value="preferences">类目偏好</option><option value="transitions">小时转移</option><option value="heatmap">时段分布</option></select></label><button id="download">下载CSV</button>
+<ul><li>比较相似活跃度人群中的加购关联，区分活跃机会与购买意向。</li><li>在同类目和足够支持量下比较高浏览低覆盖商品，再设计运营试验。</li><li>更换历史区间复核时间规律。超过90条只标记，不据此删数据。</li></ul></section></main><footer>所有核心图表使用相同日期、人群和类目重新计算。分层先按所选日期内全类目行为确定，类目筛选不重新定义分层。</footer><script src="/dashboard.js"></script></body></html>

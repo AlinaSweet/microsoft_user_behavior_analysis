@@ -19,7 +19,7 @@ from user_behavior_analysis.dao.feature_repository import require_result_row
 from user_behavior_analysis.dao.sqlite_client import SQLiteClient
 from user_behavior_analysis.models.feature_models import FeatureSettings
 
-REPORT = PROJECT_ROOT / "outputs/reports/delivery_review_20261031"
+REPORT = PROJECT_ROOT / "outputs/reports/stage2"
 
 
 def _require(condition: bool, message: str) -> None:
