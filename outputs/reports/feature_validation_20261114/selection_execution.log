@@ -1,0 +1,8 @@
+Profiling complete training rows
+Screening group: basic, rows=100000
+Screening group: business, rows=100000
+Screening group: sequence, rows=100000
+Screening group: svd, rows=100000
+Screening group: cooccurrence, rows=2305
+Screening group: calendar, rows=100000
+SELECTION PASSED {'basic': 80, 'business': 64, 'sequence': 22, 'svd': 36, 'cooccurrence': 5, 'calendar': 0}

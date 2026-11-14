@@ -1,6 +1,12 @@
 # 第一阶段验收复核
 
-## 最新 2026-11-07预拼接宽表接入后复核
+## 最新 2026-11-14对级标签与特征验证接入后复核
+
+140项测试、全部规范/类型、真实worker、完整清洗与聚合、异常和研究资料复核通过。
+[本次完整证据](../outputs/reports/stage1_review_20261114_01/README.md)；
+[特征验证结果](../outputs/reports/feature_validation_20261114/README.md)。
+
+## 2026-11-07预拼接宽表接入后复核
 
 119项测试、完整规范/类型工具、真实worker、全量清洗/聚合与研究资料再次通过。
 [本次完整证据](../outputs/reports/stage1_review_20261107_01/README.md)；

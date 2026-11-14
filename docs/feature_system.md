@@ -157,3 +157,12 @@ Excel使用scripts/build_feature_workbook.mjs及@oai/artifact-tool生成，需�
 [data/catalog/prejoined_wide_v1.json](../data/catalog/prejoined_wide_v1.json)。
 [调用方法与数据契约](prejoined_features.md)说明按列分批读取、键粒度、缺失语义和标签边界。
 此步骤复用既有数据，不增加特征数量，不等于完成正式筛选或预测训练。
+
+## 2026-11-14 训练期分组筛选与对级验证
+
+已新增与现有宽表三键对齐的用户商品对标签和成熟样本，原有用户级标签继续独立保存。
+439个原始标量按实验组整理，207个进入本轮LR；全部源特征和历史字典保留。
+训练期填充/编码/缩放、分组相关性/互信息与六组消融已完成。
+具体选择原因、候选覆盖、分人群支持、效果及限制见[验证方法](feature_validation.md)及
+[本次验收](../outputs/reports/feature_validation_20261114/README.md)。
+本节是当前进度；上文待执行描述保留其2026-10-30构建时的历史边界。

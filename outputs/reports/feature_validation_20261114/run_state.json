@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-11-14T20:13:35.685470+00:00",
+  "phases": [
+    "samples",
+    "selection",
+    "experiments",
+    "audit",
+    "report"
+  ],
+  "test_count": 140
+}

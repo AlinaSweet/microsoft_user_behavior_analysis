@@ -1,0 +1,6 @@
+{
+  "chosen_experiment": "sequence",
+  "criterion": "validation average precision",
+  "test_read_for_choice": false,
+  "all_experiments_predeclared": true
+}

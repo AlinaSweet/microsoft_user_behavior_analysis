@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "all_models_replayed": 6,
+  "snapshots": [
+    {
+      "split": "validation",
+      "rows": 1061515,
+      "maximum_probability_difference": 0.0
+    },
+    {
+      "split": "test",
+      "rows": 1117324,
+      "maximum_probability_difference": 0.0
+    }
+  ],
+  "training_rows_per_model_per_epoch": 1030893
+}
