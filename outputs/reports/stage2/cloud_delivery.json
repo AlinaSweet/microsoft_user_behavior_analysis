@@ -6,7 +6,46 @@
     "dev",
     "main"
   ],
-  "remote_verification": "Check latest branch-head Quality results before accepting delivery.",
+  "remote_verification": "All three implementation checkpoints passed; later metadata-only commits are checked separately at the Actions URL.",
   "actions_url": "https://github.com/AlinaSweet/microsoft_user_behavior_analysis/actions/workflows/quality.yml",
-  "checkpoint_scope": "Updated with observed immutable implementation checkpoints after remote verification; subsequent metadata commits have separate Actions checks."
+  "checkpoint_scope": "Updated with observed immutable implementation checkpoints after remote verification; subsequent metadata commits have separate Actions checks.",
+  "status": "passed",
+  "implementation_checkpoints": [
+    {
+      "id": 43651263340,
+      "head_sha": "3bee0dcccc432906ca916ba0281cdba12de216d4",
+      "head_branch": "feature/stage2-complete",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/AlinaSweet/microsoft_user_behavior_analysis/actions/runs/43651263340"
+    },
+    {
+      "id": 43651525661,
+      "head_sha": "9212bbfd11e768bb6b23216c5c77787c61f76ae6",
+      "head_branch": "dev",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/AlinaSweet/microsoft_user_behavior_analysis/actions/runs/43651525661"
+    },
+    {
+      "id": 43651796253,
+      "head_sha": "9212bbfd11e768bb6b23216c5c77787c61f76ae6",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/AlinaSweet/microsoft_user_behavior_analysis/actions/runs/43651796253"
+    }
+  ],
+  "browser_csv_verification": {
+    "status": "passed",
+    "rows": 124,
+    "records": 12256906,
+    "test_artifact": ".cache/stage2_ui_download.csv"
+  },
+  "http_combined_filter_export": {
+    "status": "passed",
+    "csv_rows": 56,
+    "raw_records": 173668,
+    "date_cohort_category_global_filter": "passed"
+  }
 }
