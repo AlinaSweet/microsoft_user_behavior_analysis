@@ -1,0 +1,96 @@
+{
+  "status": "passed",
+  "snapshots": [
+    {
+      "rows": 1030893,
+      "duplicate_keys": 0,
+      "invalid_keys": 0,
+      "invalid_mature_targets": 0,
+      "invalid_unavailable_targets": 0,
+      "positives": 2735,
+      "negatives": 1028158,
+      "unavailable": 0,
+      "key_set_differences": 0,
+      "anchor": "2025-11-25",
+      "target_available": true,
+      "label_end_exclusive": "2025-12-02 00:00:00",
+      "source_end_exclusive": "2025-12-19 00:00:00",
+      "independent_raw_event_differences": 0,
+      "candidate_coverage": {
+        "denominator": "all future purchased user-item pairs, including new users/items",
+        "future_purchase_pairs": 21556,
+        "covered_purchase_pairs": 2735,
+        "pair_recall": 0.12687882724067545,
+        "future_purchase_records": 24661,
+        "covered_purchase_records": 3264
+      },
+      "stored_target_differences": 0
+    },
+    {
+      "rows": 1061515,
+      "duplicate_keys": 0,
+      "invalid_keys": 0,
+      "invalid_mature_targets": 0,
+      "invalid_unavailable_targets": 0,
+      "positives": 2525,
+      "negatives": 1058990,
+      "unavailable": 0,
+      "key_set_differences": 0,
+      "anchor": "2025-12-02",
+      "target_available": true,
+      "label_end_exclusive": "2025-12-09 00:00:00",
+      "source_end_exclusive": "2025-12-19 00:00:00",
+      "independent_raw_event_differences": 0,
+      "candidate_coverage": {
+        "denominator": "all future purchased user-item pairs, including new users/items",
+        "future_purchase_pairs": 21268,
+        "covered_purchase_pairs": 2525,
+        "pair_recall": 0.11872296407748731,
+        "future_purchase_records": 24463,
+        "covered_purchase_records": 3072
+      },
+      "stored_target_differences": 0
+    },
+    {
+      "rows": 1117324,
+      "duplicate_keys": 0,
+      "invalid_keys": 0,
+      "invalid_mature_targets": 0,
+      "invalid_unavailable_targets": 0,
+      "positives": 5175,
+      "negatives": 1112149,
+      "unavailable": 0,
+      "key_set_differences": 0,
+      "anchor": "2025-12-09",
+      "target_available": true,
+      "label_end_exclusive": "2025-12-16 00:00:00",
+      "source_end_exclusive": "2025-12-19 00:00:00",
+      "independent_raw_event_differences": 0,
+      "candidate_coverage": {
+        "denominator": "all future purchased user-item pairs, including new users/items",
+        "future_purchase_pairs": 31583,
+        "covered_purchase_pairs": 5175,
+        "pair_recall": 0.1638539720735839,
+        "future_purchase_records": 35867,
+        "covered_purchase_records": 6022
+      },
+      "stored_target_differences": 0
+    },
+    {
+      "rows": 1216917,
+      "duplicate_keys": 0,
+      "invalid_keys": 0,
+      "invalid_mature_targets": 0,
+      "invalid_unavailable_targets": 0,
+      "positives": 0,
+      "negatives": 0,
+      "unavailable": 1216917,
+      "key_set_differences": 0,
+      "anchor": "2025-12-19",
+      "target_available": false,
+      "label_end_exclusive": "2025-12-26 00:00:00",
+      "source_end_exclusive": "2025-12-19 00:00:00",
+      "stored_target_differences": 0
+    }
+  ]
+}

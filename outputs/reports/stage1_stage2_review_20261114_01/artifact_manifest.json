@@ -1,0 +1,112 @@
+{
+  "review_date": "2026-11-15",
+  "report_pages": 9,
+  "visual_review": "all_pages_passed",
+  "files": [
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/README.md",
+      "bytes": 1573,
+      "sha256": "d4eceec7fceae494580050f25a0560ebe0e1b735c108c3741bfd729329ac6b72"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/cloud_snapshot.json",
+      "bytes": 738,
+      "sha256": "749b3bda765dae0203775fd4d9884c7ba73e96ec43106113a0e9a9e1886a6729"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/completion_report.docx",
+      "bytes": 50398,
+      "sha256": "ef934cef2bd285ffff1f897bc9e2e9d0f420075ff9f0d61d2a98012e05c1ef83"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/completion_report.md",
+      "bytes": 21516,
+      "sha256": "3aa3ace5c0599f07e94ecc1b22a729a00e9b19162eae65f52470ccc044a3acaa"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/eda/eda_audit.json",
+      "bytes": 1602,
+      "sha256": "a04d2fe17fee78d28057c05ad2e9aa40df6be0ed7716e23ca8695545fffd3915"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/fingerprints.json",
+      "bytes": 370,
+      "sha256": "81d970da3c230b49f03603f5d9c14229bae8f184edbbc1df08d1012d719d8f4c"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/independent_data_audit.json",
+      "bytes": 1903,
+      "sha256": "f8e38aca4f148e847cdd88994c6034c1e9d7a3cd687934e9972adf22a47d364a"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/pair_labels.json",
+      "bytes": 3093,
+      "sha256": "e80772429fc46ba9459a9b31dfa307e3dd5d4c382fde15211c8cfbb92f1460e3"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/review_status.json",
+      "bytes": 6625,
+      "sha256": "eb591f59ca170fba43685134968e3d98c9ed5d040530c39617c8c93d47fa9d57"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/stage1/audit.json",
+      "bytes": 2033,
+      "sha256": "d922cc6f056e82fb9afce18cab895b964c26d1e7fcc6d6318037cdcbef222a74"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/stage1/environment/environment_check.json",
+      "bytes": 1541,
+      "sha256": "3321f3094b844e4712b8bda24bb20957feb62a905fa1b1159e4f343ba71fbf85"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/stage1/environment.log",
+      "bytes": 1541,
+      "sha256": "3321f3094b844e4712b8bda24bb20957feb62a905fa1b1159e4f343ba71fbf85"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/stage1/predecessor_cleaning_audit.json",
+      "bytes": 4129,
+      "sha256": "53939728c4318550dd343948b8e64b9d734e4f930bf19fed97a36a280ce5c1c6"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/stage1/preprocessing.log",
+      "bytes": 341,
+      "sha256": "c1e65d67710ced4c94a585d77e3737f8330e3972e3b1bd77daeef4b740fc5f10"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/stage1/preprocessing_audit.json",
+      "bytes": 11191,
+      "sha256": "28d4c9e198fa3fb1649b932aa3184ff72dc076ef2bae17746c3aa276db0f9f7a"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/stage1/quality.json",
+      "bytes": 583,
+      "sha256": "76f50fadaa5601fd7c05ed7ceaeca2c97bc53cd2adc7307d8df4cc54a1e13044"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/stage1/quality.log",
+      "bytes": 85,
+      "sha256": "f15547f2c08ae0b6670993a0f9a8d3e7c9a6a7649c7a20444c0b786e6a17048a"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/stage2_audit.json",
+      "bytes": 319,
+      "sha256": "99ffcbaf607bfcb98929da680183a2eb0038d30957a2bf4ea30a0308c07b5e0c"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/stage2_replay/audit.json",
+      "bytes": 1090,
+      "sha256": "7a597472726136f9dd63f4f4cb067f4ea316b50586ae9b2ab74068f09a150cfd"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/stage2_replay/encoding_experiments.json",
+      "bytes": 109718,
+      "sha256": "f5681b839a71c1b30383c50d7c619cb10334f65240d75357ca9c6bae0a100ee2"
+    },
+    {
+      "path": "outputs/reports/stage1_stage2_review_20261114_01/stage2_replay/preprocessing.json",
+      "bytes": 102715,
+      "sha256": "851f068eaa35f7bf31753faa1fbe24b4ee553d85c2ec1b13a2cd98993890dbb3"
+    }
+  ]
+}

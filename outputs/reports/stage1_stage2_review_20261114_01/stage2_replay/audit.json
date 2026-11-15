@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "matrices": [
+    {
+      "anchor": "2025-11-25",
+      "rows": 1030893,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "anchor": "2025-12-02",
+      "rows": 1061515,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "anchor": "2025-12-09",
+      "rows": 1117324,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "anchor": "2025-12-19",
+      "rows": 1216917,
+      "maximum_absolute_error": 0.0
+    }
+  ],
+  "predictions": [
+    {
+      "anchor": "2025-12-02",
+      "rows": 1061515,
+      "models": {
+        "te_business": 0.0,
+        "te_sequence": 0.0,
+        "te_svd": 0.0,
+        "te_cooccurrence": 0.0,
+        "te_combined": 0.0,
+        "te_preembedding": 0.0
+      }
+    },
+    {
+      "anchor": "2025-12-09",
+      "rows": 1117324,
+      "models": {
+        "te_business": 0.0,
+        "te_sequence": 0.0,
+        "te_svd": 0.0,
+        "te_cooccurrence": 0.0,
+        "te_combined": 0.0,
+        "te_preembedding": 0.0
+      }
+    }
+  ],
+  "target_maps": {
+    "maps": 6,
+    "category_entries": 8177,
+    "differences": 0
+  }
+}

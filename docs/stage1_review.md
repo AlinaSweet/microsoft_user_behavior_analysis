@@ -1,7 +1,7 @@
 # 第一阶段当前复核
 
 四项任务为工程环境与版本管理、文献与技术栈、全量清洗、压缩与中间表。
-本次第二阶段收口后重新执行完整第一阶段审计，入口为[完整证据](../outputs/reports/stage1/audit.json)。
+本次于2026-11-14至15日重新执行完整第一阶段审计，入口为[完整证据](../outputs/reports/stage1_stage2_review_20261114_01/stage1/audit.json)。
 
 证据含完整质量门禁、真实Dask worker、原始CSV与产物指纹、全部聚合关系、异常阈值和文献检查。
 [清洗测量](../outputs/reports/stage1_step3/README.md)与[压缩测量](../outputs/reports/stage1_step4/README.md)保留当时原值。

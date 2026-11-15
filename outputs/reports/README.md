@@ -2,6 +2,7 @@
 
 | 内容 | 位置与作用 |
 |---|---|
+| 最新逐项完成报告 | [第一二阶段与导师要求复核](stage1_stage2_review_20261114_01/completion_report.md)，含新审计和明确待补事项 |
 | 第一阶段当前复核 | [stage1/audit.json](stage1/audit.json)，本轮重新执行 |
 | 第二阶段主交付 | [stage2/README.md](stage2/README.md)，当前统一报告、字典、图表、编码及全量重放 |
 | 数据库与SQL | [stage2_step1_20261024](stage2_step1_20261024/README.md)，当前SQLite及11项查询基础证据 |
