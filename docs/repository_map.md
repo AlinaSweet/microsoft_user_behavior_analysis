@@ -1,7 +1,7 @@
 # 仓库地图与文件依赖
 
-从[仓库首页](../README.md)进入当前结果，第二阶段统一报告位于[outputs/reports/stage2](../outputs/reports/stage2/README.md)。
-本页说明结构；[全部可同步文件清单](file_inventory.csv)逐个列出文件、用途和所属层。大型数据另由catalog登记，不属于Git文件清单。
+按[仓库首页](../README.md)中的四阶段顺序阅读，逐文件说明见[按阶段逐文件导航](files_by_stage.md)。
+本页说明物理结构与数据依赖；[全部Git文件清单](file_inventory.csv)按阶段列出文件、用途、类型及直接导入或参考依赖。大型数据另由catalog登记，不属于Git文件清单。
 
 ## 按阶段找文件
 
@@ -22,7 +22,8 @@
 
 | 路径 | 用途 |
 |---|---|
-| README.md | 当前成果入口和启动步骤 |
+| README.md | 按项目大纲四阶段展开成果、状态和启动步骤 |
+| docs/files_by_stage.md / file_inventory.csv | 全部Git文件的阶段归属、作用及依赖入口 |
 | AGENTS.md | 本项目必须遵守的代码、管理和验收要求 |
 | .git/ | 本机提交、分支、远程信息，Git自己维护，不作为项目文件再次上传 |
 | .github/workflows/quality.yml | 每次推送执行远程质量检查 |
@@ -68,7 +69,7 @@ flowchart TD
 用户级user_targets仅供独立补充分析，不能拼作用户商品标签。
 完整矩阵/键/预测文件的指纹集中在stage2/preprocessing.json及encoding_experiments.json。
 
-## 新模块各自做什么
+## 跨模块责任与接口
 
 | 模块 | 责任 |
 |---|---|

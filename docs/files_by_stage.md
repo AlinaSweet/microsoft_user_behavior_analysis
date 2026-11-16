@@ -1,0 +1,599 @@
+# 按阶段逐文件导航
+
+本页覆盖当前Git仓库的全部 **454个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
+
+原始任务见[项目大纲](requirements/project_brief.pdf)，完成状态见[任务台账](project_roadmap.md)。本页是项目全过程的文件导航。带日期目录是产物版本，阶段编号决定阅读顺序。
+
+Python文件的直接项目导入由AST提取；其他文件列出阶段参考和追溯入口，两者在CSV中明确区分。参考入口不表示该文件运行时读取它，也不是完整传递依赖。
+
+## 阶段与任务索引
+
+| 顺序 | 任务 | 文件数 |
+|---|---|---:|
+| 第一阶段 | [1.1 工程化环境与版本管理搭建](#s1_01) | 80 |
+| 第一阶段 | [1.2 领域文献调研与技术栈储备](#s1_02) | 10 |
+| 第一阶段 | [1.3 数据加载与全流程清洗](#s1_03) | 41 |
+| 第一阶段 | [1.4 数据预处理与中间表构建](#s1_04) | 23 |
+| 第二阶段 | [2.1 SQLite数据库搭建与SQL基础分析](#s2_01) | 38 |
+| 第二阶段 | [2.2 全维度特征体系构建](#s2_02) | 61 |
+| 第二阶段 | [2.3 特征预处理与有效性验证](#s2_03) | 91 |
+| 第二阶段 | [2.4 多维度探索性数据分析](#s2_04) | 70 |
+| 阶段验收 | [第一、二阶段综合验收与结果导航](#acceptance) | 40 |
+
+## 第一阶段：数据工程体系搭建与理论储备
+
+<a id="s1_01"></a>
+
+### 1.1 工程化环境与版本管理搭建
+
+先建立环境、代码分层、版本控制和质量规则。仓库根配置、公共入口及工具由本部分建立，后续所有阶段持续复用。
+
+| 文件（仓库内完整路径） | 类型 | 作用 |
+|---|---|---|
+| [AGENTS.md](../AGENTS.md) | 说明文档 | 记录编码、分层、数据、版本管理与验收的持续执行规范。 |
+| [README.md](../README.md) | 说明文档 | 按大纲四阶段说明项目目标、任务、成果与阅读顺序。 |
+| [docs/coding_standard_adoption.md](../docs/coding_standard_adoption.md) | 说明文档 | 把原始编码规范映射到本项目的工具与检查规则。 |
+| [docs/data_management.md](../docs/data_management.md) | 说明文档 | 规定原始数据、版本产物、清单和Git同步范围。 |
+| [docs/files_by_stage.md](../docs/files_by_stage.md) | 说明文档 | 逐个解释全部Git文件，按阶段及任务顺序排列。 |
+| [docs/github_sync_guide.md](../docs/github_sync_guide.md) | 说明文档 | 说明feature→dev→main的提交、同步和CI流程。 |
+| [docs/project_roadmap.md](../docs/project_roadmap.md) | 说明文档 | 按原大纲17个任务登记完成状态、证据和后续验收。 |
+| [docs/repository_map.md](../docs/repository_map.md) | 说明文档 | 说明阶段、物理目录、分层代码和数据依赖的关系。 |
+| [docs/reproduction.md](../docs/reproduction.md) | 说明文档 | 提供从环境到数据、特征、EDA和验收的完整复现命令。 |
+| [docs/stage1_completion.md](../docs/stage1_completion.md) | 说明文档 | 汇总第一阶段工程管理和基础产物说明。 |
+| [outputs/reports/engineering_benchmark.md](../outputs/reports/engineering_benchmark.md) | 说明文档 | 分块读取、内存与工程资源的原始实测记录。 |
+| [docs/requirements/project_brief.pdf](../docs/requirements/project_brief.pdf) | 原始规范 | 保存四阶段17项任务与交付定义的原始项目大纲。 |
+| [docs/standards/coding_standard.pdf](../docs/standards/coding_standard.pdf) | 原始规范 | 保存编码规范原文，作为项目规则的依据。 |
+| [configs/audit.yaml](../configs/audit.yaml) | 运行配置 | 配置独立审计的数据路径和资源。 |
+| [configs/dask.yaml](../configs/dask.yaml) | 运行配置 | 配置worker、线程、分块与内存预算。 |
+| [data/catalog/current_datasets.json](../data/catalog/current_datasets.json) | 数据版本清单 | 集中指定当前使用的各数据版本与入口。 |
+| [scripts/check_quality.py](../scripts/check_quality.py) | 运行/导出/核验脚本 | 执行规范、格式、类型、静态分析、测试与Git政策检查。 |
+| [scripts/check_quality.sh](../scripts/check_quality.sh) | 运行/导出/核验脚本 | 设置缓存及Python路径后启动质量检查。 |
+| [scripts/run_project.sh](../scripts/run_project.sh) | 运行/导出/核验脚本 | 统一设置项目路径和运行环境后调用命令接口。 |
+| [scripts/setup_environment.sh](../scripts/setup_environment.sh) | 运行/导出/核验脚本 | 建立虚拟环境并安装锁定依赖。 |
+| [src/user_behavior_analysis/api/__init__.py](../src/user_behavior_analysis/api/__init__.py) | 命令/HTTP入口 | 声明该目录为Python包，并说明该层的责任。 |
+| [src/user_behavior_analysis/api/cli.py](../src/user_behavior_analysis/api/cli.py) | 命令/HTTP入口 | 接收环境检查、基准、源登记、清洗与预处理等命令参数。 |
+| [src/user_behavior_analysis/service/__init__.py](../src/user_behavior_analysis/service/__init__.py) | 业务逻辑 | 声明该目录为Python包，并说明该层的责任。 |
+| [src/user_behavior_analysis/service/benchmark.py](../src/user_behavior_analysis/service/benchmark.py) | 业务逻辑 | 测量有界CSV读取的资源使用，不外推全文件速度。 |
+| [src/user_behavior_analysis/service/environment.py](../src/user_behavior_analysis/service/environment.py) | 业务逻辑 | 验证实际依赖、Python版本与运行资源。 |
+| [src/user_behavior_analysis/service/runtime.py](../src/user_behavior_analysis/service/runtime.py) | 业务逻辑 | 按核数、内存预算和配置启动真实Dask worker。 |
+| [src/user_behavior_analysis/dao/__init__.py](../src/user_behavior_analysis/dao/__init__.py) | 数据读写 | 声明该目录为Python包，并说明该层的责任。 |
+| [src/user_behavior_analysis/dao/artifact_repository.py](../src/user_behavior_analysis/dao/artifact_repository.py) | 数据读写 | 持久化产物清单并检查Git文件大小、位置与跟踪政策。 |
+| [src/user_behavior_analysis/dao/report_repository.py](../src/user_behavior_analysis/dao/report_repository.py) | 数据读写 | 保存工程基准证据和测量元数据。 |
+| [src/user_behavior_analysis/models/__init__.py](../src/user_behavior_analysis/models/__init__.py) | 类型结构 | 声明该目录为Python包，并说明该层的责任。 |
+| [src/user_behavior_analysis/models/config_models.py](../src/user_behavior_analysis/models/config_models.py) | 类型结构 | 定义环境与资源配置的数据结构。 |
+| [src/user_behavior_analysis/models/report_models.py](../src/user_behavior_analysis/models/report_models.py) | 类型结构 | 定义运行、基准与数据登记报告结构。 |
+| [tests/__init__.py](../tests/__init__.py) | 单元测试/测试包 | 使测试目录可被自动发现并按包导入。 |
+| [tests/unit/__init__.py](../tests/unit/__init__.py) | 单元测试/测试包 | 使测试目录可被自动发现并按包导入。 |
+| [tests/unit/test_cli.py](../tests/unit/test_cli.py) | 单元测试/测试包 | 验证命令输出、失败状态和错误日志。 |
+| [tests/unit/test_coding_rules.py](../tests/unit/test_coding_rules.py) | 单元测试/测试包 | 验证自定义编码规范检查规则。 |
+| [tests/unit/test_local_cache.py](../tests/unit/test_local_cache.py) | 单元测试/测试包 | 验证项目内SQLite临时路径。 |
+| [tests/unit/test_stage1.py](../tests/unit/test_stage1.py) | 单元测试/测试包 | 验证源登记、内存与Git产物政策。 |
+| [tests/integration/__init__.py](../tests/integration/__init__.py) | 集成测试 | 使测试目录可被自动发现并按包导入。 |
+| [tests/integration/test_workers.py](../tests/integration/test_workers.py) | 集成测试 | 验证真实Dask进程和资源限制。 |
+| [.editorconfig](../.editorconfig) | 工程配置/规则 | 统一缩进、编码、换行和文件末尾规则。 |
+| [.flake8](../.flake8) | 工程配置/规则 | 配置静态风格检查及规则例外。 |
+| [.gitattributes](../.gitattributes) | 工程配置/规则 | 定义文本换行和二进制文件的Git处理方式。 |
+| [.githooks/pre-commit](../.githooks/pre-commit) | Git/CI | 在提交前执行本地质量检查。 |
+| [.githooks/pre-push](../.githooks/pre-push) | Git/CI | 在推送前执行本地质量检查。 |
+| [.github/workflows/quality.yml](../.github/workflows/quality.yml) | Git/CI | 在GitHub自动安装锁定依赖并执行完整质量检查。 |
+| [.gitignore](../.gitignore) | 工程配置/规则 | 排除大数据、本机环境、缓存和个人资料。 |
+| [.python-version](../.python-version) | 工程配置/规则 | 固定本项目Python主次版本。 |
+| [data/interim/.gitkeep](../data/interim/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
+| [data/processed/.gitkeep](../data/processed/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
+| [data/raw/.gitkeep](../data/raw/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
+| [data/summaries/.gitkeep](../data/summaries/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
+| [docs/.gitkeep](../docs/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
+| [docs/archive_manifest.json](../docs/archive_manifest.json) | 结构化记录 | 记录移出工作树的旧成果及恢复位置。 |
+| [docs/file_inventory.csv](../docs/file_inventory.csv) | 数据明细 | 提供与逐文件导航一致、可筛选的完整文件和直接依赖清单。 |
+| [notebooks/.gitkeep](../notebooks/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
+| [outputs/figures/.gitkeep](../outputs/figures/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
+| [outputs/figures/github_initial_upload.jpg](../outputs/figures/github_initial_upload.jpg) | 验收凭证 | 首次远程仓库上传的可视验收记录。 |
+| [outputs/figures/stage1_review_ci_checkpoint.png](../outputs/figures/stage1_review_ci_checkpoint.png) | 位图 | 第一阶段远程CI通过的可视验收记录。 |
+| [outputs/reports/coding_standard_compliance.json](../outputs/reports/coding_standard_compliance.json) | 结构化记录 | 代码对编码规范的检查结果。 |
+| [outputs/reports/coding_standard_data_validation.json](../outputs/reports/coding_standard_data_validation.json) | 结构化记录 | 应用编码规范前后数据未被改写的核对。 |
+| [outputs/reports/engineering_benchmark.json](../outputs/reports/engineering_benchmark.json) | 结构化记录 | 分块读取、内存与工程资源的原始实测记录。 |
+| [outputs/reports/environment_check.json](../outputs/reports/environment_check.json) | 结构化记录 | 环境版本、资源和实际运行检查结果。 |
+| [outputs/reports/git_artifact_check.json](../outputs/reports/git_artifact_check.json) | 结构化记录 | Git文件位置、大小和跟踪政策检查结果。 |
+| [pyproject.toml](../pyproject.toml) | 工程配置/规则 | 配置Python包、依赖声明及格式、类型、静态分析工具。 |
+| [requirements-dev.in](../requirements-dev.in) | 工程配置/规则 | 列出开发、测试和质量工具的直接依赖。 |
+| [requirements-dev.txt](../requirements-dev.txt) | 工程配置/规则 | 锁定运行与开发依赖的精确版本。 |
+| [requirements.in](../requirements.in) | 工程配置/规则 | 列出运行时直接依赖。 |
+| [requirements.txt](../requirements.txt) | 工程配置/规则 | 锁定运行时依赖的精确版本。 |
+| [src/user_behavior_analysis/__init__.py](../src/user_behavior_analysis/__init__.py) | 包入口/兼容接口 | 声明该目录为Python包，并说明该层的责任。 |
+| [src/user_behavior_analysis/__main__.py](../src/user_behavior_analysis/__main__.py) | 包入口/兼容接口 | 支持python -m形式的统一命令入口。 |
+| [src/user_behavior_analysis/artifacts.py](../src/user_behavior_analysis/artifacts.py) | 包入口/兼容接口 | 提供产物登记与Git文件检查的兼容导入接口。 |
+| [src/user_behavior_analysis/common/__init__.py](../src/user_behavior_analysis/common/__init__.py) | 公共工具 | 声明该目录为Python包，并说明该层的责任。 |
+| [src/user_behavior_analysis/common/coding_rules.py](../src/user_behavior_analysis/common/coding_rules.py) | 公共工具 | 补充检查编码规范中格式工具不能完整覆盖的规则。 |
+| [src/user_behavior_analysis/common/constants.py](../src/user_behavior_analysis/common/constants.py) | 公共工具 | 集中定义项目路径和资源边界常量。 |
+| [src/user_behavior_analysis/common/exceptions.py](../src/user_behavior_analysis/common/exceptions.py) | 公共工具 | 定义配置、资源及数据校验的明确异常类型。 |
+| [src/user_behavior_analysis/common/local_cache.py](../src/user_behavior_analysis/common/local_cache.py) | 公共工具 | 约束SQLite排序、聚合临时文件保存在项目缓存目录。 |
+| [src/user_behavior_analysis/common/utils.py](../src/user_behavior_analysis/common/utils.py) | 公共工具 | 提供流式SHA-256、时间记录和受限路径写入工具。 |
+| [src/user_behavior_analysis/config.py](../src/user_behavior_analysis/config.py) | 包入口/兼容接口 | 读取YAML，校验路径、worker与资源参数。 |
+| [src/user_behavior_analysis/runtime.py](../src/user_behavior_analysis/runtime.py) | 包入口/兼容接口 | 保持既有运行时导入接口，转交分层实现。 |
+
+<a id="s1_02"></a>
+
+### 1.2 领域文献调研与技术栈储备
+
+保存文献、来源、工具比较和研究方案。研究计划描述设计意图，实际计算与模型结果在后续相应任务下登记。
+
+| 文件（仓库内完整路径） | 类型 | 作用 |
+|---|---|---|
+| [docs/research/README.md](../docs/research/README.md) | 说明文档 | 研究材料导航与阅读顺序。 |
+| [docs/research/experiment_plan.md](../docs/research/experiment_plan.md) | 说明文档 | 记录研究阶段的模型与验证设计。 |
+| [docs/research/feature_engineering_plan.md](../docs/research/feature_engineering_plan.md) | 说明文档 | 记录研究阶段提出的特征工程方案。 |
+| [docs/research/literature_review.md](../docs/research/literature_review.md) | 说明文档 | 整理5篇论文的方法、核心思想与适用边界。 |
+| [docs/research/tech_stack_comparison.md](../docs/research/tech_stack_comparison.md) | 说明文档 | 比较Spark、Dask及模型方案，区分理论比较与实测。 |
+| [outputs/reports/stage1_step2_audit.md](../outputs/reports/stage1_step2_audit.md) | 说明文档 | 文献、技术比较和方案完整性的研究验收。 |
+| [outputs/reports/stage1_step2_research.md](../outputs/reports/stage1_step2_research.md) | 说明文档 | 第一阶段研究工作的阶段成果说明。 |
+| [docs/research/references.bib](../docs/research/references.bib) | 引用条目 | 提供可引用的BibTeX文献条目。 |
+| [docs/research/references.json](../docs/research/references.json) | 结构化记录 | 结构化记录文献来源、版本和核对信息。 |
+| [outputs/reports/stage1_step2_audit.json](../outputs/reports/stage1_step2_audit.json) | 结构化记录 | 文献、技术比较和方案完整性的研究验收。 |
+
+<a id="s1_03"></a>
+
+### 1.3 数据加载与全流程清洗
+
+读取原始记录并校验质量，分析四元组频数及客户小时分布。当前全部有效记录保留，>90条只标记，历史归并结果另作对照。
+
+| 文件（仓库内完整路径） | 类型 | 作用 |
+|---|---|---|
+| [docs/business_conventions.md](../docs/business_conventions.md) | 说明文档 | 定义地区、时区、缺失金额等业务口径与代理指标边界。 |
+| [docs/cleaning_rules.md](../docs/cleaning_rules.md) | 说明文档 | 说明加载、有效性校验、异常诊断与历史清洗流程。 |
+| [docs/data_provenance.md](../docs/data_provenance.md) | 说明文档 | 记录数据来源声明、使用范围与可核实程度。 |
+| [docs/duplicate_policy.md](../docs/duplicate_policy.md) | 说明文档 | 明确保留有效记录、双计数与>90条只标记的处理规则。 |
+| [outputs/reports/duplicate_review_20261024/README.md](../outputs/reports/duplicate_review_20261024/README.md) | 说明文档 | 1.3 数据加载与全流程清洗的成果导航、结果说明和证据入口。 |
+| [outputs/reports/duplicate_review_20261024/analysis_notes.md](../outputs/reports/duplicate_review_20261024/analysis_notes.md) | 说明文档 | 解释重复频数、业务含义与保留策略。 |
+| [outputs/reports/stage1_step3/README.md](../outputs/reports/stage1_step3/README.md) | 说明文档 | 1.3 数据加载与全流程清洗的成果导航、结果说明和证据入口。 |
+| [configs/cleaning.json](../configs/cleaning.json) | 运行配置 | 配置字段校验、历史清洗版本和输出。 |
+| [configs/duplicate_policy.json](../configs/duplicate_policy.json) | 运行配置 | 登记有效记录保留及高频排查政策。 |
+| [data/catalog/clean_v1.json](../data/catalog/clean_v1.json) | 数据版本清单 | 登记历史归并事件及全部有效记录等清洗产物。 |
+| [data/catalog/data_provenance.json](../data/catalog/data_provenance.json) | 数据版本清单 | 结构化登记数据使用声明与合规信息。 |
+| [data/catalog/duplicate_review_20261024.json](../data/catalog/duplicate_review_20261024.json) | 数据版本清单 | 登记客户小时频数与重复值保留政策的证据。 |
+| [data/catalog/user_behavior_raw.json](../data/catalog/user_behavior_raw.json) | 数据版本清单 | 记录只读原始CSV的路径、结构、行数和指纹。 |
+| [data/catalog/validated_records_v1.json](../data/catalog/validated_records_v1.json) | 数据版本清单 | 登记当前保留全部有效原始记录的数据入口。 |
+| [scripts/audit_cleaning.py](../scripts/audit_cleaning.py) | 运行/导出/核验脚本 | 独立复核完整清洗及前序工程证据。 |
+| [src/user_behavior_analysis/service/anomaly_audit.py](../src/user_behavior_analysis/service/anomaly_audit.py) | 业务逻辑 | 独立重算用户活跃频数、IQR与3σ阈值。 |
+| [src/user_behavior_analysis/service/cleaning.py](../src/user_behavior_analysis/service/cleaning.py) | 业务逻辑 | 编排分块并行校验、全局记录保存和清洗报告。 |
+| [src/user_behavior_analysis/service/cleaning_integrity.py](../src/user_behavior_analysis/service/cleaning_integrity.py) | 业务逻辑 | 逐值核对导出事件和磁盘全局关系。 |
+| [src/user_behavior_analysis/service/data_quality.py](../src/user_behavior_analysis/service/data_quality.py) | 业务逻辑 | 统计全局完整性、一致性、四元组与异常活跃频数。 |
+| [src/user_behavior_analysis/service/dataset_audit.py](../src/user_behavior_analysis/service/dataset_audit.py) | 业务逻辑 | 使用独立Dask归约审计全部Parquet事件。 |
+| [src/user_behavior_analysis/service/validation.py](../src/user_behavior_analysis/service/validation.py) | 业务逻辑 | 校验源记录字段、标识、行为和时间，不改写原始CSV。 |
+| [src/user_behavior_analysis/dao/cleaning_repository.py](../src/user_behavior_analysis/dao/cleaning_repository.py) | 数据读写 | 以磁盘关系保存全量有效记录及四元组统计，分批导出Parquet。 |
+| [src/user_behavior_analysis/dao/source_repository.py](../src/user_behavior_analysis/dao/source_repository.py) | 数据读写 | 定位只读CSV，登记文件并读取原值样本。 |
+| [src/user_behavior_analysis/models/cleaning_models.py](../src/user_behavior_analysis/models/cleaning_models.py) | 类型结构 | 定义清洗请求、分区证据和质量结果的数据结构。 |
+| [tests/unit/test_cleaning.py](../tests/unit/test_cleaning.py) | 单元测试/测试包 | 验证字段有效性与全局四元组统计。 |
+| [tests/integration/test_cleaning_pipeline.py](../tests/integration/test_cleaning_pipeline.py) | 集成测试 | 验证隔离CSV经过公开清洗命令的端到端结果。 |
+| [outputs/reports/duplicate_review_20261024/behavior_dedup_impact.csv](../outputs/reports/duplicate_review_20261024/behavior_dedup_impact.csv) | 数据明细 | 分行为比较原记录与不同四元组的计数差异。 |
+| [outputs/reports/duplicate_review_20261024/high_frequency_user_hours.csv](../outputs/reports/duplicate_review_20261024/high_frequency_user_hours.csv) | 数据明细 | 每用户每小时超过90条的待核查清单。 |
+| [outputs/reports/duplicate_review_20261024/key_occurrences.csv](../outputs/reports/duplicate_review_20261024/key_occurrences.csv) | 数据明细 | 同一用户商品行为小时四元组的出现频数。 |
+| [outputs/reports/duplicate_review_20261024/key_occurrences_by_behavior.png](../outputs/reports/duplicate_review_20261024/key_occurrences_by_behavior.png) | 位图 | 分行为四元组重复频数分布，可直接查看或插入报告。 |
+| [outputs/reports/duplicate_review_20261024/user_hour_bins.csv](../outputs/reports/duplicate_review_20261024/user_hour_bins.csv) | 数据明细 | 客户小时操作次数的区间频数与占比。 |
+| [outputs/reports/duplicate_review_20261024/user_hour_distribution.png](../outputs/reports/duplicate_review_20261024/user_hour_distribution.png) | 位图 | 客户小时操作次数分布，可直接查看或插入报告。 |
+| [outputs/reports/duplicate_review_20261024/user_hour_distribution.xlsx](../outputs/reports/duplicate_review_20261024/user_hour_distribution.xlsx) | Excel工作簿 | 客户小时分箱、精确频数和重复值敏感性工作簿。 |
+| [outputs/reports/duplicate_review_20261024/user_hour_distribution_table.png](../outputs/reports/duplicate_review_20261024/user_hour_distribution_table.png) | 位图 | 客户小时分箱表图，可直接查看或插入报告。 |
+| [outputs/reports/duplicate_review_20261024/user_hour_exact.csv](../outputs/reports/duplicate_review_20261024/user_hour_exact.csv) | 数据明细 | 每个精确客户小时次数的频数。 |
+| [outputs/reports/duplicate_review_20261024/verification.json](../outputs/reports/duplicate_review_20261024/verification.json) | 结构化记录 | 客户小时分布的全量控制、源记录抽核和文件未变证明。 |
+| [outputs/reports/stage1/predecessor_cleaning_audit.json](../outputs/reports/stage1/predecessor_cleaning_audit.json) | 结构化记录 | 前序清洗的独立验收结果。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/stage1/predecessor_cleaning_audit.json](../outputs/reports/stage1_stage2_review_20261114_01/stage1/predecessor_cleaning_audit.json) | 结构化记录 | 前序清洗的独立验收结果。 |
+| [outputs/reports/stage1_step3/audit.json](../outputs/reports/stage1_step3/audit.json) | 结构化记录 | 验收结果、检查项及通过状态。 |
+| [outputs/reports/stage1_step3/quality.json](../outputs/reports/stage1_step3/quality.json) | 结构化记录 | 当时运行的规范、测试与类型检查结果。 |
+| [src/user_behavior_analysis/common/event_values.py](../src/user_behavior_analysis/common/event_values.py) | 公共工具 | 按业务值计算事件摘要，校验类型转换前后是否一致。 |
+
+<a id="s1_04"></a>
+
+### 1.4 数据预处理与中间表构建
+
+把记录压缩为Parquet，生成用户、商品、时间基础聚合。base_raw_v2是当前全记录基表，base_v1为旧归并口径。
+
+| 文件（仓库内完整路径） | 类型 | 作用 |
+|---|---|---|
+| [docs/preprocessing_rules.md](../docs/preprocessing_rules.md) | 说明文档 | 说明字段压缩、Parquet、三维聚合与等价性验收。 |
+| [outputs/reports/stage1_step4/README.md](../outputs/reports/stage1_step4/README.md) | 说明文档 | 1.4 数据预处理与中间表构建的成果导航、结果说明和证据入口。 |
+| [configs/preprocessing.json](../configs/preprocessing.json) | 运行配置 | 配置类型压缩、Parquet和基础聚合。 |
+| [data/catalog/base_raw_v2.json](../data/catalog/base_raw_v2.json) | 数据版本清单 | 登记当前全部记录事件、四元组频数和基础聚合。 |
+| [data/catalog/base_v1.json](../data/catalog/base_v1.json) | 数据版本清单 | 登记旧归并口径压缩事件与三维基础聚合，仅作历史对照。 |
+| [scripts/audit_preprocessing.py](../scripts/audit_preprocessing.py) | 运行/导出/核验脚本 | 独立复核事件压缩、全部聚合单元及前序清洗。 |
+| [src/user_behavior_analysis/service/aggregate_audit.py](../src/user_behavior_analysis/service/aggregate_audit.py) | 业务逻辑 | 用独立Dask聚合逐单元核对三维中间表。 |
+| [src/user_behavior_analysis/service/data_encoding.py](../src/user_behavior_analysis/service/data_encoding.py) | 业务逻辑 | 压缩字段类型，同时保持规范业务值不变。 |
+| [src/user_behavior_analysis/service/preprocessing.py](../src/user_behavior_analysis/service/preprocessing.py) | 业务逻辑 | 编排事件类型压缩、Parquet及三维基础聚合。 |
+| [src/user_behavior_analysis/service/storage_benchmark.py](../src/user_behavior_analysis/service/storage_benchmark.py) | 业务逻辑 | 用业务值等价的完整工作负载比较CSV与Parquet读写。 |
+| [src/user_behavior_analysis/dao/dataset_repository.py](../src/user_behavior_analysis/dao/dataset_repository.py) | 数据读写 | 校验已登记数据指纹，以有界Arrow批次读取Parquet。 |
+| [src/user_behavior_analysis/dao/preprocessing_repository.py](../src/user_behavior_analysis/dao/preprocessing_repository.py) | 数据读写 | 构建磁盘支持的用户、商品、时间聚合关系。 |
+| [src/user_behavior_analysis/models/preprocessing_models.py](../src/user_behavior_analysis/models/preprocessing_models.py) | 类型结构 | 定义类型转换、数据集和预处理证据结构。 |
+| [tests/unit/test_aggregate_audit.py](../tests/unit/test_aggregate_audit.py) | 单元测试/测试包 | 验证聚合数值发生平衡篡改时仍能被逐单元发现。 |
+| [tests/unit/test_preprocessing.py](../tests/unit/test_preprocessing.py) | 单元测试/测试包 | 验证无损类型转换与登记数据读取保护。 |
+| [tests/integration/test_preprocessing_pipeline.py](../tests/integration/test_preprocessing_pipeline.py) | 集成测试 | 验证压缩事件与全维聚合的端到端结果。 |
+| [outputs/reports/stage1/preprocessing.log](../outputs/reports/stage1/preprocessing.log) | 执行日志 | preprocessing步骤的原始运行日志，保留当时输出。 |
+| [outputs/reports/stage1/preprocessing_audit.json](../outputs/reports/stage1/preprocessing_audit.json) | 结构化记录 | 事件压缩和全部基础聚合的验收结果。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/stage1/preprocessing.log](../outputs/reports/stage1_stage2_review_20261114_01/stage1/preprocessing.log) | 执行日志 | preprocessing步骤的原始运行日志，保留当时输出。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/stage1/preprocessing_audit.json](../outputs/reports/stage1_stage2_review_20261114_01/stage1/preprocessing_audit.json) | 结构化记录 | 事件压缩和全部基础聚合的验收结果。 |
+| [outputs/reports/stage1_step4/audit.json](../outputs/reports/stage1_step4/audit.json) | 结构化记录 | 验收结果、检查项及通过状态。 |
+| [outputs/reports/stage1_step4/predecessor_cleaning_audit.json](../outputs/reports/stage1_step4/predecessor_cleaning_audit.json) | 结构化记录 | 前序清洗的独立验收结果。 |
+| [outputs/reports/stage1_step4/preprocessing.json](../outputs/reports/stage1_step4/preprocessing.json) | 结构化记录 | 已拟合转换、输出文件和完整数据指纹。 |
+
+## 第二阶段：深度特征工程与多维度探索性分析
+
+<a id="s2_01"></a>
+
+### 2.1 SQLite数据库搭建与SQL基础分析
+
+把完整有效记录落入规范化SQLite，建立索引、11项查询和Python接口。Git中的小型摘要不替代清单登记的本地全量导出。
+
+| 文件（仓库内完整路径） | 类型 | 作用 |
+|---|---|---|
+| [docs/sqlite_analysis.md](../docs/sqlite_analysis.md) | 说明文档 | 说明SQLite规范化结构、索引、查询与Python接口。 |
+| [outputs/reports/stage2_step1_20261024/README.md](../outputs/reports/stage2_step1_20261024/README.md) | 说明文档 | 2.1 SQLite数据库搭建与SQL基础分析的成果导航、结果说明和证据入口。 |
+| [data/catalog/analysis_raw_v1.json](../data/catalog/analysis_raw_v1.json) | 数据版本清单 | 登记规范化SQLite数据库、结构和输入指纹。 |
+| [scripts/run_sql_analysis.py](../scripts/run_sql_analysis.py) | 运行/导出/核验脚本 | 导出11项SQL的全量结果与小型摘要。 |
+| [src/user_behavior_analysis/service/database.py](../src/user_behavior_analysis/service/database.py) | 业务逻辑 | 将已登记的全部有效记录建库，并核对结构与数量。 |
+| [src/user_behavior_analysis/service/sql_analysis.py](../src/user_behavior_analysis/service/sql_analysis.py) | 业务逻辑 | 执行登记SQL，分批保存全量CSV和小型结果摘要。 |
+| [src/user_behavior_analysis/dao/database_repository.py](../src/user_behavior_analysis/dao/database_repository.py) | 数据读写 | 创建规范化SQLite事实表/维表并执行分批参数化写入。 |
+| [src/user_behavior_analysis/dao/sqlite_client.py](../src/user_behavior_analysis/dao/sqlite_client.py) | 数据读写 | 以只读、参数化方式执行SQL并返回Pandas DataFrame。 |
+| [src/user_behavior_analysis/models/database_models.py](../src/user_behavior_analysis/models/database_models.py) | 类型结构 | 定义建库、表结构与查询验收结果的数据结构。 |
+| [sql/diagnostics.sql](../sql/diagnostics.sql) | SQL脚本 | 检查建库后的主键、外键、数量与一致性。 |
+| [sql/indexes.sql](../sql/indexes.sql) | SQL脚本 | 建立时间、用户、商品与行为查询所需索引。 |
+| [sql/queries/behavior_distribution.sql](../sql/queries/behavior_distribution.sql) | SQL脚本 | 统计四种行为记录数量与占比。 |
+| [sql/queries/daily_active.sql](../sql/queries/daily_active.sql) | SQL脚本 | 按日统计独立活跃用户。 |
+| [sql/queries/funnel_reach.sql](../sql/queries/funnel_reach.sql) | SQL脚本 | 统计各行为到达覆盖，不假设同小时先后。 |
+| [sql/queries/item_repurchase.sql](../sql/queries/item_repurchase.sql) | SQL脚本 | 统计商品跨日期再次购买记录代理。 |
+| [sql/queries/overview.sql](../sql/queries/overview.sql) | SQL脚本 | 统计有效记录、用户、商品、类目和时间覆盖。 |
+| [sql/queries/popular_categories.sql](../sql/queries/popular_categories.sql) | SQL脚本 | 按行为统计热门类目与覆盖。 |
+| [sql/queries/popular_items.sql](../sql/queries/popular_items.sql) | SQL脚本 | 按行为统计热门商品与覆盖。 |
+| [sql/queries/strict_funnel.sql](../sql/queries/strict_funnel.sql) | SQL脚本 | 计算跨小时严格顺序路径的候选及转化。 |
+| [sql/queries/user_proxy_segments.sql](../sql/queries/user_proxy_segments.sql) | SQL脚本 | 按RF与购买记录次数代理构建用户分群。 |
+| [sql/queries/user_sequences.sql](../sql/queries/user_sequences.sql) | SQL脚本 | 按小时整理用户行为序列，保留同小时并列。 |
+| [sql/queries/weekly_active.sql](../sql/queries/weekly_active.sql) | SQL脚本 | 统计滚动周活跃用户。 |
+| [sql/schema.sql](../sql/schema.sql) | SQL脚本 | 定义用户、商品、时间维表与行为事实表。 |
+| [tests/unit/test_database.py](../tests/unit/test_database.py) | 单元测试/测试包 | 验证规范化导入安全及只读查询。 |
+| [outputs/reports/stage2_step1_20261024/cloud_delivery.json](../outputs/reports/stage2_step1_20261024/cloud_delivery.json) | 结构化记录 | 对应实现提交的远程分支与CI交付记录。 |
+| [outputs/reports/stage2_step1_20261024/database.json](../outputs/reports/stage2_step1_20261024/database.json) | 结构化记录 | SQLite建库参数、结构、数量和资源结果。 |
+| [outputs/reports/stage2_step1_20261024/database_audit.json](../outputs/reports/stage2_step1_20261024/database_audit.json) | 结构化记录 | SQLite主外键及独立数量控制结果。 |
+| [outputs/reports/stage2_step1_20261024/quality.json](../outputs/reports/stage2_step1_20261024/quality.json) | 结构化记录 | 当时运行的规范、测试与类型检查结果。 |
+| [outputs/reports/stage2_step1_20261024/sql_analysis.json](../outputs/reports/stage2_step1_20261024/sql_analysis.json) | 结构化记录 | 11项全量SQL导出清单、查询说明和控制统计。 |
+| [outputs/reports/stage2_step1_20261024/summaries/behavior_distribution.csv](../outputs/reports/stage2_step1_20261024/summaries/behavior_distribution.csv) | 数据明细 | 统计四种行为记录数量与占比。 此文件为可同步摘要，完整导出以sql_analysis.json为准。 |
+| [outputs/reports/stage2_step1_20261024/summaries/daily_active.csv](../outputs/reports/stage2_step1_20261024/summaries/daily_active.csv) | 数据明细 | 按日统计独立活跃用户。 此文件为可同步摘要，完整导出以sql_analysis.json为准。 |
+| [outputs/reports/stage2_step1_20261024/summaries/funnel_reach.csv](../outputs/reports/stage2_step1_20261024/summaries/funnel_reach.csv) | 数据明细 | 统计各行为到达覆盖，不假设同小时先后。 此文件为可同步摘要，完整导出以sql_analysis.json为准。 |
+| [outputs/reports/stage2_step1_20261024/summaries/overview.csv](../outputs/reports/stage2_step1_20261024/summaries/overview.csv) | 数据明细 | 统计有效记录、用户、商品、类目和时间覆盖。 此文件为可同步摘要，完整导出以sql_analysis.json为准。 |
+| [outputs/reports/stage2_step1_20261024/summaries/popular_categories.csv](../outputs/reports/stage2_step1_20261024/summaries/popular_categories.csv) | 数据明细 | 按行为统计热门类目与覆盖。 此文件为可同步摘要，完整导出以sql_analysis.json为准。 |
+| [outputs/reports/stage2_step1_20261024/summaries/popular_items.csv](../outputs/reports/stage2_step1_20261024/summaries/popular_items.csv) | 数据明细 | 按行为统计热门商品与覆盖。 此文件为可同步摘要，完整导出以sql_analysis.json为准。 |
+| [outputs/reports/stage2_step1_20261024/summaries/strict_funnel.csv](../outputs/reports/stage2_step1_20261024/summaries/strict_funnel.csv) | 数据明细 | 计算跨小时严格顺序路径的候选及转化。 此文件为可同步摘要，完整导出以sql_analysis.json为准。 |
+| [outputs/reports/stage2_step1_20261024/summaries/user_proxy_segments.csv](../outputs/reports/stage2_step1_20261024/summaries/user_proxy_segments.csv) | 数据明细 | 按RF与购买记录次数代理构建用户分群。 此文件为可同步摘要，完整导出以sql_analysis.json为准。 |
+| [outputs/reports/stage2_step1_20261024/summaries/weekly_active.csv](../outputs/reports/stage2_step1_20261024/summaries/weekly_active.csv) | 数据明细 | 统计滚动周活跃用户。 此文件为可同步摘要，完整导出以sql_analysis.json为准。 |
+
+<a id="s2_02"></a>
+
+### 2.2 全维度特征体系构建
+
+从基础数据构造用户、商品、类目及交互特征，生成439标量和6逻辑序列，再预拼接四截点宽表并审计。
+
+| 文件（仓库内完整路径） | 类型 | 作用 |
+|---|---|---|
+| [docs/feature_dictionary.md](../docs/feature_dictionary.md) | 说明文档 | 引导区分源特征定义、筛选状态和预处理表示。 |
+| [docs/feature_system.md](../docs/feature_system.md) | 说明文档 | 说明439标量、6类序列、窗口、公式和冻结历史边界。 |
+| [docs/intermediate_table_design.md](../docs/intermediate_table_design.md) | 说明文档 | 区分基础聚合、实体特征、宽表、标签和模型矩阵。 |
+| [docs/prejoined_features.md](../docs/prejoined_features.md) | 说明文档 | 定义预拼接表的三键、连接关系、字段来源及质量检查。 |
+| [outputs/reports/feature_system_20261029/README.md](../outputs/reports/feature_system_20261029/README.md) | 说明文档 | 2.2 全维度特征体系构建的成果导航、结果说明和证据入口。 |
+| [outputs/reports/prejoined_wide_20261107/README.md](../outputs/reports/prejoined_wide_20261107/README.md) | 说明文档 | 2.2 全维度特征体系构建的成果导航、结果说明和证据入口。 |
+| [outputs/reports/prejoined_wide_20261107/code_review.md](../outputs/reports/prejoined_wide_20261107/code_review.md) | 说明文档 | 实现的代码复核结论与适用边界。 |
+| [configs/feature_system.json](../configs/feature_system.json) | 运行配置 | 配置特征窗口、截点、SVD与共现等源特征参数。 |
+| [data/catalog/features_raw_v2.json](../data/catalog/features_raw_v2.json) | 数据版本清单 | 登记四截点实体、交互、序列与隐式特征文件。 |
+| [data/catalog/prejoined_wide_v1.json](../data/catalog/prejoined_wide_v1.json) | 数据版本清单 | 登记审计通过的四截点预拼接宽表。 |
+| [scripts/audit_feature_delivery.py](../scripts/audit_feature_delivery.py) | 运行/导出/核验脚本 | 核验源特征、清单、公式和时间边界。 |
+| [scripts/audit_wide_features.py](../scripts/audit_wide_features.py) | 运行/导出/核验脚本 | 完整核对并登记已有预拼接宽表。 |
+| [scripts/build_feature_workbook.mjs](../scripts/build_feature_workbook.mjs) | 运行/导出/核验脚本 | 把源字典、依赖和质量信息导出为源特征Excel。 |
+| [scripts/fill_feature_template.mjs](../scripts/fill_feature_template.mjs) | 运行/导出/核验脚本 | 将当前特征体系填入指定特征拆分参考模板。 |
+| [scripts/read_wide_features.py](../scripts/read_wide_features.py) | 运行/导出/核验脚本 | 按列和行数边界预览已登记宽表。 |
+| [scripts/run_features.py](../scripts/run_features.py) | 运行/导出/核验脚本 | 执行全记录探索、基表重建与四截点源特征生成。 |
+| [src/user_behavior_analysis/service/feature_assembly.py](../src/user_behavior_analysis/service/feature_assembly.py) | 业务逻辑 | 拼接实体特征组件，输出候选用户商品关系。 |
+| [src/user_behavior_analysis/service/feature_base.py](../src/user_behavior_analysis/service/feature_base.py) | 业务逻辑 | 按全部有效原记录重建base_raw_v2事件与基础聚合。 |
+| [src/user_behavior_analysis/service/feature_business.py](../src/user_behavior_analysis/service/feature_business.py) | 业务逻辑 | 计算生命周期、RF代理、偏好强度与类目竞争度。 |
+| [src/user_behavior_analysis/service/feature_explanations.py](../src/user_behavior_analysis/service/feature_explanations.py) | 业务逻辑 | 解释已保存的公式、转换字段与源定义。 |
+| [src/user_behavior_analysis/service/feature_funnels.py](../src/user_behavior_analysis/service/feature_funnels.py) | 业务逻辑 | 以跨小时严格顺序计算历史路径与漏斗特征。 |
+| [src/user_behavior_analysis/service/feature_latent_fit.py](../src/user_behavior_analysis/service/feature_latent_fit.py) | 业务逻辑 | 只用训练历史拟合交互SVD和商品共现邻域。 |
+| [src/user_behavior_analysis/service/feature_latent_transform.py](../src/user_behavior_analysis/service/feature_latent_transform.py) | 业务逻辑 | 用冻结隐式模型投影后续历史并生成组合特征。 |
+| [src/user_behavior_analysis/service/feature_pipeline.py](../src/user_behavior_analysis/service/feature_pipeline.py) | 业务逻辑 | 按截点编排全记录特征，支持完成记录与断点续跑。 |
+| [src/user_behavior_analysis/service/feature_quality.py](../src/user_behavior_analysis/service/feature_quality.py) | 业务逻辑 | 分析真实缺失、覆盖及特征时间和数量不变量。 |
+| [src/user_behavior_analysis/service/feature_registry.py](../src/user_behavior_analysis/service/feature_registry.py) | 业务逻辑 | 从同一注册表生成特征表达式与对应字典条目。 |
+| [src/user_behavior_analysis/service/feature_reporting.py](../src/user_behavior_analysis/service/feature_reporting.py) | 业务逻辑 | 输出源特征定义、数量、数据依赖与质量结果。 |
+| [src/user_behavior_analysis/service/feature_sequences.py](../src/user_behavior_analysis/service/feature_sequences.py) | 业务逻辑 | 构建小时序列统计及有界序列数组，保留同小时并列语义。 |
+| [src/user_behavior_analysis/service/feature_snapshots.py](../src/user_behavior_analysis/service/feature_snapshots.py) | 业务逻辑 | 按历史截点生成用户、商品、类目及交互快照。 |
+| [src/user_behavior_analysis/service/wide_audit.py](../src/user_behavior_analysis/service/wide_audit.py) | 业务逻辑 | 完整核验四截点预拼接表，通过后才登记数据入口。 |
+| [src/user_behavior_analysis/service/wide_contracts.py](../src/user_behavior_analysis/service/wide_contracts.py) | 业务逻辑 | 检查三键唯一、字段匹配及439标量源值连接。 |
+| [src/user_behavior_analysis/service/wide_profiles.py](../src/user_behavior_analysis/service/wide_profiles.py) | 业务逻辑 | 在候选行粒度统计宽表缺失与有效覆盖。 |
+| [src/user_behavior_analysis/dao/feature_repository.py](../src/user_behavior_analysis/dao/feature_repository.py) | 数据读写 | 管理特征输出路径、DuckDB连接和分批执行。 |
+| [src/user_behavior_analysis/dao/wide_repository.py](../src/user_behavior_analysis/dao/wide_repository.py) | 数据读写 | 按清单、列名和行数边界读取预拼接宽表，并校验指纹。 |
+| [src/user_behavior_analysis/models/feature_models.py](../src/user_behavior_analysis/models/feature_models.py) | 类型结构 | 定义全记录特征系统的路径、窗口和参数结构。 |
+| [tests/unit/test_feature_contracts.py](../tests/unit/test_feature_contracts.py) | 单元测试/测试包 | 验证特征定义与稀疏交互边界。 |
+| [tests/unit/test_wide_contracts.py](../tests/unit/test_wide_contracts.py) | 单元测试/测试包 | 验证主键、列缺失和错误连接的拒绝条件。 |
+| [tests/unit/test_wide_reader.py](../tests/unit/test_wide_reader.py) | 单元测试/测试包 | 验证宽表列/行边界与清单验证。 |
+| [tests/integration/test_feature_boundaries.py](../tests/integration/test_feature_boundaries.py) | 集成测试 | 验证历史特征、未来标签和序列的时间边界。 |
+| [docs/requirements/feature_split_reference.xlsx](../docs/requirements/feature_split_reference.xlsx) | Excel工作簿 | 保存特征拆分整理的参考模板，不等同于当前正式字典。 |
+| [outputs/reports/feature_system_20261029/base_rebuild.json](../outputs/reports/feature_system_20261029/base_rebuild.json) | 结构化记录 | 全部原记录基表的生成、数量和版本记录。 |
+| [outputs/reports/feature_system_20261029/delivery_audit.json](../outputs/reports/feature_system_20261029/delivery_audit.json) | 结构化记录 | 源特征字典、快照与输入一致性核对。 |
+| [outputs/reports/feature_system_20261029/feature_dictionary.json](../outputs/reports/feature_system_20261029/feature_dictionary.json) | 结构化记录 | 机器可读的445条源特征字典。 |
+| [outputs/reports/feature_system_20261029/feature_dictionary.xlsx](../outputs/reports/feature_system_20261029/feature_dictionary.xlsx) | Excel工作簿 | 以Excel展示原始445条特征定义、公式和依赖。 |
+| [outputs/reports/feature_system_20261029/latent_fit.json](../outputs/reports/feature_system_20261029/latent_fit.json) | 结构化记录 | 交互SVD与共现的训练拟合范围和模型记录。 |
+| [outputs/reports/feature_system_20261029/quality_profiles.json](../outputs/reports/feature_system_20261029/quality_profiles.json) | 结构化记录 | 各特征缺失、覆盖和质量画像。 |
+| [outputs/reports/feature_system_20261029/run_record.json](../outputs/reports/feature_system_20261029/run_record.json) | 结构化记录 | 源特征任务的参数、资源和完成记录。 |
+| [outputs/reports/feature_system_20261029/snapshot_2025-11-25.json](../outputs/reports/feature_system_20261029/snapshot_2025-11-25.json) | 结构化记录 | 2025-11-25截点的历史范围、特征数量与质量记录。 |
+| [outputs/reports/feature_system_20261029/snapshot_2025-12-02.json](../outputs/reports/feature_system_20261029/snapshot_2025-12-02.json) | 结构化记录 | 2025-12-02截点的历史范围、特征数量与质量记录。 |
+| [outputs/reports/feature_system_20261029/snapshot_2025-12-09.json](../outputs/reports/feature_system_20261029/snapshot_2025-12-09.json) | 结构化记录 | 2025-12-09截点的历史范围、特征数量与质量记录。 |
+| [outputs/reports/feature_system_20261029/snapshot_2025-12-19.json](../outputs/reports/feature_system_20261029/snapshot_2025-12-19.json) | 结构化记录 | 2025-12-19截点的历史范围、特征数量与质量记录。 |
+| [outputs/reports/feature_system_20261029/static_checks.json](../outputs/reports/feature_system_20261029/static_checks.json) | 结构化记录 | 源特征定义和表达式的静态核对。 |
+| [outputs/reports/feature_system_20261029/summary.json](../outputs/reports/feature_system_20261029/summary.json) | 结构化记录 | 四截点源特征数量和总体生成结果。 |
+| [outputs/reports/prejoined_wide_20261107/audit.json](../outputs/reports/prejoined_wide_20261107/audit.json) | 结构化记录 | 验收结果、检查项及通过状态。 |
+| [outputs/reports/prejoined_wide_20261107/cloud_delivery.json](../outputs/reports/prejoined_wide_20261107/cloud_delivery.json) | 结构化记录 | 对应实现提交的远程分支与CI交付记录。 |
+| [outputs/reports/prejoined_wide_20261107/field_profiles.json](../outputs/reports/prejoined_wide_20261107/field_profiles.json) | 结构化记录 | 宽表候选行的逐字段缺失及覆盖画像。 |
+| [outputs/reports/prejoined_wide_20261107/quality.json](../outputs/reports/prejoined_wide_20261107/quality.json) | 结构化记录 | 当时运行的规范、测试与类型检查结果。 |
+| [outputs/reports/prejoined_wide_20261107/reader_validation.json](../outputs/reports/prejoined_wide_20261107/reader_validation.json) | 结构化记录 | 受限宽表读取接口的验证结果。 |
+| [outputs/reports/prejoined_wide_20261107/root_inventory.json](../outputs/reports/prejoined_wide_20261107/root_inventory.json) | 结构化记录 | 该交付时点的根目录文件核对。 |
+| [outputs/reports/prejoined_wide_20261107/source_manifest.json](../outputs/reports/prejoined_wide_20261107/source_manifest.json) | 结构化记录 | 生成该版本使用的源代码及依赖文件指纹快照。 |
+| [outputs/reports/prejoined_wide_20261107/tests.log](../outputs/reports/prejoined_wide_20261107/tests.log) | 执行日志 | tests步骤的原始运行日志，保留当时输出。 |
+
+<a id="s2_03"></a>
+
+### 2.3 特征预处理与有效性验证
+
+在明确用户商品对标签后，仅训练期筛选和拟合变换，保存矩阵、分组预实验和评价。部分样本成果可用于第三阶段3.1；跨截点稳定性专项仍待补。
+
+| 文件（仓库内完整路径） | 类型 | 作用 |
+|---|---|---|
+| [docs/feature_validation.md](../docs/feature_validation.md) | 说明文档 | 定义对级标签、时间划分、分组筛选与LR消融方法。 |
+| [docs/stage2_preprocessing.md](../docs/stage2_preprocessing.md) | 说明文档 | 说明目标编码、缩放、稀疏投影与259列矩阵边界。 |
+| [outputs/reports/feature_validation_20261114/README.md](../outputs/reports/feature_validation_20261114/README.md) | 说明文档 | 2.3 特征预处理与有效性验证的成果导航、结果说明和证据入口。 |
+| [outputs/reports/feature_validation_20261114/code_review.md](../outputs/reports/feature_validation_20261114/code_review.md) | 说明文档 | 实现的代码复核结论与适用边界。 |
+| [configs/feature_validation.json](../configs/feature_validation.json) | 运行配置 | 配置标签窗口、划分、筛选和分组LR实验。 |
+| [configs/stage2_delivery.json](../configs/stage2_delivery.json) | 运行配置 | 配置目标编码、预嵌入、冻结矩阵和交付输出。 |
+| [data/catalog/feature_validation_v1.json](../data/catalog/feature_validation_v1.json) | 数据版本清单 | 登记对级标签、模型样本与第一轮筛选实验。 |
+| [data/catalog/stage2_complete_v1.json](../data/catalog/stage2_complete_v1.json) | 数据版本清单 | 登记冻结的259列特征矩阵、变换和交付版本。 |
+| [scripts/export_current_dictionary.mjs](../scripts/export_current_dictionary.mjs) | 运行/导出/核验脚本 | 导出包含实际筛选、表示与实验的当前正式Excel字典。 |
+| [scripts/run_feature_validation.py](../scripts/run_feature_validation.py) | 运行/导出/核验脚本 | 构建对级样本并运行训练期筛选、分组LR与诊断。 |
+| [scripts/run_stage2_completion.py](../scripts/run_stage2_completion.py) | 运行/导出/核验脚本 | 执行目标编码、预嵌入、矩阵、固定对照及交付报告。 |
+| [src/user_behavior_analysis/service/completion_audit.py](../src/user_behavior_analysis/service/completion_audit.py) | 业务逻辑 | 逐行重放最终矩阵及保存模型的预测概率。 |
+| [src/user_behavior_analysis/service/completion_experiments.py](../src/user_behavior_analysis/service/completion_experiments.py) | 业务逻辑 | 对比冻结OHE参考、目标编码和稀疏预嵌入的分组LR实验。 |
+| [src/user_behavior_analysis/service/completion_pipeline.py](../src/user_behavior_analysis/service/completion_pipeline.py) | 业务逻辑 | 只用训练期拟合变换，生成四截点矩阵与三键侧表。 |
+| [src/user_behavior_analysis/service/pair_targets.py](../src/user_behavior_analysis/service/pair_targets.py) | 业务逻辑 | 构建候选用户商品对未来7天稠密标签并独立核对原事件。 |
+| [src/user_behavior_analysis/service/sample_pipeline.py](../src/user_behavior_analysis/service/sample_pipeline.py) | 业务逻辑 | 独立保存对级标签，按截点/用户/商品连接宽表与模型样本。 |
+| [src/user_behavior_analysis/service/sparse_embedding.py](../src/user_behavior_analysis/service/sparse_embedding.py) | 业务逻辑 | 把训练类别稀疏输入投影成冻结的8维表示。 |
+| [src/user_behavior_analysis/service/stage2_dictionary.py](../src/user_behavior_analysis/service/stage2_dictionary.py) | 业务逻辑 | 关联源定义、实际筛选决策与新增预处理表示。 |
+| [src/user_behavior_analysis/service/target_encoding.py](../src/user_behavior_analysis/service/target_encoding.py) | 业务逻辑 | 按训练用户交叉拟合类目购买率，冻结映射和未知回退。 |
+| [src/user_behavior_analysis/service/validation_diagnostics.py](../src/user_behavior_analysis/service/validation_diagnostics.py) | 业务逻辑 | 审计冻结筛选，核对完整训练人群及稀有覆盖支持量。 |
+| [src/user_behavior_analysis/service/validation_experiments.py](../src/user_behavior_analysis/service/validation_experiments.py) | 业务逻辑 | 以相同冻结样本运行预先声明的分组LR增量实验。 |
+| [src/user_behavior_analysis/service/validation_groups.py](../src/user_behavior_analysis/service/validation_groups.py) | 业务逻辑 | 为标量指定唯一实验组，并按历史定义用户群。 |
+| [src/user_behavior_analysis/service/validation_metrics.py](../src/user_behavior_analysis/service/validation_metrics.py) | 业务逻辑 | 计算分类指标、类支持量及用户聚类不确定性。 |
+| [src/user_behavior_analysis/service/validation_preprocessing.py](../src/user_behavior_analysis/service/validation_preprocessing.py) | 业务逻辑 | 执行训练拟合的填充、稀疏类别编码和数值缩放。 |
+| [src/user_behavior_analysis/service/validation_reporting.py](../src/user_behavior_analysis/service/validation_reporting.py) | 业务逻辑 | 根据保存证据生成对级标签、筛选和LR验收报告。 |
+| [src/user_behavior_analysis/service/validation_selection.py](../src/user_behavior_analysis/service/validation_selection.py) | 业务逻辑 | 仅用训练样本进行画像、方差、相关性与互信息筛选。 |
+| [src/user_behavior_analysis/dao/completion_repository.py](../src/user_behavior_analysis/dao/completion_repository.py) | 数据读写 | 读取第二阶段交付配置，定位已验收样本与新版本输出。 |
+| [src/user_behavior_analysis/dao/validation_repository.py](../src/user_behavior_analysis/dao/validation_repository.py) | 数据读写 | 加载监督验证配置，分片读取冻结样本。 |
+| [src/user_behavior_analysis/models/encoding_models.py](../src/user_behavior_analysis/models/encoding_models.py) | 类型结构 | 保存目标编码、交叉拟合和冻结稀疏投影的状态结构。 |
+| [src/user_behavior_analysis/models/validation_models.py](../src/user_behavior_analysis/models/validation_models.py) | 类型结构 | 定义训练期筛选、预处理状态与实验路径结构。 |
+| [tests/unit/test_pair_targets.py](../tests/unit/test_pair_targets.py) | 单元测试/测试包 | 验证同商品未来标签、成熟窗口与三键连接。 |
+| [tests/unit/test_target_encoding.py](../tests/unit/test_target_encoding.py) | 单元测试/测试包 | 验证用户折外编码、未知回退与冻结稀疏投影。 |
+| [tests/unit/test_validation_contracts.py](../tests/unit/test_validation_contracts.py) | 单元测试/测试包 | 验证时间边界、穷尽分组与业务保护。 |
+| [tests/unit/test_validation_preprocessing.py](../tests/unit/test_validation_preprocessing.py) | 单元测试/测试包 | 验证冻结变换、组核算及评价指标。 |
+| [outputs/reports/feature_validation_20261114/audit.json](../outputs/reports/feature_validation_20261114/audit.json) | 结构化记录 | 验收结果、检查项及通过状态。 |
+| [outputs/reports/feature_validation_20261114/diagnostics_execution.log](../outputs/reports/feature_validation_20261114/diagnostics_execution.log) | 执行日志 | diagnostics步骤的原始运行日志，保留当时输出。 |
+| [outputs/reports/feature_validation_20261114/experiments.json](../outputs/reports/feature_validation_20261114/experiments.json) | 结构化记录 | 第一轮六组固定LR模型、分群效果与完整评价。 |
+| [outputs/reports/feature_validation_20261114/experiments_execution.log](../outputs/reports/feature_validation_20261114/experiments_execution.log) | 执行日志 | experiments步骤的原始运行日志，保留当时输出。 |
+| [outputs/reports/feature_validation_20261114/feature_decisions.csv](../outputs/reports/feature_validation_20261114/feature_decisions.csv) | 数据明细 | 逐标量保留、排除、暂缓及业务保护的原因。 |
+| [outputs/reports/feature_validation_20261114/figures/ablation_metrics.png](../outputs/reports/feature_validation_20261114/figures/ablation_metrics.png) | 位图 | 分组LR验证及测试指标对比，可直接查看或插入报告。 |
+| [outputs/reports/feature_validation_20261114/figures/ablation_metrics.svg](../outputs/reports/feature_validation_20261114/figures/ablation_metrics.svg) | 矢量图 | 分组LR验证及测试指标对比，适合无损放大与导出。 |
+| [outputs/reports/feature_validation_20261114/figures/labels_and_candidate_coverage.png](../outputs/reports/feature_validation_20261114/figures/labels_and_candidate_coverage.png) | 位图 | 四截点标签与候选购买覆盖，可直接查看或插入报告。 |
+| [outputs/reports/feature_validation_20261114/figures/labels_and_candidate_coverage.svg](../outputs/reports/feature_validation_20261114/figures/labels_and_candidate_coverage.svg) | 矢量图 | 四截点标签与候选购买覆盖，适合无损放大与导出。 |
+| [outputs/reports/feature_validation_20261114/final_audit_execution.log](../outputs/reports/feature_validation_20261114/final_audit_execution.log) | 执行日志 | final_audit步骤的原始运行日志，保留当时输出。 |
+| [outputs/reports/feature_validation_20261114/frozen_validation_choice.json](../outputs/reports/feature_validation_20261114/frozen_validation_choice.json) | 结构化记录 | 测试前冻结的第一轮验证集选择。 |
+| [outputs/reports/feature_validation_20261114/immutable_delivery_guard.json](../outputs/reports/feature_validation_20261114/immutable_delivery_guard.json) | 结构化记录 | 已冻结样本和前序产物未被修改的核对记录。 |
+| [outputs/reports/feature_validation_20261114/metrics.csv](../outputs/reports/feature_validation_20261114/metrics.csv) | 数据明细 | 第一轮LR的可筛选指标明细。 |
+| [outputs/reports/feature_validation_20261114/prediction_replay.json](../outputs/reports/feature_validation_20261114/prediction_replay.json) | 结构化记录 | 保存模型直接重算概率的一致性结果。 |
+| [outputs/reports/feature_validation_20261114/quality.json](../outputs/reports/feature_validation_20261114/quality.json) | 结构化记录 | 当时运行的规范、测试与类型检查结果。 |
+| [outputs/reports/feature_validation_20261114/report_execution.log](../outputs/reports/feature_validation_20261114/report_execution.log) | 执行日志 | report步骤的原始运行日志，保留当时输出。 |
+| [outputs/reports/feature_validation_20261114/run_state.json](../outputs/reports/feature_validation_20261114/run_state.json) | 结构化记录 | 任务步骤、资源、参数与完成状态。 |
+| [outputs/reports/feature_validation_20261114/samples.json](../outputs/reports/feature_validation_20261114/samples.json) | 结构化记录 | 四截点候选、正负例、未成熟标签及候选召回控制。 |
+| [outputs/reports/feature_validation_20261114/selection.json](../outputs/reports/feature_validation_20261114/selection.json) | 结构化记录 | 训练期画像、筛选阈值、分组及保留清单。 |
+| [outputs/reports/feature_validation_20261114/selection_execution.log](../outputs/reports/feature_validation_20261114/selection_execution.log) | 执行日志 | selection步骤的原始运行日志，保留当时输出。 |
+| [outputs/reports/feature_validation_20261114/source_manifest.json](../outputs/reports/feature_validation_20261114/source_manifest.json) | 结构化记录 | 生成该版本使用的源代码及依赖文件指纹快照。 |
+| [outputs/reports/feature_validation_20261114/tests.log](../outputs/reports/feature_validation_20261114/tests.log) | 执行日志 | tests步骤的原始运行日志，保留当时输出。 |
+| [outputs/reports/feature_validation_20261114/training_group_diagnostics.json](../outputs/reports/feature_validation_20261114/training_group_diagnostics.json) | 结构化记录 | 完整训练用户群及低覆盖特征的支持与诊断。 |
+| [outputs/reports/stage2/encoding_experiments.json](../outputs/reports/stage2/encoding_experiments.json) | 结构化记录 | 目标编码/预嵌入六个新模型与两个冻结参考的对照。 |
+| [outputs/reports/stage2/encoding_metrics.csv](../outputs/reports/stage2/encoding_metrics.csv) | 数据明细 | 编码对照的分模型、分群和覆盖指标明细。 |
+| [outputs/reports/stage2/encoding_validation_choice.json](../outputs/reports/stage2/encoding_validation_choice.json) | 结构化记录 | 测试前冻结的编码对照验证集选择。 |
+| [outputs/reports/stage2/feature_dictionary.html](../outputs/reports/stage2/feature_dictionary.html) | 可搜索字典 | 可检索的源定义、筛选、预处理与矩阵映射字典。 |
+| [outputs/reports/stage2/feature_dictionary.json](../outputs/reports/stage2/feature_dictionary.json) | 结构化记录 | 机器可读的源定义、筛选、预处理与矩阵映射字典。 |
+| [outputs/reports/stage2/feature_dictionary.xlsx](../outputs/reports/stage2/feature_dictionary.xlsx) | Excel工作簿 | 以Excel展示445条源定义、筛选决策、9条表示及矩阵列映射。 |
+| [outputs/reports/stage2/figures/correlation_basic.csv](../outputs/reports/stage2/figures/correlation_basic.csv) | 数据明细 | 基础统计组内数值Spearman相关性数值明细。 |
+| [outputs/reports/stage2/figures/correlation_basic.png](../outputs/reports/stage2/figures/correlation_basic.png) | 位图 | 基础统计组内数值Spearman相关性位图。 |
+| [outputs/reports/stage2/figures/correlation_basic.svg](../outputs/reports/stage2/figures/correlation_basic.svg) | 矢量图 | 基础统计组内数值Spearman相关性矢量图。 |
+| [outputs/reports/stage2/figures/correlation_business.csv](../outputs/reports/stage2/figures/correlation_business.csv) | 数据明细 | 业务转化组内数值Spearman相关性数值明细。 |
+| [outputs/reports/stage2/figures/correlation_business.png](../outputs/reports/stage2/figures/correlation_business.png) | 位图 | 业务转化组内数值Spearman相关性位图。 |
+| [outputs/reports/stage2/figures/correlation_business.svg](../outputs/reports/stage2/figures/correlation_business.svg) | 矢量图 | 业务转化组内数值Spearman相关性矢量图。 |
+| [outputs/reports/stage2/figures/correlation_cooccurrence.csv](../outputs/reports/stage2/figures/correlation_cooccurrence.csv) | 数据明细 | 共现组内数值Spearman相关性数值明细。 |
+| [outputs/reports/stage2/figures/correlation_cooccurrence.png](../outputs/reports/stage2/figures/correlation_cooccurrence.png) | 位图 | 共现组内数值Spearman相关性位图。 |
+| [outputs/reports/stage2/figures/correlation_cooccurrence.svg](../outputs/reports/stage2/figures/correlation_cooccurrence.svg) | 矢量图 | 共现组内数值Spearman相关性矢量图。 |
+| [outputs/reports/stage2/figures/correlation_sequence.csv](../outputs/reports/stage2/figures/correlation_sequence.csv) | 数据明细 | 序列统计组内数值Spearman相关性数值明细。 |
+| [outputs/reports/stage2/figures/correlation_sequence.png](../outputs/reports/stage2/figures/correlation_sequence.png) | 位图 | 序列统计组内数值Spearman相关性位图。 |
+| [outputs/reports/stage2/figures/correlation_sequence.svg](../outputs/reports/stage2/figures/correlation_sequence.svg) | 矢量图 | 序列统计组内数值Spearman相关性矢量图。 |
+| [outputs/reports/stage2/figures/correlation_svd.csv](../outputs/reports/stage2/figures/correlation_svd.csv) | 数据明细 | 交互SVD组内数值Spearman相关性数值明细。 |
+| [outputs/reports/stage2/figures/correlation_svd.png](../outputs/reports/stage2/figures/correlation_svd.png) | 位图 | 交互SVD组内数值Spearman相关性位图。 |
+| [outputs/reports/stage2/figures/correlation_svd.svg](../outputs/reports/stage2/figures/correlation_svd.svg) | 矢量图 | 交互SVD组内数值Spearman相关性矢量图。 |
+| [outputs/reports/stage2/figures/mi_basic.png](../outputs/reports/stage2/figures/mi_basic.png) | 位图 | 基础统计组内训练互信息排名位图。 |
+| [outputs/reports/stage2/figures/mi_basic.svg](../outputs/reports/stage2/figures/mi_basic.svg) | 矢量图 | 基础统计组内训练互信息排名矢量图。 |
+| [outputs/reports/stage2/figures/mi_business.png](../outputs/reports/stage2/figures/mi_business.png) | 位图 | 业务转化组内训练互信息排名位图。 |
+| [outputs/reports/stage2/figures/mi_business.svg](../outputs/reports/stage2/figures/mi_business.svg) | 矢量图 | 业务转化组内训练互信息排名矢量图。 |
+| [outputs/reports/stage2/figures/mi_cooccurrence.png](../outputs/reports/stage2/figures/mi_cooccurrence.png) | 位图 | 共现组内训练互信息排名位图。 |
+| [outputs/reports/stage2/figures/mi_cooccurrence.svg](../outputs/reports/stage2/figures/mi_cooccurrence.svg) | 矢量图 | 共现组内训练互信息排名矢量图。 |
+| [outputs/reports/stage2/figures/mi_sequence.png](../outputs/reports/stage2/figures/mi_sequence.png) | 位图 | 序列统计组内训练互信息排名位图。 |
+| [outputs/reports/stage2/figures/mi_sequence.svg](../outputs/reports/stage2/figures/mi_sequence.svg) | 矢量图 | 序列统计组内训练互信息排名矢量图。 |
+| [outputs/reports/stage2/figures/mi_svd.png](../outputs/reports/stage2/figures/mi_svd.png) | 位图 | 交互SVD组内训练互信息排名位图。 |
+| [outputs/reports/stage2/figures/mi_svd.svg](../outputs/reports/stage2/figures/mi_svd.svg) | 矢量图 | 交互SVD组内训练互信息排名矢量图。 |
+| [outputs/reports/stage2/importance_rank.csv](../outputs/reports/stage2/importance_rank.csv) | 数据明细 | 训练期按特征组排列的互信息和状态。 |
+| [outputs/reports/stage2/preprocessing.json](../outputs/reports/stage2/preprocessing.json) | 结构化记录 | 已拟合转换、输出文件和完整数据指纹。 |
+| [outputs/reports/stage2/selected_correlations.csv](../outputs/reports/stage2/selected_correlations.csv) | 数据明细 | 所选数值特征的完整Spearman相关性。 |
+
+<a id="s2_04"></a>
+
+### 2.4 多维度探索性数据分析
+
+探索行为、时间、漏斗、分群、商品和类目，并提供全局筛选、下钻及导出。训练期特征评价图归2.3，业务EDA图归本部分；展示细项待补。
+
+| 文件（仓库内完整路径） | 类型 | 作用 |
+|---|---|---|
+| [docs/eda_dashboard1.md](../docs/eda_dashboard1.md) | 说明文档 | 解释看板启动、全局筛选、指标分母、下钻和分析边界。 |
+| [docs/requirements/dashboard_outline.pdf](../docs/requirements/dashboard_outline.pdf) | 原始规范 | 保存看板模块、指标与展示的原始设计参考。 |
+| [configs/eda_dashboard1.json](../configs/eda_dashboard1.json) | 运行配置 | 配置探索窗口、分箱和看板数据入口。 |
+| [data/catalog/eda_dashboard1_20261029.json](../data/catalog/eda_dashboard1_20261029.json) | 数据版本清单 | 登记基础EDA生成器使用的数据与结果版本。 |
+| [scripts/run_eda.py](../scripts/run_eda.py) | 运行/导出/核验脚本 | 运行基础静态EDA，输出图表和报告。 |
+| [scripts/run_eda_dashboard.sh](../scripts/run_eda_dashboard.sh) | 运行/导出/核验脚本 | 启动本机全局联动EDA服务。 |
+| [scripts/serve_eda.py](../scripts/serve_eda.py) | 运行/导出/核验脚本 | 解析服务参数，启动看板HTTP应用。 |
+| [src/user_behavior_analysis/api/dashboard_server.py](../src/user_behavior_analysis/api/dashboard_server.py) | 命令/HTTP入口 | 提供本机EDA网页、筛选查询与CSV下载接口。 |
+| [src/user_behavior_analysis/service/eda_analysis.py](../src/user_behavior_analysis/service/eda_analysis.py) | 业务逻辑 | 计算基础行为、时段、日趋势等探索指标并明确分母。 |
+| [src/user_behavior_analysis/service/eda_charts.py](../src/user_behavior_analysis/service/eda_charts.py) | 业务逻辑 | 把基础EDA结果绘制成可导出的独立图表。 |
+| [src/user_behavior_analysis/service/eda_entities.py](../src/user_behavior_analysis/service/eda_entities.py) | 业务逻辑 | 比较商品、类目、用户群与重复计数敏感性。 |
+| [src/user_behavior_analysis/service/eda_entity_charts.py](../src/user_behavior_analysis/service/eda_entity_charts.py) | 业务逻辑 | 绘制实体排名、偏好、计数敏感性与人群对比图。 |
+| [src/user_behavior_analysis/service/eda_reporting.py](../src/user_behavior_analysis/service/eda_reporting.py) | 业务逻辑 | 把保存的探索结果组装成静态看板和说明。 |
+| [src/user_behavior_analysis/service/eda_statistics.py](../src/user_behavior_analysis/service/eda_statistics.py) | 业务逻辑 | 提供EDA固定分箱、描述性区间和统计工具。 |
+| [src/user_behavior_analysis/service/feature_eda.py](../src/user_behavior_analysis/service/feature_eda.py) | 业务逻辑 | 在特征中间表设计前提供全记录探索证据。 |
+| [src/user_behavior_analysis/service/feature_eda_evidence.py](../src/user_behavior_analysis/service/feature_eda_evidence.py) | 业务逻辑 | 计算RF分群、转化周期、复购代理及隐式特征覆盖等补充探索。 |
+| [src/user_behavior_analysis/service/feature_eda_reporting.py](../src/user_behavior_analysis/service/feature_eda_reporting.py) | 业务逻辑 | 输出补充探索表和特征证据说明。 |
+| [src/user_behavior_analysis/service/interactive_eda.py](../src/user_behavior_analysis/service/interactive_eda.py) | 业务逻辑 | 按日期×人群×类目重算全部核心看板指标。 |
+| [src/user_behavior_analysis/service/interactive_forward.py](../src/user_behavior_analysis/service/interactive_forward.py) | 业务逻辑 | 分别统计已成熟的用户级与用户商品级未来购买关联。 |
+| [src/user_behavior_analysis/service/interactive_paths.py](../src/user_behavior_analysis/service/interactive_paths.py) | 业务逻辑 | 重算成熟严格路径和小时多标签转移。 |
+| [src/user_behavior_analysis/service/stage2_figures.py](../src/user_behavior_analysis/service/stage2_figures.py) | 业务逻辑 | 导出核心EDA、组内互信息及相关性静态图。 |
+| [src/user_behavior_analysis/dao/dashboard_repository.py](../src/user_behavior_analysis/dao/dashboard_repository.py) | 数据读写 | 封装看板聚合查询结果的类型和JSON序列化。 |
+| [src/user_behavior_analysis/dao/eda_repository.py](../src/user_behavior_analysis/dao/eda_repository.py) | 数据读写 | 从保留原始记录的SQLite提取可复现EDA汇总。 |
+| [src/user_behavior_analysis/models/dashboard_models.py](../src/user_behavior_analysis/models/dashboard_models.py) | 类型结构 | 定义日期、人群、类目及商品下钻筛选条件。 |
+| [src/user_behavior_analysis/models/eda_models.py](../src/user_behavior_analysis/models/eda_models.py) | 类型结构 | 定义EDA配置和结果层共用的数据结构。 |
+| [sql/eda/branch_funnels.sql](../sql/eda/branch_funnels.sql) | SQL脚本 | 计算允许多路径的成熟严格漏斗。 |
+| [sql/eda/build_cache.sql](../sql/eda/build_cache.sql) | SQL脚本 | 为全局看板建立可重复使用的查询缓存。 |
+| [sql/eda/forward_user_cohort.sql](../sql/eda/forward_user_cohort.sql) | SQL脚本 | 按历史人群统计未来用户级购买关联。 |
+| [tests/unit/test_eda_statistics.py](../tests/unit/test_eda_statistics.py) | 单元测试/测试包 | 验证探索指标分母和分箱边界。 |
+| [tests/unit/test_interactive_eda.py](../tests/unit/test_interactive_eda.py) | 单元测试/测试包 | 验证日期、人群、类目联合筛选结果。 |
+| [tests/integration/test_dashboard_server.py](../tests/integration/test_dashboard_server.py) | 集成测试 | 验证真实HTTP筛选、资源白名单和导出。 |
+| [data/summaries/eda_support_v1/category_purchase_cycles.csv](../data/summaries/eda_support_v1/category_purchase_cycles.csv) | 数据明细 | 类目首次观察至购买的小时级周期统计。 |
+| [data/summaries/eda_support_v1/category_repeat_proxies.csv](../data/summaries/eda_support_v1/category_repeat_proxies.csv) | 数据明细 | 类目跨日期购买记录的复购代理统计。 |
+| [data/summaries/eda_support_v1/feature_evidence.json](../data/summaries/eda_support_v1/feature_evidence.json) | 结构化记录 | 特征构建前后的补充EDA证据摘要。 |
+| [data/summaries/eda_support_v1/latent_coverage.csv](../data/summaries/eda_support_v1/latent_coverage.csv) | 数据明细 | 按截点、人群及高级特征组统计有效覆盖。 |
+| [data/summaries/eda_support_v1/manifest.json](../data/summaries/eda_support_v1/manifest.json) | 结构化记录 | 该补充统计集各文件的版本、来源及指纹。 |
+| [data/summaries/eda_support_v1/rf_proxy_segments.csv](../data/summaries/eda_support_v1/rf_proxy_segments.csv) | 数据明细 | 四类RF代理用户的行为与购买覆盖统计。 |
+| [data/summaries/eda_support_v1/standardized_associations.csv](../data/summaries/eda_support_v1/standardized_associations.csv) | 数据明细 | 按活跃与既往购买分层的描述性未来关联。 |
+| [outputs/reports/stage2/eda_audit.json](../outputs/reports/stage2/eda_audit.json) | 结构化记录 | 对全局组合筛选与未聚合原事件的独立控制。 |
+| [outputs/reports/stage2/eda_baseline.json](../outputs/reports/stage2/eda_baseline.json) | 结构化记录 | 全窗口默认筛选下的EDA聚合结果。 |
+| [outputs/reports/stage2/eda_mature_example.json](../outputs/reports/stage2/eda_mature_example.json) | 结构化记录 | 成熟截点的对级和用户级未来购买示例。 |
+| [outputs/reports/stage2/figures/eda_activity.png](../outputs/reports/stage2/figures/eda_activity.png) | 位图 | 用户活跃程度长尾分布，可直接查看或插入报告。 |
+| [outputs/reports/stage2/figures/eda_activity.svg](../outputs/reports/stage2/figures/eda_activity.svg) | 矢量图 | 用户活跃程度长尾分布，适合无损放大与导出。 |
+| [outputs/reports/stage2/figures/eda_behavior.png](../outputs/reports/stage2/figures/eda_behavior.png) | 位图 | 四行为分布，可直接查看或插入报告。 |
+| [outputs/reports/stage2/figures/eda_behavior.svg](../outputs/reports/stage2/figures/eda_behavior.svg) | 矢量图 | 四行为分布，适合无损放大与导出。 |
+| [outputs/reports/stage2/figures/eda_categories.png](../outputs/reports/stage2/figures/eda_categories.png) | 位图 | 热门类目对比，可直接查看或插入报告。 |
+| [outputs/reports/stage2/figures/eda_categories.svg](../outputs/reports/stage2/figures/eda_categories.svg) | 矢量图 | 热门类目对比，适合无损放大与导出。 |
+| [outputs/reports/stage2/figures/eda_category_tail.png](../outputs/reports/stage2/figures/eda_category_tail.png) | 位图 | 类目长尾分布，可直接查看或插入报告。 |
+| [outputs/reports/stage2/figures/eda_category_tail.svg](../outputs/reports/stage2/figures/eda_category_tail.svg) | 矢量图 | 类目长尾分布，适合无损放大与导出。 |
+| [outputs/reports/stage2/figures/eda_daily.png](../outputs/reports/stage2/figures/eda_daily.png) | 位图 | 日活与行为日趋势，可直接查看或插入报告。 |
+| [outputs/reports/stage2/figures/eda_daily.svg](../outputs/reports/stage2/figures/eda_daily.svg) | 矢量图 | 日活与行为日趋势，适合无损放大与导出。 |
+| [outputs/reports/stage2/figures/eda_hour_heatmap.png](../outputs/reports/stage2/figures/eda_hour_heatmap.png) | 位图 | 每日小时活跃热力图，可直接查看或插入报告。 |
+| [outputs/reports/stage2/figures/eda_hour_heatmap.svg](../outputs/reports/stage2/figures/eda_hour_heatmap.svg) | 矢量图 | 每日小时活跃热力图，适合无损放大与导出。 |
+| [outputs/reports/stage2/figures/eda_hour_transitions.png](../outputs/reports/stage2/figures/eda_hour_transitions.png) | 位图 | 小时多标签行为转移，可直接查看或插入报告。 |
+| [outputs/reports/stage2/figures/eda_hour_transitions.svg](../outputs/reports/stage2/figures/eda_hour_transitions.svg) | 矢量图 | 小时多标签行为转移，适合无损放大与导出。 |
+| [outputs/reports/stage2/figures/eda_item_quadrants.png](../outputs/reports/stage2/figures/eda_item_quadrants.png) | 位图 | 商品浏览与购买覆盖象限，可直接查看或插入报告。 |
+| [outputs/reports/stage2/figures/eda_item_quadrants.svg](../outputs/reports/stage2/figures/eda_item_quadrants.svg) | 矢量图 | 商品浏览与购买覆盖象限，适合无损放大与导出。 |
+| [outputs/reports/stage2/figures/eda_mature_funnel.png](../outputs/reports/stage2/figures/eda_mature_funnel.png) | 位图 | 成熟跨小时漏斗，可直接查看或插入报告。 |
+| [outputs/reports/stage2/figures/eda_mature_funnel.svg](../outputs/reports/stage2/figures/eda_mature_funnel.svg) | 矢量图 | 成熟跨小时漏斗，适合无损放大与导出。 |
+| [outputs/reports/stage2/figures/eda_purchase_distribution.png](../outputs/reports/stage2/figures/eda_purchase_distribution.png) | 位图 | 用户购买记录次数分布，可直接查看或插入报告。 |
+| [outputs/reports/stage2/figures/eda_purchase_distribution.svg](../outputs/reports/stage2/figures/eda_purchase_distribution.svg) | 矢量图 | 用户购买记录次数分布，适合无损放大与导出。 |
+| [outputs/reports/stage2/supplementary_eda.json](../outputs/reports/stage2/supplementary_eda.json) | 结构化记录 | RF、周期、复购、分群与隐式覆盖补充结果。 |
+| [outputs/reports/stage2/tables/category_purchase_cycles.csv](../outputs/reports/stage2/tables/category_purchase_cycles.csv) | 数据明细 | 类目首次观察至购买的小时级周期统计。 |
+| [outputs/reports/stage2/tables/category_repeat_proxies.csv](../outputs/reports/stage2/tables/category_repeat_proxies.csv) | 数据明细 | 类目跨日期购买记录的复购代理统计。 |
+| [outputs/reports/stage2/tables/latent_coverage.csv](../outputs/reports/stage2/tables/latent_coverage.csv) | 数据明细 | 按截点、人群及高级特征组统计有效覆盖。 |
+| [outputs/reports/stage2/tables/rf_proxy_segments.csv](../outputs/reports/stage2/tables/rf_proxy_segments.csv) | 数据明细 | 四类RF代理用户的行为与购买覆盖统计。 |
+| [outputs/reports/stage2/tables/standardized_associations.csv](../outputs/reports/stage2/tables/standardized_associations.csv) | 数据明细 | 按活跃与既往购买分层的描述性未来关联。 |
+| [src/user_behavior_analysis/assets/eda/dashboard.css](../src/user_behavior_analysis/assets/eda/dashboard.css) | 看板前端 | 设置EDA页面、控件和图表的视觉样式。 |
+| [src/user_behavior_analysis/assets/eda/dashboard.html](../src/user_behavior_analysis/assets/eda/dashboard.html) | 看板前端 | 提供EDA页面布局、筛选控件和图表容器。 |
+| [src/user_behavior_analysis/assets/eda/dashboard.js](../src/user_behavior_analysis/assets/eda/dashboard.js) | 看板前端 | 调用筛选接口，更新图表、商品下钻与CSV导出。 |
+
+## 第一、二阶段综合验收
+
+<a id="acceptance"></a>
+
+### 第一、二阶段综合验收与结果导航
+
+这些文件跨任务汇总结论或执行独立验收。保留的日志和源指纹属于其数值运行基线，不因为后续文档修订而改写历史。
+
+| 文件（仓库内完整路径） | 类型 | 作用 |
+|---|---|---|
+| [docs/stage1_review.md](../docs/stage1_review.md) | 说明文档 | 引导读取第一阶段四部分的冻结验收证据。 |
+| [outputs/reports/README.md](../outputs/reports/README.md) | 说明文档 | 第一、二阶段综合验收与结果导航的成果导航、结果说明和证据入口。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/README.md](../outputs/reports/stage1_stage2_review_20261114_01/README.md) | 说明文档 | 第一、二阶段综合验收与结果导航的成果导航、结果说明和证据入口。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/completion_report.md](../outputs/reports/stage1_stage2_review_20261114_01/completion_report.md) | 说明文档 | 按阶段汇总全部成果、技术验收、证据与未完成事项。 |
+| [outputs/reports/stage2/README.md](../outputs/reports/stage2/README.md) | 说明文档 | 第一、二阶段综合验收与结果导航的成果导航、结果说明和证据入口。 |
+| [outputs/reports/stage2/code_review.md](../outputs/reports/stage2/code_review.md) | 说明文档 | 实现的代码复核结论与适用边界。 |
+| [outputs/reports/stage2/requirements_matrix.md](../outputs/reports/stage2/requirements_matrix.md) | 说明文档 | 按第二阶段四部分登记技术验收点、实现、证据和未完成细项。 |
+| [scripts/audit_current_data.py](../scripts/audit_current_data.py) | 运行/导出/核验脚本 | 独立核对当前全部原记录基表、SQLite与快照数据。 |
+| [scripts/audit_stage1.py](../scripts/audit_stage1.py) | 运行/导出/核验脚本 | 重新执行第一阶段四部分的完整验收。 |
+| [src/user_behavior_analysis/service/stage2_reporting.py](../src/user_behavior_analysis/service/stage2_reporting.py) | 业务逻辑 | 汇总第二阶段数值成果、实验、说明与交付导航。 |
+| [outputs/reports/.gitkeep](../outputs/reports/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
+| [outputs/reports/stage1/audit.json](../outputs/reports/stage1/audit.json) | 结构化记录 | 验收结果、检查项及通过状态。 |
+| [outputs/reports/stage1/environment.log](../outputs/reports/stage1/environment.log) | 执行日志 | environment步骤的原始运行日志，保留当时输出。 |
+| [outputs/reports/stage1/environment/environment_check.json](../outputs/reports/stage1/environment/environment_check.json) | 结构化记录 | 环境版本、资源和实际运行检查结果。 |
+| [outputs/reports/stage1/quality.json](../outputs/reports/stage1/quality.json) | 结构化记录 | 当时运行的规范、测试与类型检查结果。 |
+| [outputs/reports/stage1/quality.log](../outputs/reports/stage1/quality.log) | 执行日志 | quality步骤的原始运行日志，保留当时输出。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/artifact_manifest.json](../outputs/reports/stage1_stage2_review_20261114_01/artifact_manifest.json) | 结构化记录 | 本报告包每个文件的SHA-256及版式验收状态。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/cloud_snapshot.json](../outputs/reports/stage1_stage2_review_20261114_01/cloud_snapshot.json) | 结构化记录 | 冻结实现基线的远程分支和CI只读核对。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/completion_report.docx](../outputs/reports/stage1_stage2_review_20261114_01/completion_report.docx) | 工程配置/规则 | 按阶段汇总全部成果、技术验收、证据与未完成事项。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/eda/eda_audit.json](../outputs/reports/stage1_stage2_review_20261114_01/eda/eda_audit.json) | 结构化记录 | 对全局组合筛选与未聚合原事件的独立控制。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/fingerprints.json](../outputs/reports/stage1_stage2_review_20261114_01/fingerprints.json) | 结构化记录 | 该验收基线774个有效文件的指纹核对结果。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/independent_data_audit.json](../outputs/reports/stage1_stage2_review_20261114_01/independent_data_audit.json) | 结构化记录 | SQLite完整性、用户小时及四截点独立数据控制。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/pair_labels.json](../outputs/reports/stage1_stage2_review_20261114_01/pair_labels.json) | 结构化记录 | 四截点对级标签从未聚合原事件独立重算的结果。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/review_status.json](../outputs/reports/stage1_stage2_review_20261114_01/review_status.json) | 结构化记录 | 8个阶段任务、13项技术检查和4项待办/边界的结构化结论。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/stage1/audit.json](../outputs/reports/stage1_stage2_review_20261114_01/stage1/audit.json) | 结构化记录 | 验收结果、检查项及通过状态。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/stage1/environment.log](../outputs/reports/stage1_stage2_review_20261114_01/stage1/environment.log) | 执行日志 | environment步骤的原始运行日志，保留当时输出。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/stage1/environment/environment_check.json](../outputs/reports/stage1_stage2_review_20261114_01/stage1/environment/environment_check.json) | 结构化记录 | 环境版本、资源和实际运行检查结果。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/stage1/quality.json](../outputs/reports/stage1_stage2_review_20261114_01/stage1/quality.json) | 结构化记录 | 当时运行的规范、测试与类型检查结果。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/stage1/quality.log](../outputs/reports/stage1_stage2_review_20261114_01/stage1/quality.log) | 执行日志 | quality步骤的原始运行日志，保留当时输出。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/stage2_audit.json](../outputs/reports/stage1_stage2_review_20261114_01/stage2_audit.json) | 结构化记录 | 第二阶段综合数值及独立数据检查结果。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/stage2_replay/audit.json](../outputs/reports/stage1_stage2_review_20261114_01/stage2_replay/audit.json) | 结构化记录 | 验收结果、检查项及通过状态。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/stage2_replay/encoding_experiments.json](../outputs/reports/stage1_stage2_review_20261114_01/stage2_replay/encoding_experiments.json) | 结构化记录 | 目标编码/预嵌入六个新模型与两个冻结参考的对照。 |
+| [outputs/reports/stage1_stage2_review_20261114_01/stage2_replay/preprocessing.json](../outputs/reports/stage1_stage2_review_20261114_01/stage2_replay/preprocessing.json) | 结构化记录 | 已拟合转换、输出文件和完整数据指纹。 |
+| [outputs/reports/stage2/audit.json](../outputs/reports/stage2/audit.json) | 结构化记录 | 验收结果、检查项及通过状态。 |
+| [outputs/reports/stage2/cloud_delivery.json](../outputs/reports/stage2/cloud_delivery.json) | 结构化记录 | 对应实现提交的远程分支与CI交付记录。 |
+| [outputs/reports/stage2/dependency_audit.json](../outputs/reports/stage2/dependency_audit.json) | 结构化记录 | 当前交付输入依赖及冻结指纹的一致性核对。 |
+| [outputs/reports/stage2/independent_data_audit.json](../outputs/reports/stage2/independent_data_audit.json) | 结构化记录 | SQLite完整性、用户小时及四截点独立数据控制。 |
+| [outputs/reports/stage2/quality.json](../outputs/reports/stage2/quality.json) | 结构化记录 | 当时运行的规范、测试与类型检查结果。 |
+| [outputs/reports/stage2/run_state.json](../outputs/reports/stage2/run_state.json) | 结构化记录 | 任务步骤、资源、参数与完成状态。 |
+| [outputs/reports/stage2/source_manifest.json](../outputs/reports/stage2/source_manifest.json) | 结构化记录 | 生成该版本使用的源代码及依赖文件指纹快照。 |
+
+## 第三阶段：多模型建模与性能优化
+
+| 部分 | 已有基础 | 待产出 |
+|---|---|---|
+| 3.1 样本构建与划分 | 2.3的对级标签和时间划分可复用 | 约7:2:1对照、三种不平衡方案及正式样本版本 |
+| 3.2 传统模型与调优 | 2.3固定LR特征预实验 | 正式LR/XGBoost/LightGBM、Optuna及完整比较 |
+| 3.3 深度模型与优化 | 2.2序列定义与数组 | LSTM/GRU、DIN及优化结果 |
+| 3.4 融合与解释 | 尚无正式成果 | Stacking、SHAP、错误/冷启动/长尾分析 |
+| 3.5 业务模拟 | 2.4提供描述性洞察 | 模拟A/B与收益敏感性 |
+
+这些部分尚无独立完成的正式交付文件，不能把2.3的预实验重复记为正式模型成果。
+
+## 第四阶段：成果沉淀与项目复盘
+
+| 部分 | 已有基础 | 待产出 |
+|---|---|---|
+| 4.1 工程化封装 | 第一阶段分层包与持续测试 | 完整训练/推理API和使用示例 |
+| 4.2 文档与汇报材料 | 第一、二阶段方法和验收 | 项目总报告、汇报PPT、技术分享PPT |
+| 4.3 复盘与总结 | 当前边界与问题记录 | 全流程复盘、局限和优化方案 |
+| 4.4 提交与展示 | 阶段成果持续同步GitHub | 最终发布版本与展示记录 |
+
+## 本地大数据与非Git目录
+
+| 位置 | 作用与登记方式 |
+|---|---|
+| data/raw/ | 原始数据接入位置；实际源路径、行数及SHA-256由data/catalog/user_behavior_raw.json登记 |
+| data/interim/ | 历史清洗和临时中间数据；文件由相应数据清单登记 |
+| data/processed/ | Parquet、SQLite、特征快照、标签、矩阵和模型；各版本清单逐文件登记 |
+| .venv/、.cache/、__pycache__/ | 本机依赖、制作/执行缓存与字节码，按.gitignore排除 |
+| .git/ | Git维护的提交和分支数据库，不作为业务文件再次上传 |
+
+本地大数据的当前入口见[data/catalog/current_datasets.json](../data/catalog/current_datasets.json)。本页逐个覆盖Git文件；被忽略的大型数据以数据清单和文件指纹追溯，不作为已上传文件。
+
+## 维护规则
+
+新增或删除Git文件后，同时更新本页与file_inventory.csv，确保集合一致。每个文件指定一个主要任务；公共工具和复用产物通过依赖说明体现跨阶段用途。任务的完成状态仍以project_roadmap.md和冻结验收记录为准。

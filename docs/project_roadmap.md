@@ -1,12 +1,12 @@
 # 项目任务与验收台账
 
-依据用户提供的[原始大纲](requirements/project_brief.pdf)，共17项。状态更新于2026-11-15。
+依据用户提供的[原始大纲](requirements/project_brief.pdf)，共17项。状态更新于2026-11-16。
 已确认的数据缺失使用代理口径，逐项边界见[第二阶段验收表](../outputs/reports/stage2/requirements_matrix.md)。
 
 | 编号 | 任务 | 当前状态 | 当前证据 |
 |---|---|---|---|
-| s1_01 | 工程化环境与版本管理 | 完成，持续回归 | [工程说明](stage1_completion.md)、[最新复核](../outputs/reports/stage1/audit.json) |
-| s1_02 | 文献与技术栈储备 | 完成 | [研究目录](research/README.md)、最新复核内研究检查 |
+| s1_01 | 工程化环境与版本管理 | 完成，持续回归 | [工程说明](stage1_completion.md)、[阶段验收](../outputs/reports/stage1/audit.json) |
+| s1_02 | 文献与技术栈储备 | 完成 | [研究目录](research/README.md)、阶段验收内研究检查 |
 | s1_03 | 全量加载、清洗与质量分析 | 现有数据规模完成；亿级压力验证待执行 | [清洗规则](cleaning_rules.md)、[重复值政策](duplicate_policy.md) |
 | s1_04 | 压缩、Parquet与基础中间表 | 完成 | [预处理规则](preprocessing_rules.md)、[原始测量](../outputs/reports/stage1_step4/README.md) |
 | s2_01 | SQLite与SQL基础分析 | 完成 | [方法](sqlite_analysis.md)、[11项结果](../outputs/reports/stage2_step1_20261024/README.md) |
@@ -23,7 +23,7 @@
 | s4_03 | 复盘总结 | 待执行 | 问题、解决、局限和优化 |
 | s4_04 | 提交与展示 | 待最终交付 | main同步、发布与展示记录 |
 
-2026-11-15严格逐项复核：本轮数值与157项测试均通过；导师13项要求中，跨截点特征稳定性专项仍属部分完成。看板的指标卡、周末标识、商品类目列和漏斗比率标注待补。详见[完成与复核报告](../outputs/reports/stage1_stage2_review_20261114_01/completion_report.md)，不以核心产物完成替代所有细项通过。
+2026-11-15严格逐项复核：本轮数值与157项测试均通过；13项技术验收细项中，跨截点特征稳定性专项仍属部分完成。看板的指标卡、周末标识、商品类目列和漏斗比率标注待补。详见[完成与复核报告](../outputs/reports/stage1_stage2_review_20261114_01/completion_report.md)，不以核心产物完成替代所有细项通过。
 
 ## 验收顺序
 
