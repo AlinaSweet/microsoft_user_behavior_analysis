@@ -1,0 +1,270 @@
+{
+  "date": "2026-11-17",
+  "status": "passed",
+  "method": "Independent SQL over all unaggregated base_raw_v2 event records; no raw_count or key_hour aggregation reused. Population count uses distinct item-behavior-hour keys.",
+  "views": [
+    {
+      "label": "全周期 · 全部用户 / 全部类目",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "成熟随访 · 11月18日—12月8日 / 全部用户",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "全周期 · 低活跃",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "全周期 · 高活跃",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "全周期 · 新近观测",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "全周期 · 高价值代理",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "全周期 · 潜力代理",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "全周期 · 近期风险代理",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "全周期 · 沉睡代理",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "2025-11-18—2025-11-24 · 全部用户",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "2025-11-25—2025-12-01 · 全部用户",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "2025-12-02—2025-12-08 · 全部用户",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "全周期 · 热门类目 1863",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "全周期 · 热门类目 13230",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "全周期 · 热门类目 5027",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "全周期 · 热门类目 5894",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    },
+    {
+      "label": "全周期 · 热门类目 6513",
+      "differences": {
+        "records": 0,
+        "four_tuple_keys": 0,
+        "users": 0,
+        "items": 0,
+        "categories": 0,
+        "buying_users": 0,
+        "buying_pairs": 0,
+        "buy_records": 0,
+        "observed_user_hours": 0,
+        "active_user_days": 0
+      }
+    }
+  ],
+  "raw_parts_verified": 123,
+  "records": 12256906,
+  "checks_per_view": 10,
+  "downloaded_daily_csv": {
+    "rows": 84,
+    "records": 7893221
+  },
+  "existing_raw_data_unchanged": true
+}

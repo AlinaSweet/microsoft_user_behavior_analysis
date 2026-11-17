@@ -1,8 +1,10 @@
 # 微软商城用户行为分析
 
+**[打开在线EDA看板](https://alinasweet.github.io/microsoft_user_behavior_analysis/)** · 无需安装Python或启动本机服务。
+
 围绕用户购买行为，按数据工程、特征工程与探索分析、模型构建、成果交付四个阶段开展项目。
 任务定义见[项目大纲](docs/requirements/project_brief.pdf)，17项任务的状态见[任务台账](docs/project_roadmap.md)。
-本仓库当前包含第一阶段成果及第二阶段核心成果；跨截点特征稳定性专项、看板展示细项和大规模压力验证仍待补齐。
+本仓库当前包含第一阶段成果及第二阶段核心成果；跨截点特征稳定性专项和大规模压力验证仍待补齐。
 
 ## 阅读顺序与全部文件
 
@@ -95,7 +97,7 @@
 - 方法：[EDA看板与指标口径](docs/eda_dashboard1.md)、[看板设计参考](docs/requirements/dashboard_outline.pdf)。
 - 实现：[看板启动](scripts/run_eda_dashboard.sh)、[前端资源](src/user_behavior_analysis/assets/eda/)、[HTTP服务](src/user_behavior_analysis/api/dashboard_server.py)。
 - 结果：[图表](outputs/reports/stage2/figures/)、[统计明细](outputs/reports/stage2/tables/)、[独立核对](outputs/reports/stage2/eda_audit.json)。
-- 状态：核心完成；指标卡、周末标识、商品类目列及漏斗比率/分母展示待补。没有法定节假日观测，不构造节日实证对照。
+- 状态：核心完成；在线版17个已计算视图、指标卡、周末标识、商品类目列及漏斗比率/分母已补齐。没有法定节假日观测，不构造节日实证对照。
 
 ## 第三阶段：多模型建模与性能优化
 
@@ -125,7 +127,7 @@ bash scripts/setup_environment.sh
 bash scripts/run_eda_dashboard.sh
 ```
 
-在浏览器打开 http://127.0.0.1:8765 。看板需要本机数据和运行中的Python服务；GitHub提供代码、方法和结果文件。
+在线浏览请点击[EDA看板](https://alinasweet.github.io/microsoft_user_behavior_analysis/)。在线版提供17个全量计算视图，支持图表切换及CSV导出；任意日期、人群、类目组合及商品下钻使用本地版 http://127.0.0.1:8765 ，需要本机数据与运行中的Python服务。发布与更新见[看板说明](docs/eda_dashboard1.md)。
 
 ```bash
 bash scripts/check_quality.sh --force
@@ -138,3 +140,5 @@ bash scripts/check_quality.sh --force
 没有金额、订单、曝光、分钟秒和真实会话；使用RF/购买记录代理，不推算真实GMV、订单量、CTR或在线时长。
 大型CSV、Parquet、SQLite、标签、矩阵及模型保留在本地，Git同步代码、配置、文档、小型结果和版本清单。
 历史归并结果与原始测量保留其口径；[归档清单](docs/archive_manifest.json)记录已移出工作树的旧产物。
+
+仓库精简记录见[2026-11-17归档清单](docs/repository_cleanup_20261117.json)。未被数值审计引用的运行日志与旧上传截图已可恢复归档；原始数据、代码、模型结果和冻结证据保留。

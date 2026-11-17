@@ -1,6 +1,6 @@
 # 按阶段逐文件导航
 
-本页覆盖当前Git仓库的全部 **454个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
+本页覆盖当前Git仓库的全部 **471个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
 
 原始任务见[项目大纲](requirements/project_brief.pdf)，完成状态见[任务台账](project_roadmap.md)。本页是项目全过程的文件导航。带日期目录是产物版本，阶段编号决定阅读顺序。
 
@@ -16,8 +16,8 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | 第一阶段 | [1.4 数据预处理与中间表构建](#s1_04) | 23 |
 | 第二阶段 | [2.1 SQLite数据库搭建与SQL基础分析](#s2_01) | 38 |
 | 第二阶段 | [2.2 全维度特征体系构建](#s2_02) | 61 |
-| 第二阶段 | [2.3 特征预处理与有效性验证](#s2_03) | 91 |
-| 第二阶段 | [2.4 多维度探索性数据分析](#s2_04) | 70 |
+| 第二阶段 | [2.3 特征预处理与有效性验证](#s2_03) | 85 |
+| 第二阶段 | [2.4 多维度探索性数据分析](#s2_04) | 93 |
 | 阶段验收 | [第一、二阶段综合验收与结果导航](#acceptance) | 40 |
 
 ## 第一阶段：数据工程体系搭建与理论储备
@@ -75,6 +75,7 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [.gitattributes](../.gitattributes) | 工程配置/规则 | 定义文本换行和二进制文件的Git处理方式。 |
 | [.githooks/pre-commit](../.githooks/pre-commit) | Git/CI | 在提交前执行本地质量检查。 |
 | [.githooks/pre-push](../.githooks/pre-push) | Git/CI | 在推送前执行本地质量检查。 |
+| [.github/workflows/pages.yml](../.github/workflows/pages.yml) | Git/CI | Quality通过后自动构建并发布对应main提交的GitHub Pages看板。 |
 | [.github/workflows/quality.yml](../.github/workflows/quality.yml) | Git/CI | 在GitHub自动安装锁定依赖并执行完整质量检查。 |
 | [.gitignore](../.gitignore) | 工程配置/规则 | 排除大数据、本机环境、缓存和个人资料。 |
 | [.python-version](../.python-version) | 工程配置/规则 | 固定本项目Python主次版本。 |
@@ -85,10 +86,9 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [docs/.gitkeep](../docs/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
 | [docs/archive_manifest.json](../docs/archive_manifest.json) | 结构化记录 | 记录移出工作树的旧成果及恢复位置。 |
 | [docs/file_inventory.csv](../docs/file_inventory.csv) | 数据明细 | 提供与逐文件导航一致、可筛选的完整文件和直接依赖清单。 |
+| [docs/repository_cleanup_20261117.json](../docs/repository_cleanup_20261117.json) | 结构化记录 | 登记移出仓库的9个无依赖日志和旧截图的指纹、归档位置与恢复方式。 |
 | [notebooks/.gitkeep](../notebooks/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
 | [outputs/figures/.gitkeep](../outputs/figures/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
-| [outputs/figures/github_initial_upload.jpg](../outputs/figures/github_initial_upload.jpg) | 验收凭证 | 首次远程仓库上传的可视验收记录。 |
-| [outputs/figures/stage1_review_ci_checkpoint.png](../outputs/figures/stage1_review_ci_checkpoint.png) | 位图 | 第一阶段远程CI通过的可视验收记录。 |
 | [outputs/reports/coding_standard_compliance.json](../outputs/reports/coding_standard_compliance.json) | 结构化记录 | 代码对编码规范的检查结果。 |
 | [outputs/reports/coding_standard_data_validation.json](../outputs/reports/coding_standard_data_validation.json) | 结构化记录 | 应用编码规范前后数据未被改写的核对。 |
 | [outputs/reports/engineering_benchmark.json](../outputs/reports/engineering_benchmark.json) | 结构化记录 | 分块读取、内存与工程资源的原始实测记录。 |
@@ -309,6 +309,7 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [tests/unit/test_wide_reader.py](../tests/unit/test_wide_reader.py) | 单元测试/测试包 | 验证宽表列/行边界与清单验证。 |
 | [tests/integration/test_feature_boundaries.py](../tests/integration/test_feature_boundaries.py) | 集成测试 | 验证历史特征、未来标签和序列的时间边界。 |
 | [docs/requirements/feature_split_reference.xlsx](../docs/requirements/feature_split_reference.xlsx) | Excel工作簿 | 保存特征拆分整理的参考模板，不等同于当前正式字典。 |
+| [outputs/reports/feature_scale_20261116/feature_scale.xlsx](../outputs/reports/feature_scale_20261116/feature_scale.xlsx) | Excel工作簿 | 汇总445条源定义、9种派生表示与259列矩阵映射，区分不同数量口径。 |
 | [outputs/reports/feature_system_20261029/base_rebuild.json](../outputs/reports/feature_system_20261029/base_rebuild.json) | 结构化记录 | 全部原记录基表的生成、数量和版本记录。 |
 | [outputs/reports/feature_system_20261029/delivery_audit.json](../outputs/reports/feature_system_20261029/delivery_audit.json) | 结构化记录 | 源特征字典、快照与输入一致性核对。 |
 | [outputs/reports/feature_system_20261029/feature_dictionary.json](../outputs/reports/feature_system_20261029/feature_dictionary.json) | 结构化记录 | 机器可读的445条源特征字典。 |
@@ -329,7 +330,6 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [outputs/reports/prejoined_wide_20261107/reader_validation.json](../outputs/reports/prejoined_wide_20261107/reader_validation.json) | 结构化记录 | 受限宽表读取接口的验证结果。 |
 | [outputs/reports/prejoined_wide_20261107/root_inventory.json](../outputs/reports/prejoined_wide_20261107/root_inventory.json) | 结构化记录 | 该交付时点的根目录文件核对。 |
 | [outputs/reports/prejoined_wide_20261107/source_manifest.json](../outputs/reports/prejoined_wide_20261107/source_manifest.json) | 结构化记录 | 生成该版本使用的源代码及依赖文件指纹快照。 |
-| [outputs/reports/prejoined_wide_20261107/tests.log](../outputs/reports/prejoined_wide_20261107/tests.log) | 执行日志 | tests步骤的原始运行日志，保留当时输出。 |
 
 <a id="s2_03"></a>
 
@@ -374,27 +374,21 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [tests/unit/test_validation_contracts.py](../tests/unit/test_validation_contracts.py) | 单元测试/测试包 | 验证时间边界、穷尽分组与业务保护。 |
 | [tests/unit/test_validation_preprocessing.py](../tests/unit/test_validation_preprocessing.py) | 单元测试/测试包 | 验证冻结变换、组核算及评价指标。 |
 | [outputs/reports/feature_validation_20261114/audit.json](../outputs/reports/feature_validation_20261114/audit.json) | 结构化记录 | 验收结果、检查项及通过状态。 |
-| [outputs/reports/feature_validation_20261114/diagnostics_execution.log](../outputs/reports/feature_validation_20261114/diagnostics_execution.log) | 执行日志 | diagnostics步骤的原始运行日志，保留当时输出。 |
 | [outputs/reports/feature_validation_20261114/experiments.json](../outputs/reports/feature_validation_20261114/experiments.json) | 结构化记录 | 第一轮六组固定LR模型、分群效果与完整评价。 |
-| [outputs/reports/feature_validation_20261114/experiments_execution.log](../outputs/reports/feature_validation_20261114/experiments_execution.log) | 执行日志 | experiments步骤的原始运行日志，保留当时输出。 |
 | [outputs/reports/feature_validation_20261114/feature_decisions.csv](../outputs/reports/feature_validation_20261114/feature_decisions.csv) | 数据明细 | 逐标量保留、排除、暂缓及业务保护的原因。 |
 | [outputs/reports/feature_validation_20261114/figures/ablation_metrics.png](../outputs/reports/feature_validation_20261114/figures/ablation_metrics.png) | 位图 | 分组LR验证及测试指标对比，可直接查看或插入报告。 |
 | [outputs/reports/feature_validation_20261114/figures/ablation_metrics.svg](../outputs/reports/feature_validation_20261114/figures/ablation_metrics.svg) | 矢量图 | 分组LR验证及测试指标对比，适合无损放大与导出。 |
 | [outputs/reports/feature_validation_20261114/figures/labels_and_candidate_coverage.png](../outputs/reports/feature_validation_20261114/figures/labels_and_candidate_coverage.png) | 位图 | 四截点标签与候选购买覆盖，可直接查看或插入报告。 |
 | [outputs/reports/feature_validation_20261114/figures/labels_and_candidate_coverage.svg](../outputs/reports/feature_validation_20261114/figures/labels_and_candidate_coverage.svg) | 矢量图 | 四截点标签与候选购买覆盖，适合无损放大与导出。 |
-| [outputs/reports/feature_validation_20261114/final_audit_execution.log](../outputs/reports/feature_validation_20261114/final_audit_execution.log) | 执行日志 | final_audit步骤的原始运行日志，保留当时输出。 |
 | [outputs/reports/feature_validation_20261114/frozen_validation_choice.json](../outputs/reports/feature_validation_20261114/frozen_validation_choice.json) | 结构化记录 | 测试前冻结的第一轮验证集选择。 |
 | [outputs/reports/feature_validation_20261114/immutable_delivery_guard.json](../outputs/reports/feature_validation_20261114/immutable_delivery_guard.json) | 结构化记录 | 已冻结样本和前序产物未被修改的核对记录。 |
 | [outputs/reports/feature_validation_20261114/metrics.csv](../outputs/reports/feature_validation_20261114/metrics.csv) | 数据明细 | 第一轮LR的可筛选指标明细。 |
 | [outputs/reports/feature_validation_20261114/prediction_replay.json](../outputs/reports/feature_validation_20261114/prediction_replay.json) | 结构化记录 | 保存模型直接重算概率的一致性结果。 |
 | [outputs/reports/feature_validation_20261114/quality.json](../outputs/reports/feature_validation_20261114/quality.json) | 结构化记录 | 当时运行的规范、测试与类型检查结果。 |
-| [outputs/reports/feature_validation_20261114/report_execution.log](../outputs/reports/feature_validation_20261114/report_execution.log) | 执行日志 | report步骤的原始运行日志，保留当时输出。 |
 | [outputs/reports/feature_validation_20261114/run_state.json](../outputs/reports/feature_validation_20261114/run_state.json) | 结构化记录 | 任务步骤、资源、参数与完成状态。 |
 | [outputs/reports/feature_validation_20261114/samples.json](../outputs/reports/feature_validation_20261114/samples.json) | 结构化记录 | 四截点候选、正负例、未成熟标签及候选召回控制。 |
 | [outputs/reports/feature_validation_20261114/selection.json](../outputs/reports/feature_validation_20261114/selection.json) | 结构化记录 | 训练期画像、筛选阈值、分组及保留清单。 |
-| [outputs/reports/feature_validation_20261114/selection_execution.log](../outputs/reports/feature_validation_20261114/selection_execution.log) | 执行日志 | selection步骤的原始运行日志，保留当时输出。 |
 | [outputs/reports/feature_validation_20261114/source_manifest.json](../outputs/reports/feature_validation_20261114/source_manifest.json) | 结构化记录 | 生成该版本使用的源代码及依赖文件指纹快照。 |
-| [outputs/reports/feature_validation_20261114/tests.log](../outputs/reports/feature_validation_20261114/tests.log) | 执行日志 | tests步骤的原始运行日志，保留当时输出。 |
 | [outputs/reports/feature_validation_20261114/training_group_diagnostics.json](../outputs/reports/feature_validation_20261114/training_group_diagnostics.json) | 结构化记录 | 完整训练用户群及低覆盖特征的支持与诊断。 |
 | [outputs/reports/stage2/encoding_experiments.json](../outputs/reports/stage2/encoding_experiments.json) | 结构化记录 | 目标编码/预嵌入六个新模型与两个冻结参考的对照。 |
 | [outputs/reports/stage2/encoding_metrics.csv](../outputs/reports/stage2/encoding_metrics.csv) | 数据明细 | 编码对照的分模型、分群和覆盖指标明细。 |
@@ -435,18 +429,22 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 
 ### 2.4 多维度探索性数据分析
 
-探索行为、时间、漏斗、分群、商品和类目，并提供全局筛选、下钻及导出。训练期特征评价图归2.3，业务EDA图归本部分；展示细项待补。
+探索行为、时间、漏斗、分群、商品和类目，并提供全局筛选、下钻及导出。训练期特征评价图归2.3，业务EDA图归本部分；提供17视图在线入口，展示细项已补齐。
 
 | 文件（仓库内完整路径） | 类型 | 作用 |
 |---|---|---|
 | [docs/eda_dashboard1.md](../docs/eda_dashboard1.md) | 说明文档 | 解释看板启动、全局筛选、指标分母、下钻和分析边界。 |
+| [outputs/reports/dashboard_publication_20261117/code_review.md](../outputs/reports/dashboard_publication_20261117/code_review.md) | 说明文档 | 记录在线构建、数据边界、依赖安全、163项测试和浏览器验收。 |
 | [docs/requirements/dashboard_outline.pdf](../docs/requirements/dashboard_outline.pdf) | 原始规范 | 保存看板模块、指标与展示的原始设计参考。 |
 | [configs/eda_dashboard1.json](../configs/eda_dashboard1.json) | 运行配置 | 配置探索窗口、分箱和看板数据入口。 |
 | [data/catalog/eda_dashboard1_20261029.json](../data/catalog/eda_dashboard1_20261029.json) | 数据版本清单 | 登记基础EDA生成器使用的数据与结果版本。 |
+| [scripts/build_dashboard_site.py](../scripts/build_dashboard_site.py) | 运行/导出/核验脚本 | 调用静态发布构建，不需要本地Parquet、SQLite或第三方包。 |
+| [scripts/export_dashboard.py](../scripts/export_dashboard.py) | 运行/导出/核验脚本 | 从完整事件统计导出17个在线视图，复用已有基准报告并冻结源指纹。 |
 | [scripts/run_eda.py](../scripts/run_eda.py) | 运行/导出/核验脚本 | 运行基础静态EDA，输出图表和报告。 |
 | [scripts/run_eda_dashboard.sh](../scripts/run_eda_dashboard.sh) | 运行/导出/核验脚本 | 启动本机全局联动EDA服务。 |
 | [scripts/serve_eda.py](../scripts/serve_eda.py) | 运行/导出/核验脚本 | 解析服务参数，启动看板HTTP应用。 |
 | [src/user_behavior_analysis/api/dashboard_server.py](../src/user_behavior_analysis/api/dashboard_server.py) | 命令/HTTP入口 | 提供本机EDA网页、筛选查询与CSV下载接口。 |
+| [src/user_behavior_analysis/service/dashboard_publication.py](../src/user_behavior_analysis/service/dashboard_publication.py) | 业务逻辑 | 校验视图指纹、参数与记录合计，仅向干净的_site生成白名单页面和聚合数据。 |
 | [src/user_behavior_analysis/service/eda_analysis.py](../src/user_behavior_analysis/service/eda_analysis.py) | 业务逻辑 | 计算基础行为、时段、日趋势等探索指标并明确分母。 |
 | [src/user_behavior_analysis/service/eda_charts.py](../src/user_behavior_analysis/service/eda_charts.py) | 业务逻辑 | 把基础EDA结果绘制成可导出的独立图表。 |
 | [src/user_behavior_analysis/service/eda_entities.py](../src/user_behavior_analysis/service/eda_entities.py) | 业务逻辑 | 比较商品、类目、用户群与重复计数敏感性。 |
@@ -467,6 +465,7 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [sql/eda/branch_funnels.sql](../sql/eda/branch_funnels.sql) | SQL脚本 | 计算允许多路径的成熟严格漏斗。 |
 | [sql/eda/build_cache.sql](../sql/eda/build_cache.sql) | SQL脚本 | 为全局看板建立可重复使用的查询缓存。 |
 | [sql/eda/forward_user_cohort.sql](../sql/eda/forward_user_cohort.sql) | SQL脚本 | 按历史人群统计未来用户级购买关联。 |
+| [tests/unit/test_dashboard_publication.py](../tests/unit/test_dashboard_publication.py) | 单元测试/测试包 | 验证无本地数据构建、指纹/筛选/合计拒绝、路径约束及旧发布内容排除。 |
 | [tests/unit/test_eda_statistics.py](../tests/unit/test_eda_statistics.py) | 单元测试/测试包 | 验证探索指标分母和分箱边界。 |
 | [tests/unit/test_interactive_eda.py](../tests/unit/test_interactive_eda.py) | 单元测试/测试包 | 验证日期、人群、类目联合筛选结果。 |
 | [tests/integration/test_dashboard_server.py](../tests/integration/test_dashboard_server.py) | 集成测试 | 验证真实HTTP筛选、资源白名单和导出。 |
@@ -477,6 +476,23 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [data/summaries/eda_support_v1/manifest.json](../data/summaries/eda_support_v1/manifest.json) | 结构化记录 | 该补充统计集各文件的版本、来源及指纹。 |
 | [data/summaries/eda_support_v1/rf_proxy_segments.csv](../data/summaries/eda_support_v1/rf_proxy_segments.csv) | 数据明细 | 四类RF代理用户的行为与购买覆盖统计。 |
 | [data/summaries/eda_support_v1/standardized_associations.csv](../data/summaries/eda_support_v1/standardized_associations.csv) | 数据明细 | 按活跃与既往购买分层的描述性未来关联。 |
+| [outputs/reports/dashboard_publication_20261117/manifest.json](../outputs/reports/dashboard_publication_20261117/manifest.json) | 结构化记录 | 列出17个在线视图的筛选、内容指纹、记录数及完整数据来源。 |
+| [outputs/reports/dashboard_publication_20261117/publication_audit.json](../outputs/reports/dashboard_publication_20261117/publication_audit.json) | 结构化记录 | 以未聚合事件独立核对17视图×10指标，保存零差异、原数据指纹和CSV下载核对。 |
+| [outputs/reports/dashboard_publication_20261117/view_01.json](../outputs/reports/dashboard_publication_20261117/view_01.json) | 结构化记录 | 完整数据预计算视图：2025-11-18至2025-12-18，用户群low_activity，类目全部。 |
+| [outputs/reports/dashboard_publication_20261117/view_02.json](../outputs/reports/dashboard_publication_20261117/view_02.json) | 结构化记录 | 完整数据预计算视图：2025-11-18至2025-12-18，用户群high_activity，类目全部。 |
+| [outputs/reports/dashboard_publication_20261117/view_03.json](../outputs/reports/dashboard_publication_20261117/view_03.json) | 结构化记录 | 完整数据预计算视图：2025-11-18至2025-12-18，用户群new_observed，类目全部。 |
+| [outputs/reports/dashboard_publication_20261117/view_04.json](../outputs/reports/dashboard_publication_20261117/view_04.json) | 结构化记录 | 完整数据预计算视图：2025-11-18至2025-12-18，用户群high_value_proxy，类目全部。 |
+| [outputs/reports/dashboard_publication_20261117/view_05.json](../outputs/reports/dashboard_publication_20261117/view_05.json) | 结构化记录 | 完整数据预计算视图：2025-11-18至2025-12-18，用户群potential_proxy，类目全部。 |
+| [outputs/reports/dashboard_publication_20261117/view_06.json](../outputs/reports/dashboard_publication_20261117/view_06.json) | 结构化记录 | 完整数据预计算视图：2025-11-18至2025-12-18，用户群at_risk_proxy，类目全部。 |
+| [outputs/reports/dashboard_publication_20261117/view_07.json](../outputs/reports/dashboard_publication_20261117/view_07.json) | 结构化记录 | 完整数据预计算视图：2025-11-18至2025-12-18，用户群dormant_proxy，类目全部。 |
+| [outputs/reports/dashboard_publication_20261117/view_08.json](../outputs/reports/dashboard_publication_20261117/view_08.json) | 结构化记录 | 完整数据预计算视图：2025-11-18至2025-11-24，用户群all，类目全部。 |
+| [outputs/reports/dashboard_publication_20261117/view_09.json](../outputs/reports/dashboard_publication_20261117/view_09.json) | 结构化记录 | 完整数据预计算视图：2025-11-25至2025-12-01，用户群all，类目全部。 |
+| [outputs/reports/dashboard_publication_20261117/view_10.json](../outputs/reports/dashboard_publication_20261117/view_10.json) | 结构化记录 | 完整数据预计算视图：2025-12-02至2025-12-08，用户群all，类目全部。 |
+| [outputs/reports/dashboard_publication_20261117/view_11.json](../outputs/reports/dashboard_publication_20261117/view_11.json) | 结构化记录 | 完整数据预计算视图：2025-11-18至2025-12-18，用户群all，类目1863。 |
+| [outputs/reports/dashboard_publication_20261117/view_12.json](../outputs/reports/dashboard_publication_20261117/view_12.json) | 结构化记录 | 完整数据预计算视图：2025-11-18至2025-12-18，用户群all，类目13230。 |
+| [outputs/reports/dashboard_publication_20261117/view_13.json](../outputs/reports/dashboard_publication_20261117/view_13.json) | 结构化记录 | 完整数据预计算视图：2025-11-18至2025-12-18，用户群all，类目5027。 |
+| [outputs/reports/dashboard_publication_20261117/view_14.json](../outputs/reports/dashboard_publication_20261117/view_14.json) | 结构化记录 | 完整数据预计算视图：2025-11-18至2025-12-18，用户群all，类目5894。 |
+| [outputs/reports/dashboard_publication_20261117/view_15.json](../outputs/reports/dashboard_publication_20261117/view_15.json) | 结构化记录 | 完整数据预计算视图：2025-11-18至2025-12-18，用户群all，类目6513。 |
 | [outputs/reports/stage2/eda_audit.json](../outputs/reports/stage2/eda_audit.json) | 结构化记录 | 对全局组合筛选与未聚合原事件的独立控制。 |
 | [outputs/reports/stage2/eda_baseline.json](../outputs/reports/stage2/eda_baseline.json) | 结构化记录 | 全窗口默认筛选下的EDA聚合结果。 |
 | [outputs/reports/stage2/eda_mature_example.json](../outputs/reports/stage2/eda_mature_example.json) | 结构化记录 | 成熟截点的对级和用户级未来购买示例。 |
@@ -506,6 +522,7 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [outputs/reports/stage2/tables/latent_coverage.csv](../outputs/reports/stage2/tables/latent_coverage.csv) | 数据明细 | 按截点、人群及高级特征组统计有效覆盖。 |
 | [outputs/reports/stage2/tables/rf_proxy_segments.csv](../outputs/reports/stage2/tables/rf_proxy_segments.csv) | 数据明细 | 四类RF代理用户的行为与购买覆盖统计。 |
 | [outputs/reports/stage2/tables/standardized_associations.csv](../outputs/reports/stage2/tables/standardized_associations.csv) | 数据明细 | 按活跃与既往购买分层的描述性未来关联。 |
+| [src/user_behavior_analysis/assets/eda/archive.js](../src/user_behavior_analysis/assets/eda/archive.js) | 看板前端 | 适配GitHub Pages，载入预计算视图、明确筛选边界并在浏览器导出CSV。 |
 | [src/user_behavior_analysis/assets/eda/dashboard.css](../src/user_behavior_analysis/assets/eda/dashboard.css) | 看板前端 | 设置EDA页面、控件和图表的视觉样式。 |
 | [src/user_behavior_analysis/assets/eda/dashboard.html](../src/user_behavior_analysis/assets/eda/dashboard.html) | 看板前端 | 提供EDA页面布局、筛选控件和图表容器。 |
 | [src/user_behavior_analysis/assets/eda/dashboard.js](../src/user_behavior_analysis/assets/eda/dashboard.js) | 看板前端 | 调用筛选接口，更新图表、商品下钻与CSV导出。 |

@@ -37,7 +37,7 @@
 | field_profiles.json | 439×4条候选行粒度画像及源业务缺失策略 |
 | reader_validation.json | 读取接口的全量行数、列序和批次检查 |
 | source_manifest.json | 运行所用源代码和配置指纹；baseline_commit为开始时已提交版本 |
-| quality.json / tests.log | 119项测试与本地完整门禁 |
+| quality.json | 119项测试与本地完整门禁 |
 | root_inventory.json | 根目录保留项及清理结果，无关文件为0 |
 | code_review.md | 本次连接、读取和失败行为的代码复核 |
 

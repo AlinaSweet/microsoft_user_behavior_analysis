@@ -12,7 +12,7 @@
 | s2_01 | SQLite与SQL基础分析 | 完成 | [方法](sqlite_analysis.md)、[11项结果](../outputs/reports/stage2_step1_20261024/README.md) |
 | s2_02 | 全维度特征体系 | 完成 | [特征体系](feature_system.md)、445源定义、四截点预拼接层 |
 | s2_03 | 特征预处理与有效性验证 | 主体完成；跨截点稳定性专项待补 | [分组筛选](feature_validation.md)、[编码与稀疏预嵌入](stage2_preprocessing.md)、[全量重放](../outputs/reports/stage2/audit.json) |
-| s2_04 | 多维度探索性分析 | 核心完成；看板展示细项待补 | [联动看板](eda_dashboard1.md)、[图表和洞察](../outputs/reports/stage2/README.md) |
+| s2_04 | 多维度探索性分析 | 核心完成；在线入口与展示细项已补齐 | [联动看板](eda_dashboard1.md)、[图表和洞察](../outputs/reports/stage2/README.md) |
 | s3_01 | 样本与数据划分 | 部分：对级标签/时间划分已完成；随机约7:2:1对照与三种不平衡方案待执行 | [当前样本](../data/catalog/feature_validation_v1.json) |
 | s3_02 | 传统模型与调优 | 待开展正式多模型/Optuna；已有固定LR预实验 | LR、XGBoost、LightGBM与资源/分类指标 |
 | s3_03 | 深度模型与优化 | 待执行 | GRU/LSTM、DIN、注意力、训练优化 |
@@ -36,3 +36,5 @@
 非隐私、允许公开分析；平台来源许可编号未独立核实。
 微软中国业务按Asia/Shanghai假设，源时间保持原值；金额缺失采用RF代理。
 没有曝光、订单、分钟秒或会话标识，不构造相应真实指标；期内无法定节假日，不伪造节日对照。
+
+2026-11-17：2.4增加GitHub Pages在线17视图及CSV导出，补齐人均记录、类目覆盖、周末、商品类目与漏斗分母展示。发布清单见outputs/reports/dashboard_publication_20261117/manifest.json；历史2026-11-15复核保留其测量时点结论。

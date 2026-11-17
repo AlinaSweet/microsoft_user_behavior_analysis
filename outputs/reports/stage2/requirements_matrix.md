@@ -1,7 +1,7 @@
 # 第二阶段技术验收表
 
 依据[项目大纲](../../../docs/requirements/project_brief.pdf)、[看板设计](../../../docs/requirements/dashboard_outline.pdf)及已确认的数据口径，按第二阶段四部分登记。
-数值验收基线为2026-11-15，文档整理于2026-11-16。跨截点专项与看板展示细项尚未完成。
+数值验收基线为2026-11-15，文档整理于2026-11-16。跨截点专项仍待补；2026-11-17已补齐看板展示细项及GitHub在线入口。
 
 ## 2.1 SQLite数据库搭建与SQL基础分析
 
@@ -46,7 +46,8 @@
 | 漏斗、分群和商品类目 | 核心完成：成熟严格路径、RF代理、转化周期及跨日期复购代理 | figures/；tables/；supplementary_eda.json |
 | 可视化与洞察 | 已完成：10类核心EDA及10幅分组评价图，附分母和边界 | figures/；README.md |
 | 联动、下钻和导出 | 已完成：日期×人群×类目全局重算、商品下钻及CSV | docs/eda_dashboard1.md；eda_audit.json |
-| 展示细项 | 待补：人均行为/购买记录卡、类目覆盖定义、周末标记、商品类目列、漏斗各级比率及分母 | 综合报告D02；src/user_behavior_analysis/assets/eda/ |
+| 展示细项 | 已补齐：人均行为/购买记录卡、固定全体类目分母、周末标记、商品类目列、漏斗各级比率及分母 | src/user_behavior_analysis/assets/eda/；dashboard_publication_20261117/manifest.json |
+| 在线访问 | 已实现：GitHub Pages的17个预计算视图与CSV导出；任意组合及商品下钻使用本地版 | .github/workflows/pages.yml；docs/eda_dashboard1.md |
 | 节假日对比 | 数据条件不具备：观察期无法定节假日，不构造虚假对照 | docs/business_conventions.md |
 
 ## 全阶段工程与数据边界

@@ -50,3 +50,7 @@ outputs/**/*.feather
 
 # Current artifact-tool inspection sidecars are local QA, not deliverables
 /outputs/reports/stage2/*.inspect.ndjson
+
+# Generated Pages site and routine logs; frozen audit logs stay tracked
+/_site/
+/outputs/reports/**/*.log

@@ -4,8 +4,9 @@ const names={1:"浏览",2:"收藏",3:"加购",4:"购买"};
 const cohorts={all:"全部用户",low_activity:"低活跃",high_activity:"高活跃",new_observed:"新近观测",high_value_proxy:"高价值代理",potential_proxy:"潜力代理",at_risk_proxy:"近期风险代理",dormant_proxy:"沉睡代理"};
 const colors={1:"#4384a1",2:"#8a6aa3",3:"#c09a36",4:"#d47b3e"};
 const num=v=>Number(v||0).toLocaleString("zh-CN");
-const pct=v=>v===null||v===undefined?"—":(100*v).toFixed(2)+"%";
+const pct=v=>v===null||v===undefined?"—":(100*v).toFixed(v>0&&v<0.0001?4:2)+"%";
 const esc=v=>String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const isStatic=Boolean(window.dashboardArchive);
 let current=null,options=null,requestNumber=0;
 /** 读取尚未应用的全局筛选。Returns: URLSearchParams，供统计请求使用。 */
 function query(){return new URLSearchParams(Object.fromEntries(["start","end","cohort","category","item"].map(k=>[k,$(k).value])));}
@@ -24,6 +25,7 @@ function linePlot(id,labels,series,percent=false){
  if(!labels.length){empty(id);return;}
  const finite=series.flatMap(s=>s.values).filter(v=>v!==null&&Number.isFinite(v)),max=Math.max(...finite,1e-8),sx=i=>55+i*465/Math.max(labels.length-1,1),sy=v=>225-180*v/max;
  let text="";
+ if(id==="daily"||id==="dailyRate")labels.forEach((label,i)=>{const day=new Date(current.filters.start+"T00:00:00Z");day.setUTCDate(day.getUTCDate()+i);if([0,6].includes(day.getUTCDay()))text+=`<rect x="${sx(i)-3}" y="36" width="6" height="190" fill="#e8edf6"><title>周末 ${esc(label)}</title></rect>`;});
  for(let i=0;i<5;i++){const value=max*i/4,y=sy(value);text+=`<line x1="55" y1="${y}" x2="525" y2="${y}" stroke="#e1e8ed"/><text x="48" y="${y+3}" text-anchor="end">${percent?pct(value):num(Math.round(value))}</text>`;}
  labels.forEach((l,i)=>{if(i%Math.max(1,Math.ceil(labels.length/7))===0||i===labels.length-1)text+=`<text x="${sx(i)}" y="245" text-anchor="middle">${esc(l)}</text>`;});
  series.forEach((s,j)=>{const points=s.values.map((v,i)=>v===null?null:`${sx(i)},${sy(v)}`).filter(Boolean).join(" ");text+=`<polyline points="${points}" fill="none" stroke="${s.color}" stroke-width="2"/><text x="${60+j*110}" y="20" style="fill:${s.color}">${esc(s.name)}</text>`;});
@@ -47,7 +49,8 @@ function renderHeat(){
 }
 /** 渲染可下钻排名。Args: id容器；rows排序结果；key为类目或商品ID字段。 */
 function rankTable(id,rows,key){
- $(id).innerHTML="<table><thead><tr><th>"+(key==="category_id"?"类目":"商品")+"</th><th>记录数</th><th>浏览组合</th><th>购买覆盖</th></tr></thead><tbody>"+rows.map(r=>`<tr data-${key==="category_id"?"category":"item"}="${esc(r[key])}"><td>${esc(r[key])}</td><td>${num(r.records)}</td><td>${num(r.viewed_pairs)}</td><td>${pct(r.purchase_coverage)}</td></tr>`).join("")+"</tbody></table>";
+ const itemColumn=key==="item_id";
+ $(id).innerHTML="<table><thead><tr><th>"+(itemColumn?"商品":"类目")+"</th>"+(itemColumn?"<th>类目</th>":"")+"<th>记录数</th><th>浏览组合</th><th>购买覆盖</th></tr></thead><tbody>"+rows.map(r=>`<tr ${isStatic?"":"data-"+(itemColumn?"item":"category")+'="'+esc(r[key])+'"'}><td>${esc(r[key])}</td>${itemColumn?"<td>"+esc(r.category_id)+"</td>":""}<td>${num(r.records)}</td><td>${num(r.viewed_pairs)}</td><td>${pct(r.purchase_coverage)}</td></tr>`).join("")+"</tbody></table>";
 }
 /** 在当前全局结果内切换记录量和购买覆盖排名，覆盖排名遵守支持量门槛。 */
 function renderRanks(){
@@ -61,7 +64,7 @@ function scatter(){
  const thresholds=current.quadrant_thresholds||{pv_records:0,purchase_coverage:0};
  let text=`<line x1="50" y1="235" x2="525" y2="235" stroke="#b8cbd6"/><line x1="50" y1="35" x2="50" y2="235" stroke="#b8cbd6"/><text x="50" y="18">购买覆盖（0–100%）</text><text x="240" y="265">浏览记录量（对数坐标）</text>`;
  text+=`<line x1="${sx(thresholds.pv_records)}" x2="${sx(thresholds.pv_records)}" y1="30" y2="235" stroke="#aabac5" stroke-dasharray="4"/><line x1="50" x2="525" y1="${sy(thresholds.purchase_coverage)}" y2="${sy(thresholds.purchase_coverage)}" stroke="#aabac5" stroke-dasharray="4"/>`;
- rows.forEach(r=>text+=`<circle data-item="${esc(r.item_id)}" cx="${sx(r.pv_records)}" cy="${sy(r.purchase_coverage||0)}" r="3" fill="#c97e43" opacity=".45"><title>商品${esc(r.item_id)}：浏览${num(r.pv_records)}，浏览组合${num(r.viewed_pairs)}，购买覆盖${pct(r.purchase_coverage)}</title></circle>`);
+ rows.forEach(r=>text+=`<circle ${isStatic?"":"data-item=\""+esc(r.item_id)+"\""} cx="${sx(r.pv_records)}" cy="${sy(r.purchase_coverage||0)}" r="3" fill="#c97e43" opacity=".45"><title>商品${esc(r.item_id)}：浏览${num(r.pv_records)}，浏览组合${num(r.viewed_pairs)}，购买覆盖${pct(r.purchase_coverage)}</title></circle>`);
  $("quadrants").innerHTML=svg(text,280);
 }
 /** 按浏览量排序全部类目，分别累计浏览和购买贡献；无购买分母时保留不可用。 */
@@ -73,7 +76,7 @@ function renderTail(){
 /** 独立展示用户商品对或用户的未来7天目标，未成熟时不生成零购买率。 */
 function renderForward(){
  const f=current.forward;$("forward").replaceChildren();
- if(!f.available){$("forwardNote").textContent="所选历史截点的未来7天尚未完整观测，结果不可用。可将结束日期调整至2025-12-11或之前再探索。";return;}
+ if(!f.available){$("forwardNote").textContent="所选历史截点的未来7天尚未完整观测，结果不可用。"+(isStatic?"请选择成熟随访或较早周窗口视图。":"可将结束日期调整至2025-12-11或之前再探索。");return;}
  $("forwardNote").textContent=`截点 ${f.anchor.slice(0,10)}，最近7天交互候选 ${num(f.rows)} 对，未来购买 ${num(f.positives)} 对，正例率 ${pct(f.rows?f.positives/f.rows:null)}。横轴次数按当前所选历史窗口统计。`;
  const userTarget=$("forwardTarget").value==="user";
  const displayed=userTarget?f.user_bins:f.bins;
@@ -84,7 +87,7 @@ function renderForward(){
 /** 用同一查询响应更新全部模块。Args: data为后端完整全局筛选结果。 */
 function render(data){
  current=data;const m=data.overview;
- const cards=[["有效日志记录",num(m.records)],["不同四元组",num(m.four_tuple_keys)],["用户",num(m.users)],["商品",num(m.items)],["类目",num(m.categories)],["同期购买用户占比",pct(m.users?m.buying_users/m.users:null)],["人均交互商品组合",m.users?(data.total_pairs/m.users).toFixed(2):"—"],["活跃用户日平均观测小时桶",m.active_user_days?(m.observed_user_hours/m.active_user_days).toFixed(2):"—"]];
+ const cards=[["有效日志记录",num(m.records)],["不同四元组",num(m.four_tuple_keys)],["用户",num(m.users)],["人均行为记录",m.users?(m.records/m.users).toFixed(2):"—"],["人均购买记录（全部用户）",m.users?(m.buy_records/m.users).toFixed(2):"—"],["购买记录用户数",num(m.buying_users)],["商品",num(m.items)],["类目",num(m.categories)],["全体类目覆盖（分母"+num(options.source_categories||options.categories.length)+"）",pct(m.categories/(options.source_categories||options.categories.length))],["同期购买用户占比",pct(m.users?m.buying_users/m.users:null)],["人均交互商品组合",m.users?(data.total_pairs/m.users).toFixed(2):"—"],["活跃用户日平均观测小时桶",m.active_user_days?(m.observed_user_hours/m.active_user_days).toFixed(2):"—"]];
  $("cards").innerHTML=cards.map(([label,value])=>`<div class="card"><span>${label}</span><strong>${value}</strong></div>`).join("");
  $("scope").textContent=`当前统计：${data.filters.start} 至 ${data.filters.end}；${cohorts[data.filters.cohort]}；类目 ${data.filters.category||"全部"}${data.filters.item?"；商品 "+data.filters.item:""}。分层先按日期窗口内全类目历史确定。`;
  $("drill").hidden=!data.filters.item;if(data.filters.item)$("drill").innerHTML=`商品 ${esc(data.filters.item)} 明细 <button id="clearItem" class="secondary">返回全部商品</button>`;
@@ -103,20 +106,22 @@ function render(data){
  const buckets=new Map();data.purchase_distribution.forEach(r=>{const b=r.buy_records===0?"0":r.buy_records===1?"1":r.buy_records<5?"2-4":r.buy_records<10?"5-9":"10+";buckets.set(b,(buckets.get(b)||0)+r.users);});bars("purchases",[...buckets].map(([bin,users])=>({bin,users})),"bin","users");
  $("preferences").innerHTML="<table><tr><th>活跃层</th><th>类目</th><th>四元组数</th></tr>"+data.preferences.map(r=>`<tr><td>${esc(r.activity)}</td><td>${esc(r.category_id)}</td><td>${num(r.keys)}</td></tr>`).join("")+"</table>";
  const stages=["成熟浏览组合","后续跨小时加购","再跨小时收藏","再跨小时购买"];bars("funnel",data.funnel.stage_counts.map((count,i)=>({label:stages[i],count})),"label","count");
+ const counts=data.funnel.stage_counts;
+ $("funnelRates").innerHTML="<table><thead><tr><th>阶段</th><th>组合数</th><th>相邻分母</th><th>相邻通过率</th><th>首层分母</th><th>累计通过率</th></tr></thead><tbody>"+counts.map((count,i)=>`<tr><td>${stages[i]}</td><td>${num(count)}</td><td>${i?num(counts[i-1]):"—"}</td><td>${i?pct(counts[i-1]?count/counts[i-1]:null):"—"}</td><td>${num(counts[0])}</td><td>${pct(counts[0]?count/counts[0]:null)}</td></tr>`).join("")+"</tbody></table>";
  $("pathNote").textContent=`漏斗分母为具有完整7天随访的浏览组合。直接浏览后跨小时购买 ${num(data.funnel.pv_to_buy_strict)} 对；允许同小时的候选购买路径 ${num(data.funnel.pv_to_buy_same_hour_candidates)} 对。收藏不是购买的必经步骤。转移采用筛选记录中间隔不超过24小时的下一个观测活跃小时，多标签行和可能大于100%，不解释为退出概率。`;
  $("transitions").innerHTML="<table><tr><th>当前/下一小时</th>"+[1,3,2,4].map(i=>"<th>"+names[i]+"</th>").join("")+"</tr>"+[1,3,2,4].map(i=>"<tr><td>"+names[i]+"</td>"+[1,3,2,4].map(j=>"<td>"+pct(data.transitions.find(r=>r.current===i&&r.following===j)?.rate)+"</td>").join("")+"</tr>").join("")+"</table>";renderForward();
 }
 /** 请求完整重算；响应序号阻止旧请求覆盖新结果，失败时保留明确的未更新状态。 */
 async function apply(){
- const token=++requestNumber;$("status").className="";$("status").textContent="正在按三个全局条件重新计算所有统计…";$("controls").querySelector("button").disabled=true;
- try{const response=await fetch("/api/data?"+query()),data=await response.json();if(token!==requestNumber)return;if(!response.ok)throw new Error(data.error||"数据未更新");render(data);$("status").textContent=`已更新。当前记录 ${num(data.overview.records)} 条；所有核心模块使用同一筛选。`;}
+ const token=++requestNumber;$("status").className="";$("status").textContent=isStatic?"正在读取完整数据预计算视图…":"正在按三个全局条件重新计算所有统计…";$("controls").querySelector("button").disabled=true;
+ try{const response=isStatic?null:await fetch("/api/data?"+query()),data=isStatic?await window.dashboardArchive.load():await response.json();if(token!==requestNumber)return;if(response&&!response.ok)throw new Error(data.error||"数据未更新");render(data);$("status").textContent=`已更新。当前记录 ${num(data.overview.records)} 条；所有核心模块使用同一筛选。`;}
  catch(error){$("status").className="error";$("status").textContent="统计未更新："+error.message;}
  finally{if(token===requestNumber)$("controls").querySelector("button").disabled=false;}
 }
 $("controls").addEventListener("submit",event=>{event.preventDefault();$("item").value="";apply();});
-$("reset").addEventListener("click",()=>{$("start").value=options.start;$("end").value=options.end;$("cohort").value="all";$("category").value="";$("item").value="";apply();});
+$("reset").addEventListener("click",()=>{if(isStatic){window.dashboardArchive.reset();apply();return;}$("start").value=options.start;$("end").value=options.end;$("cohort").value="all";$("category").value="";$("item").value="";apply();});
 $("forwardTarget").addEventListener("change",()=>current&&renderForward());
 $("heatBehavior").addEventListener("change",()=>current&&renderHeat());$("rankMetric").addEventListener("change",()=>current&&renderRanks());
-document.addEventListener("click",event=>{const category=event.target.closest("[data-category]"),item=event.target.closest("[data-item]");if(category){$("category").value=category.dataset.category;$("item").value="";apply();}if(item){$("item").value=item.dataset.item;apply();}if(event.target.id==="clearItem"){$("item").value="";apply();}});
-$("download").addEventListener("click",()=>{if(!current)return;const p=new URLSearchParams(current.filters);p.set("table",$("exportTable").value);const a=document.createElement("a");a.href="/api/export?"+p;a.download="eda_"+$("exportTable").value+".csv";a.click();});
-(async()=>{try{options=await(await fetch("/api/options")).json();$("start").value=options.start;$("end").value=options.end;for(const id of ["start","end"]){$(id).min=options.start;$(id).max=options.end;}$("categories").innerHTML=options.categories.map(v=>`<option value="${esc(v)}"></option>`).join("");await apply();}catch(error){$("status").className="error";$("status").textContent="请通过本地看板服务打开此页面。";}})();
+document.addEventListener("click",event=>{if(isStatic)return;const category=event.target.closest("[data-category]"),item=event.target.closest("[data-item]");if(category){$("category").value=category.dataset.category;$("item").value="";apply();}if(item){$("item").value=item.dataset.item;apply();}if(event.target.id==="clearItem"){$("item").value="";apply();}});
+$("download").addEventListener("click",()=>{if(!current)return;if(isStatic){window.dashboardArchive.download(current,$("exportTable").value);return;}const p=new URLSearchParams(current.filters);p.set("table",$("exportTable").value);const a=document.createElement("a");a.href="/api/export?"+p;a.download="eda_"+$("exportTable").value+".csv";a.click();});
+(async()=>{try{options=isStatic?await window.dashboardArchive.init():await(await fetch("/api/options")).json();$("start").value=options.start;$("end").value=options.end;for(const id of ["start","end"]){$(id).min=options.start;$(id).max=options.end;}$("categories").innerHTML=options.categories.map(v=>`<option value="${esc(v)}"></option>`).join("");await apply();}catch(error){$("status").className="error";$("status").textContent=isStatic?"在线数据暂不可用："+error.message:"请通过本地看板服务打开此页面。";}})();

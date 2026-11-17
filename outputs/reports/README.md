@@ -19,7 +19,7 @@
 | 2.1 SQLite与SQL | [数据库与11项SQL](stage2_step1_20261024/README.md) | 建库、完整导出清单与可同步摘要 |
 | 2.2 全维度特征 | [源特征生成](feature_system_20261029/README.md)、[预拼接验收](prejoined_wide_20261107/README.md)、[正式字典](stage2/feature_dictionary.xlsx) | 439标量、6逻辑序列、四截点宽表与逐值审计 |
 | 2.3 预处理与有效性 | [分组筛选和第一轮LR](feature_validation_20261114/README.md)、[编码对照及冻结矩阵](stage2/README.md) | 对级标签、训练期筛选、259列矩阵、指标及完整重放 |
-| 2.4 多维EDA | [核心静态图](stage2/figures/)、[补充统计表](stage2/tables/)、[EDA验收](stage2/eda_audit.json) | 行为、时间、漏斗、分群、商品和类目探索 |
+| 2.4 多维EDA | [在线看板](https://alinasweet.github.io/microsoft_user_behavior_analysis/)、[发布视图清单](dashboard_publication_20261117/manifest.json)、[核心静态图](stage2/figures/)、[补充统计表](stage2/tables/)、[EDA验收](stage2/eda_audit.json) | 行为、时间、漏斗、分群、商品和类目探索 |
 
 ## 阶段综合验收
 

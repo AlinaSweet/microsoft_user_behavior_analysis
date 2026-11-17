@@ -1,7 +1,9 @@
 # 看板一：多维探索与使用
 
-启动：在项目根目录运行bash scripts/run_eda_dashboard.sh，访问http://127.0.0.1:8765。
-需要项目虚拟环境和本机base_raw_v2数据；GitHub本身不运行Python查询服务。
+**[打开GitHub在线EDA看板](https://alinasweet.github.io/microsoft_user_behavior_analysis/)**
+
+本地启动：在项目根目录运行bash scripts/run_eda_dashboard.sh，访问http://127.0.0.1:8765。
+本地版需要项目虚拟环境和本机base_raw_v2数据。在线版由GitHub Pages提供，不需要本机服务。
 源为完整四元组频数表，各组按raw_count加权还原12,256,906条有效原记录，未抽样。
 
 ## 交互与口径
@@ -34,3 +36,31 @@ RF高价值/潜力/近期风险/沉睡为窗口内购买记录的代理分层，
 建议从“相近活跃度下的加购关联”“同类目且支持量充足的高浏览低覆盖商品”“不同历史区间的时段规律”继续探索。
 观察关联不证明因果；没有曝光无法算CTR，没有订单无法算真实复购，没有会话与分钟秒无法算在线时长。
 数据期没有法定节假日，保留工作日/周末比较并明确无法执行节假日实证对照。
+
+## GitHub Pages在线发布
+
+在线版提供17个完整数据预计算视图：全周期与成熟随访各1个、7类用户分层、3个周窗口和5个热门类目。
+它们各自使用原始全量数据计算，切换时整页模块同步更新，未以抽样替代全量统计。
+热力图行为、排名指标、用户/用户商品对关联目标可切换；6种统计表可下载CSV。
+任意日期×分层×类目的重新组合及单商品下钻仅在本地查询版提供；在线版隐藏这些输入与点击提示。
+未来标签不成熟时保持不可用；类目覆盖以完整数据中的8,916个类目为分母。
+人均行为和人均购买均以当前筛选全部用户为分母；购买记录不解释为订单。
+每日趋势以灰底标记周末，热门商品附类目，漏斗附相邻/累计通过率和对应分母。
+
+已计算视图和SHA-256见[发布清单](../outputs/reports/dashboard_publication_20261117/manifest.json)。
+构建时校验每个源文件指纹、筛选参数、行为与逐日记录合计，仅向_site复制页面、样式、脚本与聚合JSON。
+历史eda_baseline和eda_mature_example直接引用现有报告，Git中不再存一套副本。
+Python服务、原始CSV、Parquet、SQLite、用户级事件、标签和矩阵不进入发布目录。
+
+```bash
+PYTHONPATH=src .venv/bin/python scripts/build_dashboard_site.py
+python3 -m http.server 8000 --directory _site
+```
+
+访问http://127.0.0.1:8000。_site是可重建发布目录，已从Git排除。
+main分支的Quality检查成功后，Dashboard Pages工作流自动构建并发布同一提交；Settings→Pages的Source为GitHub Actions。
+后续数据更新应新建日期版本：更新export_dashboard.py的OUTPUT和视图定义，执行导出，再修改构建模块的MANIFEST；现有日期版本禁止覆盖。
+只修改展示时无需重新导出数据，推送main并通过检查即可发布。
+部署机制参考[GitHub官方说明](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
+
+2026-11-17增加在线发布和展示补项；2026-11-15的模型与数值验收基线继续保留原测量结论。

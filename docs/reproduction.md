@@ -15,7 +15,9 @@
 | 预拼接审计 | scripts/audit_wide_features.py，参数见prejoined_features.md |
 | 对级标签与第一轮筛选 | scripts/run_feature_validation.py，参数见feature_validation.md |
 | 当前新增预处理/实验/报告/重放 | PYTHONPATH=src .venv/bin/python scripts/run_stage2_completion.py --phase all |
-| 当前交互EDA | bash scripts/run_eda_dashboard.sh |
+| 本地交互EDA | bash scripts/run_eda_dashboard.sh |
+| GitHub在线EDA | https://alinasweet.github.io/microsoft_user_behavior_analysis/ |
+| 生成静态发布目录 | PYTHONPATH=src .venv/bin/python scripts/build_dashboard_site.py |
 | 全部代码检查 | bash scripts/check_quality.sh --force |
 
 不同版本必须复制对应config并设置全新的输出目录/catalog，然后用--config指定。

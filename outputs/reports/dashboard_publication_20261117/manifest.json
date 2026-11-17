@@ -1,0 +1,230 @@
+{
+  "version": "dashboard_publication_20261117",
+  "mode": "saved_full_source_views",
+  "source": "data/processed/base_raw_v2/key_hour/data.parquet",
+  "source_sha256": "356d376f4b13a7ce641e788eb0d13e98f3a79873be8bba77ddb4fa32cd1600ff",
+  "views": [
+    {
+      "label": "全周期 · 全部用户 / 全部类目",
+      "path": "outputs/reports/stage2/eda_baseline.json",
+      "sha256": "b211d000335c703614b81129a3549933c4c6b9c9bfe77fcf86c49acab4e7dd31",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-18",
+        "cohort": "all",
+        "category": "",
+        "item": ""
+      },
+      "records": 12256906
+    },
+    {
+      "label": "成熟随访 · 11月18日—12月8日 / 全部用户",
+      "path": "outputs/reports/stage2/eda_mature_example.json",
+      "sha256": "7b1c2061e7514329d03c9fd7d91ac29dab838cde44f72e0502c25bfe247e67cd",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-08",
+        "cohort": "all",
+        "category": "",
+        "item": ""
+      },
+      "records": 7893221
+    },
+    {
+      "label": "全周期 · 低活跃",
+      "path": "outputs/reports/dashboard_publication_20261117/view_01.json",
+      "sha256": "e2b0a7c3b6d095d5728efe5af59084b24e8850a7018350f5eb3801e6a8b91cd7",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-18",
+        "cohort": "low_activity",
+        "category": "",
+        "item": ""
+      },
+      "records": 1177
+    },
+    {
+      "label": "全周期 · 高活跃",
+      "path": "outputs/reports/dashboard_publication_20261117/view_02.json",
+      "sha256": "273f5e0e953c3bba4a175711876cbce51e2922f533a124e0a3dff4f885178c55",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-18",
+        "cohort": "high_activity",
+        "category": "",
+        "item": ""
+      },
+      "records": 12217446
+    },
+    {
+      "label": "全周期 · 新近观测",
+      "path": "outputs/reports/dashboard_publication_20261117/view_03.json",
+      "sha256": "080bece7c25a02763ad8de8af60ff3f8baa13a66fb42f4f1b24cb7865cf88994",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-18",
+        "cohort": "new_observed",
+        "category": "",
+        "item": ""
+      },
+      "records": 1682
+    },
+    {
+      "label": "全周期 · 高价值代理",
+      "path": "outputs/reports/dashboard_publication_20261117/view_04.json",
+      "sha256": "a4cae4c5b17c47f1b765bbdc92cd25133c4d4055d5eaba48eb67673accd3f667",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-18",
+        "cohort": "high_value_proxy",
+        "category": "",
+        "item": ""
+      },
+      "records": 9806225
+    },
+    {
+      "label": "全周期 · 潜力代理",
+      "path": "outputs/reports/dashboard_publication_20261117/view_05.json",
+      "sha256": "2a76dfe5ee02946f0f6fd095581eb85344b18cee9645f12ed625978019197449",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-18",
+        "cohort": "potential_proxy",
+        "category": "",
+        "item": ""
+      },
+      "records": 2073217
+    },
+    {
+      "label": "全周期 · 近期风险代理",
+      "path": "outputs/reports/dashboard_publication_20261117/view_06.json",
+      "sha256": "47516b38e65265817227561b0da7ae508e092646cd3263ca0d9486bad5e4191a",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-18",
+        "cohort": "at_risk_proxy",
+        "category": "",
+        "item": ""
+      },
+      "records": 281003
+    },
+    {
+      "label": "全周期 · 沉睡代理",
+      "path": "outputs/reports/dashboard_publication_20261117/view_07.json",
+      "sha256": "e7da6a692102e2b2ca356f8f309af52575c1d7623a56af29f2af9f39f7a3d7a6",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-18",
+        "cohort": "dormant_proxy",
+        "category": "",
+        "item": ""
+      },
+      "records": 96461
+    },
+    {
+      "label": "2025-11-18—2025-11-24 · 全部用户",
+      "path": "outputs/reports/dashboard_publication_20261117/view_08.json",
+      "sha256": "afb1f1167ea51ebcb35032f90d29d200525fbe8b4723e887a0f83b8a72b45f11",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-11-24",
+        "cohort": "all",
+        "category": "",
+        "item": ""
+      },
+      "records": 2534456
+    },
+    {
+      "label": "2025-11-25—2025-12-01 · 全部用户",
+      "path": "outputs/reports/dashboard_publication_20261117/view_09.json",
+      "sha256": "62c2a61033cad0e3bb5630ff7cedbd9c5c3031bbdba1f580f2a2ccd6a7265445",
+      "filters": {
+        "start": "2025-11-25",
+        "end": "2025-12-01",
+        "cohort": "all",
+        "category": "",
+        "item": ""
+      },
+      "records": 2604085
+    },
+    {
+      "label": "2025-12-02—2025-12-08 · 全部用户",
+      "path": "outputs/reports/dashboard_publication_20261117/view_10.json",
+      "sha256": "fc15652e400225425cefcae345b05098ed0ad5012d881c34da8676d9eb800436",
+      "filters": {
+        "start": "2025-12-02",
+        "end": "2025-12-08",
+        "cohort": "all",
+        "category": "",
+        "item": ""
+      },
+      "records": 2754680
+    },
+    {
+      "label": "全周期 · 热门类目 1863",
+      "path": "outputs/reports/dashboard_publication_20261117/view_11.json",
+      "sha256": "436ebe03180623c2e885ce2cdfd5ed5099a755711045fc864748900e49b5b5c5",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-18",
+        "cohort": "all",
+        "category": "1863",
+        "item": ""
+      },
+      "records": 393247
+    },
+    {
+      "label": "全周期 · 热门类目 13230",
+      "path": "outputs/reports/dashboard_publication_20261117/view_12.json",
+      "sha256": "c30b5ca4387b8508346e22c43eec5436028f362c14c728933d71ee2a61786f69",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-18",
+        "cohort": "all",
+        "category": "13230",
+        "item": ""
+      },
+      "records": 356773
+    },
+    {
+      "label": "全周期 · 热门类目 5027",
+      "path": "outputs/reports/dashboard_publication_20261117/view_13.json",
+      "sha256": "e9453f633f94b4fe357fbda48a99faa668294e7914be1e898f7599428a40cb09",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-18",
+        "cohort": "all",
+        "category": "5027",
+        "item": ""
+      },
+      "records": 334280
+    },
+    {
+      "label": "全周期 · 热门类目 5894",
+      "path": "outputs/reports/dashboard_publication_20261117/view_14.json",
+      "sha256": "cd5828257d4c2e86b67856abe3c979bfd87f3abd7baf10a0746cffae6e4190e1",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-18",
+        "cohort": "all",
+        "category": "5894",
+        "item": ""
+      },
+      "records": 330207
+    },
+    {
+      "label": "全周期 · 热门类目 6513",
+      "path": "outputs/reports/dashboard_publication_20261117/view_15.json",
+      "sha256": "8514323bb1c6ad002cdbaf2f36f895bb0ca75c8b9745c346aa11cadf8c1f8f5b",
+      "filters": {
+        "start": "2025-11-18",
+        "end": "2025-12-18",
+        "cohort": "all",
+        "category": "6513",
+        "item": ""
+      },
+      "records": 295768
+    }
+  ],
+  "source_categories": 8916
+}

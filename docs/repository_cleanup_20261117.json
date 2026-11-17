@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-17",
+  "archive_root": "/Users/alina/Desktop/实习/个人资料归档_20261031/仓库精简归档_20261117",
+  "before_cleanup_commit": "c6980e987cc918875e63ef5881dde1f6d82ef8da",
+  "reason": "Unreferenced execution transcripts and old upload screenshots; frozen audit dependencies retained.",
+  "file_count": 9,
+  "bytes": 469664,
+  "files": [
+    {
+      "path": "outputs/reports/feature_validation_20261114/diagnostics_execution.log",
+      "sha256": "28e3c9596c67b35cc05ff33b4d831fbf25b210ec6070e5f528535a0aa645c44b",
+      "bytes": 324
+    },
+    {
+      "path": "outputs/reports/feature_validation_20261114/experiments_execution.log",
+      "sha256": "5a3996cc997757a0ab6dc34ea58c87d893560539414a96ab8684fbab611e6a34",
+      "bytes": 267
+    },
+    {
+      "path": "outputs/reports/feature_validation_20261114/final_audit_execution.log",
+      "sha256": "91167dfd0d17e018ffabcf40ad14c6b826339b65bdf710b8325bfb7484d04891",
+      "bytes": 20
+    },
+    {
+      "path": "outputs/reports/feature_validation_20261114/report_execution.log",
+      "sha256": "f7e0c18f14b151746575b0769bb6c43a53b6efc9a9ed42bc0d40fa403ad62a84",
+      "bytes": 100
+    },
+    {
+      "path": "outputs/reports/feature_validation_20261114/selection_execution.log",
+      "sha256": "37d7a44f386c1b06bbba31b0065c7637039dac3a2820f75efefa8406ba506443",
+      "bytes": 369
+    },
+    {
+      "path": "outputs/reports/feature_validation_20261114/tests.log",
+      "sha256": "ac7970933770d8b33a0c968fbfc5c82cb646de20d0f38f2a78418a90d6eaad55",
+      "bytes": 32111
+    },
+    {
+      "path": "outputs/reports/prejoined_wide_20261107/tests.log",
+      "sha256": "8d57a828e447b098123e9b2e0c7bbb567b7bedb24f64e360b69a3e2fb9d3a124",
+      "bytes": 27874
+    },
+    {
+      "path": "outputs/figures/github_initial_upload.jpg",
+      "sha256": "bc605d76e78becd8db02403cc6f4630cc02b3094c2631340d4aba0598e50b79e",
+      "bytes": 97221
+    },
+    {
+      "path": "outputs/figures/stage1_review_ci_checkpoint.png",
+      "sha256": "eaa40787db3c259d40dd58e3fa8d9cf8ac4e03344d53c716dd31e947afecb1a8",
+      "bytes": 311378
+    }
+  ],
+  "recovery": "Copy relative paths from archive_root or restore from before_cleanup_commit in Git history."
+}
