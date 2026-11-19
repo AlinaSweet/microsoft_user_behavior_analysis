@@ -18,16 +18,19 @@ COLORS = {"pv": "#3777a8", "cart": "#d09a32", "fav": "#8e76a6", "buy": "#d65f38"
 def configure_eda_plots() -> None:
     """Select a headless backend, available Chinese font and readable defaults."""
     matplotlib.use("Agg")
-    candidates = [
-        Path("/System/Library/Fonts/Supplemental/Arial Unicode.ttf"),
-        Path("/System/Library/Fonts/STHeiti Medium.ttc"),
-        Path("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"),
-    ]
-    for path in candidates:
-        if path.exists():
-            font_manager.fontManager.addfont(str(path))
-            name = font_manager.FontProperties(fname=str(path)).get_name()
-            plt.rcParams["font.family"] = name
+    installed = set(font_manager.get_font_names())
+    for family in (
+        "Noto Sans CJK SC",
+        "Noto Sans SC",
+        "Source Han Sans SC",
+        "Microsoft YaHei",
+        "PingFang SC",
+        "Heiti SC",
+        "Arial Unicode MS",
+        "WenQuanYi Zen Hei",
+    ):
+        if family in installed:
+            plt.rcParams["font.family"] = family
             break
     plt.rcParams.update(
         {

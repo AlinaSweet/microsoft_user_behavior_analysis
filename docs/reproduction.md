@@ -27,6 +27,8 @@ py -3.12 -m venv .venv
 
 取得 [数据清单](../data/catalog/user_behavior_raw.json) 对应的原始 CSV。命令校验字节数和 SHA-256，再在独立的新目录克隆当前提交并复制原始 CSV。完整运行需要足够磁盘保存 SQLite、Parquet 和模型中间结果，建议预留至少 30 GB。
 
+重绘中文静态图表时，Matplotlib 从系统已安装的中文字体中选择。缺少中文字体的环境可以安装 Noto Sans CJK SC。
+
 在上述虚拟环境中执行，或将 `python` 替换为上面对应平台的虚拟环境解释器。
 
 ```text
