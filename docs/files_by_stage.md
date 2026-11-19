@@ -1,6 +1,6 @@
 # 按阶段逐文件导航
 
-本页覆盖当前Git仓库的全部 **454个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
+本页覆盖当前Git仓库的全部 **442个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
 
 原始任务见[项目大纲](requirements/project_brief.pdf)，完成状态见[任务台账](project_roadmap.md)。本页是项目全过程的文件导航。带日期目录是产物版本，阶段编号决定阅读顺序。
 
@@ -10,13 +10,13 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 
 | 顺序 | 任务 | 文件数 |
 |---|---|---:|
-| 第一阶段 | [1.1 工程化环境与版本管理搭建](#s1_01) | 80 |
+| 第一阶段 | [1.1 工程化环境与版本管理搭建](#s1_01) | 78 |
 | 第一阶段 | [1.2 领域文献调研与技术栈储备](#s1_02) | 10 |
 | 第一阶段 | [1.3 数据加载与全流程清洗](#s1_03) | 41 |
 | 第一阶段 | [1.4 数据预处理与中间表构建](#s1_04) | 23 |
 | 第二阶段 | [2.1 SQLite数据库搭建与SQL基础分析](#s2_01) | 38 |
-| 第二阶段 | [2.2 全维度特征体系构建](#s2_02) | 61 |
-| 第二阶段 | [2.3 特征预处理与有效性验证](#s2_03) | 91 |
+| 第二阶段 | [2.2 全维度特征体系构建](#s2_02) | 58 |
+| 第二阶段 | [2.3 特征预处理与有效性验证](#s2_03) | 84 |
 | 第二阶段 | [2.4 多维度探索性数据分析](#s2_04) | 70 |
 | 阶段验收 | [第一、二阶段综合验收与结果导航](#acceptance) | 40 |
 
@@ -87,8 +87,6 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [docs/file_inventory.csv](../docs/file_inventory.csv) | 数据明细 | 提供与逐文件导航一致、可筛选的完整文件和直接依赖清单。 |
 | [notebooks/.gitkeep](../notebooks/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
 | [outputs/figures/.gitkeep](../outputs/figures/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
-| [outputs/figures/github_initial_upload.jpg](../outputs/figures/github_initial_upload.jpg) | 验收凭证 | 首次远程仓库上传的可视验收记录。 |
-| [outputs/figures/stage1_review_ci_checkpoint.png](../outputs/figures/stage1_review_ci_checkpoint.png) | 位图 | 第一阶段远程CI通过的可视验收记录。 |
 | [outputs/reports/coding_standard_compliance.json](../outputs/reports/coding_standard_compliance.json) | 结构化记录 | 代码对编码规范的检查结果。 |
 | [outputs/reports/coding_standard_data_validation.json](../outputs/reports/coding_standard_data_validation.json) | 结构化记录 | 应用编码规范前后数据未被改写的核对。 |
 | [outputs/reports/engineering_benchmark.json](../outputs/reports/engineering_benchmark.json) | 结构化记录 | 分块读取、内存与工程资源的原始实测记录。 |
@@ -281,8 +279,6 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [data/catalog/prejoined_wide_v1.json](../data/catalog/prejoined_wide_v1.json) | 数据版本清单 | 登记审计通过的四截点预拼接宽表。 |
 | [scripts/audit_feature_delivery.py](../scripts/audit_feature_delivery.py) | 运行/导出/核验脚本 | 核验源特征、清单、公式和时间边界。 |
 | [scripts/audit_wide_features.py](../scripts/audit_wide_features.py) | 运行/导出/核验脚本 | 完整核对并登记已有预拼接宽表。 |
-| [scripts/build_feature_workbook.mjs](../scripts/build_feature_workbook.mjs) | 运行/导出/核验脚本 | 把源字典、依赖和质量信息导出为源特征Excel。 |
-| [scripts/fill_feature_template.mjs](../scripts/fill_feature_template.mjs) | 运行/导出/核验脚本 | 将当前特征体系填入指定特征拆分参考模板。 |
 | [scripts/read_wide_features.py](../scripts/read_wide_features.py) | 运行/导出/核验脚本 | 按列和行数边界预览已登记宽表。 |
 | [scripts/run_features.py](../scripts/run_features.py) | 运行/导出/核验脚本 | 执行全记录探索、基表重建与四截点源特征生成。 |
 | [src/user_behavior_analysis/service/feature_assembly.py](../src/user_behavior_analysis/service/feature_assembly.py) | 业务逻辑 | 拼接实体特征组件，输出候选用户商品关系。 |
@@ -329,7 +325,6 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [outputs/reports/prejoined_wide_20261107/reader_validation.json](../outputs/reports/prejoined_wide_20261107/reader_validation.json) | 结构化记录 | 受限宽表读取接口的验证结果。 |
 | [outputs/reports/prejoined_wide_20261107/root_inventory.json](../outputs/reports/prejoined_wide_20261107/root_inventory.json) | 结构化记录 | 该交付时点的根目录文件核对。 |
 | [outputs/reports/prejoined_wide_20261107/source_manifest.json](../outputs/reports/prejoined_wide_20261107/source_manifest.json) | 结构化记录 | 生成该版本使用的源代码及依赖文件指纹快照。 |
-| [outputs/reports/prejoined_wide_20261107/tests.log](../outputs/reports/prejoined_wide_20261107/tests.log) | 执行日志 | tests步骤的原始运行日志，保留当时输出。 |
 
 <a id="s2_03"></a>
 
@@ -347,7 +342,6 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [configs/stage2_delivery.json](../configs/stage2_delivery.json) | 运行配置 | 配置目标编码、预嵌入、冻结矩阵和交付输出。 |
 | [data/catalog/feature_validation_v1.json](../data/catalog/feature_validation_v1.json) | 数据版本清单 | 登记对级标签、模型样本与第一轮筛选实验。 |
 | [data/catalog/stage2_complete_v1.json](../data/catalog/stage2_complete_v1.json) | 数据版本清单 | 登记冻结的259列特征矩阵、变换和交付版本。 |
-| [scripts/export_current_dictionary.mjs](../scripts/export_current_dictionary.mjs) | 运行/导出/核验脚本 | 导出包含实际筛选、表示与实验的当前正式Excel字典。 |
 | [scripts/run_feature_validation.py](../scripts/run_feature_validation.py) | 运行/导出/核验脚本 | 构建对级样本并运行训练期筛选、分组LR与诊断。 |
 | [scripts/run_stage2_completion.py](../scripts/run_stage2_completion.py) | 运行/导出/核验脚本 | 执行目标编码、预嵌入、矩阵、固定对照及交付报告。 |
 | [src/user_behavior_analysis/service/completion_audit.py](../src/user_behavior_analysis/service/completion_audit.py) | 业务逻辑 | 逐行重放最终矩阵及保存模型的预测概率。 |
@@ -374,27 +368,21 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [tests/unit/test_validation_contracts.py](../tests/unit/test_validation_contracts.py) | 单元测试/测试包 | 验证时间边界、穷尽分组与业务保护。 |
 | [tests/unit/test_validation_preprocessing.py](../tests/unit/test_validation_preprocessing.py) | 单元测试/测试包 | 验证冻结变换、组核算及评价指标。 |
 | [outputs/reports/feature_validation_20261114/audit.json](../outputs/reports/feature_validation_20261114/audit.json) | 结构化记录 | 验收结果、检查项及通过状态。 |
-| [outputs/reports/feature_validation_20261114/diagnostics_execution.log](../outputs/reports/feature_validation_20261114/diagnostics_execution.log) | 执行日志 | diagnostics步骤的原始运行日志，保留当时输出。 |
 | [outputs/reports/feature_validation_20261114/experiments.json](../outputs/reports/feature_validation_20261114/experiments.json) | 结构化记录 | 第一轮六组固定LR模型、分群效果与完整评价。 |
-| [outputs/reports/feature_validation_20261114/experiments_execution.log](../outputs/reports/feature_validation_20261114/experiments_execution.log) | 执行日志 | experiments步骤的原始运行日志，保留当时输出。 |
 | [outputs/reports/feature_validation_20261114/feature_decisions.csv](../outputs/reports/feature_validation_20261114/feature_decisions.csv) | 数据明细 | 逐标量保留、排除、暂缓及业务保护的原因。 |
 | [outputs/reports/feature_validation_20261114/figures/ablation_metrics.png](../outputs/reports/feature_validation_20261114/figures/ablation_metrics.png) | 位图 | 分组LR验证及测试指标对比，可直接查看或插入报告。 |
 | [outputs/reports/feature_validation_20261114/figures/ablation_metrics.svg](../outputs/reports/feature_validation_20261114/figures/ablation_metrics.svg) | 矢量图 | 分组LR验证及测试指标对比，适合无损放大与导出。 |
 | [outputs/reports/feature_validation_20261114/figures/labels_and_candidate_coverage.png](../outputs/reports/feature_validation_20261114/figures/labels_and_candidate_coverage.png) | 位图 | 四截点标签与候选购买覆盖，可直接查看或插入报告。 |
 | [outputs/reports/feature_validation_20261114/figures/labels_and_candidate_coverage.svg](../outputs/reports/feature_validation_20261114/figures/labels_and_candidate_coverage.svg) | 矢量图 | 四截点标签与候选购买覆盖，适合无损放大与导出。 |
-| [outputs/reports/feature_validation_20261114/final_audit_execution.log](../outputs/reports/feature_validation_20261114/final_audit_execution.log) | 执行日志 | final_audit步骤的原始运行日志，保留当时输出。 |
 | [outputs/reports/feature_validation_20261114/frozen_validation_choice.json](../outputs/reports/feature_validation_20261114/frozen_validation_choice.json) | 结构化记录 | 测试前冻结的第一轮验证集选择。 |
 | [outputs/reports/feature_validation_20261114/immutable_delivery_guard.json](../outputs/reports/feature_validation_20261114/immutable_delivery_guard.json) | 结构化记录 | 已冻结样本和前序产物未被修改的核对记录。 |
 | [outputs/reports/feature_validation_20261114/metrics.csv](../outputs/reports/feature_validation_20261114/metrics.csv) | 数据明细 | 第一轮LR的可筛选指标明细。 |
 | [outputs/reports/feature_validation_20261114/prediction_replay.json](../outputs/reports/feature_validation_20261114/prediction_replay.json) | 结构化记录 | 保存模型直接重算概率的一致性结果。 |
 | [outputs/reports/feature_validation_20261114/quality.json](../outputs/reports/feature_validation_20261114/quality.json) | 结构化记录 | 当时运行的规范、测试与类型检查结果。 |
-| [outputs/reports/feature_validation_20261114/report_execution.log](../outputs/reports/feature_validation_20261114/report_execution.log) | 执行日志 | report步骤的原始运行日志，保留当时输出。 |
 | [outputs/reports/feature_validation_20261114/run_state.json](../outputs/reports/feature_validation_20261114/run_state.json) | 结构化记录 | 任务步骤、资源、参数与完成状态。 |
 | [outputs/reports/feature_validation_20261114/samples.json](../outputs/reports/feature_validation_20261114/samples.json) | 结构化记录 | 四截点候选、正负例、未成熟标签及候选召回控制。 |
 | [outputs/reports/feature_validation_20261114/selection.json](../outputs/reports/feature_validation_20261114/selection.json) | 结构化记录 | 训练期画像、筛选阈值、分组及保留清单。 |
-| [outputs/reports/feature_validation_20261114/selection_execution.log](../outputs/reports/feature_validation_20261114/selection_execution.log) | 执行日志 | selection步骤的原始运行日志，保留当时输出。 |
 | [outputs/reports/feature_validation_20261114/source_manifest.json](../outputs/reports/feature_validation_20261114/source_manifest.json) | 结构化记录 | 生成该版本使用的源代码及依赖文件指纹快照。 |
-| [outputs/reports/feature_validation_20261114/tests.log](../outputs/reports/feature_validation_20261114/tests.log) | 执行日志 | tests步骤的原始运行日志，保留当时输出。 |
 | [outputs/reports/feature_validation_20261114/training_group_diagnostics.json](../outputs/reports/feature_validation_20261114/training_group_diagnostics.json) | 结构化记录 | 完整训练用户群及低覆盖特征的支持与诊断。 |
 | [outputs/reports/stage2/encoding_experiments.json](../outputs/reports/stage2/encoding_experiments.json) | 结构化记录 | 目标编码/预嵌入六个新模型与两个冻结参考的对照。 |
 | [outputs/reports/stage2/encoding_metrics.csv](../outputs/reports/stage2/encoding_metrics.csv) | 数据明细 | 编码对照的分模型、分群和覆盖指标明细。 |
