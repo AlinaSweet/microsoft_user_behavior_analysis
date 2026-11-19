@@ -248,6 +248,7 @@ def run_feature_eda(settings: FeatureSettings) -> dict[str, Any]:
     adjusted = pd.concat(adjusted_frames, ignore_index=True)
     ranks, users = _rank_sensitivity()
     _draw_extension(conditional, adjusted, users, directory / "figures")
+    settings.output_dir.mkdir(parents=True, exist_ok=True)
     users[["user_id", "raw_rank", "key_rank"]].to_parquet(
         settings.output_dir / "eda_user_ranks.parquet", index=False
     )
