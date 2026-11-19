@@ -350,7 +350,9 @@ def create_feature_delivery(settings: FeatureSettings) -> dict[str, Any]:
         "snapshots": [
             {"anchor": row["anchor"], "files": row["files"]} for row in snapshots
         ],
-        "dictionary": "outputs/reports/feature_system_20261029/feature_dictionary.json",
+        "dictionary": (settings.report_dir / "feature_dictionary.json")
+        .relative_to(PROJECT_ROOT)
+        .as_posix(),
         "storage": "large Parquet, NPZ and analytical caches stay local",
     }
     write_json(PROJECT_ROOT / "data/catalog/features_raw_v2.json", catalog)

@@ -2,6 +2,7 @@
 
 import html
 from dataclasses import asdict
+from pathlib import Path
 from typing import Any
 
 import joblib  # type: ignore[import-untyped]
@@ -23,10 +24,10 @@ def build_current_dictionary(settings: CompletionSettings) -> dict[str, Any]:
         Source definitions, current preprocessing decisions and representation lineage.
     """
     sources = completion_inputs(settings)
-    original = read_json_object(
-        settings.validation.report_dir.parent
-        / "feature_system_20261029/feature_dictionary.json"
-    )
+    wide = read_json_object(settings.validation.wide_catalog)
+    audit = read_json_object(verify_registered_file(wide["audit_report"]))
+    source = read_json_object(verify_registered_file(audit["source_catalog"]))
+    original = read_json_object(Path(source["dictionary"]))
     prepared = read_json_object(settings.report_dir / "preprocessing.json")
     state = joblib.load(verify_registered_file(prepared["transform_file"]))
     decisions = {r["name"]: r for r in sources["selection"]["decisions"]}
