@@ -148,7 +148,7 @@
 - [四元组出现次数分布](../outputs/reports/duplicate_review_20261024/key_occurrences.csv)、[四类行为影响](../outputs/reports/duplicate_review_20261024/behavior_dedup_impact.csv)。
 - [15,428条高频待核查清单](../outputs/reports/duplicate_review_20261024/high_frequency_user_hours.csv)。
 - [独立核验结果](../outputs/reports/duplicate_review_20261024/verification.json)、[来源映射与指纹](../data/catalog/duplicate_review_20261024.json)。
-- [第二周周报原件](../outputs/reports/weekly_report_20261019_20261023.pdf)、[归档衔接说明](../outputs/reports/weekly_report_20261019_20261023.md)。
+- 个人周报已归档、个人周报已归档。
 - 用户提供的全量明细压缩包位于本地`data/interim/duplicate_review_20261024/user_hour_detail.csv.zip`。
 
 独立核验从原始CSV重建参考结果，682,940个用户小时的全部10项指标与附件一致。
