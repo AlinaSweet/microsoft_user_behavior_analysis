@@ -1,6 +1,10 @@
+* text=auto eol=lf
+
 *.pdf binary
+*.docx binary
 *.xlsx binary
 *.png binary
+*.jpg binary
 *.zip binary
 
 # Preserve the exact bytes of supplied diagnostic documents and tables.
@@ -8,4 +12,4 @@ outputs/reports/duplicate_review_20261024/analysis_notes.md -text -whitespace
 outputs/reports/duplicate_review_20261024/*.csv -text -whitespace
 
 # Process logs retain their original captured output for fingerprint checks.
-outputs/reports/**/*.log -whitespace
+outputs/reports/**/*.log -text -whitespace

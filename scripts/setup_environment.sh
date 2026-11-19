@@ -16,7 +16,7 @@ else
     python_candidate="$(command -v python3.12 || true)"
   fi
   if [[ ! -x "$python_candidate" ]]; then
-    python_candidate="$HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3"
+    python_candidate="$(command -v python3 || true)"
   fi
 fi
 if [[ ! -x "$python_candidate" ]]; then

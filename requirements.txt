@@ -5,6 +5,7 @@ cycler==0.12.1
 dask==2026.8.0
 distributed==2026.8.0
 duckdb==1.5.6
+et-xmlfile==2.0.0
 fonttools==4.68.0
 fsspec==2026.9.0
 Jinja2==3.1.6
@@ -16,6 +17,7 @@ matplotlib==3.11.2
 msgpack==1.2.3
 narwhals==2.28.0
 numpy==2.5.4
+openpyxl==3.1.5
 packaging==26.3
 pandas==3.0.6
 partd==1.4.2

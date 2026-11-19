@@ -6,6 +6,10 @@
 任务定义见[项目大纲](docs/requirements/project_brief.pdf)，17项任务的状态见[任务台账](docs/project_roadmap.md)。
 本仓库当前包含第一阶段成果及第二阶段核心成果；跨截点特征稳定性专项和大规模压力验证仍待补齐。
 
+克隆后使用 Git 和 Python 3.12。按[复现说明](docs/reproduction.md)安装锁定依赖，再运行
+`python scripts/reproduce.py verify` 检查代码、测试、Excel 导出和在线看板构建。
+全量数据和模型实验使用带指纹的原始 CSV，并在独立目录重新生成。
+
 ## 阅读顺序与全部文件
 
 | 入口 | 内容 |

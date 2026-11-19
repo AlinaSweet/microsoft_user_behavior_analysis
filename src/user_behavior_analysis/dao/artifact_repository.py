@@ -18,6 +18,14 @@ from user_behavior_analysis.models.report_models import ArtifactRequest
 from user_behavior_analysis.models.report_models import GitFilesReport
 from user_behavior_analysis.models.report_models import VerificationReport
 
+_UPLOAD_SCREENSHOTS = {
+    "outputs/figures/github_initial_upload.jpg",
+    "outputs/figures/stage1_review_ci_checkpoint.png",
+}
+_PERSONAL_REPORT = re.compile(
+    r"^(?:weekly_(?:report|summary)_|week[0-9]+_report\.)", re.IGNORECASE
+)
+
 
 def register_artifact(
     request: ArtifactRequest, root: Path = PROJECT_ROOT
@@ -106,6 +114,8 @@ def check_git_files(root: Path = PROJECT_ROOT) -> GitFilesReport:
             issues.append(f"Local symbolic link must not be tracked: {name}")
         if path.stat().st_size > SMALL_FILE_LIMIT_BYTES:
             issues.append(f"Tracked file exceeds 10 MiB: {name}")
+        if name in _UPLOAD_SCREENSHOTS or _PERSONAL_REPORT.match(path.name):
+            issues.append(f"Personal weekly report or upload screenshot in Git: {name}")
         if (
             any(
                 name.startswith(prefix)

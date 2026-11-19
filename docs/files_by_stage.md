@@ -1,6 +1,6 @@
 # 按阶段逐文件导航
 
-本页覆盖当前Git仓库的全部 **471个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
+本页覆盖当前Git仓库的全部 **469个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
 
 原始任务见[项目大纲](requirements/project_brief.pdf)，完成状态见[任务台账](project_roadmap.md)。本页是项目全过程的文件导航。带日期目录是产物版本，阶段编号决定阅读顺序。
 
@@ -10,12 +10,12 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 
 | 顺序 | 任务 | 文件数 |
 |---|---|---:|
-| 第一阶段 | [1.1 工程化环境与版本管理搭建](#s1_01) | 80 |
+| 第一阶段 | [1.1 工程化环境与版本管理搭建](#s1_01) | 81 |
 | 第一阶段 | [1.2 领域文献调研与技术栈储备](#s1_02) | 10 |
 | 第一阶段 | [1.3 数据加载与全流程清洗](#s1_03) | 41 |
 | 第一阶段 | [1.4 数据预处理与中间表构建](#s1_04) | 23 |
 | 第二阶段 | [2.1 SQLite数据库搭建与SQL基础分析](#s2_01) | 38 |
-| 第二阶段 | [2.2 全维度特征体系构建](#s2_02) | 61 |
+| 第二阶段 | [2.2 全维度特征体系构建](#s2_02) | 58 |
 | 第二阶段 | [2.3 特征预处理与有效性验证](#s2_03) | 85 |
 | 第二阶段 | [2.4 多维度探索性数据分析](#s2_04) | 93 |
 | 阶段验收 | [第一、二阶段综合验收与结果导航](#acceptance) | 40 |
@@ -50,6 +50,7 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [scripts/check_quality.sh](../scripts/check_quality.sh) | 运行/导出/核验脚本 | 设置缓存及Python路径后启动质量检查。 |
 | [scripts/run_project.sh](../scripts/run_project.sh) | 运行/导出/核验脚本 | 统一设置项目路径和运行环境后调用命令接口。 |
 | [scripts/setup_environment.sh](../scripts/setup_environment.sh) | 运行/导出/核验脚本 | 建立虚拟环境并安装锁定依赖。 |
+| [scripts/reproduce.py](../scripts/reproduce.py) | 运行/导出/核验脚本 | 跨平台检查干净克隆，并用原始 CSV 在独立目录重建项目。 |
 | [src/user_behavior_analysis/api/__init__.py](../src/user_behavior_analysis/api/__init__.py) | 命令/HTTP入口 | 声明该目录为Python包，并说明该层的责任。 |
 | [src/user_behavior_analysis/api/cli.py](../src/user_behavior_analysis/api/cli.py) | 命令/HTTP入口 | 接收环境检查、基准、源登记、清洗与预处理等命令参数。 |
 | [src/user_behavior_analysis/service/__init__.py](../src/user_behavior_analysis/service/__init__.py) | 业务逻辑 | 声明该目录为Python包，并说明该层的责任。 |
@@ -281,8 +282,6 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [data/catalog/prejoined_wide_v1.json](../data/catalog/prejoined_wide_v1.json) | 数据版本清单 | 登记审计通过的四截点预拼接宽表。 |
 | [scripts/audit_feature_delivery.py](../scripts/audit_feature_delivery.py) | 运行/导出/核验脚本 | 核验源特征、清单、公式和时间边界。 |
 | [scripts/audit_wide_features.py](../scripts/audit_wide_features.py) | 运行/导出/核验脚本 | 完整核对并登记已有预拼接宽表。 |
-| [scripts/build_feature_workbook.mjs](../scripts/build_feature_workbook.mjs) | 运行/导出/核验脚本 | 把源字典、依赖和质量信息导出为源特征Excel。 |
-| [scripts/fill_feature_template.mjs](../scripts/fill_feature_template.mjs) | 运行/导出/核验脚本 | 将当前特征体系填入指定特征拆分参考模板。 |
 | [scripts/read_wide_features.py](../scripts/read_wide_features.py) | 运行/导出/核验脚本 | 按列和行数边界预览已登记宽表。 |
 | [scripts/run_features.py](../scripts/run_features.py) | 运行/导出/核验脚本 | 执行全记录探索、基表重建与四截点源特征生成。 |
 | [src/user_behavior_analysis/service/feature_assembly.py](../src/user_behavior_analysis/service/feature_assembly.py) | 业务逻辑 | 拼接实体特征组件，输出候选用户商品关系。 |
@@ -309,7 +308,6 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [tests/unit/test_wide_reader.py](../tests/unit/test_wide_reader.py) | 单元测试/测试包 | 验证宽表列/行边界与清单验证。 |
 | [tests/integration/test_feature_boundaries.py](../tests/integration/test_feature_boundaries.py) | 集成测试 | 验证历史特征、未来标签和序列的时间边界。 |
 | [docs/requirements/feature_split_reference.xlsx](../docs/requirements/feature_split_reference.xlsx) | Excel工作簿 | 保存特征拆分整理的参考模板，不等同于当前正式字典。 |
-| [outputs/reports/feature_scale_20261116/feature_scale.xlsx](../outputs/reports/feature_scale_20261116/feature_scale.xlsx) | Excel工作簿 | 汇总445条源定义、9种派生表示与259列矩阵映射，区分不同数量口径。 |
 | [outputs/reports/feature_system_20261029/base_rebuild.json](../outputs/reports/feature_system_20261029/base_rebuild.json) | 结构化记录 | 全部原记录基表的生成、数量和版本记录。 |
 | [outputs/reports/feature_system_20261029/delivery_audit.json](../outputs/reports/feature_system_20261029/delivery_audit.json) | 结构化记录 | 源特征字典、快照与输入一致性核对。 |
 | [outputs/reports/feature_system_20261029/feature_dictionary.json](../outputs/reports/feature_system_20261029/feature_dictionary.json) | 结构化记录 | 机器可读的445条源特征字典。 |
@@ -347,7 +345,7 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [configs/stage2_delivery.json](../configs/stage2_delivery.json) | 运行配置 | 配置目标编码、预嵌入、冻结矩阵和交付输出。 |
 | [data/catalog/feature_validation_v1.json](../data/catalog/feature_validation_v1.json) | 数据版本清单 | 登记对级标签、模型样本与第一轮筛选实验。 |
 | [data/catalog/stage2_complete_v1.json](../data/catalog/stage2_complete_v1.json) | 数据版本清单 | 登记冻结的259列特征矩阵、变换和交付版本。 |
-| [scripts/export_current_dictionary.mjs](../scripts/export_current_dictionary.mjs) | 运行/导出/核验脚本 | 导出包含实际筛选、表示与实验的当前正式Excel字典。 |
+| [scripts/export_feature_dictionary.py](../scripts/export_feature_dictionary.py) | 运行/导出/核验脚本 | 从特征与实验 JSON 导出可筛选的正式 Excel 字典。 |
 | [scripts/run_feature_validation.py](../scripts/run_feature_validation.py) | 运行/导出/核验脚本 | 构建对级样本并运行训练期筛选、分组LR与诊断。 |
 | [scripts/run_stage2_completion.py](../scripts/run_stage2_completion.py) | 运行/导出/核验脚本 | 执行目标编码、预嵌入、矩阵、固定对照及交付报告。 |
 | [src/user_behavior_analysis/service/completion_audit.py](../src/user_behavior_analysis/service/completion_audit.py) | 业务逻辑 | 逐行重放最终矩阵及保存模型的预测概率。 |

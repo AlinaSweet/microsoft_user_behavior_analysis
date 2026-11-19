@@ -2,7 +2,7 @@
 
 **[打开GitHub在线EDA看板](https://alinasweet.github.io/microsoft_user_behavior_analysis/)**
 
-本地启动：在项目根目录运行bash scripts/run_eda_dashboard.sh，访问http://127.0.0.1:8765。
+在项目根目录运行 `bash scripts/run_eda_dashboard.sh`，然后打开[本地看板](http://127.0.0.1:8765)。
 本地版需要项目虚拟环境和本机base_raw_v2数据。在线版由GitHub Pages提供，不需要本机服务。
 源为完整四元组频数表，各组按raw_count加权还原12,256,906条有效原记录，未抽样。
 
@@ -57,7 +57,7 @@ PYTHONPATH=src .venv/bin/python scripts/build_dashboard_site.py
 python3 -m http.server 8000 --directory _site
 ```
 
-访问http://127.0.0.1:8000。_site是可重建发布目录，已从Git排除。
+打开[静态预览](http://127.0.0.1:8000)。`_site` 是可重建的本地发布目录。
 main分支的Quality检查成功后，Dashboard Pages工作流自动构建并发布同一提交；Settings→Pages的Source为GitHub Actions。
 后续数据更新应新建日期版本：更新export_dashboard.py的OUTPUT和视图定义，执行导出，再修改构建模块的MANIFEST；现有日期版本禁止覆盖。
 只修改展示时无需重新导出数据，推送main并通过检查即可发布。

@@ -4,6 +4,7 @@ import argparse
 import json
 import re
 import subprocess
+import sys
 from typing import cast
 
 from user_behavior_analysis.common.constants import PROJECT_ROOT
@@ -149,7 +150,7 @@ def main() -> int:
     )
     predecessor = _predecessor_checks(arguments.previous_review_commit)
     environment = subprocess.run(
-        [str(PROJECT_ROOT / ".venv/bin/python"), "-m", "pip", "check"],
+        [sys.executable, "-m", "pip", "check"],
         capture_output=True,
         text=True,
         check=False,

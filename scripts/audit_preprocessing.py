@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 import subprocess
+import sys
 from pathlib import Path
 from typing import cast
 
@@ -38,7 +39,7 @@ def _predecessor_audit(output: Path, config_path: str) -> tuple[int, str]:
     """
     result = subprocess.run(
         [
-            str(PROJECT_ROOT / ".venv/bin/python"),
+            sys.executable,
             str(PROJECT_ROOT / "scripts/audit_cleaning.py"),
             "--config",
             config_path,
