@@ -39,7 +39,6 @@
     "feature/sqlite-analysis",
     "feature/feature-engineering"
   ],
-  "evidence_image": "outputs/figures/stage1_review_ci_checkpoint.png",
   "evidence_image_sha256": "eaa40787db3c259d40dd58e3fa8d9cf8ac4e03344d53c716dd31e947afecb1a8",
   "receipt_scope": "Observed cloud and branch checkpoint for the checked_commit. A subsequent documentation-only commit publishes this receipt; no application code, processing rules or data change. Final receipt-commit CI is checked separately in the live GitHub Actions view."
 }
