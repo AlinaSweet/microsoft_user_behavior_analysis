@@ -56,8 +56,8 @@
 | `notebooks/` | [.gitkeep](../notebooks/.gitkeep) | 空目录占位，使Git保留该目录；不代表分析或模型已实现 | 已纳入GitHub交付基线；目录占位，不是分析成果 |
 | `outputs/figures/` | [.gitkeep](../outputs/figures/.gitkeep) | 空目录占位，使Git保留该目录；不代表分析或模型已实现 | 已纳入GitHub交付基线；目录占位，不是分析成果 |
 | `outputs/reports/` | [.gitkeep](../outputs/reports/.gitkeep) | 空目录占位，使Git保留该目录；不代表分析或模型已实现 | 已纳入GitHub交付基线；目录占位，不是分析成果 |
-| `outputs/reports/` | [weekly_report_20261019_20261023.md](../outputs/reports/weekly_report_20261019_20261023.md) | 第二周周报原件的归档衔接说明 | 已纳入GitHub交付基线 |
-| `outputs/reports/` | [weekly_report_20261019_20261023.pdf](../outputs/reports/weekly_report_20261019_20261023.pdf) | 用户提供的第二周周报PDF归档原件 | 已纳入GitHub交付基线 |
+| `outputs/reports/` | 个人周报已归档 | 第二周周报原件的归档衔接说明 | 已纳入GitHub交付基线 |
+| `outputs/reports/` | 个人周报已归档 | 用户提供的第二周周报PDF归档原件 | 已纳入GitHub交付基线 |
 
 ## 4. 第一阶段第1项：工程环境、版本管理与编码规范
 
@@ -78,7 +78,7 @@
 | `docs/` | [github_sync_guide.md](../docs/github_sync_guide.md) | GitHub Desktop首次上传及日常同步操作说明 | 已纳入GitHub交付基线 |
 | `docs/` | [stage1_completion.md](../docs/stage1_completion.md) | 第一阶段工程搭建完成记录及实测范围 | 已纳入GitHub交付基线 |
 | `docs/standards/` | [coding_standard.pdf](../docs/standards/coding_standard.pdf) | 用户提供的编码规范归档原件 | 已纳入GitHub交付基线 |
-| `outputs/figures/` | [github_initial_upload.jpg](../outputs/figures/github_initial_upload.jpg) | 首次GitHub上传的历史截图 | 已纳入GitHub交付基线 |
+| `outputs/figures/` | 旧附件已归档 | 首次GitHub上传的历史截图 | 已纳入GitHub交付基线 |
 | `outputs/reports/` | [coding_standard_compliance.json](../outputs/reports/coding_standard_compliance.json) | 编码规范整改时的质量检查结果 | 已纳入GitHub交付基线 |
 | `outputs/reports/` | [coding_standard_data_validation.json](../outputs/reports/coding_standard_data_validation.json) | 编码整改后的数据一致性证据 | 已纳入GitHub交付基线 |
 | `outputs/reports/coding_standard_validation/` | [environment_check.json](../outputs/reports/coding_standard_validation/environment_check.json) | 编码整改后的环境运行证据 | 已纳入GitHub交付基线 |
@@ -445,7 +445,7 @@
 |---|---|---|---|
 | `configs/` | [audit.yaml](../configs/audit.yaml) | 完整审计专用资源配置 | 已纳入GitHub交付基线；历史验收或共用验收入口，以报告日期为准 |
 | `docs/` | [stage1_review.md](../docs/stage1_review.md) | 第一阶段完整验收入口，区分最新和历史记录 | 已纳入GitHub交付基线；历史验收或共用验收入口，以报告日期为准 |
-| `outputs/figures/` | [stage1_review_ci_checkpoint.png](../outputs/figures/stage1_review_ci_checkpoint.png) | 历史第一阶段云端验收检查点截图 | 已纳入GitHub交付基线；历史验收或共用验收入口，以报告日期为准 |
+| `outputs/figures/` | 旧附件已归档 | 历史第一阶段云端验收检查点截图 | 已纳入GitHub交付基线；历史验收或共用验收入口，以报告日期为准 |
 | `outputs/reports/stage1_audit_20261015_01/` | [README.md](../outputs/reports/stage1_audit_20261015_01/README.md) | 本次任务或验收的文字说明与阅读入口 | 已纳入GitHub交付基线；历史验收或共用验收入口，以报告日期为准 |
 | `outputs/reports/stage1_audit_20261015_01/` | [audit.json](../outputs/reports/stage1_audit_20261015_01/audit.json) | 串联质量门禁、真实worker环境、完整预处理和前序复核的总报告 | 已纳入GitHub交付基线；历史验收或共用验收入口，以报告日期为准 |
 | `outputs/reports/stage1_audit_20261015_01/` | [cloud_delivery.json](../outputs/reports/stage1_audit_20261015_01/cloud_delivery.json) | 指定实现提交的远程分支、CI链接与交付检查点 | 已纳入GitHub交付基线；历史验收或共用验收入口，以报告日期为准 |
