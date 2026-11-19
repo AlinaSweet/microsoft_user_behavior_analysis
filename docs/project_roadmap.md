@@ -45,7 +45,6 @@
 ## 2026-10-24新增证据
 
 - outputs/reports/duplicate_review_20261024：附件、独立核验和高频待核查清单。
-- outputs/reports/weekly_report_20261019_20261023.pdf：用户周报原件。
 - outputs/reports/stage1_review_20261024_04：最新完整回归。
 - outputs/reports/stage2_step1_20261024：数据库、SQL、逐值审计与质量证据。
 - 当前保留记录与90条标记口径见docs/duplicate_policy.md。远程CI和分支同步见 outputs/reports/stage2_step1_20261024/cloud_delivery.json。
