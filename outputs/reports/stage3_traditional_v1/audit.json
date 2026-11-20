@@ -1,0 +1,74 @@
+{
+  "status": "passed",
+  "source_sampling_catalog": {
+    "path": "data/catalog/stage3_samples_v1.json",
+    "bytes": 5829,
+    "sha256": "af7005661fb0750101653ba7f525b2cf0c75f32c7745fa16029699f5c51ade17"
+  },
+  "protocol": "time_backtest",
+  "features": [
+    "user_purchase_record_share_7d",
+    "item_purchase_record_share_7d",
+    "category_purchase_record_share_7d",
+    "pair_purchase_record_share_7d",
+    "user_category_purchase_record_share_7d",
+    "user_extra_same_key_share_7d",
+    "pair_extra_same_key_share_7d",
+    "user_active_day_share_7d",
+    "item_active_day_share_7d",
+    "pair_active_day_share_7d",
+    "user_top_category_key_share_7d",
+    "user_category_key_share_7d",
+    "pair_user_key_share_7d",
+    "item_same_window_purchase_coverage_7d",
+    "user_funnel_pv_to_cart_rate_7d",
+    "user_funnel_fav_to_buy_rate_7d"
+  ],
+  "partitions": {
+    "train": {
+      "cutoff": "2025-11-25T00:00:00",
+      "label_end_exclusive": "2025-12-02T00:00:00",
+      "latest_pair_event": "2025-11-24T23:00:00",
+      "rows": 1030893,
+      "positives": 2735,
+      "temporal_or_label_violations": 0
+    },
+    "validation": {
+      "cutoff": "2025-12-02T00:00:00",
+      "label_end_exclusive": "2025-12-09T00:00:00",
+      "latest_pair_event": "2025-12-01T23:00:00",
+      "rows": 1061515,
+      "positives": 2525,
+      "temporal_or_label_violations": 0
+    },
+    "test": {
+      "cutoff": "2025-12-09T00:00:00",
+      "label_end_exclusive": "2025-12-16T00:00:00",
+      "latest_pair_event": "2025-12-08T23:00:00",
+      "rows": 1117324,
+      "positives": 5175,
+      "temporal_or_label_violations": 0
+    }
+  },
+  "objective": "Optuna TPE maximizes validation ROC-AUC",
+  "trials_per_model_including_baseline": 12,
+  "seed": 20261120,
+  "threads": 4,
+  "frozen_selection": {
+    "path": "outputs/reports/stage3_traditional_v1/validation_selection.json",
+    "bytes": 7210,
+    "sha256": "98a575136f2d754d3ff05c0d78bb681e3a0a1e898b8d57c0b83d3ab3c3b81b2a"
+  },
+  "test_predictions_read_back": 1117324,
+  "elapsed_seconds": 69.24734520795755,
+  "runtime": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.12.14",
+    "xgboost": "3.4.1",
+    "lightgbm": "4.7.0",
+    "optuna": "5.1.0",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.4"
+  }
+}

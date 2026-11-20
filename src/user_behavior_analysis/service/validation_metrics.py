@@ -4,7 +4,10 @@ from typing import Any
 
 import numpy as np
 from sklearn.metrics import average_precision_score  # type: ignore[import-untyped]
+from sklearn.metrics import brier_score_loss
 from sklearn.metrics import confusion_matrix  # type: ignore[import-untyped]
+from sklearn.metrics import log_loss
+from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import roc_auc_score  # type: ignore[import-untyped]
 
 
@@ -58,6 +61,46 @@ def prediction_metrics(
         "true_positive": true_positive,
         "threshold": threshold,
     }
+
+
+def validation_f1_threshold(target: np.ndarray, scores: np.ndarray) -> float:
+    """Choose the highest validation threshold achieving maximum F1.
+
+    Args:
+        target: Natural validation labels.
+        scores: Fixed model probabilities in the same row order.
+
+    Returns:
+        Threshold to freeze before test scoring.
+    """
+    precision, recall, thresholds = precision_recall_curve(target, scores)
+    numerator = 2 * precision[:-1] * recall[:-1]
+    denominator = precision[:-1] + recall[:-1]
+    f1 = np.divide(
+        numerator, denominator, out=np.zeros_like(numerator), where=denominator > 0
+    )
+    return float(thresholds[np.flatnonzero(f1 == f1.max())[-1]])
+
+
+def probability_metrics(
+    target: np.ndarray, scores: np.ndarray, threshold: float
+) -> dict[str, Any]:
+    """Add probability error scores to the common binary evaluation metrics.
+
+    Args:
+        target: Natural held-out labels.
+        scores: Probabilities from a train-fitted model.
+        threshold: Fixed threshold selected on validation.
+
+    Returns:
+        Ranking, threshold, log-loss and Brier results.
+    """
+    result = prediction_metrics(target, scores, threshold)
+    result.update(
+        log_loss=float(log_loss(target, scores, labels=[0, 1])),
+        brier_score=float(brier_score_loss(target, scores)),
+    )
+    return result
 
 
 def _weighted_rank_auc(

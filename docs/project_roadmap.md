@@ -1,6 +1,6 @@
 # 项目任务与验收台账
 
-依据用户提供的[原始大纲](requirements/project_brief.pdf)，共17项。状态更新于2026-11-19。
+依据用户提供的[原始大纲](requirements/project_brief.pdf)，共17项。状态更新于2026-11-20。
 已确认的数据缺失使用代理口径，逐项边界见[第二阶段验收表](../outputs/reports/stage2/requirements_matrix.md)。
 
 | 编号 | 任务 | 当前状态 | 当前证据 |
@@ -13,8 +13,8 @@
 | s2_02 | 全维度特征体系 | 完成 | [特征体系](feature_system.md)、445源定义、四截点预拼接层 |
 | s2_03 | 特征预处理与有效性验证 | 主体完成；跨截点稳定性专项待补 | [分组筛选](feature_validation.md)、[编码与稀疏预嵌入](stage2_preprocessing.md)、[全量重放](../outputs/reports/stage2/audit.json) |
 | s2_04 | 多维度探索性分析 | 核心完成；在线入口与展示细项已补齐 | [联动看板](eda_dashboard1.md)、[图表和洞察](../outputs/reports/stage2/README.md) |
-| s3_01 | 样本与数据划分 | 完成 7 天对级样本、时间回测、7:2:1 分组分层和三种不平衡对照；第二阶段回归通过 | [方法](stage3_sampling.md) · [验收](../outputs/reports/stage3_sampling_v1/README.md) · [数据清单](../data/catalog/stage3_samples_v1.json) |
-| s3_02 | 传统模型与调优 | 待开展正式多模型/Optuna；已有固定LR预实验 | LR、XGBoost、LightGBM与资源/分类指标 |
+| s3_01 | 样本与数据划分 | 已完成并复核。7 天对级样本、时间回测、7:2:1 分组分层和不平衡对照一致 | [方法](stage3_sampling.md) · [3.1 复核](../outputs/reports/stage3_traditional_v1/stage31_review.json) · [数据清单](../data/catalog/stage3_samples_v1.json) |
+| s3_02 | 传统模型与调优 | 已完成。逻辑回归、XGBoost、LightGBM 基线与 36 次 Optuna 试验。按时间验证 AUC 选型并在完整测试集对比 | [方法](stage3_traditional.md) · [验收](../outputs/reports/stage3_traditional_v1/README.md) · [模型清单](../data/catalog/stage3_traditional_v1.json) |
 | s3_03 | 深度模型与优化 | 待执行 | GRU/LSTM、DIN、注意力、训练优化 |
 | s3_04 | 融合与解释 | 待执行 | Stacking、系数/SHAP、错误/冷启动/长尾 |
 | s3_05 | 业务模拟 | 待执行 | 模拟A/B、收益假设与敏感性 |

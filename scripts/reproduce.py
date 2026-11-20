@@ -148,6 +148,17 @@ def _model_reproduction(root: Path) -> None:
     )
     _write(root / sampling, settings)
     _python(root, "scripts/run_stage3_sampling.py", "--config", sampling.as_posix())
+    traditional = REBUILT / "traditional_config.json"
+    options = _read(root / "configs/stage3_traditional.json")
+    options.update(
+        sampling_catalog=settings["catalog"],
+        report_dir=(REBUILT / "stage3_traditional").as_posix(),
+        catalog=(REBUILT / "stage3_traditional_catalog.json").as_posix(),
+    )
+    _write(root / traditional, options)
+    _python(
+        root, "scripts/run_traditional_models.py", "--config", traditional.as_posix()
+    )
 
 
 def _full(csv_path: Path, destination: Path) -> None:

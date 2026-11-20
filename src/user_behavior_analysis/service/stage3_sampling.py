@@ -12,13 +12,9 @@ from platform import system
 from typing import Any
 
 import joblib  # type: ignore[import-untyped]
-import numpy as np
 import psutil
 from sklearn.impute import SimpleImputer  # type: ignore[import-untyped]
 from sklearn.linear_model import LogisticRegression  # type: ignore[import-untyped]
-from sklearn.metrics import brier_score_loss  # type: ignore[import-untyped]
-from sklearn.metrics import log_loss
-from sklearn.metrics import precision_recall_curve
 from sklearn.pipeline import Pipeline  # type: ignore[import-untyped]
 from sklearn.preprocessing import StandardScaler  # type: ignore[import-untyped]
 from threadpoolctl import threadpool_limits  # type: ignore[import-untyped]
@@ -33,7 +29,8 @@ from user_behavior_analysis.models.sampling_models import PartitionEvidence
 from user_behavior_analysis.models.sampling_models import SamplingSettings
 from user_behavior_analysis.service.sampling_strategies import STRATEGIES
 from user_behavior_analysis.service.sampling_strategies import prepare_training
-from user_behavior_analysis.service.validation_metrics import prediction_metrics
+from user_behavior_analysis.service.validation_metrics import probability_metrics
+from user_behavior_analysis.service.validation_metrics import validation_f1_threshold
 from user_behavior_analysis.service.wide_audit import file_record
 from user_behavior_analysis.service.wide_contracts import require_contract
 
@@ -55,46 +52,6 @@ class ProtocolFit:
     models: dict[str, LogisticRegression]
     treatments: dict[str, dict[str, Any]]
     validation: dict[str, dict[str, Any]]
-
-
-def _validation_threshold(target: np.ndarray, scores: np.ndarray) -> float:
-    """Choose the highest validation threshold achieving maximum F1.
-
-    Args:
-        target: Unmodified validation labels.
-        scores: The corresponding fixed model probabilities.
-
-    Returns:
-        Threshold to freeze before reading the test split.
-    """
-    precision, recall, thresholds = precision_recall_curve(target, scores)
-    numerator = 2 * precision[:-1] * recall[:-1]
-    denominator = precision[:-1] + recall[:-1]
-    f1 = np.divide(
-        numerator, denominator, out=np.zeros_like(numerator), where=denominator > 0
-    )
-    return float(thresholds[np.flatnonzero(f1 == f1.max())[-1]])
-
-
-def _metrics(
-    target: np.ndarray, scores: np.ndarray, threshold: float
-) -> dict[str, Any]:
-    """Measure rankings, fixed-threshold counts and probability calibration errors.
-
-    Args:
-        target: Natural held-out labels.
-        scores: Probabilities from a train-fitted model.
-        threshold: Frozen threshold from the validation split.
-
-    Returns:
-        Existing evaluation metrics plus log loss and Brier score.
-    """
-    result = prediction_metrics(target, scores, threshold)
-    result.update(
-        log_loss=float(log_loss(target, scores, labels=[0, 1])),
-        brier_score=float(brier_score_loss(target, scores)),
-    )
-    return result
 
 
 def _fit_protocol(
@@ -159,10 +116,10 @@ def _fit_protocol(
         del training_variant
         models[strategy] = model
         probabilities = model.predict_proba(validation)[:, 1]
-        scores[strategy] = _metrics(
+        scores[strategy] = probability_metrics(
             valid_target,
             probabilities,
-            _validation_threshold(valid_target, probabilities),
+            validation_f1_threshold(valid_target, probabilities),
         )
         print(
             f"Validated {strategy}: AP={scores[strategy]['average_precision']:.6f}",
@@ -226,7 +183,7 @@ def _score_test(
     test, target = load_partition(dataset["test"], settings.features)
     values = fit.preprocess.transform(test)
     return {
-        strategy: _metrics(
+        strategy: probability_metrics(
             target, model.predict_proba(values)[:, 1], thresholds[strategy]
         )
         for strategy, model in fit.models.items()

@@ -1,0 +1,9 @@
+{
+  "sampling_catalog": "data/catalog/stage3_samples_v1.json",
+  "data_root": "data/processed/stage3_traditional_v1",
+  "report_dir": "outputs/reports/stage3_traditional_v1",
+  "catalog": "data/catalog/stage3_traditional_v1.json",
+  "seed": 20261120,
+  "threads": 4,
+  "trials_per_model": 12
+}

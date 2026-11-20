@@ -1,6 +1,6 @@
 # 按阶段逐文件导航
 
-本页覆盖当前Git仓库的全部 **485个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
+本页覆盖当前Git仓库的全部 **501个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
 
 原始任务见[项目大纲](requirements/project_brief.pdf)，完成状态见[任务台账](project_roadmap.md)。本页是项目全过程的文件导航。带日期目录是产物版本，阶段编号决定阅读顺序。
 
@@ -20,6 +20,7 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | 第二阶段 | [2.4 多维度探索性数据分析](#s2_04) | 93 |
 | 阶段验收 | [第一、二阶段综合验收与结果导航](#acceptance) | 40 |
 | 第三阶段 | [3.1 样本构建与数据集划分](#s3_01) | 16 |
+| 第三阶段 | [3.2 传统机器学习模型构建与调优](#s3_02) | 16 |
 
 ## 第一阶段：数据工程体系搭建与理论储备
 
@@ -582,7 +583,7 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | 部分 | 已有基础 | 当前交付或后续工作 |
 |---|---|---|
 | 3.1 样本构建与划分 | 对级七天标签及时间回测 | 已生成 7:2:1 分组、两套自然划分和三种不平衡对照 |
-| 3.2 传统模型与调优 | 2.3固定LR特征预实验 | 正式LR/XGBoost/LightGBM、Optuna及完整比较 |
+| 3.2 传统模型与调优 | 3.1 时间回测及历史特征 | 三种模型、36 次 Optuna 试验及全量冻结测试 |
 | 3.3 深度模型与优化 | 2.2序列定义与数组 | LSTM/GRU、DIN及优化结果 |
 | 3.4 融合与解释 | 尚无正式成果 | Stacking、SHAP、错误/冷启动/长尾分析 |
 | 3.5 业务模拟 | 2.4提供描述性洞察 | 模拟A/B与收益敏感性 |
@@ -611,6 +612,31 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [src/user_behavior_analysis/service/stage3_sampling.py](../src/user_behavior_analysis/service/stage3_sampling.py) | 业务逻辑 | 拟合固定逻辑回归，冻结验证决策并输出比对指标和数据登记。 |
 | [tests/integration/test_sampling_splits.py](../tests/integration/test_sampling_splits.py) | 集成测试 | 检查跨截点用户商品对分组隔离和精确分层。 |
 | [tests/unit/test_sampling_strategies.py](../tests/unit/test_sampling_strategies.py) | 单元测试 | 检查三种训练处理的保留、插值和权重规则。 |
+
+<a id="s3_02"></a>
+
+### 3.2 传统机器学习模型构建与调优
+
+本节登记 3.1 的复核、三种模型基础训练及 Optuna 验证选择，也保留按时间隔离的测试与结果。
+
+| 文件（仓库内完整路径） | 类型 | 作用 |
+|---|---|---|
+| [configs/stage3_traditional.json](../configs/stage3_traditional.json) | 配置 | 登记样本版本、计算预算、种子和结果路径。 |
+| [data/catalog/stage3_traditional_v1.json](../data/catalog/stage3_traditional_v1.json) | 数据版本清单 | 登记冻结模型、测试概率与汇总报告的指纹。 |
+| [docs/stage3_traditional.md](../docs/stage3_traditional.md) | 说明文档 | 说明时间隔离、Optuna 选型、性能指标和复现。 |
+| [outputs/reports/stage3_traditional_v1/README.md](../outputs/reports/stage3_traditional_v1/README.md) | 说明文档 | 汇报 3.1 复核及三种传统模型的优势与局限。 |
+| [outputs/reports/stage3_traditional_v1/stage31_review.json](../outputs/reports/stage3_traditional_v1/stage31_review.json) | 结构化记录 | 登记复跑的划分、标签、指标与第二阶段回归。 |
+| [outputs/reports/stage3_traditional_v1/audit.json](../outputs/reports/stage3_traditional_v1/audit.json) | 结构化记录 | 核对时间、样本量、验证冻结和测试概率读回。 |
+| [outputs/reports/stage3_traditional_v1/model_comparison.csv](../outputs/reports/stage3_traditional_v1/model_comparison.csv) | 数据明细 | 记录三家族基线及调优版本的分类指标和性能。 |
+| [outputs/reports/stage3_traditional_v1/optuna_trials.csv](../outputs/reports/stage3_traditional_v1/optuna_trials.csv) | 数据明细 | 记录全部 36 次试验参数、ROC-AUC 和拟合资源。 |
+| [outputs/reports/stage3_traditional_v1/validation_selection.json](../outputs/reports/stage3_traditional_v1/validation_selection.json) | 结构化记录 | 登记按验证 AUC 选出的模型及按验证 F1 冻结的阈值。 |
+| [scripts/run_traditional_models.py](../scripts/run_traditional_models.py) | 运行/导出/核验脚本 | 按配置运行三种分类器、调优、冻结和时间测试。 |
+| [src/user_behavior_analysis/dao/traditional_repository.py](../src/user_behavior_analysis/dao/traditional_repository.py) | 数据访问 | 验证时间样本、特征边界与测试概率文件。 |
+| [src/user_behavior_analysis/models/traditional_models.py](../src/user_behavior_analysis/models/traditional_models.py) | 数据模型 | 定义建模配置、时间划分和矩阵标签。 |
+| [src/user_behavior_analysis/service/stage3_traditional.py](../src/user_behavior_analysis/service/stage3_traditional.py) | 业务逻辑 | 编排训练、验证冻结、测试评分和审计。 |
+| [src/user_behavior_analysis/service/traditional_tuning.py](../src/user_behavior_analysis/service/traditional_tuning.py) | 业务逻辑 | 实现三种 CPU 分类器及基于验证 AUC 的 Optuna。 |
+| [tests/integration/test_traditional_models.py](../tests/integration/test_traditional_models.py) | 集成测试 | 运行三种模型及 Optuna 的小数据试验。 |
+| [tests/unit/test_traditional_boundaries.py](../tests/unit/test_traditional_boundaries.py) | 单元测试 | 验证模型入口拒绝重叠标签窗口或未来特征。 |
 
 ## 第四阶段：成果沉淀与项目复盘
 

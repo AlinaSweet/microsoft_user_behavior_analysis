@@ -12,3 +12,7 @@ scikit-learn>=1.9,<2
 joblib>=1.6,<2
 threadpoolctl>=3.7,<4
 openpyxl>=3.1,<4
+lightgbm>=4.7,<5
+optuna>=5.1,<6
+xgboost>=3.4,<4; platform_system == "Darwin"
+xgboost-cpu>=3.4,<4; platform_system != "Darwin"

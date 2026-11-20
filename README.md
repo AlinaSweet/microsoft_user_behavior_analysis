@@ -4,7 +4,7 @@
 
 围绕用户购买行为，按数据工程、特征工程与探索分析、模型构建、成果交付四个阶段开展项目。
 任务定义见[项目大纲](docs/requirements/project_brief.pdf)，17项任务的状态见[任务台账](docs/project_roadmap.md)。
-本仓库已交付第一阶段成果、第二阶段核心成果和第三阶段 3.1 样本构建。跨截点特征稳定性专项与大规模压力验证仍列在任务台账中。
+本仓库已交付第一阶段成果、第二阶段核心成果，以及第三阶段 3.1 样本构建与 3.2 传统模型。跨截点特征稳定性专项与大规模压力验证仍列在任务台账中。
 
 克隆后使用 Git 和 Python 3.12。按[复现说明](docs/reproduction.md)安装锁定依赖，再运行
 `python scripts/reproduce.py verify` 检查代码、测试、Excel 导出和在线看板构建。
@@ -108,12 +108,14 @@
 | 大纲部分 | 当前基础与后续工作 |
 |---|---|
 | 3.1 样本构建与数据集划分 | 已完成。3,209,732 条成熟样本、时间回测、约 7:2:1 分组分层，以及 SMOTE、欠采样、类别权重实测对照 |
-| 3.2 传统模型构建与调优 | 已有固定LR预实验；正式LR/XGBoost/LightGBM、Optuna及完整性能比较待执行 |
+| 3.2 传统模型构建与调优 | 已完成。逻辑回归、XGBoost、LightGBM 完成基础训练和 36 次 Optuna 试验，按时间验证 AUC 选型后冻结测试 |
 | 3.3 深度模型构建与优化 | LSTM/GRU、DIN、注意力及训练优化待执行 |
 | 3.4 模型融合与可解释性 | Stacking、系数/SHAP、错误样本、冷启动与长尾分析待执行 |
 | 3.5 业务落地模拟 | 模拟A/B、收益假设和敏感性分析待执行 |
 
 3.1 的样本口径、数据边界和复现入口见[样本构建方法](docs/stage3_sampling.md)，完整指标见[验收报告](outputs/reports/stage3_sampling_v1/README.md)。
+
+3.2 的训练流程见[传统模型方法](docs/stage3_traditional.md)，3.1 复核和三种模型结果见[传统模型验收](outputs/reports/stage3_traditional_v1/README.md)。
 
 ## 第四阶段：成果沉淀与项目复盘
 

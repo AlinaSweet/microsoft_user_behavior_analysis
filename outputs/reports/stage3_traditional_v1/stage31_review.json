@@ -1,0 +1,203 @@
+{
+  "status": "passed",
+  "stage31_catalog": "data/catalog/stage3_samples_v1.json",
+  "checked_registered_files": 12,
+  "split_summary_equal": true,
+  "replayed_metric_rows": 16,
+  "frozen_choices_and_thresholds_equal": true,
+  "labels": [
+    {
+      "anchor": "2025-11-25",
+      "label_end_exclusive": "2025-12-02T00:00:00",
+      "mature": true,
+      "candidate_rows": 1030893,
+      "positive_rows": 2735,
+      "negative_rows": 1028158,
+      "sample_rows": 1030893,
+      "alignment_differences": 0
+    },
+    {
+      "anchor": "2025-12-02",
+      "label_end_exclusive": "2025-12-09T00:00:00",
+      "mature": true,
+      "candidate_rows": 1061515,
+      "positive_rows": 2525,
+      "negative_rows": 1058990,
+      "sample_rows": 1061515,
+      "alignment_differences": 0
+    },
+    {
+      "anchor": "2025-12-09",
+      "label_end_exclusive": "2025-12-16T00:00:00",
+      "mature": true,
+      "candidate_rows": 1117324,
+      "positive_rows": 5175,
+      "negative_rows": 1112149,
+      "sample_rows": 1117324,
+      "alignment_differences": 0
+    },
+    {
+      "anchor": "2025-12-19",
+      "label_end_exclusive": "2025-12-26T00:00:00",
+      "mature": false,
+      "candidate_rows": 1216917,
+      "positive_rows": 0,
+      "negative_rows": 0,
+      "sample_rows": 0,
+      "alignment_differences": 0
+    }
+  ],
+  "protocols": {
+    "time_backtest": {
+      "labeled_rows": 3209732,
+      "alignment_differences": 0,
+      "cross_pairs": 110792
+    },
+    "grouped_721": {
+      "labeled_rows": 3209732,
+      "alignment_differences": 0,
+      "cross_pairs": 0
+    }
+  },
+  "groups_by_stratum": {
+    "ever_positive": {
+      "train": 7172,
+      "validation": 2049,
+      "test": 1025
+    },
+    "never_positive": {
+      "train": 2156172,
+      "validation": 616049,
+      "test": 308025
+    }
+  },
+  "stage2_source": {
+    "status": "passed",
+    "checked_at_utc": "2026-11-20T22:25:57.380883+00:00",
+    "scope": "Fresh SQLite integrity and all user-hour measures; full candidate/user 7d counts and future labels",
+    "database": {
+      "quick_check": [
+        "ok"
+      ],
+      "foreign_key_violations": 0,
+      "user_hours": 682940,
+      "metrics": [
+        "raw_record_count",
+        "distinct_item_behavior_count",
+        "extra_same_key_records",
+        "max_key_occurrences",
+        "distinct_items",
+        "behavior_type_count",
+        "pv_count",
+        "fav_count",
+        "cart_count",
+        "buy_count"
+      ],
+      "different_rows": 0
+    },
+    "snapshots": [
+      {
+        "anchor": "2025-11-25",
+        "candidate_rows": 1030893,
+        "scalar_fields": 439,
+        "duplicate_candidates": 0,
+        "future_or_cutoff_violations": 0,
+        "pair_count_differences": 0,
+        "user_count_differences": 0,
+        "label_available": true,
+        "label_differences": 0
+      },
+      {
+        "anchor": "2025-12-02",
+        "candidate_rows": 1061515,
+        "scalar_fields": 439,
+        "duplicate_candidates": 0,
+        "future_or_cutoff_violations": 0,
+        "pair_count_differences": 0,
+        "user_count_differences": 0,
+        "label_available": true,
+        "label_differences": 0
+      },
+      {
+        "anchor": "2025-12-09",
+        "candidate_rows": 1117324,
+        "scalar_fields": 439,
+        "duplicate_candidates": 0,
+        "future_or_cutoff_violations": 0,
+        "pair_count_differences": 0,
+        "user_count_differences": 0,
+        "label_available": true,
+        "label_differences": 0
+      },
+      {
+        "anchor": "2025-12-19",
+        "candidate_rows": 1216917,
+        "scalar_fields": 439,
+        "duplicate_candidates": 0,
+        "future_or_cutoff_violations": 0,
+        "pair_count_differences": 0,
+        "user_count_differences": 0,
+        "label_available": false,
+        "label_differences": 0
+      }
+    ],
+    "unchanged_audited_sql_queries": 11
+  },
+  "stage2_matrix_and_prediction_replay": {
+    "status": "passed",
+    "matrices": [
+      {
+        "anchor": "2025-11-25",
+        "rows": 1030893,
+        "maximum_absolute_error": 0.0
+      },
+      {
+        "anchor": "2025-12-02",
+        "rows": 1061515,
+        "maximum_absolute_error": 0.0
+      },
+      {
+        "anchor": "2025-12-09",
+        "rows": 1117324,
+        "maximum_absolute_error": 0.0
+      },
+      {
+        "anchor": "2025-12-19",
+        "rows": 1216917,
+        "maximum_absolute_error": 0.0
+      }
+    ],
+    "predictions": [
+      {
+        "anchor": "2025-12-02",
+        "rows": 1061515,
+        "models": {
+          "te_business": 0.0,
+          "te_sequence": 0.0,
+          "te_svd": 0.0,
+          "te_cooccurrence": 0.0,
+          "te_combined": 0.0,
+          "te_preembedding": 0.0
+        }
+      },
+      {
+        "anchor": "2025-12-09",
+        "rows": 1117324,
+        "models": {
+          "te_business": 0.0,
+          "te_sequence": 0.0,
+          "te_svd": 0.0,
+          "te_cooccurrence": 0.0,
+          "te_combined": 0.0,
+          "te_preembedding": 0.0
+        }
+      }
+    ],
+    "target_maps": {
+      "maps": 6,
+      "category_entries": 8177,
+      "differences": 0
+    }
+  },
+  "stage31_replay_selection_frozen_at_utc": "2026-11-20T22:24:55.909607+00:00"
+}

@@ -19,6 +19,8 @@
   "stage3_sampling_catalog": "data/catalog/stage3_samples_v1.json",
   "stage3_sampling_root": "data/processed/stage3_samples_v1",
   "stage3_sampling_report": "outputs/reports/stage3_sampling_v1/README.md",
+  "stage3_traditional_catalog": "data/catalog/stage3_traditional_v1.json",
+  "stage3_traditional_report": "outputs/reports/stage3_traditional_v1/README.md",
   "current_report": "outputs/reports/stage2/README.md",
   "current_feature_dictionary": "outputs/reports/stage2/feature_dictionary.json"
 }

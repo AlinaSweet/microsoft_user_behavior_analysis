@@ -16,6 +16,7 @@
 | 第二阶段3 筛选与变换 | feature_validation.md、stage2_preprocessing.md | validation_*、target_encoding.py、sparse_embedding.py、completion_*；两份validation/delivery配置 | feature_validation_v1、stage2_complete_v1清单；stage2/audit.json、字典、矩阵及对照 |
 | 第二阶段4 EDA | eda_dashboard1.md | interactive_eda/paths/forward.py、dashboard_server.py、assets/eda；run_eda_dashboard.sh | stage2/eda_*.json、figures、tables及交互看板 |
 | 第三阶段1 样本构建与划分 | stage3_sampling.md | configs/stage3_sampling.json、scripts/run_stage3_sampling.py | stage3_samples_v1 清单、六个自然分布 Parquet、分层与不平衡对照报告 |
+| 第三阶段2 传统模型与调优 | stage3_traditional.md | configs/stage3_traditional.json、scripts/run_traditional_models.py | 基线及调优模型、试验记录、时间测试报告和预测清单 |
 
 表中方法文件位于docs/，实现位于src/user_behavior_analysis/；文件清单给出无缩写完整相对路径。
 

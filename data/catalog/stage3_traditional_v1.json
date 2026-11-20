@@ -1,0 +1,44 @@
+{
+  "kind": "stage3_traditional_models",
+  "status": "passed",
+  "protocol": "time_backtest",
+  "source_sampling_catalog": {
+    "path": "data/catalog/stage3_samples_v1.json",
+    "bytes": 5829,
+    "sha256": "af7005661fb0750101653ba7f525b2cf0c75f32c7745fa16029699f5c51ade17"
+  },
+  "chosen_family": "lightgbm",
+  "models": {
+    "path": "data/processed/stage3_traditional_v1/traditional_models.joblib",
+    "bytes": 478380,
+    "sha256": "39371323a15b9fb7c173f7f0a66babee31d37379a7926e95e28b4049a3b2c179"
+  },
+  "test_predictions": {
+    "path": "data/processed/stage3_traditional_v1/test_predictions.parquet",
+    "bytes": 36797479,
+    "sha256": "013020ae6ca7531e34147438d44bd00b0252eafe42c114585178825f0038919c",
+    "rows": 1117324
+  },
+  "reports": [
+    {
+      "path": "outputs/reports/stage3_traditional_v1/audit.json",
+      "bytes": 2274,
+      "sha256": "73f5a17f288955f00f6ce8cf56bf51a4e752176434dcd96a2682f3e21624603f"
+    },
+    {
+      "path": "outputs/reports/stage3_traditional_v1/model_comparison.csv",
+      "bytes": 4289,
+      "sha256": "bc388ce80c50307a11c6652bb0756a39ef9204a071701b9794fc5b0987c1814c"
+    },
+    {
+      "path": "outputs/reports/stage3_traditional_v1/optuna_trials.csv",
+      "bytes": 9562,
+      "sha256": "bbd7b0ce02ea494a7cb9351228d832e2b201a5a0c2837163c35377025a596a2c"
+    },
+    {
+      "path": "outputs/reports/stage3_traditional_v1/validation_selection.json",
+      "bytes": 7210,
+      "sha256": "98a575136f2d754d3ff05c0d78bb681e3a0a1e898b8d57c0b83d3ab3c3b81b2a"
+    }
+  ]
+}
