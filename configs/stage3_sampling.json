@@ -1,0 +1,27 @@
+{
+  "validation_config": "configs/feature_validation.json",
+  "data_root": "data/processed/stage3_samples_v1",
+  "report_dir": "outputs/reports/stage3_sampling_v1",
+  "catalog": "data/catalog/stage3_samples_v1.json",
+  "seed": 20261119,
+  "negative_per_positive": 10,
+  "smote_neighbors": 5,
+  "features": [
+    "user_purchase_record_share_7d",
+    "item_purchase_record_share_7d",
+    "category_purchase_record_share_7d",
+    "pair_purchase_record_share_7d",
+    "user_category_purchase_record_share_7d",
+    "user_extra_same_key_share_7d",
+    "pair_extra_same_key_share_7d",
+    "user_active_day_share_7d",
+    "item_active_day_share_7d",
+    "pair_active_day_share_7d",
+    "user_top_category_key_share_7d",
+    "user_category_key_share_7d",
+    "pair_user_key_share_7d",
+    "item_same_window_purchase_coverage_7d",
+    "user_funnel_pv_to_cart_rate_7d",
+    "user_funnel_fav_to_buy_rate_7d"
+  ]
+}

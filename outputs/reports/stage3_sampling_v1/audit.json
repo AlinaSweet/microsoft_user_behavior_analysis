@@ -1,0 +1,87 @@
+{
+  "labels": [
+    {
+      "anchor": "2025-11-25",
+      "label_end_exclusive": "2025-12-02T00:00:00",
+      "mature": true,
+      "candidate_rows": 1030893,
+      "positive_rows": 2735,
+      "negative_rows": 1028158,
+      "sample_rows": 1030893,
+      "alignment_differences": 0
+    },
+    {
+      "anchor": "2025-12-02",
+      "label_end_exclusive": "2025-12-09T00:00:00",
+      "mature": true,
+      "candidate_rows": 1061515,
+      "positive_rows": 2525,
+      "negative_rows": 1058990,
+      "sample_rows": 1061515,
+      "alignment_differences": 0
+    },
+    {
+      "anchor": "2025-12-09",
+      "label_end_exclusive": "2025-12-16T00:00:00",
+      "mature": true,
+      "candidate_rows": 1117324,
+      "positive_rows": 5175,
+      "negative_rows": 1112149,
+      "sample_rows": 1117324,
+      "alignment_differences": 0
+    },
+    {
+      "anchor": "2025-12-19",
+      "label_end_exclusive": "2025-12-26T00:00:00",
+      "mature": false,
+      "candidate_rows": 1216917,
+      "positive_rows": 0,
+      "negative_rows": 0,
+      "sample_rows": 0,
+      "alignment_differences": 0
+    }
+  ],
+  "protocols": {
+    "time_backtest": {
+      "labeled_rows": 3209732,
+      "alignment_differences": 0,
+      "cross_pairs": 110792
+    },
+    "grouped_721": {
+      "labeled_rows": 3209732,
+      "alignment_differences": 0,
+      "cross_pairs": 0
+    }
+  },
+  "group_strata": {
+    "ever_positive": {
+      "train": 7172,
+      "validation": 2049,
+      "test": 1025
+    },
+    "never_positive": {
+      "train": 2156172,
+      "validation": 616049,
+      "test": 308025
+    }
+  },
+  "status": "passed",
+  "source_manifest": {
+    "path": "outputs/reports/feature_validation_20261114/samples.json",
+    "bytes": 656447,
+    "sha256": "54dc1241a1bc0365598d1c52f272cf8ebb4923d81cbca02966ab157720ccf805"
+  },
+  "elapsed_seconds": 16.212222,
+  "software": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.12.14",
+    "duckdb": "1.5.6",
+    "numpy": "2.5.4",
+    "pyarrow": "26.0.0",
+    "scikit-learn": "1.9.1"
+  },
+  "seed": 20261119,
+  "feature_count": 16,
+  "test_protocol": "Frozen validation thresholds on unchanged natural distributions"
+}

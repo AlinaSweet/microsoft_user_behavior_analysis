@@ -1,0 +1,25 @@
+{
+  "frozen_at_utc": "2026-11-19T22:08:36.345859+00:00",
+  "selection_metric": "validation average_precision; strategy order breaks ties",
+  "threshold_rule": "maximum validation F1; highest threshold breaks ties",
+  "protocols": {
+    "time_backtest": {
+      "chosen_strategy": "smote",
+      "thresholds": {
+        "natural": 0.0127483569085598,
+        "smote": 0.4712251126766205,
+        "undersample": 0.49044233560562134,
+        "class_weight": 0.4593161344528198
+      }
+    },
+    "grouped_721": {
+      "chosen_strategy": "smote",
+      "thresholds": {
+        "natural": 0.01685083843767643,
+        "smote": 0.44863423705101013,
+        "undersample": 0.4326442778110504,
+        "class_weight": 0.4608594477176666
+      }
+    }
+  }
+}

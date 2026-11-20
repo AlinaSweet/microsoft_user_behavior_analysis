@@ -97,7 +97,7 @@ def _register_cleaning(root: Path) -> None:
 
 
 def _model_reproduction(root: Path) -> None:
-    """Recreate the wide audit, purchase labels and fixed experiments.
+    """Recreate the feature audits, purchase labels and sample comparisons.
 
     Args:
         root: Isolated checkout with regenerated features.
@@ -139,6 +139,15 @@ def _model_reproduction(root: Path) -> None:
         "--output",
         (REBUILT / "stage2/feature_dictionary.xlsx").as_posix(),
     )
+    sampling = REBUILT / "sampling_config.json"
+    settings = _read(root / "configs/stage3_sampling.json")
+    settings.update(
+        validation_config=validation.as_posix(),
+        report_dir=(REBUILT / "stage3_sampling").as_posix(),
+        catalog=(REBUILT / "stage3_sampling_catalog.json").as_posix(),
+    )
+    _write(root / sampling, settings)
+    _python(root, "scripts/run_stage3_sampling.py", "--config", sampling.as_posix())
 
 
 def _full(csv_path: Path, destination: Path) -> None:

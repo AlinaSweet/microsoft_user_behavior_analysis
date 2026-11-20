@@ -1,0 +1,134 @@
+{
+  "status": "passed",
+  "baseline_commit": "74bffd8bd6fe0ac369bfe94550ffe21cd287849a",
+  "source_check_entry": "scripts/audit_current_data.py",
+  "source_controls": {
+    "status": "passed",
+    "checked_at_utc": "2026-11-19T22:02:02.087395+00:00",
+    "scope": "Fresh SQLite integrity and all user-hour measures; full candidate/user 7d counts and future labels",
+    "database": {
+      "quick_check": [
+        "ok"
+      ],
+      "foreign_key_violations": 0,
+      "user_hours": 682940,
+      "metrics": [
+        "raw_record_count",
+        "distinct_item_behavior_count",
+        "extra_same_key_records",
+        "max_key_occurrences",
+        "distinct_items",
+        "behavior_type_count",
+        "pv_count",
+        "fav_count",
+        "cart_count",
+        "buy_count"
+      ],
+      "different_rows": 0
+    },
+    "snapshots": [
+      {
+        "anchor": "2025-11-25",
+        "candidate_rows": 1030893,
+        "scalar_fields": 439,
+        "duplicate_candidates": 0,
+        "future_or_cutoff_violations": 0,
+        "pair_count_differences": 0,
+        "user_count_differences": 0,
+        "label_available": true,
+        "label_differences": 0
+      },
+      {
+        "anchor": "2025-12-02",
+        "candidate_rows": 1061515,
+        "scalar_fields": 439,
+        "duplicate_candidates": 0,
+        "future_or_cutoff_violations": 0,
+        "pair_count_differences": 0,
+        "user_count_differences": 0,
+        "label_available": true,
+        "label_differences": 0
+      },
+      {
+        "anchor": "2025-12-09",
+        "candidate_rows": 1117324,
+        "scalar_fields": 439,
+        "duplicate_candidates": 0,
+        "future_or_cutoff_violations": 0,
+        "pair_count_differences": 0,
+        "user_count_differences": 0,
+        "label_available": true,
+        "label_differences": 0
+      },
+      {
+        "anchor": "2025-12-19",
+        "candidate_rows": 1216917,
+        "scalar_fields": 439,
+        "duplicate_candidates": 0,
+        "future_or_cutoff_violations": 0,
+        "pair_count_differences": 0,
+        "user_count_differences": 0,
+        "label_available": false,
+        "label_differences": 0
+      }
+    ],
+    "unchanged_audited_sql_queries": 11
+  },
+  "matrix_check_entry": "scripts/run_stage2_completion.py --phase audit",
+  "matrix_controls": {
+    "status": "passed",
+    "matrices": [
+      {
+        "anchor": "2025-11-25",
+        "rows": 1030893,
+        "maximum_absolute_error": 0.0
+      },
+      {
+        "anchor": "2025-12-02",
+        "rows": 1061515,
+        "maximum_absolute_error": 0.0
+      },
+      {
+        "anchor": "2025-12-09",
+        "rows": 1117324,
+        "maximum_absolute_error": 0.0
+      },
+      {
+        "anchor": "2025-12-19",
+        "rows": 1216917,
+        "maximum_absolute_error": 0.0
+      }
+    ],
+    "predictions": [
+      {
+        "anchor": "2025-12-02",
+        "rows": 1061515,
+        "models": {
+          "te_business": 0.0,
+          "te_sequence": 0.0,
+          "te_svd": 0.0,
+          "te_cooccurrence": 0.0,
+          "te_combined": 0.0,
+          "te_preembedding": 0.0
+        }
+      },
+      {
+        "anchor": "2025-12-09",
+        "rows": 1117324,
+        "models": {
+          "te_business": 0.0,
+          "te_sequence": 0.0,
+          "te_svd": 0.0,
+          "te_cooccurrence": 0.0,
+          "te_combined": 0.0,
+          "te_preembedding": 0.0
+        }
+      }
+    ],
+    "target_maps": {
+      "maps": 6,
+      "category_entries": 8177,
+      "differences": 0
+    }
+  }
+}

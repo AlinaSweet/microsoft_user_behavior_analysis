@@ -1,6 +1,6 @@
 # 按阶段逐文件导航
 
-本页覆盖当前Git仓库的全部 **469个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
+本页覆盖当前Git仓库的全部 **485个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
 
 原始任务见[项目大纲](requirements/project_brief.pdf)，完成状态见[任务台账](project_roadmap.md)。本页是项目全过程的文件导航。带日期目录是产物版本，阶段编号决定阅读顺序。
 
@@ -19,6 +19,7 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | 第二阶段 | [2.3 特征预处理与有效性验证](#s2_03) | 85 |
 | 第二阶段 | [2.4 多维度探索性数据分析](#s2_04) | 93 |
 | 阶段验收 | [第一、二阶段综合验收与结果导航](#acceptance) | 40 |
+| 第三阶段 | [3.1 样本构建与数据集划分](#s3_01) | 16 |
 
 ## 第一阶段：数据工程体系搭建与理论储备
 
@@ -578,15 +579,38 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 
 ## 第三阶段：多模型建模与性能优化
 
-| 部分 | 已有基础 | 待产出 |
+| 部分 | 已有基础 | 当前交付或后续工作 |
 |---|---|---|
-| 3.1 样本构建与划分 | 2.3的对级标签和时间划分可复用 | 约7:2:1对照、三种不平衡方案及正式样本版本 |
+| 3.1 样本构建与划分 | 对级七天标签及时间回测 | 已生成 7:2:1 分组、两套自然划分和三种不平衡对照 |
 | 3.2 传统模型与调优 | 2.3固定LR特征预实验 | 正式LR/XGBoost/LightGBM、Optuna及完整比较 |
 | 3.3 深度模型与优化 | 2.2序列定义与数组 | LSTM/GRU、DIN及优化结果 |
 | 3.4 融合与解释 | 尚无正式成果 | Stacking、SHAP、错误/冷启动/长尾分析 |
 | 3.5 业务模拟 | 2.4提供描述性洞察 | 模拟A/B与收益敏感性 |
 
-这些部分尚无独立完成的正式交付文件，不能把2.3的预实验重复记为正式模型成果。
+<a id="s3_01"></a>
+
+### 3.1 样本构建与数据集划分
+
+本节登记两套自然样本协议、训练处理、验收与复现。
+
+| 文件（仓库内完整路径） | 类型 | 作用 |
+|---|---|---|
+| [configs/stage3_sampling.json](../configs/stage3_sampling.json) | 配置 | 锁定连续特征、种子、目标采样比例和阶段输入输出。 |
+| [data/catalog/stage3_samples_v1.json](../data/catalog/stage3_samples_v1.json) | 数据版本清单 | 登记两套样本协议、分区及模型数值文件指纹。 |
+| [docs/stage3_sampling.md](../docs/stage3_sampling.md) | 说明文档 | 说明对级标签、时间窗口、分组规则、采样对照和复现入口。 |
+| [outputs/reports/stage3_sampling_v1/README.md](../outputs/reports/stage3_sampling_v1/README.md) | 说明文档 | 汇报真实样本分布、策略比较和前序成果验收。 |
+| [outputs/reports/stage3_sampling_v1/audit.json](../outputs/reports/stage3_sampling_v1/audit.json) | 结构化记录 | 验收全部成熟标签、两个完整分区集合和分层取整。 |
+| [outputs/reports/stage3_sampling_v1/previous_stage_regression.json](../outputs/reports/stage3_sampling_v1/previous_stage_regression.json) | 结构化记录 | 登记第二阶段独立源数据、矩阵和预测回归。 |
+| [outputs/reports/stage3_sampling_v1/sampling_comparison.csv](../outputs/reports/stage3_sampling_v1/sampling_comparison.csv) | 数据明细 | 记录自然分布验证与测试指标、训练处理计数和资源。 |
+| [outputs/reports/stage3_sampling_v1/split_summary.csv](../outputs/reports/stage3_sampling_v1/split_summary.csv) | 数据明细 | 按协议和集合登记样本、正例、对组和实际比例。 |
+| [outputs/reports/stage3_sampling_v1/validation_selection.json](../outputs/reports/stage3_sampling_v1/validation_selection.json) | 结构化记录 | 记录验证集冻结策略与阈值，供测试评分复核。 |
+| [scripts/run_stage3_sampling.py](../scripts/run_stage3_sampling.py) | 运行/导出/核验脚本 | 读取新版本配置，运行样本构建和不平衡对照。 |
+| [src/user_behavior_analysis/dao/sampling_repository.py](../src/user_behavior_analysis/dao/sampling_repository.py) | 数据访问 | 核验对级标签并物化两套完整分区，写回后检查键和分层。 |
+| [src/user_behavior_analysis/models/sampling_models.py](../src/user_behavior_analysis/models/sampling_models.py) | 数据模型 | 定义采样配置、协议与分区证据类型。 |
+| [src/user_behavior_analysis/service/sampling_strategies.py](../src/user_behavior_analysis/service/sampling_strategies.py) | 业务逻辑 | 在训练数据上执行SMOTE、随机欠采样和类别权重。 |
+| [src/user_behavior_analysis/service/stage3_sampling.py](../src/user_behavior_analysis/service/stage3_sampling.py) | 业务逻辑 | 拟合固定逻辑回归，冻结验证决策并输出比对指标和数据登记。 |
+| [tests/integration/test_sampling_splits.py](../tests/integration/test_sampling_splits.py) | 集成测试 | 检查跨截点用户商品对分组隔离和精确分层。 |
+| [tests/unit/test_sampling_strategies.py](../tests/unit/test_sampling_strategies.py) | 单元测试 | 检查三种训练处理的保留、插值和权重规则。 |
 
 ## 第四阶段：成果沉淀与项目复盘
 
