@@ -203,7 +203,14 @@ def _full(csv_path: Path, destination: Path) -> None:
     with local_csv.open("rb") as copied:
         if hashlib.file_digest(copied, "sha256").hexdigest() != identity:
             raise ValueError("Source CSV changed while it was being copied")
-    _python(destination, "-m", "user_behavior_analysis", "clean")
+    _python(
+        destination,
+        "-m",
+        "user_behavior_analysis",
+        "clean",
+        "--data",
+        local_csv.relative_to(destination).as_posix(),
+    )
     _register_cleaning(destination)
     _python(destination, "-m", "user_behavior_analysis", "preprocess")
     _python(destination, "-m", "user_behavior_analysis", "database")
