@@ -38,7 +38,7 @@ def _reencode_records(settings: FeatureSettings) -> dict[str, Any]:
         ValueError: A source fingerprint, lineage ordinal or canonical value differs.
         FileExistsError: The new event directory is already populated.
     """
-    catalog = json.loads(settings.source_catalog.read_text())
+    catalog = json.loads(settings.source_catalog.read_text(encoding="utf-8"))
     target = settings.base_dir / "events"
     if target.exists() and any(target.iterdir()):
         raise FileExistsError(target)
@@ -80,7 +80,7 @@ def _reencode_records(settings: FeatureSettings) -> dict[str, Any]:
         rows += len(frame)
         evidence.append(
             {
-                "path": str(path.relative_to(PROJECT_ROOT)),
+                "path": path.relative_to(PROJECT_ROOT).as_posix(),
                 "rows": len(restored),
                 "bytes": path.stat().st_size,
                 "sha256": sha256_file(path),
@@ -317,7 +317,7 @@ def build_complete_base(settings: FeatureSettings) -> dict[str, Any]:
     """
     catalog_path = PROJECT_ROOT / "data/catalog/base_raw_v2.json"
     if catalog_path.exists():
-        catalog: dict[str, Any] = json.loads(catalog_path.read_text())
+        catalog: dict[str, Any] = json.loads(catalog_path.read_text(encoding="utf-8"))
         for entry in catalog["files"]:
             if sha256_file(PROJECT_ROOT / entry["path"]) != entry["sha256"]:
                 raise ValueError("Existing current base file changed")
@@ -339,19 +339,22 @@ def build_complete_base(settings: FeatureSettings) -> dict[str, Any]:
             ):
                 raise ValueError("Intermediate conservation failed")
         hour_control = _verify_user_hours(connection, settings)
-    files = records["parts"] + [
-        {
-            "path": str(Path(table["path"]).relative_to(PROJECT_ROOT)),
-            "rows": table["rows"],
-            "bytes": Path(table["path"]).stat().st_size,
-            "sha256": sha256_file(table["path"]),
-        }
-        for table in tables
-    ]
+    files = list(records["parts"])
+    for table in tables:
+        path = Path(table["path"])
+        table["path"] = path.relative_to(PROJECT_ROOT).as_posix()
+        files.append(
+            {
+                "path": table["path"],
+                "rows": table["rows"],
+                "bytes": path.stat().st_size,
+                "sha256": sha256_file(path),
+            }
+        )
     report = {
         "dataset": "base_raw_v2",
         "status": "completed",
-        "source_catalog": str(settings.source_catalog.relative_to(PROJECT_ROOT)),
+        "source_catalog": settings.source_catalog.relative_to(PROJECT_ROOT).as_posix(),
         "source_catalog_sha256": sha256_file(settings.source_catalog),
         "records": records,
         "tables": tables,

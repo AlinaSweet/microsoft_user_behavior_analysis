@@ -1,6 +1,7 @@
 """Publish new pair labels and prejoined model samples after full source audits."""
 
 from pathlib import Path
+from pathlib import PureWindowsPath
 from typing import Any
 
 import duckdb
@@ -45,7 +46,7 @@ def _verified_inputs(
     needed = [
         row
         for row in base["files"]
-        if "/events/" in row["path"] or "/key_hour/" in row["path"]
+        if PureWindowsPath(row["path"]).parent.name in {"events", "key_hour"}
     ]
     needed += [part for snap in wide["snapshots"] for part in snap["parts"]]
     for row in needed:

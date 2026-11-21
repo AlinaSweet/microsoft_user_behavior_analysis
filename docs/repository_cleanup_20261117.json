@@ -1,6 +1,5 @@
 {
   "date": "2026-11-17",
-  "archive_root": "/Users/alina/Desktop/实习/个人资料归档_20261031/仓库精简归档_20261117",
   "before_cleanup_commit": "c6980e987cc918875e63ef5881dde1f6d82ef8da",
   "reason": "Unreferenced execution transcripts and old upload screenshots; frozen audit dependencies retained.",
   "file_count": 9,
@@ -52,5 +51,5 @@
       "bytes": 311378
     }
   ],
-  "recovery": "Copy relative paths from archive_root or restore from before_cleanup_commit in Git history."
+  "recovery": "Restore the listed relative paths from before_cleanup_commit in Git history."
 }

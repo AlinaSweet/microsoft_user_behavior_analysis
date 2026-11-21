@@ -10,14 +10,13 @@
 | data/catalog/ | 数据文件的 JSON 校验清单 | 提交到 GitHub |
 | data/summaries/ | 小型中间统计表、CSV | 每个文件不超过 10 MiB，提交到 GitHub |
 | outputs/reports/ | 项目分析与验收报告、JSON、CSV 汇总 | 每个文件不超过 10 MiB，提交到 GitHub |
-| outputs/figures/ | 图表和截图 | 每个文件不超过 10 MiB，提交到 GitHub |
 | .cache/、.venv*/ | 运行缓存和虚拟环境 | 忽略，可重新生成 |
 
 10 MiB 是本项目的小型交付文件规则。登记脚本生成的是元数据，不会把文件内容上传，也不会建立云盘。GitHub 本身的大文件限制参见 [官方说明](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)。
 
 ## 原始数据
 
-当前 data/raw/user_behavior.csv 是指向用户原始文件的本机链接。另一台电脑需要自行提供相同内容的 CSV，并通过 --data、USER_BEHAVIOR_CSV 或默认路径接入。
+完整复现需要取得与数据清单一致的原始 CSV，使用 `scripts/reproduce.py full --csv` 接入。分阶段执行可通过 `--data`、`USER_BEHAVIOR_CSV` 或默认路径 `data/raw/user_behavior.csv` 接入。
 
 运行 benchmark 会计算原始文件的 SHA-256，并保存 data/catalog/user_behavior_raw.json。sha256 可以确认另一台机器的文件内容与本次输入一致。
 
@@ -63,9 +62,8 @@ Git忽略周报、教学目录、Office临时锁文件、R交互历史和文档�
 ## 2026-11-14工作树整理
 
 当前主要报告统一为outputs/reports/stage1与stage2，必要的生成基线与指纹依赖仍保留。
-旧看板、重复复核尝试、重复字典展示、制作预览和过期进度文字移至
-/Users/alina/Desktop/实习/个人资料归档_20261031/项目历史报告归档_20261114。
+旧看板、重复复核、重复字典、制作预览和过期进度文字已归档。
 [归档清单](archive_manifest.json)逐文件记录原路径、字节数、SHA-256和整理前Git提交。
-恢复时从归档根按原相对路径复制，或从所记录Git提交取回。当前新文档优先，避免覆盖当前说明。
+可从所记录的 Git 提交按原相对路径取回。
 冻结EDA补充证据保存在data/summaries/eda_support_v1，给报告提供稳定输入，不作模型拟合数据。
 原始CSV、有效事件、SQLite、宽表、标签及历史模型均没有因清理而删除或改变。

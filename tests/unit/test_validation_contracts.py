@@ -7,6 +7,7 @@ from unittest.mock import patch
 
 from user_behavior_analysis.common.constants import PROJECT_ROOT
 from user_behavior_analysis.dao.validation_repository import load_validation_settings
+from user_behavior_analysis.service.sample_pipeline import _verified_inputs
 from user_behavior_analysis.service.validation_groups import business_protected
 from user_behavior_analysis.service.validation_groups import feature_group
 
@@ -32,6 +33,27 @@ class ValidationContractTests(unittest.TestCase):
         ):
             with self.assertRaisesRegex(ValueError, "overlap"):
                 load_validation_settings(PROJECT_ROOT / "unused.json")
+
+    def test_windows_base_part_is_fingerprint_checked(self) -> None:
+        """Apply the same source-file guard to paths with Windows separators."""
+        # Arrange
+        settings = load_validation_settings(
+            PROJECT_ROOT / "configs/feature_validation.json"
+        )
+        audit = {"path": "outputs/reports/wide/audit.json"}
+        events = {"path": r"data\processed\base\events\part_00000.parquet"}
+        wide = {"status": "passed", "snapshots": [], "audit_report": audit}
+        base = {"files": [events]}
+        module = "user_behavior_analysis.service.sample_pipeline."
+        # Act
+        with (
+            patch(module + "read_json_object", side_effect=[wide, base]),
+            patch(module + "file_record"),
+            patch(module + "verify_registered_file") as verify,
+        ):
+            _verified_inputs(settings)
+        # Assert
+        verify.assert_any_call(events)
 
     def test_output_escape_is_rejected(self) -> None:
         """Model samples must remain within the project root."""

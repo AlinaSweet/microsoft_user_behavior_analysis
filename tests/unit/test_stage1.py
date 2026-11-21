@@ -337,6 +337,28 @@ class GitPolicyTests(_ProjectFixture):
         # Assert
         self.assertNotIn(name, tracked)
 
+    def test_dated_weekly_report_is_ignored(self) -> None:
+        """Keep a dated copy of a personal weekly report out of Git."""
+        # Arrange
+        name = "outputs/reports/Week6_report_20261121.pdf"
+        # Act
+        tracked = self._tracked_fixture(name)
+        # Assert
+        self.assertNotIn(name, tracked)
+
+    def test_git_policy_rejects_forced_weekly_report(self) -> None:
+        """Flag a dated weekly report even when it was force-staged."""
+        # Arrange
+        name = "Week6_report_20261121.pdf"
+        self._tracked_fixture(name)
+        subprocess.run(["git", "add", "-f", name], cwd=self.root, check=True)
+        # Act
+        issues = check_git_files(self.root)["issues"]
+        # Assert
+        self.assertEqual(
+            issues, [f"Personal weekly report or upload screenshot in Git: {name}"]
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -44,6 +44,7 @@ toolz==1.2.0
 tornado==6.5.10
 tqdm==4.70.1
 typing-extensions==4.16.0
+tzdata==2026.6; sys_platform == "win32"
 xgboost==3.4.1; platform_system == "Darwin"
 xgboost-cpu==3.4.1; platform_system != "Darwin"
 zict==3.0.0

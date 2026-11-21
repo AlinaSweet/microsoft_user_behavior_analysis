@@ -1,6 +1,6 @@
 # 按阶段逐文件导航
 
-本页覆盖当前Git仓库的全部 **501个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
+本页覆盖当前Git仓库的全部 **495个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
 
 原始任务见[项目大纲](requirements/project_brief.pdf)，完成状态见[任务台账](project_roadmap.md)。本页是项目全过程的文件导航。带日期目录是产物版本，阶段编号决定阅读顺序。
 
@@ -10,7 +10,7 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 
 | 顺序 | 任务 | 文件数 |
 |---|---|---:|
-| 第一阶段 | [1.1 工程化环境与版本管理搭建](#s1_01) | 81 |
+| 第一阶段 | [1.1 工程化环境与版本管理搭建](#s1_01) | 76 |
 | 第一阶段 | [1.2 领域文献调研与技术栈储备](#s1_02) | 10 |
 | 第一阶段 | [1.3 数据加载与全流程清洗](#s1_03) | 41 |
 | 第一阶段 | [1.4 数据预处理与中间表构建](#s1_04) | 23 |
@@ -18,7 +18,7 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | 第二阶段 | [2.2 全维度特征体系构建](#s2_02) | 58 |
 | 第二阶段 | [2.3 特征预处理与有效性验证](#s2_03) | 85 |
 | 第二阶段 | [2.4 多维度探索性数据分析](#s2_04) | 93 |
-| 阶段验收 | [第一、二阶段综合验收与结果导航](#acceptance) | 40 |
+| 阶段验收 | [第一、二阶段综合验收与结果导航](#acceptance) | 39 |
 | 第三阶段 | [3.1 样本构建与数据集划分](#s3_01) | 16 |
 | 第三阶段 | [3.2 传统机器学习模型构建与调优](#s3_02) | 16 |
 
@@ -37,7 +37,6 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [docs/coding_standard_adoption.md](../docs/coding_standard_adoption.md) | 说明文档 | 把原始编码规范映射到本项目的工具与检查规则。 |
 | [docs/data_management.md](../docs/data_management.md) | 说明文档 | 规定原始数据、版本产物、清单和Git同步范围。 |
 | [docs/files_by_stage.md](../docs/files_by_stage.md) | 说明文档 | 逐个解释全部Git文件，按阶段及任务顺序排列。 |
-| [docs/github_sync_guide.md](../docs/github_sync_guide.md) | 说明文档 | 说明feature→dev→main的提交、同步和CI流程。 |
 | [docs/project_roadmap.md](../docs/project_roadmap.md) | 说明文档 | 按原大纲17个任务登记完成状态、证据和后续验收。 |
 | [docs/repository_map.md](../docs/repository_map.md) | 说明文档 | 说明阶段、物理目录、分层代码和数据依赖的关系。 |
 | [docs/reproduction.md](../docs/reproduction.md) | 说明文档 | 提供从环境到数据、特征、EDA和验收的完整复现命令。 |
@@ -85,13 +84,9 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [data/interim/.gitkeep](../data/interim/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
 | [data/processed/.gitkeep](../data/processed/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
 | [data/raw/.gitkeep](../data/raw/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
-| [data/summaries/.gitkeep](../data/summaries/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
-| [docs/.gitkeep](../docs/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
-| [docs/archive_manifest.json](../docs/archive_manifest.json) | 结构化记录 | 记录移出工作树的旧成果及恢复位置。 |
+| [docs/archive_manifest.json](../docs/archive_manifest.json) | 结构化记录 | 登记归档成果及供恢复的 Git 提交。 |
 | [docs/file_inventory.csv](../docs/file_inventory.csv) | 数据明细 | 提供与逐文件导航一致、可筛选的完整文件和直接依赖清单。 |
-| [docs/repository_cleanup_20261117.json](../docs/repository_cleanup_20261117.json) | 结构化记录 | 登记移出仓库的9个无依赖日志和旧截图的指纹、归档位置与恢复方式。 |
-| [notebooks/.gitkeep](../notebooks/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
-| [outputs/figures/.gitkeep](../outputs/figures/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
+| [docs/repository_cleanup_20261117.json](../docs/repository_cleanup_20261117.json) | 结构化记录 | 登记已归档的9个日志和截图、文件指纹与恢复提交。 |
 | [outputs/reports/coding_standard_compliance.json](../outputs/reports/coding_standard_compliance.json) | 结构化记录 | 代码对编码规范的检查结果。 |
 | [outputs/reports/coding_standard_data_validation.json](../outputs/reports/coding_standard_data_validation.json) | 结构化记录 | 应用编码规范前后数据未被改写的核对。 |
 | [outputs/reports/engineering_benchmark.json](../outputs/reports/engineering_benchmark.json) | 结构化记录 | 分块读取、内存与工程资源的原始实测记录。 |
@@ -547,7 +542,6 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [scripts/audit_current_data.py](../scripts/audit_current_data.py) | 运行/导出/核验脚本 | 独立核对当前全部原记录基表、SQLite与快照数据。 |
 | [scripts/audit_stage1.py](../scripts/audit_stage1.py) | 运行/导出/核验脚本 | 重新执行第一阶段四部分的完整验收。 |
 | [src/user_behavior_analysis/service/stage2_reporting.py](../src/user_behavior_analysis/service/stage2_reporting.py) | 业务逻辑 | 汇总第二阶段数值成果、实验、说明与交付导航。 |
-| [outputs/reports/.gitkeep](../outputs/reports/.gitkeep) | 目录占位 | 使该预留空目录可以被Git记录；本身不包含业务数据。 |
 | [outputs/reports/stage1/audit.json](../outputs/reports/stage1/audit.json) | 结构化记录 | 验收结果、检查项及通过状态。 |
 | [outputs/reports/stage1/environment.log](../outputs/reports/stage1/environment.log) | 执行日志 | environment步骤的原始运行日志，保留当时输出。 |
 | [outputs/reports/stage1/environment/environment_check.json](../outputs/reports/stage1/environment/environment_check.json) | 结构化记录 | 环境版本、资源和实际运行检查结果。 |

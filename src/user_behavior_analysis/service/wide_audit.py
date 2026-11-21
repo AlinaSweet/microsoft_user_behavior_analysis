@@ -38,7 +38,7 @@ def file_record(path: Path) -> dict[str, Any]:
     """
     path = project_output_path(path)
     return {
-        "path": str(path.relative_to(PROJECT_ROOT)),
+        "path": path.relative_to(PROJECT_ROOT).as_posix(),
         "bytes": path.stat().st_size,
         "sha256": sha256_file(path),
     }

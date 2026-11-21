@@ -4,7 +4,6 @@ README.md,说明文档,按大纲四阶段说明项目目标、任务、成果与
 docs/coding_standard_adoption.md,说明文档,把原始编码规范映射到本项目的工具与检查规则。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,持续使用,阶段参考/追溯入口,AGENTS.md;pyproject.toml
 docs/data_management.md,说明文档,规定原始数据、版本产物、清单和Git同步范围。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,持续使用,阶段参考/追溯入口,AGENTS.md;pyproject.toml
 docs/files_by_stage.md,说明文档,逐个解释全部Git文件，按阶段及任务顺序排列。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,持续使用,阶段参考/追溯入口,AGENTS.md;pyproject.toml
-docs/github_sync_guide.md,说明文档,说明feature→dev→main的提交、同步和CI流程。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,持续使用,阶段参考/追溯入口,AGENTS.md;pyproject.toml
 docs/project_roadmap.md,说明文档,按原大纲17个任务登记完成状态、证据和后续验收。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,持续使用,阶段参考/追溯入口,AGENTS.md;pyproject.toml
 docs/repository_map.md,说明文档,说明阶段、物理目录、分层代码和数据依赖的关系。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,持续使用,阶段参考/追溯入口,AGENTS.md;pyproject.toml
 docs/reproduction.md,说明文档,提供从环境到数据、特征、EDA和验收的完整复现命令。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,持续使用,阶段参考/追溯入口,AGENTS.md;pyproject.toml
@@ -52,13 +51,9 @@ tests/integration/test_workers.py,集成测试,验证真实Dask进程和资源�
 data/interim/.gitkeep,目录占位,使该预留空目录可以被Git记录；本身不包含业务数据。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,预留目录,阶段参考/追溯入口,AGENTS.md;pyproject.toml
 data/processed/.gitkeep,目录占位,使该预留空目录可以被Git记录；本身不包含业务数据。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,预留目录,阶段参考/追溯入口,AGENTS.md;pyproject.toml
 data/raw/.gitkeep,目录占位,使该预留空目录可以被Git记录；本身不包含业务数据。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,预留目录,阶段参考/追溯入口,AGENTS.md;pyproject.toml
-data/summaries/.gitkeep,目录占位,使该预留空目录可以被Git记录；本身不包含业务数据。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,预留目录,阶段参考/追溯入口,AGENTS.md;pyproject.toml
-docs/.gitkeep,目录占位,使该预留空目录可以被Git记录；本身不包含业务数据。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,预留目录,阶段参考/追溯入口,AGENTS.md;pyproject.toml
-docs/archive_manifest.json,结构化记录,记录移出工作树的旧成果及恢复位置。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,持续使用,阶段参考/追溯入口,AGENTS.md;pyproject.toml
+docs/archive_manifest.json,结构化记录,登记归档成果及供恢复的 Git 提交。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,持续使用,阶段参考/追溯入口,AGENTS.md;pyproject.toml
 docs/file_inventory.csv,数据明细,提供与逐文件导航一致、可筛选的完整文件和直接依赖清单。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,持续使用,阶段参考/追溯入口,AGENTS.md;pyproject.toml
-docs/repository_cleanup_20261117.json,结构化记录,登记移出仓库的9个无依赖日志和旧截图的指纹、归档位置与恢复方式。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,持续使用,阶段参考/追溯入口,AGENTS.md;pyproject.toml
-notebooks/.gitkeep,目录占位,使该预留空目录可以被Git记录；本身不包含业务数据。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,预留目录,阶段参考/追溯入口,AGENTS.md;pyproject.toml
-outputs/figures/.gitkeep,目录占位,使该预留空目录可以被Git记录；本身不包含业务数据。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,预留目录,阶段参考/追溯入口,AGENTS.md;pyproject.toml
+docs/repository_cleanup_20261117.json,结构化记录,登记已归档的9个日志和截图、文件指纹与恢复提交。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,持续使用,阶段参考/追溯入口,AGENTS.md;pyproject.toml
 outputs/reports/coding_standard_compliance.json,结构化记录,代码对编码规范的检查结果。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,冻结结果/验收证据,阶段参考/追溯入口,AGENTS.md;pyproject.toml
 outputs/reports/coding_standard_data_validation.json,结构化记录,应用编码规范前后数据未被改写的核对。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,冻结结果/验收证据,阶段参考/追溯入口,AGENTS.md;pyproject.toml
 outputs/reports/engineering_benchmark.json,结构化记录,分块读取、内存与工程资源的原始实测记录。,第一阶段,s1_01,1.1 工程化环境与版本管理搭建,冻结结果/验收证据,阶段参考/追溯入口,AGENTS.md;pyproject.toml
@@ -282,7 +277,7 @@ src/user_behavior_analysis/models/encoding_models.py,类型结构,保存目标�
 src/user_behavior_analysis/models/validation_models.py,类型结构,定义训练期筛选、预处理状态与实验路径结构。,第二阶段,s2_03,2.3 特征预处理与有效性验证,持续使用,阶段参考/追溯入口,configs/feature_validation.json;configs/stage2_delivery.json;data/catalog/prejoined_wide_v1.json
 tests/unit/test_pair_targets.py,单元测试/测试包,验证同商品未来标签、成熟窗口与三键连接。,第二阶段,s2_03,2.3 特征预处理与有效性验证,持续使用,直接项目导入,src/user_behavior_analysis/service/pair_targets.py
 tests/unit/test_target_encoding.py,单元测试/测试包,验证用户折外编码、未知回退与冻结稀疏投影。,第二阶段,s2_03,2.3 特征预处理与有效性验证,持续使用,直接项目导入,src/user_behavior_analysis/service/sparse_embedding.py;src/user_behavior_analysis/service/target_encoding.py
-tests/unit/test_validation_contracts.py,单元测试/测试包,验证时间边界、穷尽分组与业务保护。,第二阶段,s2_03,2.3 特征预处理与有效性验证,持续使用,直接项目导入,src/user_behavior_analysis/common/constants.py;src/user_behavior_analysis/dao/validation_repository.py;src/user_behavior_analysis/service/validation_groups.py
+tests/unit/test_validation_contracts.py,单元测试/测试包,验证时间边界、穷尽分组与业务保护。,第二阶段,s2_03,2.3 特征预处理与有效性验证,持续使用,直接项目导入,src/user_behavior_analysis/common/constants.py;src/user_behavior_analysis/dao/validation_repository.py;src/user_behavior_analysis/service/sample_pipeline.py;src/user_behavior_analysis/service/validation_groups.py
 tests/unit/test_validation_preprocessing.py,单元测试/测试包,验证冻结变换、组核算及评价指标。,第二阶段,s2_03,2.3 特征预处理与有效性验证,持续使用,直接项目导入,src/user_behavior_analysis/models/validation_models.py;src/user_behavior_analysis/service/validation_experiments.py;src/user_behavior_analysis/service/validation_groups.py;src/user_behavior_analysis/service/validation_metrics.py;src/user_behavior_analysis/service/validation_preprocessing.py;src/user_behavior_analysis/service/validation_selection.py
 outputs/reports/feature_validation_20261114/audit.json,结构化记录,验收结果、检查项及通过状态。,第二阶段,s2_03,2.3 特征预处理与有效性验证,冻结结果/验收证据,阶段参考/追溯入口,configs/feature_validation.json;configs/stage2_delivery.json;data/catalog/prejoined_wide_v1.json
 outputs/reports/feature_validation_20261114/experiments.json,结构化记录,第一轮六组固定LR模型、分群效果与完整评价。,第二阶段,s2_03,2.3 特征预处理与有效性验证,冻结结果/验收证据,阶段参考/追溯入口,configs/feature_validation.json;configs/stage2_delivery.json;data/catalog/prejoined_wide_v1.json
@@ -438,7 +433,6 @@ outputs/reports/stage2/requirements_matrix.md,说明文档,按第二阶段四部
 scripts/audit_current_data.py,运行/导出/核验脚本,独立核对当前全部原记录基表、SQLite与快照数据。,阶段验收,acceptance,第一、二阶段综合验收与结果导航,持续使用,直接项目导入,src/user_behavior_analysis/common/constants.py;src/user_behavior_analysis/common/utils.py;src/user_behavior_analysis/dao/feature_repository.py;src/user_behavior_analysis/dao/sqlite_client.py;src/user_behavior_analysis/models/feature_models.py
 scripts/audit_stage1.py,运行/导出/核验脚本,重新执行第一阶段四部分的完整验收。,阶段验收,acceptance,第一、二阶段综合验收与结果导航,持续使用,直接项目导入,src/user_behavior_analysis/common/constants.py;src/user_behavior_analysis/common/utils.py
 src/user_behavior_analysis/service/stage2_reporting.py,业务逻辑,汇总第二阶段数值成果、实验、说明与交付导航。,阶段验收,acceptance,第一、二阶段综合验收与结果导航,持续使用,直接项目导入,src/user_behavior_analysis/common/constants.py;src/user_behavior_analysis/common/utils.py;src/user_behavior_analysis/dao/completion_repository.py;src/user_behavior_analysis/dao/feature_repository.py;src/user_behavior_analysis/dao/wide_repository.py;src/user_behavior_analysis/models/dashboard_models.py;src/user_behavior_analysis/models/encoding_models.py;src/user_behavior_analysis/service/interactive_eda.py;src/user_behavior_analysis/service/stage2_dictionary.py;src/user_behavior_analysis/service/stage2_figures.py;src/user_behavior_analysis/service/wide_contracts.py
-outputs/reports/.gitkeep,目录占位,使该预留空目录可以被Git记录；本身不包含业务数据。,阶段验收,acceptance,第一、二阶段综合验收与结果导航,预留目录,阶段参考/追溯入口,docs/project_roadmap.md;outputs/reports/stage1_stage2_review_20261114_01/README.md
 outputs/reports/stage1/audit.json,结构化记录,验收结果、检查项及通过状态。,阶段验收,acceptance,第一、二阶段综合验收与结果导航,冻结结果/验收证据,阶段参考/追溯入口,docs/project_roadmap.md;outputs/reports/stage1_stage2_review_20261114_01/README.md
 outputs/reports/stage1/environment.log,执行日志,environment步骤的原始运行日志，保留当时输出。,阶段验收,acceptance,第一、二阶段综合验收与结果导航,冻结结果/验收证据,阶段参考/追溯入口,docs/project_roadmap.md;outputs/reports/stage1_stage2_review_20261114_01/README.md
 outputs/reports/stage1/environment/environment_check.json,结构化记录,环境版本、资源和实际运行检查结果。,阶段验收,acceptance,第一、二阶段综合验收与结果导航,冻结结果/验收证据,阶段参考/追溯入口,docs/project_roadmap.md;outputs/reports/stage1_stage2_review_20261114_01/README.md

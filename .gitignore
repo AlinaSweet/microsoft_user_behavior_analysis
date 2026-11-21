@@ -27,7 +27,8 @@ outputs/**/*.feather
 /outputs/learning/
 **/weekly_report_*
 **/weekly_summary_*
-**/Week[0-9]*_report.*
+**/[Ww]eek[0-9]*_report.*
+**/[Ww]eek[0-9]*_report_*
 /docs/completed_work.md
 /docs/stage1_stage2_step1_files.md
 /docs/feature_system_files.md

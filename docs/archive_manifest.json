@@ -1,8 +1,7 @@
 {
   "date": "2026-11-14",
-  "archive_root": "/Users/alina/Desktop/实习/个人资料归档_20261031/项目历史报告归档_20261114",
   "before_cleanup_commit": "774e4ade0364bc3a6e2d077881fe7cbfbf082acb",
-  "recovery": "Restore each relative path from archive_root, or use Git history at before_cleanup_commit. New current documentation replaces archived older text.",
+  "recovery": "Restore the listed relative paths from before_cleanup_commit in Git history.",
   "reason": "Superseded dashboards, repeated review attempts, personal/preview artifacts and outdated narrative; active fingerprinted dependencies retained.",
   "file_count": 223,
   "bytes": 26829056,

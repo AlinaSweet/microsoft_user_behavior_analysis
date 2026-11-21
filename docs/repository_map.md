@@ -7,7 +7,7 @@
 
 | 阶段/部分 | 方法文档 | 实现/配置 | 产物与验收 |
 |---|---|---|---|
-| 第一阶段1 工程环境与Git | stage1_completion.md、github_sync_guide.md | config.py、service/runtime.py；configs/dask.yaml；.githooks、.github | outputs/reports/stage1；engineering_benchmark* |
+| 第一阶段1 工程环境与Git | stage1_completion.md、AGENTS.md | config.py、service/runtime.py；configs/dask.yaml；.githooks、.github | outputs/reports/stage1；engineering_benchmark* |
 | 第一阶段2 研究与方案 | docs/research/全目录 | references.json/bib、experiment_plan.md | stage1_step2_research.md、stage1_step2_audit* |
 | 第一阶段3 清洗与质量 | cleaning_rules.md、duplicate_policy.md | service/cleaning*；audit_cleaning.py | clean_v1清单、stage1_step3；当前有效原记录validated_records_v1 |
 | 第一阶段4 压缩与中间表 | preprocessing_rules.md | service/preprocessing*；audit_preprocessing.py | base_v1、stage1_step4；当前保留记录基表base_raw_v2 |
@@ -43,7 +43,6 @@
 | data/raw、interim、processed/ | 原始源、历史清洗与大型正式产物，本地保存 |
 | docs/ | 方法、口径、原始要求、研究与当前导航 |
 | outputs/reports/ | 当前汇总及仍被引用的基线证据，目录说明见其README |
-| notebooks/、outputs/figures/及.gitkeep | 为以后探索/统一图目录预留；.gitkeep使空目录可纳入Git |
 | .venv、.cache、__pycache__/ | 本机依赖、暂存与字节码，不上传Git |
 
 ## 数据依赖链

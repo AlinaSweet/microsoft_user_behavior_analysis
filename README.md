@@ -25,7 +25,7 @@
 
 建立可复现的Python环境、资源调度、模块化目录、代码规范以及feature→dev→main版本管理流程。
 
-- 方法：[工程管理](docs/stage1_completion.md)、[编码规范落实](docs/coding_standard_adoption.md)、[Git同步](docs/github_sync_guide.md)、[数据管理](docs/data_management.md)。
+- 方法：[工程管理](docs/stage1_completion.md)、[编码规范落实](docs/coding_standard_adoption.md)、[版本管理规则](AGENTS.md)、[数据管理](docs/data_management.md)。
 - 实现：requirements*.txt、pyproject.toml、[Dask配置](configs/dask.yaml)、[环境安装](scripts/setup_environment.sh)、[质量检查](scripts/check_quality.sh)、.githooks/、.github/。
 - 结果：[环境检查](outputs/reports/environment_check.json)、[工程基准](outputs/reports/engineering_benchmark.md)、[第一阶段验收](outputs/reports/stage1/audit.json)。
 - 状态：已完成，工程规则持续用于后续阶段。

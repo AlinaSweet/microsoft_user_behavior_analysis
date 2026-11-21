@@ -9,7 +9,7 @@
 | 数据路径 | 命令行路径、环境变量和默认路径；读取前校验表头 | runtime.py、针对性测试 |
 | 内存与调度 | 显式加载 YAML，创建独立 worker 进程，并限制内存总预算 | environment_check.json、engineering_benchmark.json |
 | 模块化目录 | 数据、代码、配置、文档、结果分层 | README.md、src/、configs/ |
-| Git 规范 | main/dev/feature 分支约定、规范提交与远程同步流程 | Git 历史、github_sync_guide.md |
+| Git 规范 | 从 dev 创建任务分支，评审和 Quality CI 通过后合入，再发布至 main | Git 历史、[版本管理规则](../AGENTS.md) |
 | 小型结果同步 | 小型 CSV/JSON/报告可进入 Git，跟踪文件有 10 MiB 检查 | .gitignore、check-git、data_management.md |
 | 大型数据登记 | 来源/生成命令、文件大小、SHA-256、共享位置状态 | data/catalog/user_behavior_raw.json、register/verify 命令 |
 

@@ -2,32 +2,38 @@
 
 ## 从干净的 Git 克隆开始
 
-安装 Git 和 Python 3.12，在克隆的仓库根目录运行以下命令。验证包括依赖、代码规范、全套测试、三种传统模型的小数据训练、在线看板构建和 Excel 字典导出。
+安装 Git 和 64 位 Python 3.12。Linux、macOS 和 Windows 在 GitHub Actions 中执行同一验证入口，覆盖依赖、代码规范、全套测试、三种传统模型的小数据训练、在线看板构建和 Excel 字典导出。这套验证只需仓库里的文件。
 
 macOS 上先用 Homebrew 执行 `brew install libomp` 以安装 OpenMP 运行库。Windows 与 Linux 安装项使用 CPU 版 XGBoost。 [传统模型安装说明](stage3_traditional.md#运行与输出)
 
 macOS 或 Linux
 
 ```bash
+git clone https://github.com/AlinaSweet/microsoft_user_behavior_analysis.git
+cd microsoft_user_behavior_analysis
 python3.12 -m venv .venv
-.venv/bin/python -m pip install -r requirements-dev.txt
+.venv/bin/python -m pip install --no-deps -r requirements-dev.txt
 .venv/bin/python scripts/reproduce.py verify
 ```
 
 Windows PowerShell
 
 ```powershell
+git clone https://github.com/AlinaSweet/microsoft_user_behavior_analysis.git
+cd microsoft_user_behavior_analysis
 py -3.12 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv\Scripts\python.exe -m pip install --no-deps -r requirements-dev.txt
 .\.venv\Scripts\python.exe scripts/reproduce.py verify
 ```
+
+`requirements.txt` 固定运行依赖，`requirements-dev.txt` 在其基础上固定检查工具。两个文件覆盖各平台实际需要的传递依赖。安装时 `--no-deps` 限定使用锁定清单，`verify` 会检查依赖是否齐全。
 
 仅重建在线 EDA 时可以直接用 Python 3.12 运行 `python scripts/reproduce.py pages`。
 输出位于 `_site`，可用 `python -m http.server --bind 127.0.0.1 --directory _site 8000` 预览。
 
 ## 从原始 CSV 重建第一、二阶段及 3.1–3.2
 
-取得 [数据清单](../data/catalog/user_behavior_raw.json) 对应的原始 CSV。命令校验字节数和 SHA-256，再在独立的新目录克隆当前提交并复制原始 CSV。完整运行需要足够磁盘保存 SQLite、Parquet 和模型中间结果，建议预留至少 30 GB。
+团队提供 [数据清单](../data/catalog/user_behavior_raw.json) 对应的原始 CSV 后，可以重建全量结果。命令校验字节数和 SHA-256，再在独立的新目录克隆当前提交并复制原始 CSV。完整运行需要足够磁盘保存 SQLite、Parquet 和模型中间结果，建议预留至少 30 GB。
 
 重绘中文静态图表时，Matplotlib 从系统已安装的中文字体中选择。缺少中文字体的环境可以安装 Noto Sans CJK SC。
 

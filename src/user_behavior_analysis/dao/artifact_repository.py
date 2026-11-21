@@ -23,7 +23,7 @@ _UPLOAD_SCREENSHOTS = {
     "outputs/figures/stage1_review_ci_checkpoint.png",
 }
 _PERSONAL_REPORT = re.compile(
-    r"^(?:weekly_(?:report|summary)_|week[0-9]+_report\.)", re.IGNORECASE
+    r"^(?:weekly_(?:report|summary)_|week[0-9]+_report[._])", re.IGNORECASE
 )
 
 
