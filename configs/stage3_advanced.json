@@ -1,0 +1,37 @@
+{
+  "sampling_catalog": "data/catalog/stage3_samples_v1.json",
+  "feature_catalog": "data/catalog/features_raw_v2.json",
+  "traditional_catalog": "data/catalog/stage3_traditional_v1.json",
+  "deep": {
+    "data_root": "data/processed/stage3_deep_v1",
+    "report_dir": "outputs/reports/stage3_deep_v1",
+    "catalog": "data/catalog/stage3_deep_v1.json"
+  },
+  "ensemble": {
+    "data_root": "data/processed/stage3_ensemble_v1",
+    "report_dir": "outputs/reports/stage3_ensemble_v1",
+    "catalog": "data/catalog/stage3_ensemble_v1.json"
+  },
+  "seed": 20261125,
+  "threads": 4,
+  "sequence_length": 20,
+  "vocabulary_limit": 12000,
+  "batch_rows": 1024,
+  "training_negative_ratio": 32,
+  "monitor_negative_ratio": 40,
+  "max_epochs": 7,
+  "patience": 2,
+  "stack_architecture": "din_attention",
+  "stack_epochs": 5,
+  "shap_cases": 160,
+  "shap_background": 16,
+  "bootstrap_repeats": 200,
+  "variants": [
+    {"name": "gru_base", "family": "gru", "embedding": 8, "hidden": 16, "dropout": 0.1, "heads": 0},
+    {"name": "gru_wide", "family": "gru", "embedding": 12, "hidden": 24, "dropout": 0.2, "heads": 0},
+    {"name": "lstm_base", "family": "lstm", "embedding": 8, "hidden": 16, "dropout": 0.1, "heads": 0},
+    {"name": "din_base", "family": "din", "embedding": 8, "hidden": 16, "dropout": 0.1, "heads": 0},
+    {"name": "din_wide", "family": "din", "embedding": 12, "hidden": 24, "dropout": 0.2, "heads": 0},
+    {"name": "din_attention", "family": "din", "embedding": 12, "hidden": 24, "dropout": 0.2, "heads": 4}
+  ]
+}

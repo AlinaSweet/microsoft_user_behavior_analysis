@@ -1,6 +1,6 @@
 # 项目任务与验收台账
 
-依据用户提供的[原始大纲](requirements/project_brief.pdf)，共17项。状态更新于2026-11-20。
+依据用户提供的[原始大纲](requirements/project_brief.pdf)，共17项。状态更新于2026-11-25。
 已确认的数据缺失使用代理口径，逐项边界见[第二阶段验收表](../outputs/reports/stage2/requirements_matrix.md)。
 
 | 编号 | 任务 | 当前状态 | 当前证据 |
@@ -15,8 +15,8 @@
 | s2_04 | 多维度探索性分析 | 核心完成；在线入口与展示细项已补齐 | [联动看板](eda_dashboard1.md)、[图表和洞察](../outputs/reports/stage2/README.md) |
 | s3_01 | 样本与数据划分 | 已完成并复核。7 天对级样本、时间回测、7:2:1 分组分层和不平衡对照一致 | [方法](stage3_sampling.md) · [3.1 复核](../outputs/reports/stage3_traditional_v1/stage31_review.json) · [数据清单](../data/catalog/stage3_samples_v1.json) |
 | s3_02 | 传统模型与调优 | 已完成。逻辑回归、XGBoost、LightGBM 基线与 36 次 Optuna 试验。按时间验证 AUC 选型并在完整测试集对比 | [方法](stage3_traditional.md) · [验收](../outputs/reports/stage3_traditional_v1/README.md) · [模型清单](../data/catalog/stage3_traditional_v1.json) |
-| s3_03 | 深度模型与优化 | 待执行 | GRU/LSTM、DIN、注意力、训练优化 |
-| s3_04 | 融合与解释 | 待执行 | Stacking、系数/SHAP、错误/冷启动/长尾 |
+| s3_03 | 深度模型与优化 | 已完成，比较六组序列模型及传统基线 | [方法](stage3_advanced.md) · [深度模型报告](../outputs/reports/stage3_deep_v1/README.md) |
+| s3_04 | 融合与解释 | 已完成，用户隔离的 Stacking、系数、SHAP 和分组错误诊断 | [方法](stage3_advanced.md) · [融合与解释报告](../outputs/reports/stage3_ensemble_v1/README.md) |
 | s3_05 | 业务模拟 | 待执行 | 模拟A/B、收益假设与敏感性 |
 | s4_01 | 工程化封装 | 待阶段性收口 | 可复用训练/推理、API文档和示例 |
 | s4_02 | 总报告与汇报材料 | 待执行 | 项目总报告、汇报PPT、技术分享PPT |

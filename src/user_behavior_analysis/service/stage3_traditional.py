@@ -14,13 +14,12 @@ import numpy as np
 import optuna
 import pandas as pd
 import xgboost
-from sklearn.impute import SimpleImputer  # type: ignore[import-untyped]
 from sklearn.pipeline import Pipeline  # type: ignore[import-untyped]
-from sklearn.preprocessing import StandardScaler  # type: ignore[import-untyped]
 from threadpoolctl import threadpool_limits  # type: ignore[import-untyped]
 
 from user_behavior_analysis.common.utils import utc_timestamp
 from user_behavior_analysis.common.utils import write_json
+from user_behavior_analysis.dao.traditional_repository import historical_transform
 from user_behavior_analysis.dao.traditional_repository import load_temporal_plan
 from user_behavior_analysis.dao.traditional_repository import read_temporal_split
 from user_behavior_analysis.dao.traditional_repository import write_test_predictions
@@ -200,17 +199,12 @@ def run_traditional_models(settings: TraditionalSettings) -> dict[str, Any]:
         if path.exists():
             raise FileExistsError(f"Choose an unused model output version: {path}")
     start = perf_counter()
-    plan = load_temporal_plan(settings)
+    plan = load_temporal_plan(settings.sampling_catalog)
     train, train_history = read_temporal_split(plan, "train")
     validation, validation_history = read_temporal_split(plan, "validation")
     settings.data_root.mkdir(parents=True)
     settings.report_dir.mkdir(parents=True)
-    preprocess = Pipeline(
-        [
-            ("median", SimpleImputer(strategy="median", keep_empty_features=True)),
-            ("scale", StandardScaler()),
-        ]
-    )
+    preprocess = historical_transform()
     optuna.logging.set_verbosity(optuna.logging.WARNING)
     with threadpool_limits(limits=settings.threads):
         train = LabeledMatrix(preprocess.fit_transform(train.values), train.target)

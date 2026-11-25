@@ -17,6 +17,8 @@
 | 第二阶段4 EDA | eda_dashboard1.md | interactive_eda/paths/forward.py、dashboard_server.py、assets/eda；run_eda_dashboard.sh | stage2/eda_*.json、figures、tables及交互看板 |
 | 第三阶段1 样本构建与划分 | stage3_sampling.md | configs/stage3_sampling.json、scripts/run_stage3_sampling.py | stage3_samples_v1 清单、六个自然分布 Parquet、分层与不平衡对照报告 |
 | 第三阶段2 传统模型与调优 | stage3_traditional.md | configs/stage3_traditional.json、scripts/run_traditional_models.py | 基线及调优模型、试验记录、时间测试报告和预测清单 |
+| 第三阶段3 序列模型与优化 | stage3_advanced.md | configs/stage3_advanced.json、scripts/run_stage3_advanced.py、service/sequence_networks.py | stage3_deep_v1 清单、训练轨迹和单模型比较 |
+| 第三阶段4 融合与解释 | stage3_advanced.md | service/stage3_ensemble.py、service/ensemble_explanations.py | stage3_ensemble_v1 清单、融合对照、系数、SHAP 图和分群诊断 |
 
 表中方法文件位于docs/，实现位于src/user_behavior_analysis/；文件清单给出无缩写完整相对路径。
 

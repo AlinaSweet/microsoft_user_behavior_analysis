@@ -1,0 +1,69 @@
+{
+  "kind": "stage3_deep_models",
+  "status": "passed",
+  "source_sampling_catalog": {
+    "path": "data/catalog/stage3_samples_v1.json",
+    "bytes": 5829,
+    "sha256": "af7005661fb0750101653ba7f525b2cf0c75f32c7745fa16029699f5c51ade17"
+  },
+  "feature_catalog": {
+    "path": "data/catalog/features_raw_v2.json",
+    "bytes": 34816,
+    "sha256": "1354ae40ee0cc857ac05fbc72959e673f4bc4f1f07a9651666938422f63fdd38"
+  },
+  "models": {
+    "path": "data/processed/stage3_deep_v1/sequence_models.pt",
+    "bytes": 5066953,
+    "sha256": "0f30f2891d28635dea26d2889f8edd7ed3c602dc609c7bf9bb63e37621dcb80b"
+  },
+  "preprocess": {
+    "path": "data/processed/stage3_deep_v1/preprocess.joblib",
+    "bytes": 1441,
+    "sha256": "f1e1f9619756fa525b85f0255d2e9bb843aad2d34883cfb04e5b40b8dbb60c4e"
+  },
+  "traditional_catalog": {
+    "path": "data/catalog/stage3_traditional_v1.json",
+    "bytes": 1526,
+    "sha256": "4c5883c81dc0699157966958e85047da449bc3acb9beb072c6ffb172aa362cb0"
+  },
+  "test_predictions": {
+    "path": "data/processed/stage3_deep_v1/test_predictions.parquet",
+    "bytes": 49876208,
+    "sha256": "d8051f7e33ea32e456e7e3d8e3110f412013442f2edc30a272d7b90428644307",
+    "rows": 1117324
+  },
+  "chosen": "gru_base",
+  "stack_member": {
+    "path": "data/processed/stage3_deep_v1/stack_din.pt",
+    "bytes": 1284650,
+    "sha256": "a958ff1557eb3e373d9c60ab694b8da56cd9805deed0511a21b36cab36e493db"
+  },
+  "stack_plan": {
+    "training_anchor": "2025-11-25",
+    "epochs": 5,
+    "validation_used": false,
+    "architecture": "din_attention"
+  },
+  "reports": [
+    {
+      "path": "outputs/reports/stage3_deep_v1/audit.json",
+      "bytes": 3129,
+      "sha256": "fa6fe4d8f3a57512bf7a54849a1e1ab3f76e6a2e60bbfa971f03b988c95061fd"
+    },
+    {
+      "path": "outputs/reports/stage3_deep_v1/epochs.csv",
+      "bytes": 2655,
+      "sha256": "26eb74d38fff536eeb19dc5513269ef8c62e8d20f9b7f647488be783ab1fb4bd"
+    },
+    {
+      "path": "outputs/reports/stage3_deep_v1/model_comparison.csv",
+      "bytes": 5517,
+      "sha256": "8de57c2dc0f447bb32cf00c121af6b4d0dc197013c8fde6826959dc3a7815f47"
+    },
+    {
+      "path": "outputs/reports/stage3_deep_v1/validation_selection.json",
+      "bytes": 5647,
+      "sha256": "4a6a89462feee5326b41590606e264c99fec9182c8441a7a726572fba843761e"
+    }
+  ]
+}

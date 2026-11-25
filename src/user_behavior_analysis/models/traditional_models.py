@@ -9,6 +9,7 @@ import numpy as np
 from user_behavior_analysis.models.sampling_models import PartitionEvidence
 
 MODEL_FAMILIES = ("logistic_regression", "xgboost", "lightgbm")
+STACK_TRADITIONAL = ("logistic_regression_baseline", "xgboost_baseline")
 
 
 @dataclass(frozen=True)

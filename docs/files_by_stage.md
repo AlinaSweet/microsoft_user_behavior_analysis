@@ -1,6 +1,6 @@
 # 按阶段逐文件导航
 
-本页覆盖当前Git仓库的全部 **495个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
+本页覆盖当前Git仓库的全部 **527个文件**，按项目大纲的阶段、部分和作用展开。每个文件只在主要责任任务下登记一次；跨阶段复用关系见[文件与依赖清单](file_inventory.csv)。
 
 原始任务见[项目大纲](requirements/project_brief.pdf)，完成状态见[任务台账](project_roadmap.md)。本页是项目全过程的文件导航。带日期目录是产物版本，阶段编号决定阅读顺序。
 
@@ -21,6 +21,8 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | 阶段验收 | [第一、二阶段综合验收与结果导航](#acceptance) | 39 |
 | 第三阶段 | [3.1 样本构建与数据集划分](#s3_01) | 16 |
 | 第三阶段 | [3.2 传统机器学习模型构建与调优](#s3_02) | 16 |
+| 第三阶段 | [3.3 深度学习模型构建与优化](#s3_03) | 15 |
+| 第三阶段 | [3.4 模型融合与可解释性分析](#s3_04) | 17 |
 
 ## 第一阶段：数据工程体系搭建与理论储备
 
@@ -631,6 +633,53 @@ Python文件的直接项目导入由AST提取；其他文件列出阶段参考�
 | [src/user_behavior_analysis/service/traditional_tuning.py](../src/user_behavior_analysis/service/traditional_tuning.py) | 业务逻辑 | 实现三种 CPU 分类器及基于验证 AUC 的 Optuna。 |
 | [tests/integration/test_traditional_models.py](../tests/integration/test_traditional_models.py) | 集成测试 | 运行三种模型及 Optuna 的小数据试验。 |
 | [tests/unit/test_traditional_boundaries.py](../tests/unit/test_traditional_boundaries.py) | 单元测试 | 验证模型入口拒绝重叠标签窗口或未来特征。 |
+
+<a id="s3_03"></a>
+
+### 3.3 深度学习模型构建与优化
+
+| 文件（仓库内完整路径） | 类型 | 作用 |
+|---|---|---|
+| [configs/stage3_advanced.json](../configs/stage3_advanced.json) | 运行配置 | 声明两部分的输入、输出、结构、训练和解释预算。 |
+| [data/catalog/stage3_deep_v1.json](../data/catalog/stage3_deep_v1.json) | 数据版本清单 | 登记序列权重、词表、预处理、冻结 DIN 和测试预测。 |
+| [docs/stage3_advanced.md](../docs/stage3_advanced.md) | 说明文档 | 说明序列、时间隔离、融合、SHAP 和运行入口。 |
+| [outputs/reports/stage3_deep_v1/README.md](../outputs/reports/stage3_deep_v1/README.md) | 说明文档 | 记录六种深度变体及与传统模型的对照结论。 |
+| [outputs/reports/stage3_deep_v1/audit.json](../outputs/reports/stage3_deep_v1/audit.json) | 结构化记录 | 记录三个时间分割、历史上界、预算与验证支持。 |
+| [outputs/reports/stage3_deep_v1/epochs.csv](../outputs/reports/stage3_deep_v1/epochs.csv) | 统计表 | 记录每轮优化、学习率和验证 AUC。 |
+| [outputs/reports/stage3_deep_v1/model_comparison.csv](../outputs/reports/stage3_deep_v1/model_comparison.csv) | 统计表 | 对比完整验证和时间测试性能。 |
+| [outputs/reports/stage3_deep_v1/validation_selection.json](../outputs/reports/stage3_deep_v1/validation_selection.json) | 结构化记录 | 冻结验证 AUC 选型和 F1 阈值。 |
+| [scripts/run_stage3_advanced.py](../scripts/run_stage3_advanced.py) | 运行脚本 | 运行深度模型或融合阶段并生成验收产物。 |
+| [src/user_behavior_analysis/dao/sequence_repository.py](../src/user_behavior_analysis/dao/sequence_repository.py) | 数据访问 | 核验时间、序列和候选类目，建立训练词表。 |
+| [src/user_behavior_analysis/models/sequence_models.py](../src/user_behavior_analysis/models/sequence_models.py) | 数据模型 | 定义序列批、词表和试验配置。 |
+| [src/user_behavior_analysis/service/sequence_networks.py](../src/user_behavior_analysis/service/sequence_networks.py) | 业务逻辑 | 实现按小时池化的 GRU 和 LSTM，以及 DIN 多头变体。 |
+| [src/user_behavior_analysis/service/sequence_training.py](../src/user_behavior_analysis/service/sequence_training.py) | 业务逻辑 | 实现欠采样、梯度裁剪、衰减、早停与概率评分。 |
+| [src/user_behavior_analysis/service/stage3_deep.py](../src/user_behavior_analysis/service/stage3_deep.py) | 业务逻辑 | 编排验证选择、模型封存和全量时间测试。 |
+| [tests/integration/test_advanced_models.py](../tests/integration/test_advanced_models.py) | 集成测试 | 测试序列训练、训练期冻结、用户隔离与 SHAP 加和。 |
+
+
+<a id="s3_04"></a>
+
+### 3.4 模型融合与可解释性分析
+
+| 文件（仓库内完整路径） | 类型 | 作用 |
+|---|---|---|
+| [data/catalog/stage3_ensemble_v1.json](../data/catalog/stage3_ensemble_v1.json) | 数据版本清单 | 登记融合器、来源清单、测试预测及汇总报告指纹。 |
+| [outputs/reports/stage3_ensemble_v1/README.md](../outputs/reports/stage3_ensemble_v1/README.md) | 说明文档 | 汇总融合验证、SHAP、错误画像及场景局限。 |
+| [outputs/reports/stage3_ensemble_v1/audit.json](../outputs/reports/stage3_ensemble_v1/audit.json) | 结构化记录 | 记录传统重放、用户聚类区间及解释加和误差。 |
+| [outputs/reports/stage3_ensemble_v1/din_shap.csv](../outputs/reports/stage3_ensemble_v1/din_shap.csv) | 统计表 | 记录 DIN 分组 SHAP 的幅度与分位数。 |
+| [outputs/reports/stage3_ensemble_v1/din_shap.svg](../outputs/reports/stage3_ensemble_v1/din_shap.svg) | 图表 | 展示 DIN 分组 SHAP 图。 |
+| [outputs/reports/stage3_ensemble_v1/error_profiles.csv](../outputs/reports/stage3_ensemble_v1/error_profiles.csv) | 统计表 | 汇总正确分类、误报与漏报的标准化特征画像。 |
+| [outputs/reports/stage3_ensemble_v1/logistic_coefficients.csv](../outputs/reports/stage3_ensemble_v1/logistic_coefficients.csv) | 统计表 | 汇总标准化逻辑回归系数和赔率倍数。 |
+| [outputs/reports/stage3_ensemble_v1/model_comparison.csv](../outputs/reports/stage3_ensemble_v1/model_comparison.csv) | 统计表 | 对比三个基模型、等权平均和 Stacking。 |
+| [outputs/reports/stage3_ensemble_v1/slice_metrics.csv](../outputs/reports/stage3_ensemble_v1/slice_metrics.csv) | 统计表 | 按训练期用户和商品支持量报告测试指标。 |
+| [outputs/reports/stage3_ensemble_v1/validation_selection.json](../outputs/reports/stage3_ensemble_v1/validation_selection.json) | 结构化记录 | 冻结用户隔离、二层拟合与测试前选择。 |
+| [outputs/reports/stage3_ensemble_v1/xgboost_shap.csv](../outputs/reports/stage3_ensemble_v1/xgboost_shap.csv) | 统计表 | 记录 XGBoost TreeSHAP 的幅度与分位数。 |
+| [outputs/reports/stage3_ensemble_v1/xgboost_shap.svg](../outputs/reports/stage3_ensemble_v1/xgboost_shap.svg) | 图表 | 展示 XGBoost 原生 TreeSHAP 图。 |
+| [scripts/score_stage3_traditional.py](../scripts/score_stage3_traditional.py) | 运行脚本 | 启动独立传统模型进程评分，避免原生线程库冲突。 |
+| [src/user_behavior_analysis/service/ensemble_diagnostics.py](../src/user_behavior_analysis/service/ensemble_diagnostics.py) | 业务逻辑 | 划分二层验证用户，汇总冷启动、长尾和错误画像。 |
+| [src/user_behavior_analysis/service/ensemble_explanations.py](../src/user_behavior_analysis/service/ensemble_explanations.py) | 业务逻辑 | 计算 DIN 分组 SHAP，生成两种 SHAP 的汇总图。 |
+| [src/user_behavior_analysis/service/ensemble_traditional.py](../src/user_behavior_analysis/service/ensemble_traditional.py) | 业务逻辑 | 重放传统基线和 3.2 预测，计算 TreeSHAP 与系数。 |
+| [src/user_behavior_analysis/service/stage3_ensemble.py](../src/user_behavior_analysis/service/stage3_ensemble.py) | 业务逻辑 | 编排用户隔离的 Stacking、测试、解释和核验。 |
 
 ## 第四阶段：成果沉淀与项目复盘
 

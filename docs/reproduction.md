@@ -2,9 +2,9 @@
 
 ## 从干净的 Git 克隆开始
 
-安装 Git 和 64 位 Python 3.12。Linux、macOS 和 Windows 在 GitHub Actions 中执行同一验证入口，覆盖依赖、代码规范、全套测试、三种传统模型的小数据训练、在线看板构建和 Excel 字典导出。这套验证只需仓库里的文件。
+安装 Git 和 64 位 Python 3.12。Linux、macOS 和 Windows 在 GitHub Actions 中执行同一验证入口，覆盖依赖、代码规范、传统和序列模型的小数据训练、SHAP 加和、在线看板构建和 Excel 字典导出。这套验证只需仓库里的文件。
 
-macOS 上先用 Homebrew 执行 `brew install libomp` 以安装 OpenMP 运行库。Windows 与 Linux 安装项使用 CPU 版 XGBoost。 [传统模型安装说明](stage3_traditional.md#运行与输出)
+macOS 上先用 Homebrew 执行 `brew install libomp` 以安装 OpenMP 运行库。序列模型在 CPU 上训练，锁定的 PyTorch wheel 支持 Apple 芯片的 macOS 14 及以上、x86-64 或 ARM64 的 Linux（glibc 2.28 及以上）和 x64 Windows。Windows 与 Linux 使用 CPU 版 XGBoost。 [PyTorch 安装说明](https://pytorch.org/get-started/locally/)
 
 macOS 或 Linux
 
@@ -31,7 +31,7 @@ py -3.12 -m venv .venv
 仅重建在线 EDA 时可以直接用 Python 3.12 运行 `python scripts/reproduce.py pages`。
 输出位于 `_site`，可用 `python -m http.server --bind 127.0.0.1 --directory _site 8000` 预览。
 
-## 从原始 CSV 重建第一、二阶段及 3.1–3.2
+## 从原始 CSV 重建第一、二阶段及 3.1–3.4
 
 团队提供 [数据清单](../data/catalog/user_behavior_raw.json) 对应的原始 CSV 后，可以重建全量结果。命令校验字节数和 SHA-256，再在独立的新目录克隆当前提交并复制原始 CSV。完整运行需要足够磁盘保存 SQLite、Parquet 和模型中间结果，建议预留至少 30 GB。
 
@@ -43,7 +43,7 @@ py -3.12 -m venv .venv
 python scripts/reproduce.py full --csv "原始 user_behavior.csv 的路径" --destination ".cache/reproduced"
 ```
 
-命令依次生成清洗结果、数据库、SQL、EDA、特征、标签、固定逻辑回归、矩阵验收、3.1 样本划分与不平衡对照，以及 3.2 的基础训练、Optuna 调优和时间测试。3.2 读取本次重新生成的 3.1 时间划分。新版本的验收和字典位于新克隆的 `outputs/reproduction`。大型数据和模型位于新克隆的 `data`。冻结的旧报告仍可按其记录的提交追溯，运行性能和二进制产物的字节指纹随平台与运行环境变化。
+命令依次重建清洗、数据库、SQL、EDA、特征、标签、矩阵及其验收。后续从本次生成的 3.1 时间样本开始，执行 3.2 传统模型、3.3 序列模型和 3.4 融合解释。新版本的验收和字典位于新克隆的 `outputs/reproduction`。大型数据和模型位于新克隆的 `data`。冻结的旧报告可按其记录的提交追溯，运行性能和二进制产物的字节指纹随平台与运行环境变化。
 
 ## 分阶段运行和复核
 
@@ -60,6 +60,7 @@ python scripts/reproduce.py full --csv "原始 user_behavior.csv 的路径" --de
 | 对级标签与第一轮筛选 | scripts/run_feature_validation.py，参数见feature_validation.md |
 | 3.1 样本划分与不平衡对照 | scripts/run_stage3_sampling.py，参数见[样本构建](stage3_sampling.md) |
 | 3.2 传统模型与参数调优 | scripts/run_traditional_models.py，参数见[传统模型](stage3_traditional.md) |
+| 3.3 序列模型及 3.4 融合解释 | scripts/run_stage3_advanced.py，参数见[序列建模与融合](stage3_advanced.md) |
 | 当前新增预处理/实验/报告/重放 | PYTHONPATH=src .venv/bin/python scripts/run_stage2_completion.py --phase all |
 | 本地交互EDA | bash scripts/run_eda_dashboard.sh |
 | GitHub在线EDA | https://alinasweet.github.io/microsoft_user_behavior_analysis/ |

@@ -1,0 +1,93 @@
+{
+  "splits": {
+    "train": {
+      "cutoff": "2025-11-25T00:00:00",
+      "label_end_exclusive": "2025-12-02T00:00:00",
+      "latest_pair_event": "2025-11-24T23:00:00",
+      "rows": 1030893,
+      "positives": 2735,
+      "temporal_or_label_violations": 0,
+      "sequence_file": {
+        "path": "data/processed/features_raw_v2/snapshots/2025-11-25/user_sequences.parquet",
+        "bytes": 2864162,
+        "sha256": "fed37df08513c1b52eb2dacfeefcba6d88dd45090b2eabebccf0d25878d1d697"
+      },
+      "item_file": {
+        "path": "data/processed/features_raw_v2/snapshots/2025-11-25/item_features.parquet",
+        "bytes": 64965707,
+        "sha256": "1e3260c37a241c0d75daa3b87665a58a3460141704bf5a14640c316fdf6ce98c"
+      },
+      "history_users": 9115,
+      "latest_sequence_event": "2025-11-24T23:00:00"
+    },
+    "validation": {
+      "cutoff": "2025-12-02T00:00:00",
+      "label_end_exclusive": "2025-12-09T00:00:00",
+      "latest_pair_event": "2025-12-01T23:00:00",
+      "rows": 1061515,
+      "positives": 2525,
+      "temporal_or_label_violations": 0,
+      "sequence_file": {
+        "path": "data/processed/features_raw_v2/snapshots/2025-12-02/user_sequences.parquet",
+        "bytes": 3455409,
+        "sha256": "13a9b6d92135c090b1048dfd46be94e72de725f6c99ffbb5cd901c1c2456534a"
+      },
+      "item_file": {
+        "path": "data/processed/features_raw_v2/snapshots/2025-12-02/item_features.parquet",
+        "bytes": 87941946,
+        "sha256": "827f3795b0690f97b3387c1e9f8ac7df843b86ae39ac1d68fe7265d94e97b9ce"
+      },
+      "history_users": 9604,
+      "latest_sequence_event": "2025-12-01T23:00:00"
+    },
+    "test": {
+      "cutoff": "2025-12-09T00:00:00",
+      "label_end_exclusive": "2025-12-16T00:00:00",
+      "latest_pair_event": "2025-12-08T23:00:00",
+      "rows": 1117324,
+      "positives": 5175,
+      "temporal_or_label_violations": 0,
+      "sequence_file": {
+        "path": "data/processed/features_raw_v2/snapshots/2025-12-09/user_sequences.parquet",
+        "bytes": 3714255,
+        "sha256": "57e3b2e704bd4f30d5ccead6ce6c224c39a8a3a4dc35a00d1cbda2b8c8c5132f"
+      },
+      "item_file": {
+        "path": "data/processed/features_raw_v2/snapshots/2025-12-09/item_features.parquet",
+        "bytes": 102109402,
+        "sha256": "956a2d9d8d7a7eae1aee83a23df78aa1b0e6c71154dd42fe6367d44ed4f9f486"
+      },
+      "history_users": 9828,
+      "latest_sequence_event": "2025-12-08T23:00:00"
+    }
+  },
+  "training_rows": 90255,
+  "validation_monitor": {
+    "rows": 103525,
+    "positives": 2525
+  },
+  "embedding_vocabulary": {
+    "items": 12000,
+    "categories": 7128
+  },
+  "status": "passed",
+  "protocol": "time_backtest",
+  "budget": {
+    "seed": 20261125,
+    "threads": 4,
+    "sequence_length": 20,
+    "vocabulary_limit": 12000,
+    "batch_rows": 1024,
+    "training_negative_ratio": 32,
+    "monitor_negative_ratio": 40,
+    "max_epochs": 7,
+    "patience": 2,
+    "stack_epochs": 5,
+    "shap_cases": 160,
+    "shap_background": 16,
+    "bootstrap_repeats": 200
+  },
+  "torch_version": "2.15.0",
+  "platform": "Darwin arm64",
+  "elapsed_seconds": 72.90595125011168
+}

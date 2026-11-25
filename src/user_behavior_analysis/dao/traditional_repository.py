@@ -7,9 +7,13 @@ from pathlib import Path
 from typing import Any
 
 import duckdb
+import joblib  # type: ignore[import-untyped]
 import numpy as np
 import pyarrow as pa  # type: ignore[import-untyped]
 import pyarrow.parquet as pq  # type: ignore[import-untyped]
+from sklearn.impute import SimpleImputer  # type: ignore[import-untyped]
+from sklearn.pipeline import Pipeline  # type: ignore[import-untyped]
+from sklearn.preprocessing import StandardScaler  # type: ignore[import-untyped]
 
 from user_behavior_analysis.common.utils import project_output_path
 from user_behavior_analysis.dao.feature_repository import require_result_row
@@ -23,6 +27,61 @@ from user_behavior_analysis.models.traditional_models import TemporalPlan
 from user_behavior_analysis.models.traditional_models import TraditionalSettings
 from user_behavior_analysis.service.wide_audit import file_record
 from user_behavior_analysis.service.wide_contracts import require_contract
+
+
+def historical_transform() -> Pipeline:
+    """Create the shared median imputation and scaling pipeline.
+
+    Returns:
+        Unfitted preprocessing to be fit on the complete chronological training set.
+    """
+    return Pipeline(
+        [
+            ("median", SimpleImputer(strategy="median", keep_empty_features=True)),
+            ("scale", StandardScaler()),
+        ]
+    )
+
+
+def check_traditional_catalog(path: Path, plan: TemporalPlan) -> dict[str, Any]:
+    """Confirm that the stage 3.2 catalog describes the same time backtest.
+
+    Args:
+        path: Approved traditional-model catalog from this project.
+        plan: The expected stage 3.1 time backtest.
+
+    Returns:
+        Checked metadata without reading trained tree models or test rows.
+    """
+    catalog = read_json_object(path)
+    require_contract(
+        catalog.get("kind") == "stage3_traditional_models"
+        and catalog.get("status") == "passed"
+        and catalog.get("source_sampling_catalog") == plan.source,
+        "Traditional models do not match the audited time backtest",
+    )
+    return catalog
+
+
+def load_traditional_bundle(
+    path: Path, plan: TemporalPlan
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Read the trusted and fingerprinted 3.2 model bundle.
+
+    Args:
+        path: Approved project catalog.
+        plan: The expected stage 3.1 time backtest.
+
+    Returns:
+        Model bundle and catalog bound to these exact temporal inputs.
+    """
+    catalog = check_traditional_catalog(path, plan)
+    bundle: dict[str, Any] = joblib.load(verify_registered_file(catalog["models"]))
+    require_contract(
+        tuple(bundle["features"]) == plan.features,
+        "Traditional preprocessing has an incompatible feature order",
+    )
+    return bundle, catalog
 
 
 def load_traditional_settings(path: Path) -> TraditionalSettings:
@@ -86,16 +145,16 @@ def check_chronology(anchors: dict[str, str]) -> None:
     )
 
 
-def load_temporal_plan(settings: TraditionalSettings) -> TemporalPlan:
+def load_temporal_plan(sampling_catalog: Path) -> TemporalPlan:
     """Read the audited time-only input and its exact prior feature whitelist.
 
     Args:
-        settings: Checked model configuration pointing to stage 3.1 output.
+        sampling_catalog: Checked path to stage 3.1 output.
 
     Returns:
         The chronological plan, without loading test rows.
     """
-    catalog = read_json_object(settings.sampling_catalog)
+    catalog = read_json_object(sampling_catalog)
     require_contract(
         catalog.get("status") == "passed"
         and catalog.get("kind") == "stage3_purchase_samples",
@@ -134,7 +193,7 @@ def load_temporal_plan(settings: TraditionalSettings) -> TemporalPlan:
             "Partition does not match its approved mature time cutoff: " + name,
         )
     return TemporalPlan(
-        file_record(settings.sampling_catalog), tuple(features), anchors, partitions
+        file_record(sampling_catalog), tuple(features), anchors, partitions
     )
 
 

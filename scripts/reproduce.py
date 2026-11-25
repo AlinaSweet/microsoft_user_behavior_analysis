@@ -159,6 +159,28 @@ def _model_reproduction(root: Path) -> None:
     _python(
         root, "scripts/run_traditional_models.py", "--config", traditional.as_posix()
     )
+    _advanced_reproduction(root, settings["catalog"], options["catalog"])
+
+
+def _advanced_reproduction(root: Path, sampling: str, traditional: str) -> None:
+    """Build the sequence networks, stacking and explanations after 3.2.
+
+    Args:
+        root: Isolated checkout with regenerated samples and traditional models.
+        sampling: Newly registered stage 3.1 catalog.
+        traditional: Newly registered stage 3.2 catalog.
+    """
+    config = REBUILT / "advanced_config.json"
+    settings = _read(root / "configs/stage3_advanced.json")
+    settings.update(sampling_catalog=sampling, traditional_catalog=traditional)
+    for stage in ("deep", "ensemble"):
+        name = "stage3_" + stage
+        settings[stage].update(
+            report_dir=(REBUILT / name).as_posix(),
+            catalog=(REBUILT / (name + "_catalog.json")).as_posix(),
+        )
+    _write(root / config, settings)
+    _python(root, "scripts/run_stage3_advanced.py", "--config", config.as_posix())
 
 
 def _full(csv_path: Path, destination: Path) -> None:

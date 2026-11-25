@@ -21,6 +21,10 @@
   "stage3_sampling_report": "outputs/reports/stage3_sampling_v1/README.md",
   "stage3_traditional_catalog": "data/catalog/stage3_traditional_v1.json",
   "stage3_traditional_report": "outputs/reports/stage3_traditional_v1/README.md",
+  "stage3_deep_catalog": "data/catalog/stage3_deep_v1.json",
+  "stage3_deep_report": "outputs/reports/stage3_deep_v1/README.md",
+  "stage3_ensemble_catalog": "data/catalog/stage3_ensemble_v1.json",
+  "stage3_ensemble_report": "outputs/reports/stage3_ensemble_v1/README.md",
   "current_report": "outputs/reports/stage2/README.md",
   "current_feature_dictionary": "outputs/reports/stage2/feature_dictionary.json"
 }

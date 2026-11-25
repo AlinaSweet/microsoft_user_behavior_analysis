@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "time_anchors": {
+    "train": "2025-11-25",
+    "validation": "2025-12-02",
+    "test": "2025-12-09"
+  },
+  "test_rows": 1117324,
+  "traditional_replay_max_error": 0.0,
+  "meta_validation_user_overlap": 0,
+  "auc_user_cluster_bootstrap": {
+    "reference": "xgboost_baseline",
+    "method": "paired user-cluster percentile bootstrap",
+    "replicates": 200,
+    "confidence": 0.95,
+    "lower": 9.614673141420394e-05,
+    "upper": 0.0011886428220078738
+  },
+  "explanation": {
+    "cases": 160,
+    "case_positives": 80,
+    "background_rows_from_train": 16,
+    "din_groups": [
+      "User ratios",
+      "Pair ratios",
+      "Item and category ratios",
+      "Candidate item and category",
+      "Historical sequence"
+    ],
+    "din_additivity_max_error": 4.76837158203125e-07,
+    "xgb_additivity_max_error": 3.814697265625e-06,
+    "logistic_intercept": -6.204143047332764
+  }
+}

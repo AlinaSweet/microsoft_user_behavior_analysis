@@ -11,6 +11,29 @@ from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import roc_auc_score  # type: ignore[import-untyped]
 
 
+def explanation_rows(target: np.ndarray, size: int, seed: int) -> np.ndarray:
+    """Select a fixed class-balanced explanation sample after model evaluation.
+
+    Args:
+        target: Complete untouched test labels.
+        size: Maximum number of chosen cases.
+        seed: Independent analysis sampling seed.
+
+    Returns:
+        Stable sorted test positions, with both labels where supported.
+    """
+    random = np.random.default_rng(seed)
+    positions = [np.flatnonzero(target == label) for label in (0, 1)]
+    return np.sort(
+        np.concatenate(
+            [
+                random.choice(rows, min(size // 2, len(rows)), replace=False)
+                for rows in positions
+            ]
+        )
+    )
+
+
 def prediction_metrics(
     target: np.ndarray, scores: np.ndarray, threshold: float = 0.5
 ) -> dict[str, Any]:
